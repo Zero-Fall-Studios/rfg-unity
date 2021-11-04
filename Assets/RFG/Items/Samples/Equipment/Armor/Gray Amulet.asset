@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf054f31d05cad54d9077ac47693c67e, type: 3}
+  m_Name: Gray Amulet
+  m_EditorClassIdentifier: 
+  Guid: ebc8edb4-3de7-4312-a16c-35112d446490
+  Description: Gray Amulet
+  IsStackable: 0
+  StackableLimit: 1
+  PickUpSprite: {fileID: -2527500072168572386, guid: b38d0f7b87e138a4fbe29083da02a2c2, type: 3}
+  PickUpText: Gray Amulet
+  PickUpEffects: []
+  EquipmentType: 1
+  IsEquipped: 0
+  EquipOnPickUp: 0
+  EquipSprite: {fileID: 0}
+  EquipText: 
+  UnequipText: 
+  EquipEffects: []
+  UnequipEffects: []

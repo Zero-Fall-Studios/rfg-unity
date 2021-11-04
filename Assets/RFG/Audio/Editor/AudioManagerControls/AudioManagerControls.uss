@@ -1,0 +1,26 @@
+.container {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.button {
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 18px;
+    background-color: rgb(51, 41, 41);
+}
+
+.button:hover {
+    border-color: rgb(255, 255, 255);
+}
+
+.button:active {
+    background-color: rgb(92, 92, 92);
+}

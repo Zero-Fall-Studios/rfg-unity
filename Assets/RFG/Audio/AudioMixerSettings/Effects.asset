@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b0f6f4168913c428572163fee4ea43, type: 3}
+  m_Name: Effects
+  m_EditorClassIdentifier: 
+  AudioMixer: {fileID: 24100000, guid: b794087077b20a04c88c11819be152af, type: 2}
+  Volume: 1

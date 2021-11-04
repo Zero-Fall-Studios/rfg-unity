@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 377cadfe32891454abd0feaa6ad86b9c, type: 3}
+  m_Name: RandomAmbience
+  m_EditorClassIdentifier: 
+  audioList:
+  - {fileID: 11400000, guid: f3f27123501419c458b073a4a83276b3, type: 2}
+  - {fileID: 11400000, guid: ea32dbcc13437044abcc89ce6a622179, type: 2}
+  - {fileID: 11400000, guid: 84a37bb903cb9554aaf5ec14b6d7a0a8, type: 2}
+  waitForSeconds: 3
+  minDistance: 20
+  maxDistance: 30

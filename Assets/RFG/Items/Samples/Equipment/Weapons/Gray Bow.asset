@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf054f31d05cad54d9077ac47693c67e, type: 3}
+  m_Name: Gray Bow
+  m_EditorClassIdentifier: 
+  Guid: b8c4b48f-f8d2-4a12-bfa8-c7803b46614c
+  Description: Gray Bow
+  IsStackable: 0
+  StackableLimit: 1
+  PickUpSprite: {fileID: 3197427697454604945, guid: b38d0f7b87e138a4fbe29083da02a2c2, type: 3}
+  PickUpText: Gray Bow
+  PickUpEffects: []
+  EquipmentType: 7
+  IsEquipped: 0
+  EquipOnPickUp: 0
+  EquipSprite: {fileID: 0}
+  EquipText: 
+  UnequipText: 
+  EquipEffects: []
+  UnequipEffects: []

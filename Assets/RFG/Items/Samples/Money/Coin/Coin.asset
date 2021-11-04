@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f727ac2760313e048b3d54e63f68cdf9, type: 3}
+  m_Name: Coin
+  m_EditorClassIdentifier: 
+  Guid: 889a7d25-42e7-4445-aaf4-17e29b4d4491
+  Description: Money
+  IsStackable: 1
+  StackableLimit: 1
+  PickUpSprite: {fileID: -3338749442709606003, guid: 985ceda99670f884abfab1762f7eeb7d, type: 3}
+  PickUpText: 
+  PickUpEffects: []
+  ConsumeOnPickUp: 1
+  ConsumeText: +1 Coin
+  ConsumeEffects:
+  - FloatingText
+  amount: 1

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="ActionListEditor.uss" />
+    <ui:Label text="Action List" display-tooltip-when-elided="true" />
+    <RFG.Actions.ActionListView focusable="true" style="flex-grow: 1;" />
+</ui:UXML>

@@ -1,0 +1,97 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7847656990929188226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad7c390447be9544ca26db168521ec6b, type: 3}
+  m_Name: SceneTransition
+  m_EditorClassIdentifier: 
+  guid: c64ca89be00d90749b1e1003c8c2cfa0
+  position: {x: 282, y: -316}
+  parent: {fileID: -1706987975329390817}
+  from: {fileID: 0}
+  to: {fileID: -2755216087878602595}
+  autoLoadWaitTime: 0
+  anyInput: 0
+  waitTime: 0
+--- !u!114 &-6293287367640035710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25d4d228601c72f4d843f7ab5ae479b1, type: 3}
+  m_Name: Scene
+  m_EditorClassIdentifier: 
+  guid: e7919bf86c18a1840b221d43a9416fdd
+  position: {x: 592, y: -379.88}
+  scenePath: Assets/RFG/SceneGraph/Samples/Scenes/SceneGraph2.unity
+  sceneTransitions:
+  - {fileID: -2755216087878602595}
+  bounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 5, y: 5, z: 5}
+--- !u!114 &-2755216087878602595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad7c390447be9544ca26db168521ec6b, type: 3}
+  m_Name: SceneTransition
+  m_EditorClassIdentifier: 
+  guid: ca8edda4ca9f30643b23e0fa5c70d03e
+  position: {x: 617, y: -320.88}
+  parent: {fileID: -6293287367640035710}
+  from: {fileID: -7847656990929188226}
+  to: {fileID: 0}
+  autoLoadWaitTime: 0
+  anyInput: 0
+  waitTime: 0
+--- !u!114 &-1706987975329390817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25d4d228601c72f4d843f7ab5ae479b1, type: 3}
+  m_Name: Scene
+  m_EditorClassIdentifier: 
+  guid: 6625aa407ecfb7e49bf803af49979c7e
+  position: {x: 257, y: -375}
+  scenePath: Assets/RFG/SceneGraph/Samples/Scenes/SceneGraph1.unity
+  sceneTransitions:
+  - {fileID: -7847656990929188226}
+  bounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 5, y: 5, z: 5}
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efbd867bb9ccf3144ada0eb566d6aa27, type: 3}
+  m_Name: SceneGraph
+  m_EditorClassIdentifier: 
+  scenes:
+  - {fileID: -1706987975329390817}
+  - {fileID: -6293287367640035710}

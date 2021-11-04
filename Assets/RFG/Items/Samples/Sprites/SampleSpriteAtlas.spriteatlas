@@ -1,0 +1,142 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: SampleSpriteAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 0
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 83a836d59f435ee49a0135b600668645, type: 3}
+    - {fileID: 2800000, guid: fd92d27486ae7e444bb254b29a1bc44c, type: 3}
+    - {fileID: 2800000, guid: 0ca13d715c07e704badb42c84cfda6b8, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 0ca13d715c07e704badb42c84cfda6b8, type: 3}
+  - {fileID: -4763614330683561469, guid: fd92d27486ae7e444bb254b29a1bc44c, type: 3}
+  - {fileID: -5668912430477107416, guid: 83a836d59f435ee49a0135b600668645, type: 3}
+  - {fileID: 2395101459780723769, guid: 83a836d59f435ee49a0135b600668645, type: 3}
+  - {fileID: -368381575266603249, guid: 83a836d59f435ee49a0135b600668645, type: 3}
+  - {fileID: -2028349677467993627, guid: 83a836d59f435ee49a0135b600668645, type: 3}
+  - {fileID: 7992120941057871123, guid: 83a836d59f435ee49a0135b600668645, type: 3}
+  - {fileID: 4700283934139964308, guid: 83a836d59f435ee49a0135b600668645, type: 3}
+  - {fileID: 2771720857893237004, guid: 83a836d59f435ee49a0135b600668645, type: 3}
+  - {fileID: 6826306405975347415, guid: 83a836d59f435ee49a0135b600668645, type: 3}
+  - {fileID: 2366037897497631034, guid: 83a836d59f435ee49a0135b600668645, type: 3}
+  - {fileID: -2048927864979926126, guid: 83a836d59f435ee49a0135b600668645, type: 3}
+  - {fileID: 8153799983400118403, guid: 83a836d59f435ee49a0135b600668645, type: 3}
+  - {fileID: -1604567618386142602, guid: 83a836d59f435ee49a0135b600668645, type: 3}
+  - {fileID: 1840940184324996560, guid: 83a836d59f435ee49a0135b600668645, type: 3}
+  - {fileID: 3182993990423319387, guid: 83a836d59f435ee49a0135b600668645, type: 3}
+  - {fileID: 6750070120703393264, guid: 83a836d59f435ee49a0135b600668645, type: 3}
+  - {fileID: 2306877795921407931, guid: 83a836d59f435ee49a0135b600668645, type: 3}
+  - {fileID: 162938633681204787, guid: 83a836d59f435ee49a0135b600668645, type: 3}
+  - {fileID: -3383367030785366319, guid: 83a836d59f435ee49a0135b600668645, type: 3}
+  - {fileID: 7881031122245517796, guid: 83a836d59f435ee49a0135b600668645, type: 3}
+  - {fileID: -3213556900248832774, guid: 83a836d59f435ee49a0135b600668645, type: 3}
+  - {fileID: -2720397682952369664, guid: 83a836d59f435ee49a0135b600668645, type: 3}
+  - {fileID: 8752965873546044522, guid: 83a836d59f435ee49a0135b600668645, type: 3}
+  - {fileID: -3492432365528723610, guid: 83a836d59f435ee49a0135b600668645, type: 3}
+  - {fileID: 8686319611220959645, guid: 83a836d59f435ee49a0135b600668645, type: 3}
+  - {fileID: -8270499638485857074, guid: 83a836d59f435ee49a0135b600668645, type: 3}
+  - {fileID: -7325063859498812449, guid: 83a836d59f435ee49a0135b600668645, type: 3}
+  - {fileID: -8420094652956098061, guid: 83a836d59f435ee49a0135b600668645, type: 3}
+  - {fileID: 4220154256106214029, guid: 83a836d59f435ee49a0135b600668645, type: 3}
+  - {fileID: 3778505253946511186, guid: 83a836d59f435ee49a0135b600668645, type: 3}
+  - {fileID: -3652957911205012617, guid: 83a836d59f435ee49a0135b600668645, type: 3}
+  - {fileID: 3512206979640858774, guid: 83a836d59f435ee49a0135b600668645, type: 3}
+  - {fileID: 1477013885831732238, guid: 83a836d59f435ee49a0135b600668645, type: 3}
+  - {fileID: -2935887371258608543, guid: 83a836d59f435ee49a0135b600668645, type: 3}
+  - {fileID: -2245592451101277896, guid: 83a836d59f435ee49a0135b600668645, type: 3}
+  - {fileID: 559910258132365384, guid: 83a836d59f435ee49a0135b600668645, type: 3}
+  - {fileID: 2189739941812850157, guid: 83a836d59f435ee49a0135b600668645, type: 3}
+  - {fileID: 374034473693396302, guid: 83a836d59f435ee49a0135b600668645, type: 3}
+  - {fileID: 2442568783853046298, guid: 83a836d59f435ee49a0135b600668645, type: 3}
+  - {fileID: -3423502204069337336, guid: 83a836d59f435ee49a0135b600668645, type: 3}
+  - {fileID: 2091747027851452155, guid: 83a836d59f435ee49a0135b600668645, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Panel
+  - InventorySlot_1
+  - Lime
+  - Yellow Pepper
+  - Cherry
+  - Green Strawberry
+  - Green Jalapeno
+  - Negi
+  - Banana
+  - Purple Grapes
+  - Yellow Jalapeno
+  - Slice Watermelon
+  - Green Pepper
+  - Carrot
+  - Purple Onion
+  - Pumpkin
+  - Avacado
+  - Grapefruit
+  - Yellow Onion
+  - Garlic
+  - Red Jalapeno
+  - Green Grapes
+  - Red Apple
+  - Pink Grapefruit
+  - Lettuce
+  - Potato
+  - Red Pepper
+  - Green Pear
+  - Kiwi
+  - Green Pumpkin
+  - Pineapple
+  - Pear
+  - White Onion
+  - Green Apple
+  - Mushroom
+  - Tomato
+  - Eggplant
+  - Strawberry
+  - Lemon
+  - Orange
+  - Half Watermelon
+  - Green Tomato
+  m_RenderDataMap: {}
+  m_Tag: SampleSpriteAtlas
+  m_IsVariant: 0

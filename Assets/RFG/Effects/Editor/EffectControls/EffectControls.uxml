@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="EffectControls.uss" />
+    <ui:VisualElement>
+        <ui:VisualElement class="container">
+            <ui:Button text="Generate Audio Source" display-tooltip-when-elided="true" name="generate-audio-source" class="button" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

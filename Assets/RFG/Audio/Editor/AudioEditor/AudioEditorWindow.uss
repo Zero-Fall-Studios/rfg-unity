@@ -1,0 +1,23 @@
+.title {
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(47, 47, 47);
+    padding: 8px;
+    font-size: 18px;
+}
+
+.container-label {
+    padding: 8px;
+}
+
+.buttons {
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.container {
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}

@@ -1,0 +1,127 @@
+.ds-node__extension-container
+{
+  background-color: var(--ds-colors-window-dark-grey-1);
+  padding: 8px;
+}
+
+.ds-node__main-container
+{
+  background-color: var(--ds-colors-window-dark-grey-1);
+}
+
+.ds-node__custome-data-container
+{
+  background-color: var(--ds-colors-window-dark-grey-3);
+  border-radius: 4px;
+  padding: 8px;
+}
+
+.ds-node__textfield > .unity-text-field__input
+{
+  background-color: var(--ds-colors-window-dark-grey-1);
+  border-color: var(--ds-colors-window-dark-grey-6);
+  border-radius: 4px;
+  max-width: 240px;
+  min-width: 160px;
+  padding: 8px;
+}
+
+.ds-node__textfield__hidden > .unity-text-field__input
+{
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.ds-node__textfield__hidden > .unity-text-field__input:focus
+{
+  background-color: var(--ds-colors-window-dark-grey-1);
+  border-color: var(--ds-colors-window-dark-grey-6);
+}
+
+.ds-node__filename-textfield > .unity-text-field__input
+{
+  max-width: 1000px;
+}
+
+.ds-node__filename-textfield > .unity-text-field__input:focus
+{
+  margin: 4px;
+  padding: 4px;
+}
+
+.ds-node__choice-textfield  > .unity-text-field__input
+{
+  font-size: 11px;
+  height: 35px;
+  max-width: 1000px;
+  min-width: 0px;
+}
+
+.ds-node__choice-textfield  > .unity-text-field__input:focus
+{
+  height: 25px;
+  margin: 4px;
+  padding: 4px;
+}
+
+.ds-node__quote-textfield  > .unity-text-field__input
+{
+  background-color: var(--ds-colors-window-dark-grey-4);
+  border-color: transparent;
+  border-left-color: var(--ds-colors-window-dark-grey-6);  
+  border-left-width: 4px;
+  padding: 16px;
+  max-width: 600px;
+}
+
+.ds-node__quote-textfield  > .unity-text-field__input:hover
+{
+  background-color: var(--ds-colors-window-dark-grey-5);
+}
+
+.ds-node__quote-textfield  > .unity-text-field__input:focus
+{
+  background-color: var(--ds-colors-window-dark-grey-1);
+  border-color: var(--ds-colors-window-dark-grey-6);
+}
+
+.ds-node__button
+{
+  background-color: var(--ds-colors-window-dark-grey-5);
+  border-color: var(--ds-colors-window-dark-grey-1);
+  max-height: 25px;
+  margin: 4px;
+}
+
+.ds-node__button:hover
+{
+  background-color: #2B2D2F;
+}
+
+.ds-node__button:active
+{
+  background-color: var(--ds-colors-window-dark-grey-3);
+  color: var(--ds-colors-window-yellow);
+}
+
+TextField
+{
+  margin-left: 0px;
+}
+
+.ds-node__custom-data-container > Foldout
+{
+  margin-left: -4px;
+  margin-top: 4px;
+}
+
+.ds-node__custom-data-container > Foldout > TextField
+{
+  margin-left: -12px;
+  margin-top: 8px;
+}
+
+.unity-toggle__text
+{
+  margin-left: 2px;
+}
