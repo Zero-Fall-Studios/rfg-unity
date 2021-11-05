@@ -483,6 +483,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -1642,6 +1643,58 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Basic_35_BackgroundTopLeft: -8674094408912730482
+      Basic_6_CenterBottom: 4299002565328475720
+      Basic_23_InnerInnerLeftBottom: -8409921326338149708
+      Basic_3_RightTop: -8561450136179315364
+      Basic_28_SlopeTopRightLeft: 1858614595881173129
+      Basic_46_LongRight: 4752768948330877137
+      Basic_0_CenterCenter: -4878957874286226667
+      Basic_21_InnerInnerLeftTop: -7276580361072099344
+      Basic_22_InnerInnerRightTop: -55263453400661087
+      Basic_47_TallCenter: -9217989081754489103
+      Basic_2_LeftTop: 5087734373737420884
+      Basic_20_InnerCenterBottom: -1920692740290156666
+      Basic_4_LeftCenter: -8496366704804892417
+      Basic_16_InnerLeftSideBottom: -7702554037236370601
+      Basic_42_BackgroundBottomRight: 6151759517117080182
+      Basic_1_CenterTop: 6365530783161319626
+      Basic_30_SlopeBottomLeftLeft: 2671527531249858592
+      Basic_48_TallTop: 8144913089021197462
+      Basic_45_LongLeft: 3788416692893418513
+      Basic_8_RightBottom: 1961711718751623471
+      Basic_19_InnerRightBottom: -2032455577563709771
+      Basic_37_BackgroundTopRight: 7012955095114305441
+      Basic_38_BackgroundCenterLeft: 1742854983500536437
+      Basic_5_RightCenter: 1289990730759426378
+      Basic_17_InnerRightSideBottom: -8058306505865267302
+      Basic_7_LeftBottom: -7827707076699644237
+      Basic_40_BackgroundBottomLeft: -7856068098726528082
+      Basic_13_InnerRightSideTop: -7723811158246192700
+      Basic_26_SlopeTopLeftRight: -9109402518170311509
+      Basic_43_BackgroundInner: 364869542833375184
+      Basic_34_BackgroundCenter: 7825196943834150581
+      Basic_27_SlopeTopLeftLeft: -2038104789536370790
+      Basic_24_InnerInnerRightBottom: 5967791443980491519
+      Basic_12_InnerLeftSideTop: -7477748383692834777
+      Basic_29_SlopeTopRightRight: 4512256729140496936
+      Basic_11_InnerRightTop: -5388946614882532626
+      Basic_10_InnerLeftTop: 2386069644133536652
+      Basic_14_InnerLeftSideCenter: 3071093778399522225
+      Basic_49_TallBottom: -7373900662899803365
+      Basic_15_InnerRightSideCenter: 2218239571426828990
+      Basic_18_InnerLeftBottom: 8938337823088766263
+      Basic_31_SlopeBottomLeftRight: 7309682723749399361
+      Basic_44_LongCenter: 2227059457165205723
+      Basic_36_BackgroundTopCenter: 3703293070246074820
+      Basic_33_SlopeBottomRightRight: 8631740437093029828
+      Basic_41_BackgroundBottomCenter: 2380641101794582554
+      Basic_25_Inner: 7032144838263340899
+      Basic_39_BackgroundCenterRight: 5899109585195418859
+      Basic_32_SlopeBottomRightLeft: 1700041742211342426
+      Basic_50_Block: -4383432272936626430
+      Basic_9_InnerCenterTop: -3300274983972972727
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

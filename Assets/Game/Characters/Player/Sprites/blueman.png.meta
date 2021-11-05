@@ -123,6 +123,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -904,6 +905,40 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      blueman_walk_7: -4020276816649610612
+      blueman_push_27: -4977723148950316634
+      blueman_run_11: -4741115064098472824
+      blueman_run_13: -4945409725960696086
+      blueman_walk_5: 7367532015898820043
+      blueman_jump_14: -549677770482732128
+      blueman_push_29: 5108042918465179228
+      blueman_punch_20: -6463267914030533814
+      blueman_walk_6: -4139810493539630821
+      blueman_jump_19: 2623100397906329322
+      blueman_run_8: -4162070966466253696
+      blueman_walk_3: 8314302541609200132
+      blueman_run_9: -4208706995355297847
+      blueman_jump_16: -3021600081215924731
+      blueman_jump_17: 115522596171844773
+      blueman_push_25: -6044340035722471006
+      blueman_smash_down_32: -7717150341556838709
+      blueman_smash_down_31: -109374639712053741
+      blueman_walk_2: 2710039099875709991
+      blueman_push_26: -3165135285658208728
+      blueman_kick_23: 2968149067949559459
+      blueman_walk_4: -1765924515280648087
+      blueman_jump_15: 2230210600425585702
+      blueman_idle_1: -5974158732800342951
+      blueman_push_28: 8818933001887232491
+      blueman_kick_22: 6645499187791883621
+      blueman_run_12: -3563582727359662381
+      blueman_jump_18: -1067975831856027858
+      blueman_smash_down_30: 555889266137067878
+      blueman_push_24: -5448533431234319380
+      blueman_idle_0: 3030867201022719971
+      blueman_run_10: 5598039503333445754
+      blueman_punch_21: -4037379697336541277
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

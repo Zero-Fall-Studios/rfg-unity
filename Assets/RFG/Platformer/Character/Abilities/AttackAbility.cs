@@ -30,6 +30,9 @@ namespace RFG
 
     public void OnPrimaryAttackStarted(InputAction.CallbackContext ctx)
     {
+      // TODO - Calling IsPointerOverGameObject() from within event processing (such as from InputAction callbacks) will not work as expected; it will query UI state from the last frame
+      // UnityEngine.EventSystems.EventSystem:IsPointerOverGameObject ()
+      // RFG.AttackAbility:OnPrimaryAttackStarted (UnityEngine.InputSystem.InputAction/CallbackContext) (at Assets/RFG/Platformer/Character/Abilities/AttackAbility.cs:33)
       bool pointerOverUi = EventSystem.current.IsPointerOverGameObject();
       if (!pointerOverUi)
       {

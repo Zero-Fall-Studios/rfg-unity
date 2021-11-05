@@ -48,6 +48,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -304,6 +305,15 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      RainDrop-Sheet_2: -7252934709573132303
+      RainDrop-Sheet_0: -3085314256897444632
+      RainDrop-Sheet_3: -3018119186571593854
+      RainDrop-Sheet_7: -1743423286916906686
+      RainDrop-Sheet_4: 2082075309182943753
+      RainDrop-Sheet_6: -4050743426159801884
+      RainDrop-Sheet_1: -6678605538095838205
+      RainDrop-Sheet_5: -4379954723117263201
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
