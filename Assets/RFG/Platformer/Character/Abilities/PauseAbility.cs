@@ -39,7 +39,6 @@ namespace RFG
 
       if (_pauseInput != null)
       {
-        _pauseInput.action.Enable();
         _pauseInput.action.performed += OnPausedPerformed;
       }
     }
@@ -48,7 +47,6 @@ namespace RFG
     {
       if (_pauseInput != null)
       {
-        _pauseInput.action.Disable();
         _pauseInput.action.performed -= OnPausedPerformed;
       }
     }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace RFG
 {
@@ -151,48 +152,53 @@ namespace RFG
       CharacterState.ChangeState(typeof(SpawnState));
     }
 
-    public void EnableAllAbilities()
+    public void EnableAllAbilities(bool enabled, Behaviour except = null)
     {
       if (_abilities != null)
       {
         foreach (Behaviour ability in _abilities)
         {
-          ability.enabled = true;
+          if (ability.Equals(except))
+          {
+            continue;
+          }
+          ability.enabled = enabled;
         }
       }
     }
 
-    public void DisableAllAbilities()
+    public void EnableAllInput(bool enabled)
     {
-      if (_abilities != null)
+      EnableInput(InputPack?.Movement, enabled);
+      EnableInput(InputPack?.RunInput, enabled);
+      EnableInput(InputPack?.JumpInput, enabled);
+      EnableInput(InputPack?.DashInput, enabled);
+      EnableInput(InputPack?.PrimaryAttackInput, enabled);
+      EnableInput(InputPack?.SecondaryAttackInput, enabled);
+      EnableInput(InputPack?.UseInput, enabled);
+    }
+
+    public void EnableInput(InputActionReference reference, bool enabled)
+    {
+      if (enabled)
       {
-        foreach (Behaviour ability in _abilities)
-        {
-          ability.enabled = false;
-        }
+        reference?.action.Enable();
+      }
+      else
+      {
+        reference?.action.Disable();
       }
     }
 
     private void OnEnable()
     {
-      if (_characterContext.inputPack != null)
-      {
-        if (_characterContext.inputPack.Movement != null)
-        {
-          _characterContext.inputPack.Movement.action.Enable();
-        }
-      }
+      EnableAllInput(true);
+      EnableInput(InputPack.PauseInput, true);
     }
 
     private void OnDisable()
     {
-      if (_characterContext.inputPack != null)
-      {
-        if (_characterContext.inputPack.Movement != null)
-        {
-          _characterContext.inputPack.Movement.action.Disable();
-        }
-      }
+      EnableAllInput(false);
     }
 
   }

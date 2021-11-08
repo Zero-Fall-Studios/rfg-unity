@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: WallClingingState
   m_EditorClassIdentifier: 
   Layer: Base Layer
-  EnterClip: Idle
+  EnterClip: WallCling
   ExitClip: 
   EnterEffects: []
   ExitEffects: []

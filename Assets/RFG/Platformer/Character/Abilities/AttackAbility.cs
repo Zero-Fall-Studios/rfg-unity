@@ -12,29 +12,24 @@ namespace RFG
     private PlayerInventory _playerInventory;
     private InputActionReference _primaryAttackInput;
     private InputActionReference _secondaryAttackInput;
+    private bool _pointerOverUi = false;
 
     private void Awake()
     {
       _character = GetComponent<Character>();
       _playerInventory = GetComponent<PlayerInventory>();
+      _primaryAttackInput = _character.InputPack.PrimaryAttackInput;
+      _secondaryAttackInput = _character.InputPack.SecondaryAttackInput;
     }
 
-    private void Start()
+    private void Update()
     {
-      _primaryAttackInput = _character.Context.inputPack.PrimaryAttackInput;
-      _secondaryAttackInput = _character.Context.inputPack.SecondaryAttackInput;
-
-      // Setup Events
-      OnEnable();
+      _pointerOverUi = EventSystem.current.IsPointerOverGameObject();
     }
 
     public void OnPrimaryAttackStarted(InputAction.CallbackContext ctx)
     {
-      // TODO - Calling IsPointerOverGameObject() from within event processing (such as from InputAction callbacks) will not work as expected; it will query UI state from the last frame
-      // UnityEngine.EventSystems.EventSystem:IsPointerOverGameObject ()
-      // RFG.AttackAbility:OnPrimaryAttackStarted (UnityEngine.InputSystem.InputAction/CallbackContext) (at Assets/RFG/Platformer/Character/Abilities/AttackAbility.cs:33)
-      bool pointerOverUi = EventSystem.current.IsPointerOverGameObject();
-      if (!pointerOverUi)
+      if (!_pointerOverUi)
       {
         WeaponItem leftHand = _playerInventory.Inventory.LeftHand as WeaponItem;
         if (leftHand != null)
@@ -46,7 +41,6 @@ namespace RFG
 
     public void OnPrimaryAttackCanceled(InputAction.CallbackContext ctx)
     {
-      bool pointerOverUi = EventSystem.current.IsPointerOverGameObject();
       WeaponItem leftHand = _playerInventory.Inventory.LeftHand as WeaponItem;
       if (leftHand != null)
       {
@@ -56,8 +50,7 @@ namespace RFG
 
     public void OnPrimaryAttackPerformed(InputAction.CallbackContext ctx)
     {
-      bool pointerOverUi = EventSystem.current.IsPointerOverGameObject();
-      if (!pointerOverUi)
+      if (!_pointerOverUi)
       {
         WeaponItem leftHand = _playerInventory.Inventory.LeftHand as WeaponItem;
         if (leftHand != null)
@@ -69,8 +62,7 @@ namespace RFG
 
     public void OnSecondaryAttackStarted(InputAction.CallbackContext ctx)
     {
-      bool pointerOverUi = EventSystem.current.IsPointerOverGameObject();
-      if (!pointerOverUi)
+      if (!_pointerOverUi)
       {
         WeaponItem rightHand = _playerInventory.Inventory.RightHand as WeaponItem;
         if (rightHand != null)
@@ -82,8 +74,7 @@ namespace RFG
 
     public void OnSecondaryAttackCanceled(InputAction.CallbackContext ctx)
     {
-      bool pointerOverUi = EventSystem.current.IsPointerOverGameObject();
-      if (!pointerOverUi)
+      if (!_pointerOverUi)
       {
         WeaponItem rightHand = _playerInventory.Inventory.RightHand as WeaponItem;
         if (rightHand != null)
@@ -95,8 +86,7 @@ namespace RFG
 
     public void OnSecondaryAttackPerformed(InputAction.CallbackContext ctx)
     {
-      bool pointerOverUi = EventSystem.current.IsPointerOverGameObject();
-      if (!pointerOverUi)
+      if (!_pointerOverUi)
       {
         WeaponItem rightHand = _playerInventory.Inventory.RightHand as WeaponItem;
         if (rightHand != null)
@@ -114,7 +104,6 @@ namespace RFG
 
       if (_primaryAttackInput != null)
       {
-        _primaryAttackInput.action.Enable();
         _primaryAttackInput.action.started += OnPrimaryAttackStarted;
         _primaryAttackInput.action.canceled += OnPrimaryAttackCanceled;
         _primaryAttackInput.action.performed += OnPrimaryAttackPerformed;
@@ -122,7 +111,6 @@ namespace RFG
 
       if (_secondaryAttackInput != null)
       {
-        _secondaryAttackInput.action.Enable();
         _secondaryAttackInput.action.started += OnSecondaryAttackStarted;
         _secondaryAttackInput.action.canceled += OnSecondaryAttackCanceled;
         _secondaryAttackInput.action.performed += OnSecondaryAttackPerformed;
@@ -133,7 +121,6 @@ namespace RFG
     {
       if (_primaryAttackInput != null)
       {
-        _primaryAttackInput.action.Disable();
         _primaryAttackInput.action.started -= OnPrimaryAttackStarted;
         _primaryAttackInput.action.canceled -= OnPrimaryAttackCanceled;
         _primaryAttackInput.action.performed -= OnPrimaryAttackPerformed;
@@ -141,7 +128,6 @@ namespace RFG
 
       if (_secondaryAttackInput != null)
       {
-        _secondaryAttackInput.action.Disable();
         _secondaryAttackInput.action.started -= OnSecondaryAttackStarted;
         _secondaryAttackInput.action.canceled -= OnSecondaryAttackCanceled;
         _secondaryAttackInput.action.performed -= OnSecondaryAttackPerformed;

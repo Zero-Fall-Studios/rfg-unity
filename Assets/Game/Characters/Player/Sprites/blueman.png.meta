@@ -203,694 +203,2164 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: blueman_idle_0
+      name: blueman_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3e7775e39adcf0a20800000000000000
-      internalID: 3030867201022719971
+      spriteID: c0ab7b5e57e218042be21fdb3b2896e4
+      internalID: 409290120
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: blueman_idle_1
+      name: blueman_1
       rect:
         serializedVersion: 2
         x: 16
         y: 0
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 95443a3f846871da0800000000000000
-      internalID: -5974158732800342951
+      spriteID: 3f2813c7dba6ac34f8f51efd4e8a0ff8
+      internalID: -1553801619
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: blueman_walk_2
+      name: blueman_2
       rect:
         serializedVersion: 2
-        x: 33
+        x: 32
         y: 0
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 724d283f33efb9520800000000000000
-      internalID: 2710039099875709991
+      spriteID: 2f3c9ecd3f4973c428fd9f3fca82c629
+      internalID: -1974109673
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: blueman_walk_3
+      name: blueman_3
       rect:
         serializedVersion: 2
         x: 48
         y: 0
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 40a6ebb4c16526370800000000000000
-      internalID: 8314302541609200132
+      spriteID: 17aa10b4a801c0e469ea065673947068
+      internalID: 1554536206
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: blueman_walk_4
+      name: blueman_4
       rect:
         serializedVersion: 2
         x: 64
         y: 0
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9680b86720d2e77e0800000000000000
-      internalID: -1765924515280648087
+      spriteID: bd53f4268a9d413429d17a47b9dfb112
+      internalID: -69879266
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: blueman_walk_5
+      name: blueman_5
       rect:
         serializedVersion: 2
         x: 80
         y: 0
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bcd77f6655bbe3660800000000000000
-      internalID: 7367532015898820043
+      spriteID: f5468e7125b90014c90083bc8395bc11
+      internalID: -1400169883
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: blueman_walk_6
+      name: blueman_6
       rect:
         serializedVersion: 2
         x: 96
         y: 0
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b11c22f2a407c86c0800000000000000
-      internalID: -4139810493539630821
+      spriteID: b970a75d05be7184d93c1cb80597ff6c
+      internalID: -1847573226
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: blueman_walk_7
+      name: blueman_7
       rect:
         serializedVersion: 2
         x: 112
         y: 0
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c8a9cdc198b1538c0800000000000000
-      internalID: -4020276816649610612
+      spriteID: c4b0c1b5799faa74c81d859c99e23e4b
+      internalID: -393792258
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: blueman_run_8
+      name: blueman_8
       rect:
         serializedVersion: 2
         x: 128
         y: 0
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 08cefc1f18a5d36c0800000000000000
-      internalID: -4162070966466253696
+      spriteID: a31e1b35324d9524885fcc90162305d8
+      internalID: -1043581840
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: blueman_run_9
+      name: blueman_9
       rect:
         serializedVersion: 2
         x: 144
         y: 0
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9c75522594ba795c0800000000000000
-      internalID: -4208706995355297847
+      spriteID: 4d59f6c2698bf464cb833bf8e2e0c1d5
+      internalID: -1352588624
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: blueman_run_10
+      name: blueman_10
       rect:
         serializedVersion: 2
         x: 160
         y: 0
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a705bc2c44b30bd40800000000000000
-      internalID: 5598039503333445754
+      spriteID: 8fd1b77ae77184146b62a0ba74a315f2
+      internalID: -948802689
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: blueman_run_11
+      name: blueman_11
       rect:
         serializedVersion: 2
         x: 176
         y: 0
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 88c382df7fc243eb0800000000000000
-      internalID: -4741115064098472824
+      spriteID: 16813881f356afb4698d55cd35f3fc57
+      internalID: 1517100767
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: blueman_run_12
+      name: blueman_12
       rect:
         serializedVersion: 2
         x: 192
         y: 0
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3d67200e36c9b8ec0800000000000000
-      internalID: -3563582727359662381
+      spriteID: 8a52056c7c8be434e9b2ab274fdfef0e
+      internalID: 584882445
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: blueman_run_13
+      name: blueman_13
       rect:
         serializedVersion: 2
         x: 208
         y: 0
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aeec95f5e006e5bb0800000000000000
-      internalID: -4945409725960696086
+      spriteID: 7c8714da42deaba4489b3f7d906865f5
+      internalID: -1251667518
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: blueman_jump_14
+      name: blueman_14
       rect:
         serializedVersion: 2
         x: 224
         y: 0
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0a3b275eaf62f58f0800000000000000
-      internalID: -549677770482732128
+      spriteID: 85ee62ccfa11fa6489aa49deaf227d68
+      internalID: -916994003
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: blueman_jump_15
+      name: blueman_15
       rect:
         serializedVersion: 2
         x: 240
         y: 0
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 62c7da499bc43fe10800000000000000
-      internalID: 2230210600425585702
+      spriteID: 316a037643ffab8429d303047647000b
+      internalID: -481376490
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: blueman_jump_16
+      name: blueman_16
       rect:
         serializedVersion: 2
         x: 256
         y: 0
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 50655d93cbe1116d0800000000000000
-      internalID: -3021600081215924731
+      spriteID: b1458a8b362688e40aaf99d562e547ca
+      internalID: -1865060838
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: blueman_jump_17
+      name: blueman_17
       rect:
         serializedVersion: 2
         x: 272
         y: 0
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5ac8a5c603b6a9100800000000000000
-      internalID: 115522596171844773
+      spriteID: 06dca1cbcc0d3bd418c05fc93b66e919
+      internalID: 682185898
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: blueman_jump_18
+      name: blueman_18
       rect:
         serializedVersion: 2
         x: 288
         y: 0
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e27e489a3a9cd21f0800000000000000
-      internalID: -1067975831856027858
+      spriteID: 45c4b4c6ffe7943499edbf4f52a22c77
+      internalID: -1155294453
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: blueman_jump_19
+      name: blueman_19
       rect:
         serializedVersion: 2
         x: 304
         y: 0
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aee74630aef176420800000000000000
-      internalID: 2623100397906329322
+      spriteID: 88405dac2998a9d40a780a663db980d1
+      internalID: -1941231943
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: blueman_punch_20
+      name: blueman_20
       rect:
         serializedVersion: 2
         x: 320
         y: 0
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a43b708731cdd46a0800000000000000
-      internalID: -6463267914030533814
+      spriteID: a646ce5ebbd1312468e537da41a9aa0a
+      internalID: -1307525709
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: blueman_punch_21
+      name: blueman_21
       rect:
         serializedVersion: 2
         x: 336
         y: 0
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3af91e46e8858f7c0800000000000000
-      internalID: -4037379697336541277
+      spriteID: 84049c5fa2c2e8f4d8e7acb33fc03cc4
+      internalID: 1969247576
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: blueman_kick_22
+      name: blueman_22
       rect:
         serializedVersion: 2
         x: 352
         y: 0
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 56d6b7b4d4e893c50800000000000000
-      internalID: 6645499187791883621
+      spriteID: b996b9922c7705a4dad0837ae21ef28d
+      internalID: 300718570
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: blueman_kick_23
+      name: blueman_23
       rect:
         serializedVersion: 2
         x: 368
         y: 0
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3ae4a83f9dbf03920800000000000000
-      internalID: 2968149067949559459
+      spriteID: fae8f66a58598b442baeec6183143ef5
+      internalID: 1629286484
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: blueman_push_24
+      name: blueman_24
       rect:
         serializedVersion: 2
         x: 384
         y: 0
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ceb207c36bbe264b0800000000000000
-      internalID: -5448533431234319380
+      spriteID: 725fa576769a7aa488323a9919a0aa64
+      internalID: 172500741
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: blueman_push_25
+      name: blueman_25
       rect:
         serializedVersion: 2
         x: 400
         y: 0
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2a9171503c03e1ca0800000000000000
-      internalID: -6044340035722471006
+      spriteID: 35a8d24d544d0c94287e585ae3c19eef
+      internalID: -1626088426
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: blueman_push_26
+      name: blueman_26
       rect:
         serializedVersion: 2
         x: 416
         y: 0
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 826b9403a3e2314d0800000000000000
-      internalID: -3165135285658208728
+      spriteID: cef341800aaf3e14484b7dd18b547d05
+      internalID: -1041561680
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: blueman_push_27
+      name: blueman_27
       rect:
         serializedVersion: 2
         x: 432
         y: 0
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6a9d39c4b239beab0800000000000000
-      internalID: -4977723148950316634
+      spriteID: 320f31f95c722884ab4512aa0ab58991
+      internalID: 1016352768
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: blueman_push_28
+      name: blueman_28
       rect:
         serializedVersion: 2
         x: 448
         y: 0
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: be1357b27d4236a70800000000000000
-      internalID: 8818933001887232491
+      spriteID: 08efa4161e0d3264b8e9f4f2f24613d5
+      internalID: -1370696575
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: blueman_push_29
+      name: blueman_29
       rect:
         serializedVersion: 2
         x: 464
         y: 0
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c5e019488f963e640800000000000000
-      internalID: 5108042918465179228
+      spriteID: 9fc1b2d12ceb19844b12f4c55c055156
+      internalID: 690132998
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: blueman_smash_down_30
+      name: blueman_30
       rect:
         serializedVersion: 2
         x: 480
         y: 0
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6617d82a75ae6b700800000000000000
-      internalID: 555889266137067878
+      spriteID: d3cb53ea82848d142bce9f83d7a37621
+      internalID: -1115595906
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: blueman_smash_down_31
+      name: blueman_31
       rect:
         serializedVersion: 2
         x: 496
         y: 0
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 316d68c385c6b7ef0800000000000000
-      internalID: -109374639712053741
+      spriteID: a85ad21a6ec760e4094977a36d473275
+      internalID: -1970983198
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: blueman_smash_down_32
+      name: blueman_32
       rect:
         serializedVersion: 2
         x: 512
         y: 0
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bce583dc6ac27e490800000000000000
-      internalID: -7717150341556838709
+      spriteID: 9675111e021e6c24580d64b18d70db91
+      internalID: 413935932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_33
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c9cd4198a038174c84b62a67522d8a2
+      internalID: -592968418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_34
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad94fd38b1230d247aaa6579c0641af6
+      internalID: -759970522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_35
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a84a543d5bbe44443ae1fd59c157ce75
+      internalID: 1648814676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_36
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6243853e81f84b345802e75035a82caa
+      internalID: 1959722348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_37
+      rect:
+        serializedVersion: 2
+        x: 592
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b84e9841f14ae164282bfc74991100ce
+      internalID: -1730001869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_38
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bff2fe417fc55e46bacb61bc752000a
+      internalID: -663187576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_39
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94a6849e65ed0b842bc9e313f0685e1a
+      internalID: 2134744638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_40
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b90eb1e6e9bfe8845981ebe596499331
+      internalID: -1961804655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_41
+      rect:
+        serializedVersion: 2
+        x: 656
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfc24d02612ef844a8c574cb96b4cc6d
+      internalID: -1937048932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_42
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c543e3ff9964c3f439c2ff6225a8a480
+      internalID: -1447049368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_43
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd057e79b90e2f54f9f38a32d3e00735
+      internalID: 1846410514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_44
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 526eaeaf58b4aa8459e44fa0c07e5443
+      internalID: 369713025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_45
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15e01a422d641904b873e1cac925639c
+      internalID: 697592564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_46
+      rect:
+        serializedVersion: 2
+        x: 736
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc69b5d9ee7bea640959e395fecf6c79
+      internalID: 1997150112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_47
+      rect:
+        serializedVersion: 2
+        x: 752
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 116067aa5fc98ac4f92bd0b606610d27
+      internalID: -128375861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_48
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74bcda020f659fd43ac0973247104ae0
+      internalID: 17376808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_49
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d417257e05efb5c44833c1a1028ff467
+      internalID: 852625869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_50
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9424c9134e0bf44fba29b070f6cfc40
+      internalID: 498103050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_51
+      rect:
+        serializedVersion: 2
+        x: 816
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b959a195153ede943a07e8c117e770d8
+      internalID: -1918767648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_52
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 727f0843ef46b4c4d82ab3fa909d879d
+      internalID: -142221739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_53
+      rect:
+        serializedVersion: 2
+        x: 848
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ca1dee45c786cf468c1c4d6576e0701
+      internalID: 1181844473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_54
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12a0b1b92ced5b44cba278d3c2c7b2bb
+      internalID: -1838546113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_55
+      rect:
+        serializedVersion: 2
+        x: 880
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e688e3c78153104eb2c7173e5d25407
+      internalID: 1762275960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_56
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ae562171ee1f26458b82fc5db9825e1
+      internalID: -960825105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_57
+      rect:
+        serializedVersion: 2
+        x: 912
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c632452ee2829194ab07d616b38b6028
+      internalID: -218988437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_58
+      rect:
+        serializedVersion: 2
+        x: 928
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40700d69f33494744b3e7c79854ae7bc
+      internalID: -1954017881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_59
+      rect:
+        serializedVersion: 2
+        x: 944
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: beb40f2e02f405146b724f5da4a51fdd
+      internalID: -186372741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_60
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93393cb3c91439f46a287520bd538c05
+      internalID: -11466500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_61
+      rect:
+        serializedVersion: 2
+        x: 976
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 511d415ee77ba7e45bb85a0d3d8323e4
+      internalID: -1337086515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_62
+      rect:
+        serializedVersion: 2
+        x: 992
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7dafd85794a452841a4fa1f777faf3d9
+      internalID: -153933400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_63
+      rect:
+        serializedVersion: 2
+        x: 1008
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b18fadb71becbc48b5340c7211166ae
+      internalID: -183716755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_64
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a604aa47a7446bd4db490c0d8b27ffdf
+      internalID: 255367673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_65
+      rect:
+        serializedVersion: 2
+        x: 1040
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b331cb9e4eb18d7468151c97994c9d2a
+      internalID: -934907876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_66
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4be75b3bf1834964b8552f218af025fd
+      internalID: 1675845836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_67
+      rect:
+        serializedVersion: 2
+        x: 1072
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42d9a44a965d87c4facd824bad6e234d
+      internalID: 1724746468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_68
+      rect:
+        serializedVersion: 2
+        x: 1088
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 046e095b36cccb844a021f6db7596902
+      internalID: 1529017980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_69
+      rect:
+        serializedVersion: 2
+        x: 1104
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21a1fb1afc1b2c4419c40a6c7536cdad
+      internalID: 1508862567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_70
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23886e9d6124f8f45bd51593d4d7f930
+      internalID: -708392376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_71
+      rect:
+        serializedVersion: 2
+        x: 1136
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a51e9a2c94f1f246a486a42f01fcdba
+      internalID: -604942576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_72
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74de3474b7f7cff4881f9dd07f43f3d0
+      internalID: 279477951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_73
+      rect:
+        serializedVersion: 2
+        x: 1168
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b5c463b8bf5fa44cafc775d2bcbc362
+      internalID: 828477256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_74
+      rect:
+        serializedVersion: 2
+        x: 1184
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7d75d879a4ff464484a8e7c032b7588
+      internalID: -991745941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_75
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d3e320b6ea87074988a25753febe828
+      internalID: -1487415432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_76
+      rect:
+        serializedVersion: 2
+        x: 1216
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a339358a636708c4ea43d02686932a45
+      internalID: 66853370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_77
+      rect:
+        serializedVersion: 2
+        x: 1232
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b830152c6758ac640b3e62e79457bc59
+      internalID: -516500392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_78
+      rect:
+        serializedVersion: 2
+        x: 1248
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0359c7dcaa0efbf4c82ec636d4c999d5
+      internalID: 1683230795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_79
+      rect:
+        serializedVersion: 2
+        x: 1264
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ddfe00aae9e2bf14bb3e7a58f1effce3
+      internalID: -1894030369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_80
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07dee804201535e4397d0f63beb55015
+      internalID: 110526126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_81
+      rect:
+        serializedVersion: 2
+        x: 1296
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 872c43cacc4cf2343909442dbfb6f46e
+      internalID: -2114009840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_82
+      rect:
+        serializedVersion: 2
+        x: 1312
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca9ed7f17429fa14aa99ab27d9fc8f2e
+      internalID: 1936997772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_83
+      rect:
+        serializedVersion: 2
+        x: 1328
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ad77b4d536c489458ceb55126e864ff
+      internalID: -942765061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_84
+      rect:
+        serializedVersion: 2
+        x: 1344
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa94169b8ded20045ab97a0b829c7afb
+      internalID: 1536782083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_85
+      rect:
+        serializedVersion: 2
+        x: 1360
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1de6773e8d40a64d961f13f29fa97e3
+      internalID: 1948560483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_86
+      rect:
+        serializedVersion: 2
+        x: 1376
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f35bfa69c4d4c574eaec734a5098a6f0
+      internalID: 1152102332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_87
+      rect:
+        serializedVersion: 2
+        x: 1392
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2a04b57ff4904b4c9092cd2263c220b
+      internalID: 1978297949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_88
+      rect:
+        serializedVersion: 2
+        x: 1408
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c268c625b74fdb4083d27edaff3779f
+      internalID: 1610017545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_89
+      rect:
+        serializedVersion: 2
+        x: 1424
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 370b20c571849084494586c62c557fae
+      internalID: 1534324742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_90
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b8cbd43b85d59b4ba703b3603b28b82
+      internalID: -2042972107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_91
+      rect:
+        serializedVersion: 2
+        x: 1456
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44b32507d325605469a356bde73e0a62
+      internalID: 28009145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_92
+      rect:
+        serializedVersion: 2
+        x: 1472
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a415b9390c7dad459d0a232e0163990
+      internalID: 381164888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_93
+      rect:
+        serializedVersion: 2
+        x: 1488
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ca8f9efbde66714799e2fc889d53ffb
+      internalID: 635151981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_94
+      rect:
+        serializedVersion: 2
+        x: 1504
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10ca75bd73964b94c901334f05abe207
+      internalID: 1676832582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_95
+      rect:
+        serializedVersion: 2
+        x: 1520
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc4181ccbae099c4e9bc8ec7762249e9
+      internalID: 260885395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_96
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75b591d524f2c184b8d4a0c1fe186eba
+      internalID: 98596841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_97
+      rect:
+        serializedVersion: 2
+        x: 1552
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6366d972efca584e9ba05ff4691ebae
+      internalID: 1146284627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_98
+      rect:
+        serializedVersion: 2
+        x: 1568
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22ed974b87f3b0645a56b69349a86c8f
+      internalID: -1967397273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_99
+      rect:
+        serializedVersion: 2
+        x: 1584
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e491c4dc657cf7c4eac3e2544fd15c80
+      internalID: 1795844034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_100
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8171da92d83cfe742aa738dce44780ba
+      internalID: -209552839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_101
+      rect:
+        serializedVersion: 2
+        x: 1616
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a115012635adeea43928f54b305e292e
+      internalID: 1424107909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blueman_102
+      rect:
+        serializedVersion: 2
+        x: 1632
+        y: 0
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85b00a55530e8dc4cac38eb27fc4e553
+      internalID: -799990922
       vertices: []
       indices: 
       edges: []
@@ -906,39 +2376,109 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      blueman_walk_7: -4020276816649610612
-      blueman_push_27: -4977723148950316634
-      blueman_run_11: -4741115064098472824
-      blueman_run_13: -4945409725960696086
-      blueman_walk_5: 7367532015898820043
-      blueman_jump_14: -549677770482732128
-      blueman_push_29: 5108042918465179228
-      blueman_punch_20: -6463267914030533814
-      blueman_walk_6: -4139810493539630821
-      blueman_jump_19: 2623100397906329322
-      blueman_run_8: -4162070966466253696
-      blueman_walk_3: 8314302541609200132
-      blueman_run_9: -4208706995355297847
-      blueman_jump_16: -3021600081215924731
-      blueman_jump_17: 115522596171844773
-      blueman_push_25: -6044340035722471006
-      blueman_smash_down_32: -7717150341556838709
-      blueman_smash_down_31: -109374639712053741
-      blueman_walk_2: 2710039099875709991
-      blueman_push_26: -3165135285658208728
-      blueman_kick_23: 2968149067949559459
-      blueman_walk_4: -1765924515280648087
-      blueman_jump_15: 2230210600425585702
-      blueman_idle_1: -5974158732800342951
-      blueman_push_28: 8818933001887232491
-      blueman_kick_22: 6645499187791883621
-      blueman_run_12: -3563582727359662381
-      blueman_jump_18: -1067975831856027858
-      blueman_smash_down_30: 555889266137067878
-      blueman_push_24: -5448533431234319380
-      blueman_idle_0: 3030867201022719971
-      blueman_run_10: 5598039503333445754
-      blueman_punch_21: -4037379697336541277
+      blueman_80: 110526126
+      blueman_1: -1553801619
+      blueman_52: -142221739
+      blueman_89: 1534324742
+      blueman_93: 635151981
+      blueman_54: -1838546113
+      blueman_91: 28009145
+      blueman_12: 584882445
+      blueman_29: 690132998
+      blueman_48: 17376808
+      blueman_9: -1352588624
+      blueman_32: 413935932
+      blueman_102: -799990922
+      blueman_26: -1041561680
+      blueman_73: 828477256
+      blueman_49: 852625869
+      blueman_59: -186372741
+      blueman_41: -1937048932
+      blueman_69: 1508862567
+      blueman_79: -1894030369
+      blueman_99: 1795844034
+      blueman_15: -481376490
+      blueman_27: 1016352768
+      blueman_71: -604942576
+      blueman_83: -942765061
+      blueman_25: -1626088426
+      blueman_57: -218988437
+      blueman_18: -1155294453
+      blueman_65: -934907876
+      blueman_14: -916994003
+      blueman_39: 2134744638
+      blueman_56: -960825105
+      blueman_7: -393792258
+      blueman_28: -1370696575
+      blueman_35: 1648814676
+      blueman_85: 1948560483
+      blueman_101: 1424107909
+      blueman_19: -1941231943
+      blueman_81: -2114009840
+      blueman_22: 300718570
+      blueman_47: -128375861
+      blueman_36: 1959722348
+      blueman_74: -991745941
+      blueman_6: -1847573226
+      blueman_5: -1400169883
+      blueman_0: 409290120
+      blueman_44: 369713025
+      blueman_77: -516500392
+      blueman_55: 1762275960
+      blueman_75: -1487415432
+      blueman_20: -1307525709
+      blueman_33: -592968418
+      blueman_42: -1447049368
+      blueman_34: -759970522
+      blueman_82: 1936997772
+      blueman_68: 1529017980
+      blueman_70: -708392376
+      blueman_64: 255367673
+      blueman_94: 1676832582
+      blueman_23: 1629286484
+      blueman_50: 498103050
+      blueman_86: 1152102332
+      blueman_95: 260885395
+      blueman_96: 98596841
+      blueman_11: 1517100767
+      blueman_53: 1181844473
+      blueman_62: -153933400
+      blueman_72: 279477951
+      blueman_98: -1967397273
+      blueman_24: 172500741
+      blueman_37: -1730001869
+      blueman_92: 381164888
+      blueman_13: -1251667518
+      blueman_87: 1978297949
+      blueman_2: -1974109673
+      blueman_8: -1043581840
+      blueman_88: 1610017545
+      blueman_67: 1724746468
+      blueman_45: 697592564
+      blueman_21: 1969247576
+      blueman_40: -1961804655
+      blueman_63: -183716755
+      blueman_4: -69879266
+      blueman_84: 1536782083
+      blueman_78: 1683230795
+      blueman_10: -948802689
+      blueman_31: -1970983198
+      blueman_60: -11466500
+      blueman_58: -1954017881
+      blueman_97: 1146284627
+      blueman_46: 1997150112
+      blueman_66: 1675845836
+      blueman_30: -1115595906
+      blueman_76: 66853370
+      blueman_16: -1865060838
+      blueman_51: -1918767648
+      blueman_43: 1846410514
+      blueman_100: -209552839
+      blueman_38: -663187576
+      blueman_90: -2042972107
+      blueman_61: -1337086515
+      blueman_17: 682185898
+      blueman_3: 1554536206
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

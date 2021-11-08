@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: InputPack
   m_EditorClassIdentifier: 
   Movement: {fileID: -328637352972670201, guid: 31655fa71cc33ad48850a28d81e05ced, type: 3}
+  RunInput: {fileID: 5731258802860453935, guid: 31655fa71cc33ad48850a28d81e05ced, type: 3}
   JumpInput: {fileID: -5419074670395114859, guid: 31655fa71cc33ad48850a28d81e05ced, type: 3}
   DashInput: {fileID: 3764478464603691049, guid: 31655fa71cc33ad48850a28d81e05ced, type: 3}
   PrimaryAttackInput: {fileID: 2803245851525323484, guid: 31655fa71cc33ad48850a28d81e05ced, type: 3}

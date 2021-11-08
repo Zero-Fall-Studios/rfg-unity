@@ -208,7 +208,6 @@ namespace RFG
 
       if (_dashInput != null)
       {
-        _dashInput.action.Enable();
         _dashInput.action.started += OnDashStarted;
       }
     }
@@ -217,7 +216,6 @@ namespace RFG
     {
       if (_dashInput != null)
       {
-        _dashInput.action.Disable();
         _dashInput.action.started -= OnDashStarted;
       }
     }

@@ -10,7 +10,6 @@ namespace RFG
     private Character _character;
     private CharacterControllerState2D _state;
     private CharacterController2D _controller;
-    private Animator _animator;
     private Transform _transform;
     private SettingsPack _settings;
 
@@ -18,30 +17,23 @@ namespace RFG
     {
       _transform = transform;
       _character = GetComponent<Character>();
+      _controller = GetComponent<CharacterController2D>();
+      _settings = _character.SettingsPack;
     }
 
     private void Start()
     {
-      _controller = _character.Context.controller;
-      _animator = _character.Context.animator;
-      _controller = _character.Context.controller;
-      _state = _character.Context.controller.State;
-      _settings = _character.Context.settingsPack;
+      _state = _controller.State;
     }
 
     private void Update()
     {
-      // if we're dangling and not grounded, we change our state to Falling
-      if (!_state.IsGrounded && _state.IsDangling)
-      {
-        _state.IsFalling = true;
-      }
-
-      // if dangling is disabled or if we're not grounded, we do nothing and exit
       if (
-           _character.MovementState.CurrentStateType == typeof(WalkingState)
+        !_settings.CanDangle
+        || _character.MovementState.CurrentStateType == typeof(WalkingState)
         || _character.MovementState.CurrentStateType == typeof(RunningState)
         || _character.MovementState.CurrentStateType == typeof(JumpingState)
+        || _character.MovementState.CurrentStateType == typeof(JumpingFlipState)
         || _character.MovementState.CurrentStateType == typeof(DashingState)
         || !_state.IsGrounded
       )
@@ -61,7 +53,7 @@ namespace RFG
       }
 
       // we cast our ray downwards
-      RaycastHit2D hit = RFG.Physics2D.RayCast(raycastOrigin, -_transform.up, _settings.DanglingRaycastLength, _controller.PlatformMask | _controller.OneWayPlatformMask | _controller.OneWayMovingPlatformMask, Color.gray, true);
+      RaycastHit2D hit = RFG.Physics2D.RayCast(raycastOrigin, -_transform.up, _settings.DanglingRaycastLength, _controller.PlatformMask | _controller.OneWayPlatformMask | _controller.OneWayMovingPlatformMask, Color.white, true);
 
       // if the ray didn't hit something, we're dangling
       if (!hit)

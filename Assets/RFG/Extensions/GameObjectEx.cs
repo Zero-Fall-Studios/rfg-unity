@@ -20,6 +20,18 @@ namespace RFG
       return false;
     }
 
+    public static bool CompareTags(this GameObject gameObject, List<string> tags)
+    {
+      foreach (string tag in tags)
+      {
+        if (gameObject.CompareTag(tag))
+        {
+          return true;
+        }
+      }
+      return false;
+    }
+
     /// <summary>
     /// Grabs a component without allocating memory uselessly
     /// </summary>

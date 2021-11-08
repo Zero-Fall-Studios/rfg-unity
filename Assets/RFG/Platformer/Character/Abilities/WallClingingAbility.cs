@@ -6,14 +6,11 @@ namespace RFG
   [AddComponentMenu("RFG/Platformer/Character/Ability/Wall Clinging")]
   public class WallClingingAbility : MonoBehaviour, IAbility
   {
-    public bool HasAbility;
-
     [HideInInspector]
     private Transform _transform;
     private Character _character;
     private CharacterController2D _controller;
     private CharacterControllerState2D _state;
-    private Animator _animator;
     private InputActionReference _movement;
     private SettingsPack _settings;
 
@@ -21,15 +18,14 @@ namespace RFG
     {
       _transform = transform;
       _character = GetComponent<Character>();
+      _controller = GetComponent<CharacterController2D>();
+      _movement = _character.InputPack.Movement;
+      _settings = _character.SettingsPack;
     }
 
     private void Start()
     {
-      _animator = _character.Context.animator;
-      _controller = _character.Context.controller;
-      _state = _character.Context.controller.State;
-      _movement = _character.Context.inputPack.Movement;
-      _settings = _character.Context.settingsPack;
+      _state = _controller.State;
     }
 
     private void Update()

@@ -9,6 +9,8 @@ namespace RFG
   [AddComponentMenu("RFG/Platformer/Character/Character Controller 2D")]
   public class CharacterController2D : MonoBehaviour
   {
+    #region Variables
+
     /// Enums
 
     // the possible modes this controller can update on
@@ -296,12 +298,10 @@ namespace RFG
 
     private bool _update;
 
-    private void Awake()
-    {
-      Initialization();
-    }
+    #endregion
 
-    private void Initialization()
+    #region Unity Methods
+    private void Awake()
     {
       _mainCamera = Camera.main;
       _transform = transform;
@@ -351,6 +351,69 @@ namespace RFG
       State.IsFacingRight = _transform.right.x > 0;
     }
 
+    private void Update()
+    {
+      if (_update)
+      {
+        EveryFrame();
+      }
+    }
+
+    private void LateUpdate()
+    {
+      if (rotateOnMouseCursor)
+      {
+        RotateOnMouseCursor();
+      }
+    }
+
+    private void FixedUpdate()
+    {
+      if (!_update)
+      {
+        EveryFrame();
+      }
+    }
+    #endregion
+
+    #region Set Force
+    public void AddForce(Vector2 force)
+    {
+      _speed += force;
+      _externalForce += force;
+    }
+
+    public void AddHorizontalForce(float x)
+    {
+      _speed.x += x;
+      _externalForce.x += x;
+    }
+
+    public void AddVerticalForce(float y)
+    {
+      _speed.y += y;
+      _externalForce.y += y;
+    }
+
+    public void SetForce(Vector2 force)
+    {
+      _speed = force;
+      _externalForce = force;
+    }
+
+    public void SetHorizontalForce(float x)
+    {
+      _speed.x = x;
+      _externalForce.x = x;
+    }
+
+    public void SetVerticalForce(float y)
+    {
+      _speed.y = y;
+      _externalForce.y = y;
+    }
+    #endregion
+
     private void ApplyGravitySettings()
     {
       if (Parameters.AutomaticGravtiySettings)
@@ -368,97 +431,6 @@ namespace RFG
         UnityEngine.Physics2D.callbacksOnDisable = true;
         UnityEngine.Physics2D.reuseCollisionCallbacks = false;
         UnityEngine.Physics2D.autoSyncTransforms = true;
-      }
-    }
-
-    /// <summary>
-    /// Use this to add force to the character
-    /// </summary>
-    /// <param name="force">Force to add to the character.</param>
-    public void AddForce(Vector2 force)
-    {
-      _speed += force;
-      _externalForce += force;
-    }
-
-    /// <summary>
-    ///  use this to set the horizontal force applied to the character
-    /// </summary>
-    /// <param name="x">The x value of the velocity.</param>
-    public void AddHorizontalForce(float x)
-    {
-      _speed.x += x;
-      _externalForce.x += x;
-    }
-
-    /// <summary>
-    ///  use this to set the vertical force applied to the character
-    /// </summary>
-    /// <param name="y">The y value of the velocity.</param>
-    public void AddVerticalForce(float y)
-    {
-      _speed.y += y;
-      _externalForce.y += y;
-    }
-
-    /// <summary>
-    /// Use this to set the force applied to the character
-    /// </summary>
-    /// <param name="force">Force to apply to the character.</param>
-    public void SetForce(Vector2 force)
-    {
-      _speed = force;
-      _externalForce = force;
-    }
-
-    /// <summary>
-    ///  use this to set the horizontal force applied to the character
-    /// </summary>
-    /// <param name="x">The x value of the velocity.</param>
-    public void SetHorizontalForce(float x)
-    {
-      _speed.x = x;
-      _externalForce.x = x;
-    }
-
-    /// <summary>
-    ///  use this to set the vertical force applied to the character
-    /// </summary>
-    /// <param name="y">The y value of the velocity.</param>
-    public void SetVerticalForce(float y)
-    {
-      _speed.y = y;
-      _externalForce.y = y;
-
-    }
-
-    /// <summary>
-    /// On FixedUpdate we run our routine if needed 
-    /// </summary>
-    private void FixedUpdate()
-    {
-      if (!_update)
-      {
-        EveryFrame();
-      }
-    }
-
-    /// <summary>
-    /// On Update we run our routine if needed
-    /// </summary>
-    private void Update()
-    {
-      if (_update)
-      {
-        EveryFrame();
-      }
-    }
-
-    private void LateUpdate()
-    {
-      if (rotateOnMouseCursor)
-      {
-        RotateOnMouseCursor();
       }
     }
 

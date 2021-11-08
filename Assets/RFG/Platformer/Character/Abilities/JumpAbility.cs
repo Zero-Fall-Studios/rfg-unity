@@ -6,34 +6,30 @@ namespace RFG
   [AddComponentMenu("RFG/Platformer/Character/Ability/Jump")]
   public class JumpAbility : MonoBehaviour, IAbility
   {
-    [HideInInspector]
-    private StateCharacterContext _context;
     private Character _character;
     private Transform _transform;
     private CharacterController2D _controller;
-    private Animator _animator;
     private CharacterControllerState2D _state;
     private InputActionReference _movement;
     private InputActionReference _jumpInput;
     private SettingsPack _settings;
     private int _numberOfJumpsLeft = 0;
     private float _lastJumpTime = 0f;
+    private bool _isJumpFlipping = false;
 
-    private void Start()
+    private void Awake()
     {
       _transform = transform;
       _character = GetComponent<Character>();
-      _context = _character.Context;
-      _animator = _context.animator;
-      _controller = _context.controller;
-      _state = _context.controller.State;
-      _movement = _context.inputPack.Movement;
-      _jumpInput = _context.inputPack.JumpInput;
-      _settings = _context.settingsPack;
+      _controller = GetComponent<CharacterController2D>();
+      _movement = _character.InputPack.Movement;
+      _jumpInput = _character.InputPack.JumpInput;
+      _settings = _character.SettingsPack;
+    }
 
-      // Setup events
-      OnEnable();
-
+    private void Start()
+    {
+      _state = _controller.State;
       SetNumberOfJumpsLeft();
     }
 
@@ -43,6 +39,17 @@ namespace RFG
       {
         _character.MovementState.ChangeState(typeof(LandedState));
         SetNumberOfJumpsLeft();
+      }
+      if (
+        !_state.IsWallClinging &&
+        !_state.IsWallJumping &&
+        _state.IsFalling &&
+        _character.MovementState.CurrentStateType != typeof(LedgeGrabState) &&
+        _character.MovementState.CurrentStateType != typeof(LedgeClimbingState) &&
+        !_isJumpFlipping
+        )
+      {
+        _character.MovementState.ChangeState(typeof(FallingState));
       }
     }
 
@@ -99,7 +106,20 @@ namespace RFG
     {
       if (EvaluateJumpConditions())
       {
-        _character.MovementState.ChangeState(typeof(JumpingState));
+
+        float _horizontalInput = _movement.action.ReadValue<Vector2>().x;
+
+        if (_horizontalInput > -_settings.JumpThreshold.x && _horizontalInput < _settings.JumpThreshold.x)
+        {
+          _isJumpFlipping = false;
+          _character.MovementState.ChangeState(typeof(JumpingState));
+        }
+        else
+        {
+          _isJumpFlipping = true;
+          _character.MovementState.ChangeState(typeof(JumpingFlipState));
+        }
+
         _numberOfJumpsLeft--;
 
         _controller.GravityActive(true);
@@ -131,14 +151,16 @@ namespace RFG
           }
         }
       }
-      _character.MovementState.ChangeState(typeof(FallingState));
+      if (_character.MovementState.CurrentStateType != typeof(LedgeGrabState) &&
+        _character.MovementState.CurrentStateType != typeof(LedgeClimbingState) &&
+        !_isJumpFlipping)
+      {
+        _character.MovementState.ChangeState(typeof(FallingState));
+      }
       _state.IsJumping = false;
     }
 
-    /// <summary>
-    /// Handles jumping down from a one way platform.
-    /// </summary>
-    protected virtual bool JumpDownFromOneWayPlatform()
+    private bool JumpDownFromOneWayPlatform()
     {
       if (!_settings.CanJumpDownOneWayPlatforms)
       {
@@ -160,10 +182,7 @@ namespace RFG
       }
     }
 
-    /// <summary>
-    /// Handles jumping from a moving platform.
-    /// </summary>
-    protected virtual void JumpFromMovingPlatform()
+    private void JumpFromMovingPlatform()
     {
       if (_controller.MovingPlatformMask.Contains(_controller.StandingOn.layer)
         || _controller.OneWayMovingPlatformMask.Contains(_controller.StandingOn.layer))
@@ -190,7 +209,6 @@ namespace RFG
 
       if (_jumpInput != null)
       {
-        _jumpInput.action.Enable();
         _jumpInput.action.started += OnJumpStarted;
         _jumpInput.action.canceled += OnJumpCanceled;
       }
@@ -200,7 +218,6 @@ namespace RFG
     {
       if (_jumpInput != null)
       {
-        _jumpInput.action.Disable();
         _jumpInput.action.started -= OnJumpStarted;
         _jumpInput.action.canceled -= OnJumpCanceled;
       }

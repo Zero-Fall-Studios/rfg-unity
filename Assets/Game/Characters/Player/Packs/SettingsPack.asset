@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: SettingsPack
   m_EditorClassIdentifier: 
   AttackSpeed: 5
-  DanglingRaycastOrigin: {x: 0.7, y: -0.25, z: 0}
-  DanglingRaycastLength: 2
+  DanglingRaycastOrigin: {x: 0.2, y: 0.25, z: 0}
+  DanglingRaycastLength: 0.5
   CanDangle: 1
   DashDistance: 3
   DashForce: 40
@@ -33,10 +33,12 @@ MonoBehaviour:
   JumpMinAirTime: 0.1
   JumpReleaseForceFactor: 1.5
   PauseEvent: {fileID: 0}
-  RunningSpeed: 2
+  RunningSpeed: 3
   RunningPower: 5
   PowerGainPerFrame: 0.01
   CooldownTimer: 5
+  WalkToRunTime: 1
+  AlwaysRun: 0
   Threshold: {x: 0.1, y: 0.4}
   StairsAheadDetectionRaycastOrigin: {x: -2, y: 0, z: 0}
   StairsAheadDetectionRaycastLength: 4
@@ -49,5 +51,5 @@ MonoBehaviour:
   WallClingingTolerance: 0.3
   WallClingingInputThreshold: 0.1
   WallJumpInputThreshold: 0.01
-  WallJumpForce: {x: 10, y: 4}
+  WallJumpForce: {x: 5, y: 4}
   CanFollowVertically: 0

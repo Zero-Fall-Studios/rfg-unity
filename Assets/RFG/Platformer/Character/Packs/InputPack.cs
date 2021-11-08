@@ -10,6 +10,10 @@ namespace RFG
     [Tooltip("Input Action that maps to the movement binding")]
     public InputActionReference Movement;
 
+    /// <summary>Input Action that maps to the run binding</summary>
+    [Tooltip("Input Action that maps to the run binding")]
+    public InputActionReference RunInput;
+
     /// <summary>Input Action that maps to the jump binding</summary>
     [Tooltip("Input Action to initiate the jump binding")]
     public InputActionReference JumpInput;

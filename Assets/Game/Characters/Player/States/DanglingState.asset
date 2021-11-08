@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DanglingState
   m_EditorClassIdentifier: 
   Layer: Base Layer
-  EnterClip: 
+  EnterClip: Dangling
   ExitClip: 
   EnterEffects: []
   ExitEffects: []

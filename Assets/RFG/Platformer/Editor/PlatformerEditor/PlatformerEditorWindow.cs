@@ -159,6 +159,8 @@ namespace RFG
       activeGameObject.GetOrAddComponent<WallClingingAbility>();
       activeGameObject.GetOrAddComponent<WallJumpAbility>();
       activeGameObject.GetOrAddComponent<StairsAbility>();
+      activeGameObject.GetOrAddComponent<LedgeGrabAbility>();
+      activeGameObject.GetOrAddComponent<DanglingBehaviour>();
     }
 
     private void CreateAICharacter()
@@ -259,11 +261,19 @@ namespace RFG
         movementStatePack.Add(EditorUtils.CreateScriptableObject<DanglingState>(path));
         movementStatePack.Add(EditorUtils.CreateScriptableObject<FallingState>(path));
         movementStatePack.Add(EditorUtils.CreateScriptableObject<JumpingState>(path));
+        movementStatePack.Add(EditorUtils.CreateScriptableObject<JumpingFlipState>(path));
         movementStatePack.Add(EditorUtils.CreateScriptableObject<KnockbackState>(path));
         movementStatePack.Add(EditorUtils.CreateScriptableObject<LandedState>(path));
         movementStatePack.Add(EditorUtils.CreateScriptableObject<RunningState>(path));
         movementStatePack.Add(EditorUtils.CreateScriptableObject<SwimmingState>(path));
         movementStatePack.Add(EditorUtils.CreateScriptableObject<WalkingState>(path));
+        movementStatePack.Add(EditorUtils.CreateScriptableObject<LedgeGrabState>(path));
+        movementStatePack.Add(EditorUtils.CreateScriptableObject<LedgeClimbingState>(path));
+        movementStatePack.Add(EditorUtils.CreateScriptableObject<WalkingState>(path));
+        movementStatePack.Add(EditorUtils.CreateScriptableObject<WalkingUpSlopeState>(path));
+        movementStatePack.Add(EditorUtils.CreateScriptableObject<RunningUpSlopeState>(path));
+        movementStatePack.Add(EditorUtils.CreateScriptableObject<WalkingDownSlopeState>(path));
+        movementStatePack.Add(EditorUtils.CreateScriptableObject<RunningDownSlopeState>(path));
         EditorUtility.SetDirty(movementStatePack);
 
         character.CharacterState.StatePack = characterStatePack;

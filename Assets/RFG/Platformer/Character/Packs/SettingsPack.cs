@@ -71,6 +71,8 @@ namespace RFG
     public float RunningPower = 5f;
     public float PowerGainPerFrame = .01f;
     public float CooldownTimer = 5f;
+    public float WalkToRunTime = 1f;
+    public bool AlwaysRun = false;
 
     [Header("Input Setting")]
     /// the minimum horizontal and vertical value you need to reach to trigger movement on an analog controller (joystick for example)
@@ -110,6 +112,14 @@ namespace RFG
     [Header("Wall Jump Settings")]
     public float WallJumpInputThreshold = 0.01f;
     public Vector2 WallJumpForce = new Vector2(10f, 4f);
+
+    [Header("Ledge Grab")]
+    /// the minimum time the Character must have been LedgeHanging before it can LedgeClimb. 0.2s (or more) will prevent any glitches and unwanted input conflicts
+    [Tooltip("the minimum time the Character must have been LedgeHanging before it can LedgeClimb. 0.2s (or more) will prevent any glitches and unwanted input conflicts")]
+    public float MinimumHangingTime = 0.2f;
+    /// the duration of your climbing animation, after this it'll transition to IdleAnimationName automatically
+    [Tooltip("the duration of your climbing animation, after this it'll transition to IdleAnimationName automatically")]
+    public float ClimbingAnimationDuration = 0.5f;
 
     [Header("AI Settings")]
     public bool CanFollowVertically = false;

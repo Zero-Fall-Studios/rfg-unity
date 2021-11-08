@@ -25,7 +25,7 @@ namespace RFG
       characterContext.transform.gameObject.SetActive(true);
       characterContext.controller.SetForce(Vector2.zero);
       characterContext.controller.enabled = true;
-      characterContext.character.EnableAllAbilities();
+      characterContext.character.EnableAllAbilities(true);
 
     }
 

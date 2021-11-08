@@ -80,7 +80,6 @@ namespace RFG
 
       if (_wallJumpInput != null)
       {
-        _wallJumpInput.action.Enable();
         _wallJumpInput.action.started += OnJumpStarted;
       }
     }
@@ -89,7 +88,6 @@ namespace RFG
     {
       if (_wallJumpInput != null)
       {
-        _wallJumpInput.action.Disable();
         _wallJumpInput.action.started -= OnJumpStarted;
       }
     }
