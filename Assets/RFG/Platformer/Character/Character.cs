@@ -37,12 +37,31 @@ namespace RFG
     private List<Component> _abilities;
     private List<SceneDoor> _sceneDoors;
 
+    #region Unity Methods
     private void Awake()
     {
       InitContext();
       InitAbilities();
       IsReady = true;
     }
+
+    private void Update()
+    {
+      CharacterState.Update();
+      MovementState.Update();
+    }
+
+    private void OnEnable()
+    {
+      EnableAllInput(true);
+      EnableInput(InputPack.PauseInput, true);
+    }
+
+    private void OnDisable()
+    {
+      EnableAllInput(false);
+    }
+    #endregion
 
     private void InitContext()
     {
@@ -71,12 +90,6 @@ namespace RFG
       {
         _abilities = new List<Component>(abilities);
       }
-    }
-
-    private void Update()
-    {
-      CharacterState.Update();
-      MovementState.Update();
     }
 
     public void SetMovementStatePack(RFG.StatePack statePack)
@@ -190,15 +203,24 @@ namespace RFG
       }
     }
 
-    private void OnEnable()
+    public void FreezeCharacterState()
     {
-      EnableAllInput(true);
-      EnableInput(InputPack.PauseInput, true);
+      CharacterState.Frozen = true;
     }
 
-    private void OnDisable()
+    public void UnFreezeCharacterState()
     {
-      EnableAllInput(false);
+      CharacterState.Frozen = false;
+    }
+
+    public void FreezeMovementState()
+    {
+      MovementState.Frozen = true;
+    }
+
+    public void UnFreezeMovementState()
+    {
+      MovementState.Frozen = false;
     }
 
   }

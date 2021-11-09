@@ -274,6 +274,13 @@ namespace RFG
         movementStatePack.Add(EditorUtils.CreateScriptableObject<RunningUpSlopeState>(path));
         movementStatePack.Add(EditorUtils.CreateScriptableObject<WalkingDownSlopeState>(path));
         movementStatePack.Add(EditorUtils.CreateScriptableObject<RunningDownSlopeState>(path));
+
+        movementStatePack.Add(EditorUtils.CreateScriptableObject<PrimaryAttackStartedState>(path));
+        movementStatePack.Add(EditorUtils.CreateScriptableObject<PrimaryAttackPerformedState>(path));
+        movementStatePack.Add(EditorUtils.CreateScriptableObject<PrimaryAttackCanceledState>(path));
+        movementStatePack.Add(EditorUtils.CreateScriptableObject<SecondaryAttackStartedState>(path));
+        movementStatePack.Add(EditorUtils.CreateScriptableObject<SecondaryAttackPerformedState>(path));
+        movementStatePack.Add(EditorUtils.CreateScriptableObject<SecondaryAttackCanceledState>(path));
         EditorUtility.SetDirty(movementStatePack);
 
         character.CharacterState.StatePack = characterStatePack;

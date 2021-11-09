@@ -10,6 +10,7 @@ namespace RFG
     public State CurrentState;
     public Type PreviousStateType { get; private set; }
     public Type CurrentStateType { get; private set; }
+    public bool Frozen { get; set; } = false;
     public IStateContext Context { get { return _context; } set { _context = value; } }
     private IStateContext _context;
     private StatePack _defaultStatePack;
@@ -48,8 +49,8 @@ namespace RFG
 
     public void ChangeState(Type newStateType)
     {
-      // Dont change if current state
-      if (CurrentStateType != null && CurrentStateType.Equals(newStateType))
+      // Dont change if current state or if frozen
+      if ((CurrentStateType != null && CurrentStateType.Equals(newStateType)) || Frozen)
       {
         return;
       }
@@ -63,6 +64,7 @@ namespace RFG
 
       // Enter the new state
       CurrentState = Find(newStateType);
+      Frozen = CurrentState.FreezeState;
       CurrentStateType = newStateType;
       CurrentState.Enter(_context);
     }

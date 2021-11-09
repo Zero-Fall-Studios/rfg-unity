@@ -31,6 +31,7 @@ namespace RFG
     {
       if (!_pointerOverUi)
       {
+        _character.MovementState.ChangeState(typeof(PrimaryAttackStartedState));
         WeaponItem leftHand = _playerInventory.Inventory.LeftHand as WeaponItem;
         if (leftHand != null)
         {
@@ -41,6 +42,7 @@ namespace RFG
 
     public void OnPrimaryAttackCanceled(InputAction.CallbackContext ctx)
     {
+      _character.MovementState.ChangeState(typeof(PrimaryAttackCanceledState));
       WeaponItem leftHand = _playerInventory.Inventory.LeftHand as WeaponItem;
       if (leftHand != null)
       {
@@ -50,13 +52,11 @@ namespace RFG
 
     public void OnPrimaryAttackPerformed(InputAction.CallbackContext ctx)
     {
-      if (!_pointerOverUi)
+      _character.MovementState.ChangeState(typeof(PrimaryAttackPerformedState));
+      WeaponItem leftHand = _playerInventory.Inventory.LeftHand as WeaponItem;
+      if (leftHand != null)
       {
-        WeaponItem leftHand = _playerInventory.Inventory.LeftHand as WeaponItem;
-        if (leftHand != null)
-        {
-          leftHand.Perform();
-        }
+        leftHand.Perform();
       }
     }
 
@@ -64,6 +64,7 @@ namespace RFG
     {
       if (!_pointerOverUi)
       {
+        _character.MovementState.ChangeState(typeof(SecondaryAttackStartedState));
         WeaponItem rightHand = _playerInventory.Inventory.RightHand as WeaponItem;
         if (rightHand != null)
         {
@@ -74,25 +75,21 @@ namespace RFG
 
     public void OnSecondaryAttackCanceled(InputAction.CallbackContext ctx)
     {
-      if (!_pointerOverUi)
+      _character.MovementState.ChangeState(typeof(SecondaryAttackCanceledState));
+      WeaponItem rightHand = _playerInventory.Inventory.RightHand as WeaponItem;
+      if (rightHand != null)
       {
-        WeaponItem rightHand = _playerInventory.Inventory.RightHand as WeaponItem;
-        if (rightHand != null)
-        {
-          rightHand.Cancel();
-        }
+        rightHand.Cancel();
       }
     }
 
     public void OnSecondaryAttackPerformed(InputAction.CallbackContext ctx)
     {
-      if (!_pointerOverUi)
+      _character.MovementState.ChangeState(typeof(SecondaryAttackPerformedState));
+      WeaponItem rightHand = _playerInventory.Inventory.RightHand as WeaponItem;
+      if (rightHand != null)
       {
-        WeaponItem rightHand = _playerInventory.Inventory.RightHand as WeaponItem;
-        if (rightHand != null)
-        {
-          rightHand.Perform();
-        }
+        rightHand.Perform();
       }
     }
 

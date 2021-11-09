@@ -24,6 +24,9 @@ namespace RFG
 
     public bool StopEnterEffectsOnExit = false;
 
+    [Header("State Conditions")]
+    public bool FreezeState = false;
+
     public virtual void Enter(IStateContext context)
     {
       PlayEffects(context, EnterEffects);
