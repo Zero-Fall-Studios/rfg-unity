@@ -60,8 +60,8 @@ MonoBehaviour:
   CastRaysOnBothSides: 0
   DistanceToTheGroundRayMaximumLength: 100
   PerformSafetyBoxcast: 0
-  StickToSlopes: 0
-  StickyRaycastLength: 0
+  StickToSlopes: 1
+  StickyRaycastLength: 0.1
   StickToSlopesOffsetY: 0.2
   AutomaticGravtiySettings: 1
   SafeSetTransform: 0

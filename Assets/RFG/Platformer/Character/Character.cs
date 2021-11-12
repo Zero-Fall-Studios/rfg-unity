@@ -203,6 +203,7 @@ namespace RFG
       }
     }
 
+    #region State Helpers
     public void FreezeCharacterState()
     {
       CharacterState.Frozen = true;
@@ -222,6 +223,87 @@ namespace RFG
     {
       MovementState.Frozen = false;
     }
+    #endregion
 
+    #region Character State Helpers
+    public bool IsAlive()
+    {
+      return CharacterState.IsInState(typeof(AliveState));
+    }
+    #endregion
+
+    #region Movement State Helpers
+
+    public bool IsGrounded()
+    {
+      return _controller.State.IsGrounded || _controller.State.JustGotGrounded;
+    }
+
+    public bool IsInGroundMovementState()
+    {
+      return (
+        IsGrounded() ||
+        MovementState.IsInState(
+          typeof(IdleState),
+          typeof(LandedState),
+          typeof(WalkingState),
+          typeof(RunningState),
+          typeof(WalkingUpSlopeState),
+          typeof(RunningUpSlopeState),
+          typeof(WalkingDownSlopeState),
+          typeof(RunningDownSlopeState)
+        )
+      );
+    }
+
+    public bool IsInSlopeMovementState()
+    {
+      return
+      MovementState.IsInState(
+        typeof(WalkingUpSlopeState),
+        typeof(RunningUpSlopeState),
+        typeof(WalkingDownSlopeState),
+        typeof(RunningDownSlopeState)
+      );
+    }
+
+    public bool IsInAirMovementState()
+    {
+      return (
+        !IsGrounded() &&
+        MovementState.IsInState(
+          typeof(FallingState),
+          typeof(JumpingState),
+          typeof(JumpingFlipState),
+          typeof(DoubleJumpState)
+        )
+      );
+    }
+
+    public bool IsIdle()
+    {
+      return MovementState.IsInState(typeof(IdleState));
+    }
+
+    public bool IsDashing()
+    {
+      return MovementState.IsInState(typeof(DashingState));
+    }
+
+    public bool IsWallClinging()
+    {
+      return MovementState.IsInState(typeof(WallClingingState));
+    }
+
+    public bool IsDangling()
+    {
+      return MovementState.IsInState(typeof(DanglingState));
+    }
+
+    public bool IsLedgeGrabbing()
+    {
+      return MovementState.IsInState(typeof(LedgeGrabState));
+    }
+    #endregion
   }
 }

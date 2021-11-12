@@ -49,8 +49,11 @@ namespace RFG
 
     public void ChangeState(Type newStateType)
     {
+      // Really frozen means that the new state type cant unfreeze and the state is currently frozen
+      bool reallyFrozen = Frozen && !CanStateUnfreeze(newStateType);
+
       // Dont change if current state or if frozen
-      if ((CurrentStateType != null && CurrentStateType.Equals(newStateType)) || Frozen)
+      if ((CurrentStateType != null && CurrentStateType.Equals(newStateType)) || reallyFrozen)
       {
         return;
       }
@@ -61,6 +64,8 @@ namespace RFG
         PreviousStateType = CurrentState.GetType();
         CurrentState.Exit(_context);
       }
+
+      Debug.Log(newStateType.ToString());
 
       // Enter the new state
       CurrentState = Find(newStateType);
@@ -110,6 +115,41 @@ namespace RFG
     public State Find(Type type)
     {
       return StatePack.Find(type);
+    }
+
+    private bool CanStateUnfreeze(Type stateType)
+    {
+      if (CurrentState != null && CurrentState.StatesCanUnfreeze != null)
+      {
+        foreach (State state in CurrentState.StatesCanUnfreeze)
+        {
+          if (stateType == state.GetType())
+          {
+            return true;
+          }
+        }
+      }
+      return false;
+    }
+
+    public bool IsInState(params Type[] stateTypes)
+    {
+      if (CurrentStateType == null)
+        return false;
+
+      foreach (Type stateType in stateTypes)
+      {
+        if (CurrentStateType == stateType)
+        {
+          return true;
+        }
+      }
+      return false;
+    }
+
+    public bool IsntInState(params Type[] stateTypes)
+    {
+      return !IsInState(stateTypes);
     }
   }
 }

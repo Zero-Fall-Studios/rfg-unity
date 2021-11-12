@@ -17,6 +17,7 @@ namespace RFG
     private MovementAbility _movementAbility;
     private JumpAbility _jumpAbility;
 
+    #region Unity Methods
     private void Awake()
     {
       _character = GetComponent<Character>();
@@ -34,7 +35,14 @@ namespace RFG
 
     private void Update()
     {
-      if (_character.MovementState.CurrentStateType != typeof(LedgeGrabState))
+      HandleLedgeGrab();
+    }
+    #endregion
+
+    #region Handlers
+    private void HandleLedgeGrab()
+    {
+      if (!_character.IsLedgeGrabbing())
       {
         return;
       }
@@ -53,37 +61,8 @@ namespace RFG
       else if (verticalSpeed < -_settings.Threshold.y)
       {
         DetachFromLedge();
-        _character.MovementState.ChangeState(typeof(FallingState));
       }
-
     }
-
-    public void StartGrabbingLedge(Ledge ledge)
-    {
-      if (
-          (_state.IsFacingRight && ledge.LedgeGrabDirection == LedgeGrabDirection.Left) ||
-          (!_state.IsFacingRight && ledge.LedgeGrabDirection == LedgeGrabDirection.Right)
-        )
-      {
-        return;
-      }
-
-      _ledgeHangingStartedTimestamp = Time.time;
-      _ledge = ledge;
-      _controller.CollisionsOff();
-      _character.MovementState.ChangeState(typeof(LedgeGrabState));
-
-      _controller.SetForce(Vector2.zero);
-      _controller.GravityActive(false);
-      if (_jumpAbility != null)
-      {
-        _jumpAbility.SetNumberOfJumpsLeft();
-      }
-      _character.EnableAllAbilities(false, this);
-      // TODO _character.CanFlip = false;
-      _controller.transform.position = _ledge.transform.position + _ledge.HangOffset;
-    }
-
 
     private IEnumerator Climb()
     {
@@ -111,6 +90,35 @@ namespace RFG
       _controller.CollisionsOn();
       _controller.GravityActive(true);
     }
+    #endregion
+
+    #region Events
+    public void StartGrabbingLedge(Ledge ledge)
+    {
+      if (
+          (_state.IsFacingRight && ledge.LedgeGrabDirection == LedgeGrabDirection.Left) ||
+          (!_state.IsFacingRight && ledge.LedgeGrabDirection == LedgeGrabDirection.Right)
+        )
+      {
+        return;
+      }
+
+      _ledgeHangingStartedTimestamp = Time.time;
+      _ledge = ledge;
+      _controller.CollisionsOff();
+      _character.MovementState.ChangeState(typeof(LedgeGrabState));
+
+      _controller.SetForce(Vector2.zero);
+      _controller.GravityActive(false);
+      if (_jumpAbility != null)
+      {
+        _jumpAbility.SetNumberOfJumpsLeft();
+      }
+      _character.EnableAllAbilities(false, this);
+      // TODO _character.CanFlip = false;
+      _controller.transform.position = _ledge.transform.position + _ledge.HangOffset;
+    }
+    #endregion
 
   }
 }

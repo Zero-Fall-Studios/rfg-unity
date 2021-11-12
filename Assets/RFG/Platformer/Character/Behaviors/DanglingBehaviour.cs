@@ -5,14 +5,14 @@ namespace RFG
   [AddComponentMenu("RFG/Platformer/Character/Behaviours/Dangling")]
   public class DanglingBehaviour : MonoBehaviour
   {
-    [HideInInspector]
-    protected Vector3 _leftOne = new Vector3(-1, 1, 1);
+    private Vector3 _leftOne = new Vector3(-1, 1, 1);
     private Character _character;
     private CharacterControllerState2D _state;
     private CharacterController2D _controller;
     private Transform _transform;
     private SettingsPack _settings;
 
+    #region Unity Methods
     private void Awake()
     {
       _transform = transform;
@@ -28,15 +28,14 @@ namespace RFG
 
     private void Update()
     {
-      if (
-        !_settings.CanDangle
-        || _character.MovementState.CurrentStateType == typeof(WalkingState)
-        || _character.MovementState.CurrentStateType == typeof(RunningState)
-        || _character.MovementState.CurrentStateType == typeof(JumpingState)
-        || _character.MovementState.CurrentStateType == typeof(JumpingFlipState)
-        || _character.MovementState.CurrentStateType == typeof(DashingState)
-        || !_state.IsGrounded
-      )
+      HandleDangle();
+    }
+    #endregion
+
+    #region Handlers
+    private void HandleDangle()
+    {
+      if (!CanDangle())
       {
         return;
       }
@@ -62,10 +61,16 @@ namespace RFG
       }
 
       // if the ray hit something and we were dangling previously, we go back to Idle
-      if (hit && _character.MovementState.CurrentStateType == typeof(DanglingState))
+      if (hit && _character.MovementState.IsInState(typeof(DanglingState)))
       {
         _character.MovementState.ChangeState(typeof(IdleState));
       }
     }
+
+    private bool CanDangle()
+    {
+      return _settings.CanDangle && _character.IsIdle() && _character.IsGrounded();
+    }
+    #endregion
   }
 }

@@ -15,8 +15,8 @@ namespace RFG
     private SettingsPack _settings;
     private int _numberOfJumpsLeft = 0;
     private float _lastJumpTime = 0f;
-    private bool _isJumpFlipping = false;
 
+    #region Unity Methods
     private void Awake()
     {
       _transform = transform;
@@ -40,18 +40,8 @@ namespace RFG
         _character.MovementState.ChangeState(typeof(LandedState));
         SetNumberOfJumpsLeft();
       }
-      if (
-        !_state.IsWallClinging &&
-        !_state.IsWallJumping &&
-        _state.IsFalling &&
-        _character.MovementState.CurrentStateType != typeof(LedgeGrabState) &&
-        _character.MovementState.CurrentStateType != typeof(LedgeClimbingState) &&
-        !_isJumpFlipping
-        )
-      {
-        _character.MovementState.ChangeState(typeof(FallingState));
-      }
     }
+    #endregion
 
     public void SetNumberOfJumpsLeft()
     {
@@ -77,7 +67,7 @@ namespace RFG
         return false;
       }
 
-      if (_character.MovementState.CurrentStateType == typeof(WallClingingState))
+      if (_character.MovementState.IsInState(typeof(WallClingingState)))
       {
         return false;
       }
@@ -111,12 +101,10 @@ namespace RFG
 
         if (_horizontalInput > -_settings.JumpThreshold.x && _horizontalInput < _settings.JumpThreshold.x)
         {
-          _isJumpFlipping = false;
           _character.MovementState.ChangeState(typeof(JumpingState));
         }
         else
         {
-          _isJumpFlipping = true;
           _character.MovementState.ChangeState(typeof(JumpingFlipState));
         }
 
@@ -151,35 +139,27 @@ namespace RFG
           }
         }
       }
-      if (_character.MovementState.CurrentStateType != typeof(LedgeGrabState) &&
-        _character.MovementState.CurrentStateType != typeof(LedgeClimbingState) &&
-        !_isJumpFlipping)
-      {
-        _character.MovementState.ChangeState(typeof(FallingState));
-      }
       _state.IsJumping = false;
     }
 
     private bool JumpDownFromOneWayPlatform()
     {
-      if (!_settings.CanJumpDownOneWayPlatforms)
-      {
-        return false;
-      }
-      if (_controller.OneWayPlatformMask.Contains(_controller.StandingOn.layer)
-        || _controller.OneWayMovingPlatformMask.Contains(_controller.StandingOn.layer)
-        || _controller.StairsMask.Contains(_controller.StandingOn.layer))
+      if (
+        _settings.CanJumpDownOneWayPlatforms
+        &&
+        (
+             _controller.OneWayPlatformMask.Contains(_controller.StandingOn.layer)
+          || _controller.OneWayMovingPlatformMask.Contains(_controller.StandingOn.layer)
+          || _controller.StairsMask.Contains(_controller.StandingOn.layer)
+        )
+      )
       {
         _state.IsJumping = true;
-        _character.MovementState.ChangeState(typeof(FallingState));
         // we turn the boxcollider off for a few milliseconds, so the character doesn't get stuck mid platform
         StartCoroutine(_controller.DisableCollisionsWithOneWayPlatforms(_settings.OneWayPlatformsJumpCollisionOffDuration));
         return true;
       }
-      else
-      {
-        return false;
-      }
+      return false;
     }
 
     private void JumpFromMovingPlatform()
@@ -192,6 +172,7 @@ namespace RFG
       }
     }
 
+    #region Events
     private void OnJumpStarted(InputAction.CallbackContext ctx)
     {
       JumpStart();
@@ -222,6 +203,7 @@ namespace RFG
         _jumpInput.action.canceled -= OnJumpCanceled;
       }
     }
+    #endregion
 
   }
 }

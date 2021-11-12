@@ -7,7 +7,6 @@ namespace RFG
   [AddComponentMenu("RFG/Platformer/Character/Ability/Movement")]
   public class MovementAbility : MonoBehaviour, IAbility
   {
-    [HideInInspector]
     private Character _character;
     private CharacterController2D _controller;
     private CharacterControllerState2D _state;
@@ -16,7 +15,9 @@ namespace RFG
     private InputActionReference _runInput;
     private bool _isRunning = false;
     private float _walkToRunTimeElapsed = 0f;
+    private float _horizontalSpeed = 0f;
 
+    #region Unity Methods
     private void Awake()
     {
       _character = GetComponent<Character>();
@@ -38,71 +39,71 @@ namespace RFG
 
     private void Update()
     {
-      if (_character.CharacterState.CurrentStateType != typeof(AliveState) || Time.timeScale == 0f)
+      HandleMovement();
+      DetectFallingMovement();
+    }
+    #endregion
+
+    #region Handlers
+    private void HandleMovement()
+    {
+      if (!CanMove())
       {
-        _walkToRunTimeElapsed = 0;
-        _isRunning = false;
         return;
       }
 
-      float horizontalSpeed = _movement.action.ReadValue<Vector2>().x;
+      // Read in horizontal input
+      _horizontalSpeed = _movement.action.ReadValue<Vector2>().x;
 
-      if (horizontalSpeed > 0f)
+      HandleFacing();
+      DetectMovementState();
+      HandleChangeToRunState();
+      MoveCharacter();
+    }
+
+    private bool CanMove()
+    {
+      if (!_character.IsAlive() || _character.IsDashing())
+      {
+        ResetMovement();
+        return false;
+      }
+      return true;
+    }
+
+    private void HandleFacing()
+    {
+      if (_horizontalSpeed > 0f)
       {
         if (!_state.IsFacingRight && !_controller.rotateOnMouseCursor)
         {
           _controller.Flip();
         }
       }
-      else if (horizontalSpeed < 0f)
+      else if (_horizontalSpeed < 0f)
       {
         if (_state.IsFacingRight && !_controller.rotateOnMouseCursor)
         {
           _controller.Flip();
         }
       }
+    }
 
-      // If the movement state is dashing return so it wont get set back to idle
-      if (_character.MovementState.CurrentStateType == typeof(DashingState))
+    private void DetectMovementState()
+    {
+      if (_character.IsInGroundMovementState())
       {
-        _walkToRunTimeElapsed = 0;
-        _isRunning = false;
-        return;
-      }
-
-      if ((_state.IsGrounded || _state.JustGotGrounded)
-        && _character.MovementState.CurrentStateType != typeof(JumpingState)
-        && _character.MovementState.CurrentStateType != typeof(LandedState))
-      {
-        if (horizontalSpeed == 0)
+        if (_horizontalSpeed == 0)
         {
-          if (_character.MovementState.CurrentStateType != typeof(DanglingState))
+          if (!_character.IsDangling())
           {
             _character.MovementState.ChangeState(typeof(IdleState));
-            _walkToRunTimeElapsed = 0;
-            _isRunning = false;
           }
+          ResetMovement();
         }
         else
         {
-          _state.IsMovingUpSlope = false;
-          _state.IsMovingDownSlope = false;
-          if (
-            (_state.IsFacingRight && _state.BelowSlopeAngle > 0 && horizontalSpeed > 0) ||
-            (!_state.IsFacingRight && _state.BelowSlopeAngle < 0 && horizontalSpeed < 0)
-          )
-          {
-            _state.IsMovingUpSlope = true;
-          }
-
-          if (
-            (_state.IsFacingRight && _state.BelowSlopeAngle > 0 && horizontalSpeed < 0) ||
-            (!_state.IsFacingRight && _state.BelowSlopeAngle < 0 && horizontalSpeed > 0)
-          )
-          {
-            _state.IsMovingDownSlope = true;
-          }
-
+          DetectSlopeMovement();
           if (_state.IsMovingUpSlope)
           {
             _character.MovementState.ChangeState(_isRunning ? typeof(RunningUpSlopeState) : typeof(WalkingUpSlopeState));
@@ -115,26 +116,56 @@ namespace RFG
           {
             _character.MovementState.ChangeState(_isRunning ? typeof(RunningState) : typeof(WalkingState));
           }
-
-
-          if (_settings.WalkToRunTime > 0 && !_isRunning)
-          {
-            if (_walkToRunTimeElapsed > _settings.WalkToRunTime)
-            {
-              _isRunning = true;
-              _walkToRunTimeElapsed = 0;
-            }
-            else
-            {
-              _walkToRunTimeElapsed += Time.deltaTime;
-            }
-          }
         }
       }
+    }
 
+    private void DetectSlopeMovement()
+    {
+      _state.IsMovingUpSlope = false;
+      _state.IsMovingDownSlope = false;
+      if (
+        (_state.IsFacingRight && _state.BelowSlopeAngle > 0 && _horizontalSpeed > 0) ||
+        (!_state.IsFacingRight && _state.BelowSlopeAngle < 0 && _horizontalSpeed < 0)
+      )
+      {
+        _state.IsMovingUpSlope = true;
+      }
+      else if (
+        (_state.IsFacingRight && _state.BelowSlopeAngle < 0 && _horizontalSpeed > 0) ||
+        (!_state.IsFacingRight && _state.BelowSlopeAngle > 0 && _horizontalSpeed < 0)
+      )
+      {
+        _state.IsMovingDownSlope = true;
+      }
+    }
+
+    private void HandleChangeToRunState()
+    {
+      // If there is WalkToRunTime, movement and not running
+      if (
+        _settings.WalkToRunTime > 0 &&
+        _horizontalSpeed != 0f &&
+         !_isRunning)
+      {
+        // Now check to see if WalkToRunTime has elapsed enough to start running
+        if (_walkToRunTimeElapsed > _settings.WalkToRunTime)
+        {
+          _isRunning = true;
+          _walkToRunTimeElapsed = 0;
+        }
+        else
+        {
+          _walkToRunTimeElapsed += Time.deltaTime;
+        }
+      }
+    }
+
+    private void MoveCharacter()
+    {
       float speed = _isRunning ? _settings.RunningSpeed : _settings.WalkingSpeed;
       float movementFactor = _state.IsGrounded ? _controller.Parameters.GroundSpeedFactor : _controller.Parameters.AirSpeedFactor;
-      float movementSpeed = horizontalSpeed * speed * _controller.Parameters.SpeedFactor;
+      float movementSpeed = _horizontalSpeed * speed * _controller.Parameters.SpeedFactor;
       float horizontalMovementForce = Mathf.Lerp(_controller.Speed.x, movementSpeed, Time.deltaTime * movementFactor);
 
       // add any external forces that may be active right now
@@ -145,6 +176,8 @@ namespace RFG
 
       // we handle friction
       horizontalMovementForce = HandleFriction(horizontalMovementForce);
+
+      // Debug.Log(horizontalMovementForce);
 
       _controller.SetHorizontalForce(horizontalMovementForce);
     }
@@ -166,6 +199,28 @@ namespace RFG
       return force;
     }
 
+    private void ResetMovement()
+    {
+      _walkToRunTimeElapsed = 0;
+      _isRunning = false;
+    }
+
+    private void DetectFallingMovement()
+    {
+      if (
+        _controller.Speed.y < 0 &&
+        !_character.IsIdle() &&
+        !_character.IsInSlopeMovementState() &&
+        !_character.IsWallClinging() &&
+        !_character.IsLedgeGrabbing()
+      )
+      {
+        _character.MovementState.ChangeState(typeof(FallingState));
+      }
+    }
+    #endregion
+
+    #region Events
     private void OnRunStarted(InputAction.CallbackContext obj)
     {
       _isRunning = true;
@@ -200,5 +255,6 @@ namespace RFG
         _runInput.action.canceled -= OnRunCanceled;
       }
     }
+    #endregion
   }
 }
