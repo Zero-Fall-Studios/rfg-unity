@@ -7,13 +7,17 @@ namespace RFG
   public class StateMachine
   {
     public StatePack StatePack;
+    public State PreviousState;
     public State CurrentState;
     public Type PreviousStateType { get; private set; }
     public Type CurrentStateType { get; private set; }
     public bool Frozen { get; set; } = false;
     public IStateContext Context { get { return _context; } set { _context = value; } }
+    public Action<State, State> OnStateChange;
+    public Action<Type, Type> OnStateTypeChange;
     private IStateContext _context;
     private StatePack _defaultStatePack;
+    private float _frozenTimeElapsed = 0f;
 
     public void Init()
     {
@@ -45,9 +49,18 @@ namespace RFG
       {
         ChangeState(newStateType);
       }
+      if (CurrentState.WaitToUnfreezeTime > 0f && Frozen)
+      {
+        _frozenTimeElapsed += Time.deltaTime;
+        if (_frozenTimeElapsed > CurrentState.WaitToUnfreezeTime)
+        {
+          Frozen = false;
+          _frozenTimeElapsed = 0;
+        }
+      }
     }
 
-    public void ChangeState(Type newStateType)
+    public bool ChangeState(Type newStateType)
     {
       // Really frozen means that the new state type cant unfreeze and the state is currently frozen
       bool reallyFrozen = Frozen && !CanStateUnfreeze(newStateType);
@@ -55,23 +68,30 @@ namespace RFG
       // Dont change if current state or if frozen
       if ((CurrentStateType != null && CurrentStateType.Equals(newStateType)) || reallyFrozen)
       {
-        return;
+        return false;
       }
 
       // Exit the previous state if there was one
       if (CurrentState != null)
       {
+        PreviousState = CurrentState;
         PreviousStateType = CurrentState.GetType();
         CurrentState.Exit(_context);
       }
 
-      Debug.Log(newStateType.ToString());
+      // Debug.Log(newStateType.ToString());
 
       // Enter the new state
       CurrentState = Find(newStateType);
       Frozen = CurrentState.FreezeState;
       CurrentStateType = newStateType;
       CurrentState.Enter(_context);
+
+      // Call the action for state change
+      OnStateChange?.Invoke(PreviousState, CurrentState);
+      OnStateTypeChange?.Invoke(PreviousStateType, newStateType);
+
+      return true;
     }
 
     public void ResetToDefaultState()

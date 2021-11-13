@@ -18,5 +18,6 @@ MonoBehaviour:
   DashInput: {fileID: 3764478464603691049, guid: 31655fa71cc33ad48850a28d81e05ced, type: 3}
   PrimaryAttackInput: {fileID: 2803245851525323484, guid: 31655fa71cc33ad48850a28d81e05ced, type: 3}
   SecondaryAttackInput: {fileID: 1258528368091341028, guid: 31655fa71cc33ad48850a28d81e05ced, type: 3}
+  SmashDownInput: {fileID: 484931870607295332, guid: 31655fa71cc33ad48850a28d81e05ced, type: 3}
   UseInput: {fileID: 1453819235356668254, guid: 31655fa71cc33ad48850a28d81e05ced, type: 3}
   PauseInput: {fileID: 1402240842833120363, guid: 31655fa71cc33ad48850a28d81e05ced, type: 3}

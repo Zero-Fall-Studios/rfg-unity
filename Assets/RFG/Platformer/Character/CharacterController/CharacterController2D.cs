@@ -585,6 +585,7 @@ namespace RFG
       State.IsFacingRight = _transform.right.x > 0;
     }
 
+    #region Raycasts
     private void CastRaysToTheLeft()
     {
       CastRaysToTheSides(-1);
@@ -942,7 +943,9 @@ namespace RFG
         SetVerticalForce(0);
       }
     }
+    #endregion
 
+    #region Slopes
     private void StickToSlope()
     {
       // if we're in the air, don't have to stick to slopes, being pushed up or on a moving platform, we exit
@@ -1073,6 +1076,7 @@ namespace RFG
         State.IsCollidingBelow = true;
       }
     }
+    #endregion
 
     private void MoveTransform()
     {
@@ -1494,6 +1498,7 @@ namespace RFG
       OverrideParameters = parameters;
     }
 
+    #region Events
     /// <summary>
     /// triggered when the character's raycasts collide with something 
     /// </summary>
@@ -1557,6 +1562,7 @@ namespace RFG
       //   _overrideParameters = null;
       // }
     }
+    #endregion
 
   }
 }

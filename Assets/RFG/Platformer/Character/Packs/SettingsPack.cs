@@ -121,6 +121,14 @@ namespace RFG
     [Tooltip("the duration of your climbing animation, after this it'll transition to IdleAnimationName automatically")]
     public float ClimbingAnimationDuration = 0.5f;
 
+    [Header("Attack Settings")]
+    public bool CanAttackInAirPrimary = false;
+    public bool CanAttackInAirSecondary = false;
+
+    [Header("Smash Down Settings")]
+    public bool CanSmashDownInAir = false;
+    public float SmashDownInAirSpeed = 1f;
+
     [Header("AI Settings")]
     public bool CanFollowVertically = false;
 

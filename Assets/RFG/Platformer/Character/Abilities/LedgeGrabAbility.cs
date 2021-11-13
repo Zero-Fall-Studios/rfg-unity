@@ -89,6 +89,7 @@ namespace RFG
       _character.EnableAllAbilities(true);
       _controller.CollisionsOn();
       _controller.GravityActive(true);
+      _character.MovementState.ChangeState(typeof(FallingState));
     }
     #endregion
 

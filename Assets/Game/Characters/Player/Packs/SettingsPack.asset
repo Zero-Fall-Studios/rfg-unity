@@ -52,4 +52,10 @@ MonoBehaviour:
   WallClingingInputThreshold: 0.1
   WallJumpInputThreshold: 0.01
   WallJumpForce: {x: 5, y: 4}
+  MinimumHangingTime: 0.2
+  ClimbingAnimationDuration: 0.5
+  CanAttackInAirPrimary: 1
+  CanAttackInAirSecondary: 1
+  CanSmashDownInAir: 1
+  SmashDownInAirSpeed: 25
   CanFollowVertically: 0

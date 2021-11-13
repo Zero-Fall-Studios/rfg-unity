@@ -19,8 +19,10 @@ MonoBehaviour:
   ExitEffects: []
   StopEnterEffectsOnExit: 0
   FreezeState: 1
+  WaitToUnfreezeTime: 0
   StatesCanUnfreeze:
   - {fileID: 11400000, guid: 554be675ccf299d429cfbcefd1bbb381, type: 2}
   - {fileID: 11400000, guid: 06356a8db97153148ba1e79c3d5b191c, type: 2}
   - {fileID: 11400000, guid: 6c2df57c4c36e0d46b5a80fa19bdd66d, type: 2}
   - {fileID: 11400000, guid: 621b49b3bc1a94d479a2c48e218ade58, type: 2}
+  - {fileID: 11400000, guid: f49eafa307c924e428a68ae8bafaa9ac, type: 2}

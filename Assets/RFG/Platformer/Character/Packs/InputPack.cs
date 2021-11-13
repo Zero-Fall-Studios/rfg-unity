@@ -30,6 +30,10 @@ namespace RFG
     [Tooltip("Input Action that maps to the secondary attack binding")]
     public InputActionReference SecondaryAttackInput;
 
+    /// <summary>Input Action that maps to the smash down binding</summary>
+    [Tooltip("Input Action that maps to the smash down binding")]
+    public InputActionReference SmashDownInput;
+
     /// <summary>Input Action that maps to the use binding</summary>
     [Tooltip("Input Action that maps to the use binding")]
     public InputActionReference UseInput;

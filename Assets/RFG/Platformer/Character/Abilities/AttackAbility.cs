@@ -7,7 +7,6 @@ namespace RFG
   [AddComponentMenu("RFG/Platformer/Character/Ability/Attack")]
   public class AttackAbility : MonoBehaviour, IAbility
   {
-    [HideInInspector]
     private Character _character;
     private PlayerInventory _playerInventory;
     private InputActionReference _primaryAttackInput;
@@ -31,32 +30,56 @@ namespace RFG
     {
       if (!_pointerOverUi)
       {
-        _character.MovementState.ChangeState(typeof(PrimaryAttackStartedState));
-        WeaponItem leftHand = _playerInventory.Inventory.LeftHand as WeaponItem;
-        if (leftHand != null)
+        if (
+          _character.IsAnyPrimaryAttack() ||
+          (_character.IsInAirMovementState() && !_character.SettingsPack.CanAttackInAirPrimary)
+        )
         {
-          leftHand.Started();
+          return;
+        }
+        bool changedState = _character.MovementState.ChangeState(typeof(PrimaryAttackStartedState));
+        if (changedState)
+        {
+          WeaponItem leftHand = _playerInventory.Inventory.LeftHand as WeaponItem;
+          if (leftHand != null)
+          {
+            leftHand.Started();
+          }
         }
       }
     }
 
     public void OnPrimaryAttackCanceled(InputAction.CallbackContext ctx)
     {
-      _character.MovementState.ChangeState(typeof(PrimaryAttackCanceledState));
-      WeaponItem leftHand = _playerInventory.Inventory.LeftHand as WeaponItem;
-      if (leftHand != null)
+      if (_character.MovementState.IsntInState(typeof(PrimaryAttackStartedState)))
       {
-        leftHand.Cancel();
+        return;
+      }
+      bool changedState = _character.MovementState.ChangeState(typeof(PrimaryAttackCanceledState));
+      if (changedState)
+      {
+        WeaponItem leftHand = _playerInventory.Inventory.LeftHand as WeaponItem;
+        if (leftHand != null)
+        {
+          leftHand.Cancel();
+        }
       }
     }
 
     public void OnPrimaryAttackPerformed(InputAction.CallbackContext ctx)
     {
-      _character.MovementState.ChangeState(typeof(PrimaryAttackPerformedState));
-      WeaponItem leftHand = _playerInventory.Inventory.LeftHand as WeaponItem;
-      if (leftHand != null)
+      if (_character.MovementState.IsntInState(typeof(PrimaryAttackStartedState)))
       {
-        leftHand.Perform();
+        return;
+      }
+      bool changedState = _character.MovementState.ChangeState(typeof(PrimaryAttackPerformedState));
+      if (changedState)
+      {
+        WeaponItem leftHand = _playerInventory.Inventory.LeftHand as WeaponItem;
+        if (leftHand != null)
+        {
+          leftHand.Perform();
+        }
       }
     }
 
@@ -64,41 +87,61 @@ namespace RFG
     {
       if (!_pointerOverUi)
       {
-        _character.MovementState.ChangeState(typeof(SecondaryAttackStartedState));
-        WeaponItem rightHand = _playerInventory.Inventory.RightHand as WeaponItem;
-        if (rightHand != null)
+        if (
+          _character.IsAnySecondaryAttack() ||
+          (_character.IsInAirMovementState() && !_character.SettingsPack.CanAttackInAirSecondary)
+        )
         {
-          rightHand.Started();
+          return;
+        }
+        bool changedState = _character.MovementState.ChangeState(typeof(SecondaryAttackStartedState));
+        if (changedState)
+        {
+          WeaponItem rightHand = _playerInventory.Inventory.RightHand as WeaponItem;
+          if (rightHand != null)
+          {
+            rightHand.Started();
+          }
         }
       }
     }
 
     public void OnSecondaryAttackCanceled(InputAction.CallbackContext ctx)
     {
-      _character.MovementState.ChangeState(typeof(SecondaryAttackCanceledState));
-      WeaponItem rightHand = _playerInventory.Inventory.RightHand as WeaponItem;
-      if (rightHand != null)
+      if (_character.MovementState.IsntInState(typeof(SecondaryAttackStartedState)))
       {
-        rightHand.Cancel();
+        return;
+      }
+      bool changedState = _character.MovementState.ChangeState(typeof(SecondaryAttackCanceledState));
+      if (changedState)
+      {
+        WeaponItem rightHand = _playerInventory.Inventory.RightHand as WeaponItem;
+        if (rightHand != null)
+        {
+          rightHand.Cancel();
+        }
       }
     }
 
     public void OnSecondaryAttackPerformed(InputAction.CallbackContext ctx)
     {
-      _character.MovementState.ChangeState(typeof(SecondaryAttackPerformedState));
-      WeaponItem rightHand = _playerInventory.Inventory.RightHand as WeaponItem;
-      if (rightHand != null)
+      if (_character.MovementState.IsntInState(typeof(SecondaryAttackStartedState)))
       {
-        rightHand.Perform();
+        return;
+      }
+      bool changedState = _character.MovementState.ChangeState(typeof(SecondaryAttackPerformedState));
+      if (changedState)
+      {
+        WeaponItem rightHand = _playerInventory.Inventory.RightHand as WeaponItem;
+        if (rightHand != null)
+        {
+          rightHand.Perform();
+        }
       }
     }
 
     private void OnEnable()
     {
-
-      // Make sure to setup new events
-      OnDisable();
-
       if (_primaryAttackInput != null)
       {
         _primaryAttackInput.action.started += OnPrimaryAttackStarted;

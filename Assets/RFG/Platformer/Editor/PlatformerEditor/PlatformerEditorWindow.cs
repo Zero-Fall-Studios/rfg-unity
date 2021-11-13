@@ -281,6 +281,10 @@ namespace RFG
         movementStatePack.Add(EditorUtils.CreateScriptableObject<SecondaryAttackStartedState>(path));
         movementStatePack.Add(EditorUtils.CreateScriptableObject<SecondaryAttackPerformedState>(path));
         movementStatePack.Add(EditorUtils.CreateScriptableObject<SecondaryAttackCanceledState>(path));
+
+        movementStatePack.Add(EditorUtils.CreateScriptableObject<SmashDownStartedState>(path));
+        movementStatePack.Add(EditorUtils.CreateScriptableObject<SmashDownPerformedState>(path));
+        movementStatePack.Add(EditorUtils.CreateScriptableObject<SmashDownCollidedState>(path));
         EditorUtility.SetDirty(movementStatePack);
 
         character.CharacterState.StatePack = characterStatePack;

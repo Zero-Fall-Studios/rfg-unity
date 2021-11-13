@@ -26,6 +26,7 @@ namespace RFG
 
     [Header("State Conditions")]
     public bool FreezeState = false;
+    public float WaitToUnfreezeTime = 0f;
     public State[] StatesCanUnfreeze;
 
     public virtual void Enter(IStateContext context)

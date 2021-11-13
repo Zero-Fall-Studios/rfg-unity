@@ -235,6 +235,16 @@ namespace RFG
       _isRunning = false;
     }
 
+    private void OnStateTypeChange(Type prevType, Type currentType)
+    {
+      bool beganWalking = prevType != typeof(WalkingState) && currentType == typeof(WalkingState);
+      bool isntWalking = currentType != typeof(WalkingState) && currentType != typeof(WalkingDownSlopeState);
+      if (beganWalking || isntWalking)
+      {
+        _walkToRunTimeElapsed = 0;
+      }
+    }
+
     private void OnEnable()
     {
       // Make sure to setup new events
@@ -245,6 +255,7 @@ namespace RFG
         _runInput.action.started += OnRunStarted;
         _runInput.action.canceled += OnRunCanceled;
       }
+      _character.MovementState.OnStateTypeChange += OnStateTypeChange;
     }
 
     private void OnDisable()
@@ -254,6 +265,7 @@ namespace RFG
         _runInput.action.started -= OnRunStarted;
         _runInput.action.canceled -= OnRunCanceled;
       }
+      _character.MovementState.OnStateTypeChange -= OnStateTypeChange;
     }
     #endregion
   }

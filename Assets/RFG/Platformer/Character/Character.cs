@@ -63,6 +63,7 @@ namespace RFG
     }
     #endregion
 
+    #region Init
     private void InitContext()
     {
       _characterContext = new StateCharacterContext();
@@ -83,39 +84,36 @@ namespace RFG
       MovementState.Bind(_characterContext);
     }
 
-    private void InitAbilities()
-    {
-      Component[] abilities = GetComponents(typeof(IAbility)) as Component[];
-      if (abilities.Length > 0)
-      {
-        _abilities = new List<Component>(abilities);
-      }
-    }
-
-    public void SetMovementStatePack(RFG.StatePack statePack)
-    {
-      MovementState.SetStatePack(statePack);
-    }
-
-    public void RestoreDefaultMovementStatePack()
-    {
-      MovementState.RestoreDefaultStatePack();
-    }
-
-    public void OverrideSettingsPack(SettingsPack settings)
-    {
-      _characterContext.OverrideSettingsPack(settings);
-    }
-
-    public void ResetSettingsPack()
-    {
-      _characterContext.ResetSettingsPack();
-    }
-
     public void OnObjectSpawn(params object[] objects)
     {
       CharacterState.ResetToDefaultState();
       MovementState.ResetToDefaultState();
+    }
+    #endregion
+
+    #region Kill
+    public void Kill()
+    {
+      StartCoroutine(KillCo());
+    }
+
+    public IEnumerator KillCo()
+    {
+      yield return new WaitForSeconds(0.1f);
+      CharacterState.ChangeState(typeof(DeathState));
+    }
+    #endregion
+
+    #region Spawning
+    public void Respawn()
+    {
+      StartCoroutine(RespawnCo());
+    }
+
+    public IEnumerator RespawnCo()
+    {
+      yield return new WaitForSecondsRealtime(1f);
+      CharacterState.ChangeState(typeof(SpawnState));
     }
 
     public void SetSpawnPosition()
@@ -142,27 +140,16 @@ namespace RFG
         }
       }
     }
+    #endregion
 
-    public void Kill()
+    #region Abilities
+    private void InitAbilities()
     {
-      StartCoroutine(KillCo());
-    }
-
-    public IEnumerator KillCo()
-    {
-      yield return new WaitForSeconds(0.1f);
-      CharacterState.ChangeState(typeof(DeathState));
-    }
-
-    public void Respawn()
-    {
-      StartCoroutine(RespawnCo());
-    }
-
-    public IEnumerator RespawnCo()
-    {
-      yield return new WaitForSecondsRealtime(1f);
-      CharacterState.ChangeState(typeof(SpawnState));
+      Component[] abilities = GetComponents(typeof(IAbility)) as Component[];
+      if (abilities.Length > 0)
+      {
+        _abilities = new List<Component>(abilities);
+      }
     }
 
     public void EnableAllAbilities(bool enabled, Behaviour except = null)
@@ -179,7 +166,9 @@ namespace RFG
         }
       }
     }
+    #endregion
 
+    #region Input
     public void EnableAllInput(bool enabled)
     {
       EnableInput(InputPack?.Movement, enabled);
@@ -188,6 +177,7 @@ namespace RFG
       EnableInput(InputPack?.DashInput, enabled);
       EnableInput(InputPack?.PrimaryAttackInput, enabled);
       EnableInput(InputPack?.SecondaryAttackInput, enabled);
+      EnableInput(InputPack?.SmashDownInput, enabled);
       EnableInput(InputPack?.UseInput, enabled);
     }
 
@@ -202,6 +192,19 @@ namespace RFG
         reference?.action.Disable();
       }
     }
+    #endregion
+
+    #region Settings
+    public void OverrideSettingsPack(SettingsPack settings)
+    {
+      _characterContext.OverrideSettingsPack(settings);
+    }
+
+    public void ResetSettingsPack()
+    {
+      _characterContext.ResetSettingsPack();
+    }
+    #endregion
 
     #region State Helpers
     public void FreezeCharacterState()
@@ -233,6 +236,16 @@ namespace RFG
     #endregion
 
     #region Movement State Helpers
+
+    public void SetMovementStatePack(RFG.StatePack statePack)
+    {
+      MovementState.SetStatePack(statePack);
+    }
+
+    public void RestoreDefaultMovementStatePack()
+    {
+      MovementState.RestoreDefaultStatePack();
+    }
 
     public bool IsGrounded()
     {
@@ -303,6 +316,16 @@ namespace RFG
     public bool IsLedgeGrabbing()
     {
       return MovementState.IsInState(typeof(LedgeGrabState));
+    }
+
+    public bool IsAnyPrimaryAttack()
+    {
+      return MovementState.IsInState(typeof(PrimaryAttackStartedState), typeof(PrimaryAttackCanceledState), typeof(PrimaryAttackPerformedState));
+    }
+
+    public bool IsAnySecondaryAttack()
+    {
+      return MovementState.IsInState(typeof(SecondaryAttackStartedState), typeof(SecondaryAttackCanceledState), typeof(SecondaryAttackPerformedState));
     }
     #endregion
   }

@@ -9996,7 +9996,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 4
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -10053,6 +10053,7 @@ GameObject:
   - component: {fileID: 752781061}
   - component: {fileID: 752781076}
   - component: {fileID: 752781077}
+  - component: {fileID: 752781078}
   - component: {fileID: 752781074}
   - component: {fileID: 752781075}
   m_Layer: 8
@@ -10372,9 +10373,11 @@ MonoBehaviour:
   SettingsPack: {fileID: 11400000, guid: baed352bee053544b89e3cc689d801d9, type: 2}
   CharacterState:
     StatePack: {fileID: 11400000, guid: 4ad694c496ead064e8e41a81ed907c5e, type: 2}
+    PreviousState: {fileID: 0}
     CurrentState: {fileID: 0}
   MovementState:
     StatePack: {fileID: 11400000, guid: e7c3145dd7c7b20468a67fa274f14084, type: 2}
+    PreviousState: {fileID: 0}
     CurrentState: {fileID: 0}
   <IsReady>k__BackingField: 0
 --- !u!114 &752781074
@@ -10428,6 +10431,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7d698c35efc157c48b28825ec6f14fd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &752781078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 752781057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f9fdca4c27318240bd6491050c8d367, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &869614225
@@ -10783,14 +10798,14 @@ MonoBehaviour:
   m_Follow: {fileID: 752781060}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 5
+    OrthographicSize: 4
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3333334, y: 1}
+    m_SensorSize: {x: 1.9561689, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
