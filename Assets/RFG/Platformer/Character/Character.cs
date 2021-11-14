@@ -173,6 +173,7 @@ namespace RFG
     {
       EnableInput(InputPack?.Movement, enabled);
       EnableInput(InputPack?.RunInput, enabled);
+      EnableInput(InputPack?.CrouchInput, enabled);
       EnableInput(InputPack?.JumpInput, enabled);
       EnableInput(InputPack?.DashInput, enabled);
       EnableInput(InputPack?.PrimaryAttackInput, enabled);

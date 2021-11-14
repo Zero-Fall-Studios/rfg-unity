@@ -46,6 +46,7 @@ MonoBehaviour:
   StairsBelowDetectionRaycastLength: 0.5
   StairsBelowLockTime: 0.2
   WalkingSpeed: 2
+  CrouchWalkingSpeed: 1
   WallClingingSlowFactor: 0.6
   RaycastVerticalOffset: 0
   WallClingingTolerance: 0.3

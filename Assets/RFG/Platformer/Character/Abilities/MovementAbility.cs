@@ -13,9 +13,11 @@ namespace RFG
     private InputActionReference _movement;
     private SettingsPack _settings;
     private InputActionReference _runInput;
+    private InputActionReference _crouchInput;
     private bool _isRunning = false;
     private float _walkToRunTimeElapsed = 0f;
     private float _horizontalSpeed = 0f;
+    private bool _isCrouching = false;
 
     #region Unity Methods
     private void Awake()
@@ -24,6 +26,7 @@ namespace RFG
       _controller = GetComponent<CharacterController2D>();
       _movement = _character.InputPack.Movement;
       _runInput = _character.InputPack.RunInput;
+      _crouchInput = _character.InputPack.CrouchInput;
       _settings = _character.SettingsPack;
 
       if (_settings.AlwaysRun)
@@ -97,14 +100,18 @@ namespace RFG
         {
           if (!_character.IsDangling())
           {
-            _character.MovementState.ChangeState(typeof(IdleState));
+            _character.MovementState.ChangeState(_isCrouching ? typeof(CrouchIdleState) : typeof(IdleState));
           }
           ResetMovement();
         }
         else
         {
           DetectSlopeMovement();
-          if (_state.IsMovingUpSlope)
+          if (_isCrouching)
+          {
+            _character.MovementState.ChangeState(typeof(CrouchWalkingState));
+          }
+          else if (_state.IsMovingUpSlope)
           {
             _character.MovementState.ChangeState(_isRunning ? typeof(RunningUpSlopeState) : typeof(WalkingUpSlopeState));
           }
@@ -146,7 +153,9 @@ namespace RFG
       if (
         _settings.WalkToRunTime > 0 &&
         _horizontalSpeed != 0f &&
-         !_isRunning)
+         !_isRunning &&
+         !_isCrouching
+      )
       {
         // Now check to see if WalkToRunTime has elapsed enough to start running
         if (_walkToRunTimeElapsed > _settings.WalkToRunTime)
@@ -163,7 +172,7 @@ namespace RFG
 
     private void MoveCharacter()
     {
-      float speed = _isRunning ? _settings.RunningSpeed : _settings.WalkingSpeed;
+      float speed = _isRunning ? _settings.RunningSpeed : _isCrouching ? _settings.CrouchWalkingSpeed : _settings.WalkingSpeed;
       float movementFactor = _state.IsGrounded ? _controller.Parameters.GroundSpeedFactor : _controller.Parameters.AirSpeedFactor;
       float movementSpeed = _horizontalSpeed * speed * _controller.Parameters.SpeedFactor;
       float horizontalMovementForce = Mathf.Lerp(_controller.Speed.x, movementSpeed, Time.deltaTime * movementFactor);
@@ -202,7 +211,10 @@ namespace RFG
     private void ResetMovement()
     {
       _walkToRunTimeElapsed = 0;
-      _isRunning = false;
+      if (!_settings.AlwaysRun)
+      {
+        _isRunning = false;
+      }
     }
 
     private void DetectFallingMovement()
@@ -235,6 +247,17 @@ namespace RFG
       _isRunning = false;
     }
 
+    private void OnCrouchStarted(InputAction.CallbackContext obj)
+    {
+      _isCrouching = true;
+      ResetMovement();
+    }
+
+    private void OnCrouchCanceled(InputAction.CallbackContext obj)
+    {
+      _isCrouching = false;
+    }
+
     private void OnStateTypeChange(Type prevType, Type currentType)
     {
       bool beganWalking = prevType != typeof(WalkingState) && currentType == typeof(WalkingState);
@@ -247,13 +270,15 @@ namespace RFG
 
     private void OnEnable()
     {
-      // Make sure to setup new events
-      OnDisable();
-
       if (_runInput != null)
       {
         _runInput.action.started += OnRunStarted;
         _runInput.action.canceled += OnRunCanceled;
+      }
+      if (_crouchInput != null)
+      {
+        _crouchInput.action.started += OnCrouchStarted;
+        _crouchInput.action.canceled += OnCrouchCanceled;
       }
       _character.MovementState.OnStateTypeChange += OnStateTypeChange;
     }
@@ -264,6 +289,11 @@ namespace RFG
       {
         _runInput.action.started -= OnRunStarted;
         _runInput.action.canceled -= OnRunCanceled;
+      }
+      if (_crouchInput != null)
+      {
+        _crouchInput.action.started -= OnCrouchStarted;
+        _crouchInput.action.canceled -= OnCrouchCanceled;
       }
       _character.MovementState.OnStateTypeChange -= OnStateTypeChange;
     }

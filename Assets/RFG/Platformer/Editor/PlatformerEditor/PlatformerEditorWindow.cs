@@ -269,7 +269,8 @@ namespace RFG
         movementStatePack.Add(EditorUtils.CreateScriptableObject<WalkingState>(path));
         movementStatePack.Add(EditorUtils.CreateScriptableObject<LedgeGrabState>(path));
         movementStatePack.Add(EditorUtils.CreateScriptableObject<LedgeClimbingState>(path));
-        movementStatePack.Add(EditorUtils.CreateScriptableObject<WalkingState>(path));
+        movementStatePack.Add(EditorUtils.CreateScriptableObject<CrouchIdleState>(path));
+        movementStatePack.Add(EditorUtils.CreateScriptableObject<CrouchWalkingState>(path));
         movementStatePack.Add(EditorUtils.CreateScriptableObject<WalkingUpSlopeState>(path));
         movementStatePack.Add(EditorUtils.CreateScriptableObject<RunningUpSlopeState>(path));
         movementStatePack.Add(EditorUtils.CreateScriptableObject<WalkingDownSlopeState>(path));

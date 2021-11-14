@@ -109,6 +109,24 @@ namespace RFG
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Slide"",
+                    ""type"": ""Button"",
+                    ""id"": ""9e2f2403-4e11-4084-b168-8a9f2c91955a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Crouch"",
+                    ""type"": ""Button"",
+                    ""id"": ""07bc11e8-1fbc-4f11-8260-08e58f25bc8d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -397,6 +415,50 @@ namespace RFG
                     ""action"": ""SmashDown"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""be038bf4-851b-4a11-b0f0-5c5326c95df7"",
+                    ""path"": ""<Keyboard>/v"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""Slide"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7f16a86a-38c8-4a82-8025-77e56f5a5f4c"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Slide"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""af000917-7866-4085-8b43-85fc304b210a"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""Crouch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2d434656-04f2-4741-8ea7-a69230898b0d"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Crouch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -442,6 +504,8 @@ namespace RFG
             m_PlayerControls_Use = m_PlayerControls.FindAction("Use", throwIfNotFound: true);
             m_PlayerControls_Run = m_PlayerControls.FindAction("Run", throwIfNotFound: true);
             m_PlayerControls_SmashDown = m_PlayerControls.FindAction("SmashDown", throwIfNotFound: true);
+            m_PlayerControls_Slide = m_PlayerControls.FindAction("Slide", throwIfNotFound: true);
+            m_PlayerControls_Crouch = m_PlayerControls.FindAction("Crouch", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -510,6 +574,8 @@ namespace RFG
         private readonly InputAction m_PlayerControls_Use;
         private readonly InputAction m_PlayerControls_Run;
         private readonly InputAction m_PlayerControls_SmashDown;
+        private readonly InputAction m_PlayerControls_Slide;
+        private readonly InputAction m_PlayerControls_Crouch;
         public struct PlayerControlsActions
         {
             private @PlayerInputActions m_Wrapper;
@@ -523,6 +589,8 @@ namespace RFG
             public InputAction @Use => m_Wrapper.m_PlayerControls_Use;
             public InputAction @Run => m_Wrapper.m_PlayerControls_Run;
             public InputAction @SmashDown => m_Wrapper.m_PlayerControls_SmashDown;
+            public InputAction @Slide => m_Wrapper.m_PlayerControls_Slide;
+            public InputAction @Crouch => m_Wrapper.m_PlayerControls_Crouch;
             public InputActionMap Get() { return m_Wrapper.m_PlayerControls; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -559,6 +627,12 @@ namespace RFG
                     @SmashDown.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSmashDown;
                     @SmashDown.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSmashDown;
                     @SmashDown.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSmashDown;
+                    @Slide.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSlide;
+                    @Slide.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSlide;
+                    @Slide.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSlide;
+                    @Crouch.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnCrouch;
+                    @Crouch.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnCrouch;
+                    @Crouch.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnCrouch;
                 }
                 m_Wrapper.m_PlayerControlsActionsCallbackInterface = instance;
                 if (instance != null)
@@ -590,6 +664,12 @@ namespace RFG
                     @SmashDown.started += instance.OnSmashDown;
                     @SmashDown.performed += instance.OnSmashDown;
                     @SmashDown.canceled += instance.OnSmashDown;
+                    @Slide.started += instance.OnSlide;
+                    @Slide.performed += instance.OnSlide;
+                    @Slide.canceled += instance.OnSlide;
+                    @Crouch.started += instance.OnCrouch;
+                    @Crouch.performed += instance.OnCrouch;
+                    @Crouch.canceled += instance.OnCrouch;
                 }
             }
         }
@@ -623,6 +703,8 @@ namespace RFG
             void OnUse(InputAction.CallbackContext context);
             void OnRun(InputAction.CallbackContext context);
             void OnSmashDown(InputAction.CallbackContext context);
+            void OnSlide(InputAction.CallbackContext context);
+            void OnCrouch(InputAction.CallbackContext context);
         }
     }
 }

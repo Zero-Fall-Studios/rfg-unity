@@ -14,6 +14,14 @@ namespace RFG
     [Tooltip("Input Action that maps to the run binding")]
     public InputActionReference RunInput;
 
+    /// <summary>Input Action that maps to the crouch binding</summary>
+    [Tooltip("Input Action that maps to the crouch binding")]
+    public InputActionReference CrouchInput;
+
+    /// <summary>Input Action that maps to the slide binding</summary>
+    [Tooltip("Input Action that maps to the slide binding")]
+    public InputActionReference SlideInput;
+
     /// <summary>Input Action that maps to the jump binding</summary>
     [Tooltip("Input Action to initiate the jump binding")]
     public InputActionReference JumpInput;

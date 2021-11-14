@@ -102,6 +102,9 @@ namespace RFG
     [Header("Walking Settings")]
     public float WalkingSpeed = 5f;
 
+    [Header("Crouch Settings")]
+    public float CrouchWalkingSpeed = 1f;
+
     [Header("Wall Clinging Settings")]
     [Range(0.01f, 1f)]
     public float WallClingingSlowFactor = 0.6f;
