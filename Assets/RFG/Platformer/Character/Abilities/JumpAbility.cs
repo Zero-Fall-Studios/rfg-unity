@@ -35,7 +35,7 @@ namespace RFG
 
     private void LateUpdate()
     {
-      if (_state.JustGotGrounded)
+      if (_state.JustGotGrounded && !_character.IsSwimming)
       {
         _character.MovementState.ChangeState(typeof(LandedState));
         SetNumberOfJumpsLeft();
@@ -67,7 +67,7 @@ namespace RFG
         return false;
       }
 
-      if (_character.MovementState.IsInState(typeof(WallClingingState)))
+      if (_character.MovementState.IsInState(typeof(WallClingingState), typeof(SwimmingState)))
       {
         return false;
       }

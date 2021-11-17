@@ -31,8 +31,8 @@ namespace RFG
       if (!_pointerOverUi)
       {
         if (
-          _character.IsAnyPrimaryAttack() ||
-          (_character.IsInAirMovementState() && !_character.SettingsPack.CanAttackInAirPrimary)
+          _character.IsAnyPrimaryAttack ||
+          (_character.IsInAirMovementState && !_character.SettingsPack.CanAttackInAirPrimary)
         )
         {
           return;
@@ -88,8 +88,8 @@ namespace RFG
       if (!_pointerOverUi)
       {
         if (
-          _character.IsAnySecondaryAttack() ||
-          (_character.IsInAirMovementState() && !_character.SettingsPack.CanAttackInAirSecondary)
+          _character.IsAnySecondaryAttack ||
+          (_character.IsInAirMovementState && !_character.SettingsPack.CanAttackInAirSecondary)
         )
         {
           return;

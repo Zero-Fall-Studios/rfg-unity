@@ -48,7 +48,7 @@ namespace RFG
 
       Button addLayersButton = new Button(() =>
       {
-        EditorUtils.AddLayers(new string[] { "Player", "Platforms", "OneWayPlatforms", "MovingPlatforms", "OneWayMovingPlatforms", "Stairs" });
+        EditorUtils.AddLayers(new string[] { "Player", "Platforms", "OneWayPlatforms", "MovingPlatforms", "OneWayMovingPlatforms", "Stairs", "PhysicsVolume" });
       })
       {
         name = "layers-button",
@@ -161,6 +161,7 @@ namespace RFG
       activeGameObject.GetOrAddComponent<StairsAbility>();
       activeGameObject.GetOrAddComponent<LedgeGrabAbility>();
       activeGameObject.GetOrAddComponent<DanglingBehaviour>();
+      activeGameObject.GetOrAddComponent<SlideAbility>();
     }
 
     private void CreateAICharacter()
@@ -275,6 +276,7 @@ namespace RFG
         movementStatePack.Add(EditorUtils.CreateScriptableObject<RunningUpSlopeState>(path));
         movementStatePack.Add(EditorUtils.CreateScriptableObject<WalkingDownSlopeState>(path));
         movementStatePack.Add(EditorUtils.CreateScriptableObject<RunningDownSlopeState>(path));
+        movementStatePack.Add(EditorUtils.CreateScriptableObject<SlidingState>(path));
 
         movementStatePack.Add(EditorUtils.CreateScriptableObject<PrimaryAttackStartedState>(path));
         movementStatePack.Add(EditorUtils.CreateScriptableObject<PrimaryAttackPerformedState>(path));

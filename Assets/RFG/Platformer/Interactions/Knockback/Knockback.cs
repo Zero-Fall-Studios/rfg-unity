@@ -26,6 +26,21 @@ namespace RFG
       if (KnockbackData.LayerMask.Contains(other.layer))
       {
         transform.SpawnFromPool(KnockbackData.Effects);
+
+        Character character = other.gameObject.GetComponent<Character>();
+
+        if (character != null)
+        {
+          if (KnockbackData.ChangeCharacterState != null)
+          {
+            character.CharacterState.ChangeState(KnockbackData.ChangeCharacterState.GetType());
+          }
+          if (KnockbackData.ChangeMovementState != null)
+          {
+            character.MovementState.ChangeState(KnockbackData.ChangeMovementState.GetType());
+          }
+        }
+
         if (!KnockbackData.Velocity.Equals(Vector2.zero))
         {
           IPhysics2D body = other.transform.gameObject.GetComponent(typeof(IPhysics2D)) as IPhysics2D;

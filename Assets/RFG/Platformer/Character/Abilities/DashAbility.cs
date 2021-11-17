@@ -28,6 +28,7 @@ namespace RFG
     private IEnumerator _dashCoroutine;
     private float _lastDashAt = 0f;
     private int _numberOfDashesLeft = 2;
+    private bool _hasDashing;
 
     private void Awake()
     {
@@ -45,6 +46,7 @@ namespace RFG
       _movement = _context.inputPack.Movement;
       _dashInput = _context.inputPack.DashInput;
       _settings = _context.settingsPack;
+      _hasDashing = _character.MovementState.HasState(typeof(DashingState));
 
       // Setup events
       OnEnable();
@@ -195,7 +197,7 @@ namespace RFG
 
     public void OnDashStarted(InputAction.CallbackContext ctx)
     {
-      if (!_character.MovementState.HasState(typeof(DashingState)))
+      if (!_hasDashing || (!_settings.SwimCanDash && _character.IsSwimming))
         return;
 
       StartDash();

@@ -179,6 +179,7 @@ namespace RFG
       EnableInput(InputPack?.PrimaryAttackInput, enabled);
       EnableInput(InputPack?.SecondaryAttackInput, enabled);
       EnableInput(InputPack?.SmashDownInput, enabled);
+      EnableInput(InputPack?.SlideInput, enabled);
       EnableInput(InputPack?.UseInput, enabled);
     }
 
@@ -192,6 +193,14 @@ namespace RFG
       {
         reference?.action.Disable();
       }
+    }
+
+    public void OverrideInputPack(InputPack input)
+    {
+    }
+
+    public void ResetInputPack()
+    {
     }
     #endregion
 
@@ -230,10 +239,7 @@ namespace RFG
     #endregion
 
     #region Character State Helpers
-    public bool IsAlive()
-    {
-      return CharacterState.IsInState(typeof(AliveState));
-    }
+    public bool IsAlive => CharacterState.CurrentStateType == typeof(AliveState);
     #endregion
 
     #region Movement State Helpers
@@ -248,86 +254,53 @@ namespace RFG
       MovementState.RestoreDefaultStatePack();
     }
 
-    public bool IsGrounded()
-    {
-      return _controller.State.IsGrounded || _controller.State.JustGotGrounded;
-    }
+    public bool IsGrounded => _controller.State.IsGrounded || _controller.State.JustGotGrounded;
 
-    public bool IsInGroundMovementState()
-    {
-      return (
-        IsGrounded() ||
-        MovementState.IsInState(
-          typeof(IdleState),
-          typeof(LandedState),
-          typeof(WalkingState),
-          typeof(RunningState),
-          typeof(WalkingUpSlopeState),
-          typeof(RunningUpSlopeState),
-          typeof(WalkingDownSlopeState),
-          typeof(RunningDownSlopeState)
-        )
-      );
-    }
+    public bool IsInGroundMovementState =>
+    (
+      IsGrounded ||
+      MovementState.IsInState(
+        typeof(IdleState),
+        typeof(LandedState),
+        typeof(WalkingState),
+        typeof(RunningState),
+        typeof(WalkingUpSlopeState),
+        typeof(RunningUpSlopeState),
+        typeof(WalkingDownSlopeState),
+        typeof(RunningDownSlopeState)
+      )
+    );
 
-    public bool IsInSlopeMovementState()
-    {
-      return
+
+    public bool IsInSlopeMovementState =>
       MovementState.IsInState(
         typeof(WalkingUpSlopeState),
         typeof(RunningUpSlopeState),
         typeof(WalkingDownSlopeState),
         typeof(RunningDownSlopeState)
       );
-    }
 
-    public bool IsInAirMovementState()
-    {
-      return (
-        !IsGrounded() &&
-        MovementState.IsInState(
-          typeof(FallingState),
-          typeof(JumpingState),
-          typeof(JumpingFlipState),
-          typeof(DoubleJumpState)
-        )
-      );
-    }
+    public bool IsInAirMovementState => (
+      !IsGrounded &&
+      MovementState.IsInState(
+        typeof(FallingState),
+        typeof(JumpingState),
+        typeof(JumpingFlipState),
+        typeof(DoubleJumpState)
+      )
+    );
 
-    public bool IsIdle()
-    {
-      return MovementState.IsInState(typeof(IdleState));
-    }
-
-    public bool IsDashing()
-    {
-      return MovementState.IsInState(typeof(DashingState));
-    }
-
-    public bool IsWallClinging()
-    {
-      return MovementState.IsInState(typeof(WallClingingState));
-    }
-
-    public bool IsDangling()
-    {
-      return MovementState.IsInState(typeof(DanglingState));
-    }
-
-    public bool IsLedgeGrabbing()
-    {
-      return MovementState.IsInState(typeof(LedgeGrabState));
-    }
-
-    public bool IsAnyPrimaryAttack()
-    {
-      return MovementState.IsInState(typeof(PrimaryAttackStartedState), typeof(PrimaryAttackCanceledState), typeof(PrimaryAttackPerformedState));
-    }
-
-    public bool IsAnySecondaryAttack()
-    {
-      return MovementState.IsInState(typeof(SecondaryAttackStartedState), typeof(SecondaryAttackCanceledState), typeof(SecondaryAttackPerformedState));
-    }
+    public bool IsInCrouchMovementState => MovementState.CurrentStateType == typeof(CrouchWalkingState);
+    public bool IsIdle => MovementState.CurrentStateType == typeof(IdleState);
+    public bool IsDashing => MovementState.CurrentStateType == typeof(DashingState);
+    public bool IsWallClinging => MovementState.CurrentStateType == typeof(WallClingingState);
+    public bool IsDangling => MovementState.CurrentStateType == typeof(DanglingState);
+    public bool IsSliding => MovementState.CurrentStateType == typeof(SlidingState);
+    public bool IsLedgeGrabbing => MovementState.CurrentStateType == typeof(LedgeGrabState);
+    public bool IsSwimming => MovementState.CurrentStateType == typeof(SwimmingState);
+    public bool IsAnyPrimaryAttack => MovementState.IsInState(typeof(PrimaryAttackStartedState), typeof(PrimaryAttackCanceledState), typeof(PrimaryAttackPerformedState));
+    public bool IsAnySecondaryAttack => MovementState.IsInState(typeof(SecondaryAttackStartedState), typeof(SecondaryAttackCanceledState), typeof(SecondaryAttackPerformedState));
+    public bool IsAnySmashingDown => MovementState.IsInState(typeof(SmashDownStartedState), typeof(SmashDownCollidedState), typeof(SmashDownPerformedState));
     #endregion
   }
 }

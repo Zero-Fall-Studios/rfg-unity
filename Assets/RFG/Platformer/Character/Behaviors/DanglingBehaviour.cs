@@ -69,7 +69,7 @@ namespace RFG
 
     private bool CanDangle()
     {
-      return _settings.CanDangle && _character.IsIdle() && _character.IsGrounded();
+      return _settings.CanDangle && _character.IsIdle && _character.IsGrounded;
     }
     #endregion
   }

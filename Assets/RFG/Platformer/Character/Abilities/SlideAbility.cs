@@ -12,10 +12,12 @@ namespace RFG
     private CharacterControllerState2D _state;
     private InputActionReference _movement;
     private SettingsPack _settings;
-    private InputActionReference _runInput;
-    private bool _isRunning = false;
-    private float _walkToRunTimeElapsed = 0f;
+    private InputActionReference _slideInput;
     private float _horizontalSpeed = 0f;
+    private bool _isSliding;
+    private bool _isSlidingCooldown;
+    private float _slideTimeElapsed;
+    private float _slideCooldownTimeElapsed;
 
     #region Unity Methods
     private void Awake()
@@ -23,13 +25,8 @@ namespace RFG
       _character = GetComponent<Character>();
       _controller = GetComponent<CharacterController2D>();
       _movement = _character.InputPack.Movement;
-      _runInput = _character.InputPack.RunInput;
+      _slideInput = _character.InputPack.SlideInput;
       _settings = _character.SettingsPack;
-
-      if (_settings.AlwaysRun)
-      {
-        _isRunning = true;
-      }
     }
 
     private void Start()
@@ -37,136 +34,69 @@ namespace RFG
       _state = _controller.State;
     }
 
-    private void Update()
+    private void LateUpdate()
     {
-      HandleMovement();
-      DetectFallingMovement();
+      if (_isSliding)
+      {
+        if (_slideTimeElapsed > _settings.SlideTime)
+        {
+          _slideTimeElapsed = 0;
+          _isSliding = false;
+          _isSlidingCooldown = true;
+          _character.EnableAllInput(true);
+        }
+        _slideTimeElapsed += Time.deltaTime;
+        MoveCharacter();
+      }
+      if (_isSlidingCooldown)
+      {
+        if (_slideCooldownTimeElapsed > _settings.SlideCooldownTime)
+        {
+          _isSlidingCooldown = false;
+          _slideCooldownTimeElapsed = 0;
+        }
+        _slideCooldownTimeElapsed += Time.deltaTime;
+      }
+    }
+
+    private void OnEnable()
+    {
+      if (_slideInput != null)
+      {
+        _slideInput.action.started += OnSlideStarted;
+      }
+    }
+
+    private void OnDisable()
+    {
+      if (_slideInput != null)
+      {
+        _slideInput.action.started -= OnSlideStarted;
+      }
     }
     #endregion
 
     #region Handlers
-    private void HandleMovement()
+    private void HandleSlide()
     {
-      if (!CanMove())
+      if (!CanSlide())
       {
         return;
       }
-
-      // Read in horizontal input
-      _horizontalSpeed = _movement.action.ReadValue<Vector2>().x;
-
-      HandleFacing();
-      DetectMovementState();
-      HandleChangeToRunState();
-      MoveCharacter();
+      _isSliding = true;
+      _horizontalSpeed = _movement.action.ReadValue<Vector2>().normalized.x;
+      _character.EnableAllInput(false);
+      _character.MovementState.ChangeState(typeof(SlidingState));
     }
 
-    private bool CanMove()
+    private bool CanSlide()
     {
-      if (!_character.IsAlive() || _character.IsDashing())
-      {
-        ResetMovement();
-        return false;
-      }
-      return true;
-    }
-
-    private void HandleFacing()
-    {
-      if (_horizontalSpeed > 0f)
-      {
-        if (!_state.IsFacingRight && !_controller.rotateOnMouseCursor)
-        {
-          _controller.Flip();
-        }
-      }
-      else if (_horizontalSpeed < 0f)
-      {
-        if (_state.IsFacingRight && !_controller.rotateOnMouseCursor)
-        {
-          _controller.Flip();
-        }
-      }
-    }
-
-    private void DetectMovementState()
-    {
-      if (_character.IsInGroundMovementState())
-      {
-        if (_horizontalSpeed == 0)
-        {
-          if (!_character.IsDangling())
-          {
-            _character.MovementState.ChangeState(typeof(IdleState));
-          }
-          ResetMovement();
-        }
-        else
-        {
-          DetectSlopeMovement();
-          if (_state.IsMovingUpSlope)
-          {
-            _character.MovementState.ChangeState(_isRunning ? typeof(RunningUpSlopeState) : typeof(WalkingUpSlopeState));
-          }
-          else if (_state.IsMovingDownSlope)
-          {
-            _character.MovementState.ChangeState(_isRunning ? typeof(RunningDownSlopeState) : typeof(WalkingDownSlopeState));
-          }
-          else
-          {
-            _character.MovementState.ChangeState(_isRunning ? typeof(RunningState) : typeof(WalkingState));
-          }
-        }
-      }
-    }
-
-    private void DetectSlopeMovement()
-    {
-      _state.IsMovingUpSlope = false;
-      _state.IsMovingDownSlope = false;
-      if (
-        (_state.IsFacingRight && _state.BelowSlopeAngle > 0 && _horizontalSpeed > 0) ||
-        (!_state.IsFacingRight && _state.BelowSlopeAngle < 0 && _horizontalSpeed < 0)
-      )
-      {
-        _state.IsMovingUpSlope = true;
-      }
-      else if (
-        (_state.IsFacingRight && _state.BelowSlopeAngle < 0 && _horizontalSpeed > 0) ||
-        (!_state.IsFacingRight && _state.BelowSlopeAngle > 0 && _horizontalSpeed < 0)
-      )
-      {
-        _state.IsMovingDownSlope = true;
-      }
-    }
-
-    private void HandleChangeToRunState()
-    {
-      // If there is WalkToRunTime, movement and not running
-      if (
-        _settings.WalkToRunTime > 0 &&
-        _horizontalSpeed != 0f &&
-         !_isRunning)
-      {
-        // Now check to see if WalkToRunTime has elapsed enough to start running
-        if (_walkToRunTimeElapsed > _settings.WalkToRunTime)
-        {
-          _isRunning = true;
-          _walkToRunTimeElapsed = 0;
-        }
-        else
-        {
-          _walkToRunTimeElapsed += Time.deltaTime;
-        }
-      }
+      return _character.IsAlive && _character.IsInGroundMovementState && !_character.IsIdle && !_isSliding && !_isSlidingCooldown && !_character.IsSwimming;
     }
 
     private void MoveCharacter()
     {
-      float speed = _isRunning ? _settings.RunningSpeed : _settings.WalkingSpeed;
-      float movementFactor = _state.IsGrounded ? _controller.Parameters.GroundSpeedFactor : _controller.Parameters.AirSpeedFactor;
-      float movementSpeed = _horizontalSpeed * speed * _controller.Parameters.SpeedFactor;
-      float horizontalMovementForce = Mathf.Lerp(_controller.Speed.x, movementSpeed, Time.deltaTime * movementFactor);
+      float horizontalMovementForce = _horizontalSpeed * _settings.SlideSpeed;
 
       // add any external forces that may be active right now
       if (Mathf.Abs(_controller.ExternalForce.x) > 0)
@@ -176,8 +106,6 @@ namespace RFG
 
       // we handle friction
       horizontalMovementForce = HandleFriction(horizontalMovementForce);
-
-      // Debug.Log(horizontalMovementForce);
 
       _controller.SetHorizontalForce(horizontalMovementForce);
     }
@@ -198,74 +126,12 @@ namespace RFG
 
       return force;
     }
-
-    private void ResetMovement()
-    {
-      _walkToRunTimeElapsed = 0;
-      _isRunning = false;
-    }
-
-    private void DetectFallingMovement()
-    {
-      if (
-        _controller.Speed.y < 0 &&
-        !_character.IsIdle() &&
-        !_character.IsInSlopeMovementState() &&
-        !_character.IsWallClinging() &&
-        !_character.IsLedgeGrabbing()
-      )
-      {
-        _character.MovementState.ChangeState(typeof(FallingState));
-      }
-    }
     #endregion
 
     #region Events
-    private void OnRunStarted(InputAction.CallbackContext obj)
+    private void OnSlideStarted(InputAction.CallbackContext obj)
     {
-      _isRunning = true;
-    }
-
-    private void OnRunCanceled(InputAction.CallbackContext obj)
-    {
-      if (_settings.AlwaysRun)
-      {
-        return;
-      }
-      _isRunning = false;
-    }
-
-    private void OnStateTypeChange(Type prevType, Type currentType)
-    {
-      bool beganWalking = prevType != typeof(WalkingState) && currentType == typeof(WalkingState);
-      bool isntWalking = currentType != typeof(WalkingState) && currentType != typeof(WalkingDownSlopeState);
-      if (beganWalking || isntWalking)
-      {
-        _walkToRunTimeElapsed = 0;
-      }
-    }
-
-    private void OnEnable()
-    {
-      // Make sure to setup new events
-      OnDisable();
-
-      if (_runInput != null)
-      {
-        _runInput.action.started += OnRunStarted;
-        _runInput.action.canceled += OnRunCanceled;
-      }
-      _character.MovementState.OnStateTypeChange += OnStateTypeChange;
-    }
-
-    private void OnDisable()
-    {
-      if (_runInput != null)
-      {
-        _runInput.action.started -= OnRunStarted;
-        _runInput.action.canceled -= OnRunCanceled;
-      }
-      _character.MovementState.OnStateTypeChange -= OnStateTypeChange;
+      HandleSlide();
     }
     #endregion
   }

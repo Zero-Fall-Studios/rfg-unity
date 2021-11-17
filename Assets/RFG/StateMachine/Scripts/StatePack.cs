@@ -28,7 +28,12 @@ namespace RFG
 
     public State Find(Type type)
     {
-      return States.Find(state => state.GetType().Equals(type));
+      State state = States.Find(state => state.GetType().Equals(type));
+      if (state == null)
+      {
+        LogExt.Warn<StatePack>($"State {type.ToString()} not found in state pack");
+      }
+      return state;
     }
 
     public bool HasState(Type type)

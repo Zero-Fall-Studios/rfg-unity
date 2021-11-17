@@ -132,6 +132,16 @@ namespace RFG
     public bool CanSmashDownInAir = false;
     public float SmashDownInAirSpeed = 1f;
 
+    [Header("Slide Settings")]
+    public float SlideSpeed = 3f;
+    public float SlideTime = 1f;
+    public float SlideCooldownTime = 1f;
+
+    [Header("Swim Settings")]
+    public float SwimHeight = 3f;
+    public bool SwimCanWallCling = false;
+    public bool SwimCanDash = false;
+
     [Header("AI Settings")]
     public bool CanFollowVertically = false;
 

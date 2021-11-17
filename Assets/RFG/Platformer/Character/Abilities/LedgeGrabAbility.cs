@@ -42,7 +42,7 @@ namespace RFG
     #region Handlers
     private void HandleLedgeGrab()
     {
-      if (!_character.IsLedgeGrabbing())
+      if (!_character.IsLedgeGrabbing)
       {
         return;
       }

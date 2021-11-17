@@ -13,6 +13,7 @@ namespace RFG
     private CharacterControllerState2D _state;
     private InputActionReference _movement;
     private SettingsPack _settings;
+    private bool _hasWallCling = false;
 
     private void Awake()
     {
@@ -26,11 +27,12 @@ namespace RFG
     private void Start()
     {
       _state = _controller.State;
+      _hasWallCling = _character.MovementState.HasState(typeof(WallClingingState));
     }
 
     private void Update()
     {
-      if (!_character.MovementState.HasState(typeof(WallClingingState)))
+      if (!_hasWallCling || (!_settings.SwimCanWallCling && _character.IsSwimming))
         return;
 
       WallCling();

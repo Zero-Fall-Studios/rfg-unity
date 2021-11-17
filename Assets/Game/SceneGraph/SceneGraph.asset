@@ -18,8 +18,8 @@ MonoBehaviour:
   sceneTransitions:
   - {fileID: 893549059311142828}
   bounds:
-    m_Center: {x: 35, y: 15, z: 0}
-    m_Extent: {x: 35, y: 15, z: 0}
+    m_Center: {x: 75, y: 15, z: 0}
+    m_Extent: {x: 75, y: 15, z: 0}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0

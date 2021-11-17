@@ -20,4 +20,5 @@ MonoBehaviour:
   StopEnterEffectsOnExit: 0
   FreezeState: 1
   WaitToUnfreezeTime: 1
-  StatesCanUnfreeze: []
+  StatesCanUnfreeze:
+  - {fileID: 11400000, guid: b04a530bf0fbff440b744bd2b9650a53, type: 2}

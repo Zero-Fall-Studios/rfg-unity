@@ -11,6 +11,10 @@ namespace RFG
     public float Threshold = 0.5f;
     public LayerMask LayerMask;
 
+    [Header("States")]
+    public State ChangeCharacterState;
+    public State ChangeMovementState;
+
     [Header("Effects")]
     public string[] Effects;
   }

@@ -45,6 +45,36 @@ namespace RFG
       HandleMovement();
       DetectFallingMovement();
     }
+
+    private void OnEnable()
+    {
+      if (_runInput != null)
+      {
+        _runInput.action.started += OnRunStarted;
+        _runInput.action.canceled += OnRunCanceled;
+      }
+      if (_crouchInput != null)
+      {
+        _crouchInput.action.started += OnCrouchStarted;
+        _crouchInput.action.canceled += OnCrouchCanceled;
+      }
+      _character.MovementState.OnStateTypeChange += OnStateTypeChange;
+    }
+
+    private void OnDisable()
+    {
+      if (_runInput != null)
+      {
+        _runInput.action.started -= OnRunStarted;
+        _runInput.action.canceled -= OnRunCanceled;
+      }
+      if (_crouchInput != null)
+      {
+        _crouchInput.action.started -= OnCrouchStarted;
+        _crouchInput.action.canceled -= OnCrouchCanceled;
+      }
+      _character.MovementState.OnStateTypeChange -= OnStateTypeChange;
+    }
     #endregion
 
     #region Handlers
@@ -66,7 +96,7 @@ namespace RFG
 
     private bool CanMove()
     {
-      if (!_character.IsAlive() || _character.IsDashing())
+      if (!_character.IsAlive || _character.IsDashing)
       {
         ResetMovement();
         return false;
@@ -94,11 +124,11 @@ namespace RFG
 
     private void DetectMovementState()
     {
-      if (_character.IsInGroundMovementState())
+      if (_character.IsInGroundMovementState)
       {
         if (_horizontalSpeed == 0)
         {
-          if (!_character.IsDangling())
+          if (!_character.IsDangling && !_character.IsSwimming)
           {
             _character.MovementState.ChangeState(_isCrouching ? typeof(CrouchIdleState) : typeof(IdleState));
           }
@@ -221,10 +251,11 @@ namespace RFG
     {
       if (
         _controller.Speed.y < 0 &&
-        !_character.IsIdle() &&
-        !_character.IsInSlopeMovementState() &&
-        !_character.IsWallClinging() &&
-        !_character.IsLedgeGrabbing()
+        !_character.IsIdle &&
+        !_character.IsInSlopeMovementState &&
+        !_character.IsWallClinging &&
+        !_character.IsLedgeGrabbing &&
+        !_character.IsInCrouchMovementState
       )
       {
         _character.MovementState.ChangeState(typeof(FallingState));
@@ -266,36 +297,6 @@ namespace RFG
       {
         _walkToRunTimeElapsed = 0;
       }
-    }
-
-    private void OnEnable()
-    {
-      if (_runInput != null)
-      {
-        _runInput.action.started += OnRunStarted;
-        _runInput.action.canceled += OnRunCanceled;
-      }
-      if (_crouchInput != null)
-      {
-        _crouchInput.action.started += OnCrouchStarted;
-        _crouchInput.action.canceled += OnCrouchCanceled;
-      }
-      _character.MovementState.OnStateTypeChange += OnStateTypeChange;
-    }
-
-    private void OnDisable()
-    {
-      if (_runInput != null)
-      {
-        _runInput.action.started -= OnRunStarted;
-        _runInput.action.canceled -= OnRunCanceled;
-      }
-      if (_crouchInput != null)
-      {
-        _crouchInput.action.started -= OnCrouchStarted;
-        _crouchInput.action.canceled -= OnCrouchCanceled;
-      }
-      _character.MovementState.OnStateTypeChange -= OnStateTypeChange;
     }
     #endregion
   }

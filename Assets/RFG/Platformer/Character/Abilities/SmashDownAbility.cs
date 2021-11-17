@@ -1,7 +1,8 @@
+
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
-using System.Collections;
 
 namespace RFG
 {
@@ -13,7 +14,6 @@ namespace RFG
     private InputActionReference _smashDownInput;
     private bool _pointerOverUi = false;
     private bool _smashingInAir = false;
-    private bool _alreadyCollidied = false;
 
     #region Unity Methods
     private void Awake()
@@ -30,9 +30,8 @@ namespace RFG
 
     private void LateUpdate()
     {
-      if (_smashingInAir && _character.IsGrounded())
+      if (_smashingInAir && _character.IsGrounded)
       {
-        _alreadyCollidied = true;
         HandleSmashDownCollision();
       }
     }
@@ -49,10 +48,6 @@ namespace RFG
 
     public void HandleSmashDownCollision()
     {
-      if (_smashingInAir && !_alreadyCollidied)
-      {
-        return;
-      }
       _controller.SetForce(Vector2.zero);
       _controller.GravityActive(true);
       _character.EnableAllInput(true);
@@ -64,12 +59,11 @@ namespace RFG
     {
       if (!_pointerOverUi)
       {
-        if (_character.IsInAirMovementState() && !_character.SettingsPack.CanSmashDownInAir)
+        if (_character.IsInAirMovementState && !_character.SettingsPack.CanSmashDownInAir)
         {
           return;
         }
-        _smashingInAir = _character.IsInAirMovementState() && _character.SettingsPack.CanSmashDownInAir;
-        _alreadyCollidied = false;
+        _smashingInAir = _character.IsInAirMovementState && _character.SettingsPack.CanSmashDownInAir;
         bool changed = _character.MovementState.ChangeState(typeof(SmashDownStartedState));
         if (changed)
         {
@@ -80,12 +74,24 @@ namespace RFG
       }
     }
 
+    private void OnStateTypeChange(Type prevType, Type currentType)
+    {
+      bool wasPerforming = prevType == typeof(SmashDownPerformedState) && currentType != typeof(SmashDownCollidedState);
+      if (wasPerforming)
+      {
+        _controller.GravityActive(true);
+        _character.EnableAllInput(true);
+        _smashingInAir = false;
+      }
+    }
+
     private void OnEnable()
     {
       if (_smashDownInput != null)
       {
         _smashDownInput.action.started += OnSmashDownStarted;
       }
+      _character.MovementState.OnStateTypeChange += OnStateTypeChange;
     }
 
     private void OnDisable()
@@ -94,6 +100,7 @@ namespace RFG
       {
         _smashDownInput.action.started -= OnSmashDownStarted;
       }
+      _character.MovementState.OnStateTypeChange -= OnStateTypeChange;
     }
 
   }

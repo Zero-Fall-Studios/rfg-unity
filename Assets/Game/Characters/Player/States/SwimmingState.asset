@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: SwimmingState
   m_EditorClassIdentifier: 
   Layer: Base Layer
-  EnterClip: 
+  EnterClip: Swim
   ExitClip: 
   EnterEffects: []
   ExitEffects: []
   StopEnterEffectsOnExit: 0
+  FreezeState: 1
+  WaitToUnfreezeTime: 0
+  StatesCanUnfreeze:
+  - {fileID: 11400000, guid: 136d5bd9cac88094e86cbe61ee1e2a05, type: 2}

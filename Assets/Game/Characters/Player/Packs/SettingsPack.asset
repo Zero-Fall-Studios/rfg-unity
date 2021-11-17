@@ -59,4 +59,10 @@ MonoBehaviour:
   CanAttackInAirSecondary: 1
   CanSmashDownInAir: 1
   SmashDownInAirSpeed: 25
+  SlideSpeed: 5
+  SlideTime: 0.5
+  SlideCooldownTime: 1
+  SwimHeight: 3
+  SwimCanWallCling: 0
+  SwimCanDash: 0
   CanFollowVertically: 0

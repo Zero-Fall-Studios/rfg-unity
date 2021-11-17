@@ -7,7 +7,7 @@ using MyBox;
 namespace RFG
 {
   [AddComponentMenu("RFG/Platformer/Character/Character Controller 2D")]
-  public class CharacterController2D : MonoBehaviour
+  public class CharacterController2D : MonoBehaviour, IPhysics2D
   {
     #region Variables
 

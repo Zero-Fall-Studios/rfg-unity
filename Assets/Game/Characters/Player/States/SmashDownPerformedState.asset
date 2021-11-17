@@ -22,3 +22,4 @@ MonoBehaviour:
   WaitToUnfreezeTime: 0
   StatesCanUnfreeze:
   - {fileID: 11400000, guid: 38670df6043955445a7aac0f2fc63a7a, type: 2}
+  - {fileID: 11400000, guid: b04a530bf0fbff440b744bd2b9650a53, type: 2}
