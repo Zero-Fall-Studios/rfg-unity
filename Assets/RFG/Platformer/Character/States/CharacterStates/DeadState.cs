@@ -10,8 +10,6 @@ namespace RFG
     {
       base.Enter(context);
       StateCharacterContext characterContext = context as StateCharacterContext;
-      characterContext.controller.enabled = false;
-      characterContext.character.EnableAllAbilities(false);
       if (characterContext.character.CharacterType == CharacterType.Player)
       {
         GameManager.Instance.StartCoroutine(characterContext.character.RespawnCo());

@@ -142,6 +142,12 @@ namespace RFG
     public bool SwimCanWallCling = false;
     public bool SwimCanDash = false;
 
+    [Header("Push Settings")]
+    public float PushDetectionRaycastLength = 0.2f;
+
+    [Header("Ladder Settings")]
+    public float LadderClimbingSpeed = 2f;
+
     [Header("AI Settings")]
     public bool CanFollowVertically = false;
 

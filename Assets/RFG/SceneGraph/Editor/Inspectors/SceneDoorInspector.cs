@@ -54,15 +54,18 @@ namespace RFG.SceneGraph
         }
       }
 
-      for (int i = 0; i < options.Count; i++)
+      if (sceneDoor.sceneTransition != null)
       {
-        if (sceneDoor.sceneTransition.from != null && options[i].Equals(sceneDoor.sceneTransition.from.parent.scenePath))
+        for (int i = 0; i < options.Count; i++)
         {
-          selected = i;
-        }
-        else if (sceneDoor.sceneTransition.to != null && options[i].Equals(sceneDoor.sceneTransition.to.parent.scenePath))
-        {
-          selected = i;
+          if (sceneDoor.sceneTransition.from != null && sceneDoor.sceneTransition.from.parent != null && options[i].Equals(sceneDoor.sceneTransition.from.parent.scenePath))
+          {
+            selected = i;
+          }
+          else if (sceneDoor.sceneTransition.to != null && sceneDoor.sceneTransition.to.parent != null && options[i].Equals(sceneDoor.sceneTransition.to.parent.scenePath))
+          {
+            selected = i;
+          }
         }
       }
 

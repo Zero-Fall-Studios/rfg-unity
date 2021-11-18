@@ -11,6 +11,7 @@ namespace RFG
     public State CurrentState;
     public Type PreviousStateType { get; private set; }
     public Type CurrentStateType { get; private set; }
+    public bool Enabled { get; set; } = true;
     public bool Frozen { get; set; } = false;
     public IStateContext Context { get { return _context; } set { _context = value; } }
     public Action<State, State> OnStateChange;
@@ -41,6 +42,9 @@ namespace RFG
 
     public void Update()
     {
+      if (!Enabled)
+        return;
+
       if (CurrentState == null)
         ResetToDefaultState();
 

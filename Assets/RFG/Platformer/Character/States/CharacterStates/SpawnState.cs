@@ -26,6 +26,7 @@ namespace RFG
       characterContext.controller.SetForce(Vector2.zero);
       characterContext.controller.enabled = true;
       characterContext.character.EnableAllAbilities(true);
+      characterContext.character.MovementState.Enabled = true;
 
     }
 

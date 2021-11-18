@@ -162,6 +162,7 @@ namespace RFG
       activeGameObject.GetOrAddComponent<LedgeGrabAbility>();
       activeGameObject.GetOrAddComponent<DanglingBehaviour>();
       activeGameObject.GetOrAddComponent<SlideAbility>();
+      activeGameObject.GetOrAddComponent<PushAbility>();
     }
 
     private void CreateAICharacter()
@@ -277,6 +278,7 @@ namespace RFG
         movementStatePack.Add(EditorUtils.CreateScriptableObject<WalkingDownSlopeState>(path));
         movementStatePack.Add(EditorUtils.CreateScriptableObject<RunningDownSlopeState>(path));
         movementStatePack.Add(EditorUtils.CreateScriptableObject<SlidingState>(path));
+        movementStatePack.Add(EditorUtils.CreateScriptableObject<PushingState>(path));
 
         movementStatePack.Add(EditorUtils.CreateScriptableObject<PrimaryAttackStartedState>(path));
         movementStatePack.Add(EditorUtils.CreateScriptableObject<PrimaryAttackPerformedState>(path));

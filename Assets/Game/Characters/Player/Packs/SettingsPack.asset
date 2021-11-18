@@ -65,4 +65,6 @@ MonoBehaviour:
   SwimHeight: 3
   SwimCanWallCling: 0
   SwimCanDash: 0
+  PushDetectionRaycastLength: 0.3
+  LadderClimbingSpeed: 2
   CanFollowVertically: 0

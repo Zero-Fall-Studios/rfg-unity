@@ -96,7 +96,7 @@ namespace RFG
 
     private bool CanMove()
     {
-      if (!_character.IsAlive || _character.IsDashing)
+      if (!_character.IsAlive || _character.IsDashing || _character.IsLadderCliming)
       {
         ResetMovement();
         return false;
@@ -126,6 +126,10 @@ namespace RFG
     {
       if (_character.IsInGroundMovementState)
       {
+        if (_character.IsPushing)
+        {
+          return;
+        }
         if (_horizontalSpeed == 0)
         {
           if (!_character.IsDangling && !_character.IsSwimming)
@@ -255,7 +259,8 @@ namespace RFG
         !_character.IsInSlopeMovementState &&
         !_character.IsWallClinging &&
         !_character.IsLedgeGrabbing &&
-        !_character.IsInCrouchMovementState
+        !_character.IsInCrouchMovementState &&
+        !_character.IsLadderCliming
       )
       {
         _character.MovementState.ChangeState(typeof(FallingState));

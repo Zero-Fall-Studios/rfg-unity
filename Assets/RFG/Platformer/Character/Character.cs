@@ -94,12 +94,6 @@ namespace RFG
     #region Kill
     public void Kill()
     {
-      StartCoroutine(KillCo());
-    }
-
-    public IEnumerator KillCo()
-    {
-      yield return new WaitForSeconds(0.1f);
       CharacterState.ChangeState(typeof(DeathState));
     }
     #endregion
@@ -280,6 +274,14 @@ namespace RFG
         typeof(RunningDownSlopeState)
       );
 
+    public bool IsJumping => (
+      MovementState.IsInState(
+        typeof(JumpingState),
+        typeof(JumpingFlipState),
+        typeof(DoubleJumpState)
+      )
+    );
+
     public bool IsInAirMovementState => (
       !IsGrounded &&
       MovementState.IsInState(
@@ -298,6 +300,8 @@ namespace RFG
     public bool IsSliding => MovementState.CurrentStateType == typeof(SlidingState);
     public bool IsLedgeGrabbing => MovementState.CurrentStateType == typeof(LedgeGrabState);
     public bool IsSwimming => MovementState.CurrentStateType == typeof(SwimmingState);
+    public bool IsPushing => MovementState.CurrentStateType == typeof(PushingState);
+    public bool IsLadderCliming => MovementState.IsInState(typeof(LadderClimbingState), typeof(LadderIdleState));
     public bool IsAnyPrimaryAttack => MovementState.IsInState(typeof(PrimaryAttackStartedState), typeof(PrimaryAttackCanceledState), typeof(PrimaryAttackPerformedState));
     public bool IsAnySecondaryAttack => MovementState.IsInState(typeof(SecondaryAttackStartedState), typeof(SecondaryAttackCanceledState), typeof(SecondaryAttackPerformedState));
     public bool IsAnySmashingDown => MovementState.IsInState(typeof(SmashDownStartedState), typeof(SmashDownCollidedState), typeof(SmashDownPerformedState));

@@ -43,6 +43,7 @@ namespace RFG
     }
     #endregion
 
+    #region Handlers
     public void SetNumberOfJumpsLeft()
     {
       _numberOfJumpsLeft = _settings.NumberOfJumps;
@@ -62,7 +63,7 @@ namespace RFG
         return true;
       }
 
-      if (_settings.Restrictions == JumpRestrictions.CanJumpOnGround && _numberOfJumpsLeft <= 0)
+      if (!_character.IsLadderCliming && _settings.Restrictions == JumpRestrictions.CanJumpOnGround && _numberOfJumpsLeft <= 0)
       {
         return false;
       }
@@ -171,6 +172,7 @@ namespace RFG
         StartCoroutine(_controller.DisableCollisionsWithMovingPlatforms(_settings.MovingPlatformsJumpCollisionOffDuration));
       }
     }
+    #endregion
 
     #region Events
     private void OnJumpStarted(InputAction.CallbackContext ctx)

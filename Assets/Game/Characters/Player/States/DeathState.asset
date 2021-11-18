@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: DeathState
   m_EditorClassIdentifier: 
   Layer: Base Layer
-  EnterClip: 
+  EnterClip: Die
   ExitClip: 
   EnterEffects: []
   ExitEffects: []
   StopEnterEffectsOnExit: 0
+  FreezeState: 1
+  WaitToUnfreezeTime: 1
+  StatesCanUnfreeze: []

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Scene
   m_EditorClassIdentifier: 
   guid: bb778ac94039d6046886c7281a96b39f
-  position: {x: 25, y: -4}
+  position: {x: -103, y: -8}
   scenePath: Assets/Game/Scenes/SampleScene.unity
   sceneTransitions:
   - {fileID: 893549059311142828}
@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: SceneTransition
   m_EditorClassIdentifier: 
   guid: 2ee6f902e39745348a2392cfd9003f65
-  position: {x: 50, y: 55}
+  position: {x: -78, y: 51}
   parent: {fileID: -8369724166945346415}
   from: {fileID: 0}
   to: {fileID: 0}
