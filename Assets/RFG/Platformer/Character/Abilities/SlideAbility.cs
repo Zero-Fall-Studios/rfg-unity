@@ -34,20 +34,8 @@ namespace RFG
       _state = _controller.State;
     }
 
-    private void LateUpdate()
+    private void Update()
     {
-      if (_isSliding)
-      {
-        if (_slideTimeElapsed > _settings.SlideTime)
-        {
-          _slideTimeElapsed = 0;
-          _isSliding = false;
-          _isSlidingCooldown = true;
-          _character.EnableAllInput(true);
-        }
-        _slideTimeElapsed += Time.deltaTime;
-        MoveCharacter();
-      }
       if (_isSlidingCooldown)
       {
         if (_slideCooldownTimeElapsed > _settings.SlideCooldownTime)
@@ -56,6 +44,21 @@ namespace RFG
           _slideCooldownTimeElapsed = 0;
         }
         _slideCooldownTimeElapsed += Time.deltaTime;
+        return;
+      }
+      if (_isSliding)
+      {
+        if (_slideTimeElapsed > _settings.SlideTime)
+        {
+          _slideTimeElapsed = 0;
+          _isSliding = false;
+          _isSlidingCooldown = true;
+          _character.EnableAllInput(true);
+          _character.MovementState.ChangeState(typeof(IdleState));
+          return;
+        }
+        _slideTimeElapsed += Time.deltaTime;
+        MoveCharacter();
       }
     }
 
@@ -84,8 +87,8 @@ namespace RFG
         return;
       }
       _isSliding = true;
-      _horizontalSpeed = _movement.action.ReadValue<Vector2>().normalized.x;
-      _character.EnableAllInput(false);
+      _horizontalSpeed = _movement.action.ReadValue<Vector2>().x;
+      // _character.EnableAllInput(false);
       _character.MovementState.ChangeState(typeof(SlidingState));
     }
 
@@ -96,7 +99,13 @@ namespace RFG
 
     private void MoveCharacter()
     {
-      float horizontalMovementForce = _horizontalSpeed * _settings.SlideSpeed;
+
+
+      float speed = _settings.SlideSpeed;
+      // float speed = _settings.WalkingSpeed;
+      float movementFactor = _controller.Parameters.GroundSpeedFactor;
+      float movementSpeed = _horizontalSpeed * speed * _controller.Parameters.SpeedFactor;
+      float horizontalMovementForce = Mathf.Lerp(_controller.Speed.x, movementSpeed, Time.deltaTime * movementFactor);
 
       // add any external forces that may be active right now
       if (Mathf.Abs(_controller.ExternalForce.x) > 0)
@@ -106,6 +115,8 @@ namespace RFG
 
       // we handle friction
       horizontalMovementForce = HandleFriction(horizontalMovementForce);
+
+      // Debug.Log(horizontalMovementForce);
 
       _controller.SetHorizontalForce(horizontalMovementForce);
     }

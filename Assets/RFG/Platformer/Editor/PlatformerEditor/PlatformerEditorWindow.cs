@@ -12,6 +12,7 @@ namespace RFG
       GetWindow<PlatformerEditorWindow>("PlatformerEditorWindow");
     }
 
+    #region GUI
     public virtual void CreateGUI()
     {
       VisualElement root = rootVisualElement;
@@ -25,15 +26,54 @@ namespace RFG
       VisualElement mainContainer = root.Q<VisualElement>("container");
 
       mainContainer.Add(CreateManager());
-      mainContainer.Add(CreateCharacter());
-      mainContainer.Add(CreateCharacterStates());
-      mainContainer.Add(CreateCharacterPacks());
-      mainContainer.Add(CreateCharacterParams());
+      mainContainer.Add(CreateCharacterContainer());
     }
 
+    protected VisualElement CreateButtonContainer(string name)
+    {
+      VisualElement container = new VisualElement();
+      container.name = name;
+      container.AddToClassList("container");
+
+      Label label = new Label();
+      label.name = $"{name}-label";
+      label.AddToClassList("container-label");
+
+      VisualElement buttons = new VisualElement();
+      buttons.name = $"{name}-buttons";
+      buttons.AddToClassList("buttons");
+
+      container.Add(label);
+      container.Add(buttons);
+
+      return container;
+    }
+
+    protected VisualElement CreateControlsContainer(string name)
+    {
+      VisualElement container = new VisualElement();
+      container.name = name;
+      container.AddToClassList("container");
+
+      Label label = new Label();
+      label.name = $"{name}-label";
+      label.AddToClassList("container-label");
+
+      VisualElement controls = new VisualElement();
+      controls.name = $"{name}-controls";
+      controls.AddToClassList("cotrols");
+
+      container.Add(label);
+      container.Add(controls);
+
+      return container;
+    }
+    #endregion
+
+    #region Manager
     private VisualElement CreateManager()
     {
-      VisualElement platformerManager = CreateContainer("platformer-manager");
+      VisualElement platformerManager = CreateButtonContainer("platformer-manager");
 
       VisualElement platformerManagerButtons = platformerManager.Q<VisualElement>("platformer-manager-buttons");
 
@@ -60,112 +100,114 @@ namespace RFG
 
       return platformerManager;
     }
-
-    protected VisualElement CreateContainer(string name)
-    {
-      VisualElement container = new VisualElement();
-      container.name = name;
-      container.AddToClassList("container");
-
-      Label label = new Label();
-      label.name = $"{name}-label";
-      label.AddToClassList("container-label");
-
-      VisualElement buttons = new VisualElement();
-      buttons.name = $"{name}-buttons";
-      buttons.AddToClassList("buttons");
-
-      container.Add(label);
-      container.Add(buttons);
-
-      return container;
-    }
+    #endregion
 
     #region Create Character
-    private VisualElement CreateCharacter()
+    private VisualElement CreateCharacterContainer()
     {
-      VisualElement platformerCharacter = CreateContainer("platformer-Character");
+      VisualElement container = CreateControlsContainer("platformer-Character");
 
-      VisualElement platformerCharacterButtons = platformerCharacter.Q<VisualElement>("platformer-Character-buttons");
+      VisualElement controls = container.Q<VisualElement>("platformer-Character-controls");
 
-      Button createPlayerButton = new Button(() =>
+      TextField textField = new TextField()
       {
-        CreatePlayer();
+        label = "Character Name"
+      };
+
+      Button createCharacterButton = new Button(() =>
+      {
+        CreateCharacter(textField.value);
       })
       {
-        name = "player-button",
-        text = "Create Player"
+        name = "character-button",
+        text = "Create Character"
       };
 
       Button createAiButton = new Button(() =>
       {
-        CreateAICharacter();
+        CreateAICharacter(textField.value);
       })
       {
-        name = "layers-button",
+        name = "ai-character-button",
         text = "Create AI Character"
       };
 
-      platformerCharacterButtons.Add(createPlayerButton);
-      platformerCharacterButtons.Add(createAiButton);
+      controls.Add(textField);
+      controls.Add(createCharacterButton);
+      controls.Add(createAiButton);
 
-      return platformerCharacter;
+      return container;
     }
 
-    private void CreatePlayer()
+    private void CreateCharacter(string name)
     {
       GameObject activeGameObject = Selection.activeGameObject;
 
       if (activeGameObject == null)
       {
-        LogExt.Warn<PlatformerEditorWindow>("Please select a game object first before clicking create player");
-        return;
+        activeGameObject = new GameObject();
+        EditorGUIUtility.PingObject(activeGameObject);
+        Selection.activeGameObject = activeGameObject;
       }
+
+      activeGameObject.name = name;
 
       Character character = activeGameObject.GetOrAddComponent<Character>();
       character.CharacterType = CharacterType.Player;
       character.gameObject.layer = LayerMask.NameToLayer("Player");
       character.gameObject.tag = "Player";
 
-      Rigidbody2D _rigidbody = activeGameObject.GetOrAddComponent<Rigidbody2D>();
-      _rigidbody.useAutoMass = false;
-      _rigidbody.mass = 1;
-      _rigidbody.drag = 0;
-      _rigidbody.angularDrag = 0.05f;
-      _rigidbody.gravityScale = 1;
-      _rigidbody.interpolation = RigidbodyInterpolation2D.None;
-      _rigidbody.sleepMode = RigidbodySleepMode2D.NeverSleep;
-      _rigidbody.collisionDetectionMode = CollisionDetectionMode2D.Discrete;
-      _rigidbody.isKinematic = true;
-      _rigidbody.simulated = true;
+      Rigidbody2D rigidbody = activeGameObject.GetOrAddComponent<Rigidbody2D>();
+      rigidbody.useAutoMass = false;
+      rigidbody.mass = 1;
+      rigidbody.drag = 0;
+      rigidbody.angularDrag = 0.05f;
+      rigidbody.gravityScale = 1;
+      rigidbody.interpolation = RigidbodyInterpolation2D.None;
+      rigidbody.sleepMode = RigidbodySleepMode2D.NeverSleep;
+      rigidbody.collisionDetectionMode = CollisionDetectionMode2D.Discrete;
+      rigidbody.isKinematic = true;
+      rigidbody.simulated = true;
 
-      BoxCollider2D _collider = activeGameObject.GetOrAddComponent<BoxCollider2D>();
-      _collider.isTrigger = true;
+      BoxCollider2D collider = activeGameObject.GetOrAddComponent<BoxCollider2D>();
+      collider.isTrigger = true;
 
-      CharacterController2D _controller = activeGameObject.GetOrAddComponent<CharacterController2D>();
-      _controller.PlatformMask = LayerMask.GetMask("Platforms");
-      _controller.OneWayPlatformMask = LayerMask.GetMask("OneWayPlatforms");
-      _controller.MovingPlatformMask = LayerMask.GetMask("MovingPlatforms");
-      _controller.OneWayMovingPlatformMask = LayerMask.GetMask("OneWayMovingPlatforms");
-      _controller.StairsMask = LayerMask.GetMask("Stairs");
+      CharacterController2D controller = activeGameObject.GetOrAddComponent<CharacterController2D>();
+      controller.PlatformMask = LayerMask.GetMask("Platforms");
+      controller.OneWayPlatformMask = LayerMask.GetMask("OneWayPlatforms");
+      controller.MovingPlatformMask = LayerMask.GetMask("MovingPlatforms");
+      controller.OneWayMovingPlatformMask = LayerMask.GetMask("OneWayMovingPlatforms");
+      controller.StairsMask = LayerMask.GetMask("Stairs");
 
+      activeGameObject.GetOrAddComponent<SpriteRenderer>();
       activeGameObject.GetOrAddComponent<Animator>();
-      activeGameObject.GetOrAddComponent<HealthBehaviour>();
-      activeGameObject.GetOrAddComponent<MovementAbility>();
-      activeGameObject.GetOrAddComponent<JumpAbility>();
+
       activeGameObject.GetOrAddComponent<AttackAbility>();
       activeGameObject.GetOrAddComponent<DashAbility>();
+      activeGameObject.GetOrAddComponent<JumpAbility>();
+      activeGameObject.GetOrAddComponent<LadderClimbingAbility>();
+      activeGameObject.GetOrAddComponent<LedgeGrabAbility>();
+      activeGameObject.GetOrAddComponent<MovementAbility>();
       activeGameObject.GetOrAddComponent<PauseAbility>();
+      activeGameObject.GetOrAddComponent<PushAbility>();
+      activeGameObject.GetOrAddComponent<SlideAbility>();
+      activeGameObject.GetOrAddComponent<SmashDownAbility>();
+      activeGameObject.GetOrAddComponent<StairsAbility>();
+      activeGameObject.GetOrAddComponent<SwimAbility>();
       activeGameObject.GetOrAddComponent<WallClingingAbility>();
       activeGameObject.GetOrAddComponent<WallJumpAbility>();
-      activeGameObject.GetOrAddComponent<StairsAbility>();
-      activeGameObject.GetOrAddComponent<LedgeGrabAbility>();
+
       activeGameObject.GetOrAddComponent<DanglingBehaviour>();
-      activeGameObject.GetOrAddComponent<SlideAbility>();
-      activeGameObject.GetOrAddComponent<PushAbility>();
+      activeGameObject.GetOrAddComponent<HealthBehaviour>();
+      activeGameObject.GetOrAddComponent<SceneBoundsBehaviour>();
+
+      string newFolderPath = CreateFolderStructure(name);
+      CreatePacks(activeGameObject, newFolderPath + "/Settings");
+      CreateParams(activeGameObject, newFolderPath + "/Settings");
+      CreateInventory(activeGameObject, newFolderPath + "/Items");
     }
 
-    private void CreateAICharacter()
+    private void CreateAICharacter(string name)
     {
       GameObject activeGameObject = Selection.activeGameObject;
 
@@ -213,179 +255,142 @@ namespace RFG
     }
     #endregion
 
-    #region Create States
-    private VisualElement CreateCharacterStates()
+
+
+    #region Create
+    private string CreateFolderStructure(string name)
     {
-      VisualElement platformerCharacterStates = CreateContainer("platformer-CharacterStates");
-
-      VisualElement platformerCharacterStatesButtons = platformerCharacterStates.Q<VisualElement>("platformer-CharacterStates-buttons");
-
-      Button createStatesButton = new Button(() =>
-      {
-        CreateStates();
-      })
-      {
-        name = "states-button",
-        text = "Create Character States"
-      };
-
-      platformerCharacterStatesButtons.Add(createStatesButton);
-
-      return platformerCharacterStates;
-    }
-
-    private void CreateStates()
-    {
-      GameObject activeGameObject = Selection.activeGameObject;
-
-      if (activeGameObject == null)
-      {
-        LogExt.Warn<PlatformerEditorWindow>("Please select a game object first before clicking create states");
-        return;
-      }
-
-      Character character = activeGameObject.GetOrAddComponent<Character>();
-
       string path;
       if (EditorUtils.TryGetActiveFolderPath(out path))
       {
-        StatePack characterStatePack = EditorUtils.CreateScriptableObject<StatePack>(path, "CharacterStatePack");
-        characterStatePack.DefaultState = EditorUtils.CreateScriptableObject<SpawnState>(path);
-        characterStatePack.Add(characterStatePack.DefaultState);
-        characterStatePack.Add(EditorUtils.CreateScriptableObject<AliveState>(path));
-        characterStatePack.Add(EditorUtils.CreateScriptableObject<DeadState>(path));
-        characterStatePack.Add(EditorUtils.CreateScriptableObject<DeathState>(path));
-        EditorUtility.SetDirty(characterStatePack);
+        string guid = AssetDatabase.CreateFolder(path, name);
+        string newFolderPath = AssetDatabase.GUIDToAssetPath(guid);
 
-        StatePack movementStatePack = EditorUtils.CreateScriptableObject<StatePack>(path, "MovementStatePack");
-        movementStatePack.DefaultState = EditorUtils.CreateScriptableObject<IdleState>(path);
-        movementStatePack.Add(movementStatePack.DefaultState);
-        movementStatePack.Add(EditorUtils.CreateScriptableObject<DanglingState>(path));
-        movementStatePack.Add(EditorUtils.CreateScriptableObject<FallingState>(path));
-        movementStatePack.Add(EditorUtils.CreateScriptableObject<JumpingState>(path));
-        movementStatePack.Add(EditorUtils.CreateScriptableObject<JumpingFlipState>(path));
-        movementStatePack.Add(EditorUtils.CreateScriptableObject<KnockbackState>(path));
-        movementStatePack.Add(EditorUtils.CreateScriptableObject<LandedState>(path));
-        movementStatePack.Add(EditorUtils.CreateScriptableObject<RunningState>(path));
-        movementStatePack.Add(EditorUtils.CreateScriptableObject<SwimmingState>(path));
-        movementStatePack.Add(EditorUtils.CreateScriptableObject<WalkingState>(path));
-        movementStatePack.Add(EditorUtils.CreateScriptableObject<LedgeGrabState>(path));
-        movementStatePack.Add(EditorUtils.CreateScriptableObject<LedgeClimbingState>(path));
-        movementStatePack.Add(EditorUtils.CreateScriptableObject<CrouchIdleState>(path));
-        movementStatePack.Add(EditorUtils.CreateScriptableObject<CrouchWalkingState>(path));
-        movementStatePack.Add(EditorUtils.CreateScriptableObject<WalkingUpSlopeState>(path));
-        movementStatePack.Add(EditorUtils.CreateScriptableObject<RunningUpSlopeState>(path));
-        movementStatePack.Add(EditorUtils.CreateScriptableObject<WalkingDownSlopeState>(path));
-        movementStatePack.Add(EditorUtils.CreateScriptableObject<RunningDownSlopeState>(path));
-        movementStatePack.Add(EditorUtils.CreateScriptableObject<SlidingState>(path));
-        movementStatePack.Add(EditorUtils.CreateScriptableObject<PushingState>(path));
+        AssetDatabase.CreateFolder(newFolderPath, "Animations");
+        AssetDatabase.CreateFolder(newFolderPath, "Settings");
+        AssetDatabase.CreateFolder(newFolderPath, "Items");
+        AssetDatabase.CreateFolder(newFolderPath, "Sprites");
 
-        movementStatePack.Add(EditorUtils.CreateScriptableObject<PrimaryAttackStartedState>(path));
-        movementStatePack.Add(EditorUtils.CreateScriptableObject<PrimaryAttackPerformedState>(path));
-        movementStatePack.Add(EditorUtils.CreateScriptableObject<PrimaryAttackCanceledState>(path));
-        movementStatePack.Add(EditorUtils.CreateScriptableObject<SecondaryAttackStartedState>(path));
-        movementStatePack.Add(EditorUtils.CreateScriptableObject<SecondaryAttackPerformedState>(path));
-        movementStatePack.Add(EditorUtils.CreateScriptableObject<SecondaryAttackCanceledState>(path));
-
-        movementStatePack.Add(EditorUtils.CreateScriptableObject<SmashDownStartedState>(path));
-        movementStatePack.Add(EditorUtils.CreateScriptableObject<SmashDownPerformedState>(path));
-        movementStatePack.Add(EditorUtils.CreateScriptableObject<SmashDownCollidedState>(path));
-        EditorUtility.SetDirty(movementStatePack);
-
-        character.CharacterState.StatePack = characterStatePack;
-        character.MovementState.StatePack = movementStatePack;
-
-      }
-    }
-    #endregion
-
-    #region Create Packs
-    private VisualElement CreateCharacterPacks()
-    {
-      VisualElement platformerCharacterPacks = CreateContainer("platformer-CharacterPacks");
-
-      VisualElement platformerCharacterPacksButtons = platformerCharacterPacks.Q<VisualElement>("platformer-CharacterPacks-buttons");
-
-      Button createPacksButton = new Button(() =>
-      {
-        CreatePacks();
-      })
-      {
-        name = "Packs-button",
-        text = "Create Character Packs"
-      };
-
-      platformerCharacterPacksButtons.Add(createPacksButton);
-
-      return platformerCharacterPacks;
-    }
-
-    private void CreatePacks()
-    {
-      GameObject activeGameObject = Selection.activeGameObject;
-
-      if (activeGameObject == null)
-      {
-        LogExt.Warn<PlatformerEditorWindow>("Please select a game object first before clicking create states");
-        return;
+        AssetDatabase.SaveAssets();
+        EditorUtility.SetDirty(this);
+        return newFolderPath;
       }
 
-      Character character = activeGameObject.GetOrAddComponent<Character>();
-
-      string path;
-      if (EditorUtils.TryGetActiveFolderPath(out path))
-      {
-        InputPack inputPack = EditorUtils.CreateScriptableObject<InputPack>(path);
-        EditorUtility.SetDirty(inputPack);
-
-        SettingsPack settingsPack = EditorUtils.CreateScriptableObject<SettingsPack>(path);
-        EditorUtility.SetDirty(settingsPack);
-
-        character.InputPack = inputPack;
-        character.SettingsPack = settingsPack;
-      }
-    }
-    #endregion
-
-    #region Create Params
-    private VisualElement CreateCharacterParams()
-    {
-      VisualElement platformerCharacterParams = CreateContainer("platformer-CharacterParams");
-
-      VisualElement platformerCharacterParamsButtons = platformerCharacterParams.Q<VisualElement>("platformer-CharacterParams-buttons");
-
-      Button createParamsButton = new Button(() =>
-      {
-        CreateParams();
-      })
-      {
-        name = "Params-button",
-        text = "Create Character Controller Params"
-      };
-
-      platformerCharacterParamsButtons.Add(createParamsButton);
-
-      return platformerCharacterParams;
+      return null;
     }
 
-    private void CreateParams()
+    private void CreatePacks(GameObject activeGameObject, string path)
     {
-      GameObject activeGameObject = Selection.activeGameObject;
+      InputPack inputPack = EditorUtils.CreateScriptableObject<InputPack>(path);
+      EditorUtility.SetDirty(inputPack);
 
-      if (activeGameObject == null)
+      SettingsPack settingsPack = EditorUtils.CreateScriptableObject<SettingsPack>(path);
+      EditorUtility.SetDirty(settingsPack);
+
+      StatePack characterStatePack = EditorUtils.CreateScriptableObject<StatePack>(path, "CharacterStatePack");
+      StatePack movementStatePack = EditorUtils.CreateScriptableObject<StatePack>(path, "MovementStatePack");
+
+      if (activeGameObject != null)
       {
-        LogExt.Warn<PlatformerEditorWindow>("Please select a game object first before clicking create states");
-        return;
+        Character character = activeGameObject.GetOrAddComponent<Character>();
+        if (character != null)
+        {
+          character.InputPack = inputPack;
+          character.SettingsPack = settingsPack;
+          character.CharacterState.StatePack = characterStatePack;
+          character.MovementState.StatePack = movementStatePack;
+
+          GenerateCharacterStates(characterStatePack);
+          GenerateMovementStates(movementStatePack);
+        }
       }
+    }
 
-      CharacterController2D controller2D = activeGameObject.GetOrAddComponent<CharacterController2D>();
+    private void CreateParams(GameObject activeGameObject, string path)
+    {
+      CharacterControllerParameters2D controllerParams = EditorUtils.CreateScriptableObject<CharacterControllerParameters2D>(path);
+      EditorUtility.SetDirty(controllerParams);
 
-      string path;
-      if (EditorUtils.TryGetActiveFolderPath(out path))
+      if (activeGameObject != null)
       {
-        CharacterControllerParameters2D controllerParams = EditorUtils.CreateScriptableObject<CharacterControllerParameters2D>(path);
-        EditorUtility.SetDirty(controllerParams);
-        controller2D.DefaultParameters = controllerParams;
+        CharacterController2D controller2D = activeGameObject.GetOrAddComponent<CharacterController2D>();
+        if (controller2D != null)
+        {
+
+          controller2D.DefaultParameters = controllerParams;
+        }
+      }
+    }
+
+    private void GenerateCharacterStates(StatePack statePack)
+    {
+      statePack.AddToPack<SpawnState>(true);
+      statePack.AddToPack<AliveState>();
+      statePack.AddToPack<DeadState>();
+      statePack.AddToPack<DeathState>("Death", true, 1f);
+    }
+
+    private void GenerateMovementStates(StatePack statePack)
+    {
+      IdleState idleState = statePack.AddToPack<IdleState>("Idle", false, 0, true);
+      statePack.AddToPack<WalkingState>("Walking");
+      statePack.AddToPack<RunningState>("Running");
+
+      FallingState fallingState = statePack.AddToPack<FallingState>("Falling");
+      statePack.AddToPack<LandedState>("Landed");
+
+      statePack.AddToPack<CrouchIdleState>("CrouchIdle");
+      statePack.AddToPack<CrouchWalkingState>("CrouchWalking");
+
+      statePack.AddToPack<DanglingState>("Dangling");
+      DashingState dashingState = statePack.AddToPack<DashingState>("Dashing");
+      statePack.AddToPack<LadderIdleState>("LadderIdle");
+      LadderClimbingState ladderClimbingState = statePack.AddToPack<LadderClimbingState>("LadderClimbing");
+      statePack.AddToPack<LedgeClimbingState>("LedgeClimbing");
+      LedgeGrabState ledgeGrabState = statePack.AddToPack<LedgeGrabState>("LedgeGrab");
+
+      statePack.AddToPack<WalkingUpSlopeState>("WalkingUpSlope");
+      statePack.AddToPack<RunningUpSlopeState>("RunningUpSlope");
+      statePack.AddToPack<WalkingDownSlopeState>("Walking");
+      statePack.AddToPack<RunningDownSlopeState>("Running");
+      statePack.AddToPack<SlidingState>("Sliding", true, 0.5f, fallingState);
+      statePack.AddToPack<PushingState>("Pushing");
+      statePack.AddToPack<WallClingingState>("WallClinging");
+      statePack.AddToPack<WallJumpingState>("Jumping");
+      SwimmingState swimmingState = statePack.AddToPack<SwimmingState>("Swimming", true, 0, false, idleState);
+
+      PrimaryAttackStartedState primaryAttackStartedState = statePack.AddToPack<PrimaryAttackStartedState>();
+      statePack.AddToPack<PrimaryAttackPerformedState>("PrimaryAttackPerformed", true);
+      statePack.AddToPack<PrimaryAttackCanceledState>();
+      SecondaryAttackStartedState secondaryAttackStartedState = statePack.AddToPack<SecondaryAttackStartedState>();
+      statePack.AddToPack<SecondaryAttackPerformedState>("SecondaryAttackPerformed", true);
+      statePack.AddToPack<SecondaryAttackCanceledState>();
+
+      SmashDownStartedState smashDownStartedState = statePack.AddToPack<SmashDownStartedState>("SmashDownStarted", true);
+      SmashDownCollidedState smashDownCollidedState = statePack.AddToPack<SmashDownCollidedState>("SmashDownCollided", true, 1, false, swimmingState);
+      SmashDownPerformedState smashDownPerformedState = statePack.AddToPack<SmashDownPerformedState>("SmashDownPerformed", true, 0, false, smashDownCollidedState, swimmingState);
+      smashDownStartedState.StatesCanUnfreeze = new State[] { smashDownPerformedState };
+
+      DamageState damageState = statePack.AddToPack<DamageState>("Damage", true, 0.5f, false);
+      damageState.StatesCanUnfreeze = new State[] { damageState };
+
+      statePack.AddToPack<JumpingState>("Jumping", true, 0, false, ledgeGrabState, primaryAttackStartedState, secondaryAttackStartedState, fallingState, smashDownStartedState, dashingState, ladderClimbingState);
+      statePack.AddToPack<JumpingFlipState>("JumpingFlip", true, 0, false, ledgeGrabState, primaryAttackStartedState, secondaryAttackStartedState, smashDownStartedState, dashingState, ladderClimbingState);
+      statePack.AddToPack<DoubleJumpState>("Jumping", true, 0, false);
+    }
+
+    private void CreateInventory(GameObject activeGameObject, string path)
+    {
+      Inventory inventory = EditorUtils.CreateScriptableObject<Inventory>(path);
+      EditorUtility.SetDirty(inventory);
+
+      if (activeGameObject != null)
+      {
+        PlayerInventory playerInventory = activeGameObject.GetOrAddComponent<PlayerInventory>();
+        if (playerInventory != null)
+        {
+          playerInventory.Inventory = inventory;
+        }
       }
     }
     #endregion

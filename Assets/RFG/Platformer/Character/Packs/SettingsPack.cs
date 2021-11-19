@@ -160,6 +160,7 @@ namespace RFG
       AttackSpeed = from.AttackSpeed;
       DanglingRaycastOrigin = from.DanglingRaycastOrigin;
       DanglingRaycastLength = from.DanglingRaycastLength;
+      CanDangle = from.CanDangle;
       DashDistance = from.DashDistance;
       DashForce = from.DashForce;
       TotalDashes = from.TotalDashes;
@@ -181,6 +182,8 @@ namespace RFG
       RunningPower = from.RunningPower;
       PowerGainPerFrame = from.PowerGainPerFrame;
       CooldownTimer = from.CooldownTimer;
+      WalkToRunTime = from.WalkToRunTime;
+      AlwaysRun = from.AlwaysRun;
       Threshold = from.Threshold;
       StairsAheadDetectionRaycastOrigin = from.StairsAheadDetectionRaycastOrigin;
       StairsAheadDetectionRaycastLength = from.StairsAheadDetectionRaycastLength;
@@ -188,12 +191,28 @@ namespace RFG
       StairsBelowDetectionRaycastLength = from.StairsBelowDetectionRaycastLength;
       StairsBelowLockTime = from.StairsBelowLockTime;
       WalkingSpeed = from.WalkingSpeed;
+      CrouchWalkingSpeed = from.CrouchWalkingSpeed;
       WallClingingSlowFactor = from.WallClingingSlowFactor;
       RaycastVerticalOffset = from.RaycastVerticalOffset;
       WallClingingTolerance = from.WallClingingTolerance;
       WallClingingInputThreshold = from.WallClingingInputThreshold;
       WallJumpInputThreshold = from.WallJumpInputThreshold;
       WallJumpForce = from.WallJumpForce;
+      MinimumHangingTime = from.MinimumHangingTime;
+      ClimbingAnimationDuration = from.ClimbingAnimationDuration;
+      CanAttackInAirPrimary = from.CanAttackInAirPrimary;
+      CanAttackInAirSecondary = from.CanAttackInAirSecondary;
+      CanSmashDownInAir = from.CanSmashDownInAir;
+      SmashDownInAirSpeed = from.SmashDownInAirSpeed;
+      SlideSpeed = from.SlideSpeed;
+      SlideTime = from.SlideTime;
+      SlideCooldownTime = from.SlideCooldownTime;
+      SwimHeight = from.SwimHeight;
+      SwimCanWallCling = from.SwimCanWallCling;
+      SwimCanDash = from.SwimCanDash;
+      PushDetectionRaycastLength = from.PushDetectionRaycastLength;
+      LadderClimbingSpeed = from.LadderClimbingSpeed;
+      CanFollowVertically = from.CanFollowVertically;
 
       EditorUtility.SetDirty(this);
     }

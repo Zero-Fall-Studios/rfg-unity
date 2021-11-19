@@ -96,7 +96,7 @@ namespace RFG
 
     private bool CanMove()
     {
-      if (!_character.IsAlive || _character.IsDashing || _character.IsLadderCliming)
+      if (!_character.IsAlive || _character.IsDashing || _character.IsLadderCliming || _character.IsSliding)
       {
         ResetMovement();
         return false;

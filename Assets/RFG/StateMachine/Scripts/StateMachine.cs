@@ -87,6 +87,10 @@ namespace RFG
 
       // Enter the new state
       CurrentState = Find(newStateType);
+
+      // TODO - check if has sub states
+      // Example - there might be many death states. Need to find a way to pull that substate
+
       Frozen = CurrentState.FreezeState;
       CurrentStateType = newStateType;
       CurrentState.Enter(_context);

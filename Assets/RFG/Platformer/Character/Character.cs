@@ -179,6 +179,10 @@ namespace RFG
 
     public void EnableInput(InputActionReference reference, bool enabled)
     {
+      if (reference == null)
+      {
+        LogExt.Warn<Character>($"InputActionReference not set in input pack");
+      }
       if (enabled)
       {
         reference?.action.Enable();
