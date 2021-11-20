@@ -48,9 +48,6 @@ namespace RFG
 
     public void HandleSmashDownCollision()
     {
-      _controller.SetForce(Vector2.zero);
-      _controller.GravityActive(true);
-      _character.EnableAllInput(true);
       _character.MovementState.ChangeState(typeof(SmashDownCollidedState));
       _smashingInAir = false;
     }
@@ -64,13 +61,7 @@ namespace RFG
           return;
         }
         _smashingInAir = _character.IsInAirMovementState && _character.SettingsPack.CanSmashDownInAir;
-        bool changed = _character.MovementState.ChangeState(typeof(SmashDownStartedState));
-        if (changed)
-        {
-          _controller.SetForce(Vector2.zero);
-          _controller.GravityActive(false);
-          _character.EnableAllInput(false);
-        }
+        _character.MovementState.ChangeState(typeof(SmashDownStartedState));
       }
     }
 

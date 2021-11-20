@@ -64,7 +64,7 @@ MonoBehaviour:
   FreezeState: 1
   WaitToUnfreezeTime: 0
   StatesCanUnfreeze:
-  - {fileID: 8314428680398048515}
+  - {fileID: -7806633455591822282}
 --- !u!114 &-7520128619571668608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,6 +130,7 @@ MonoBehaviour:
   StatesCanUnfreeze:
   - {fileID: -1946465307137326983}
   - {fileID: -7628632275599571625}
+  - {fileID: -7715185371958773332}
 --- !u!114 &-4780916624445742120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,6 +285,7 @@ MonoBehaviour:
   WaitToUnfreezeTime: 1
   StatesCanUnfreeze:
   - {fileID: -7628632275599571625}
+  - {fileID: -7715185371958773332}
 --- !u!114 &-1619809339638256179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -327,6 +329,7 @@ MonoBehaviour:
   WaitToUnfreezeTime: 0
   StatesCanUnfreeze:
   - {fileID: -5862359997606552384}
+  - {fileID: -7715185371958773332}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -375,7 +378,7 @@ MonoBehaviour:
   - {fileID: 6937487228426015570}
   - {fileID: -3247352750233730808}
   - {fileID: -4780916624445742120}
-  DefaultState: {fileID: -7074933557605775261}
+  DefaultState: {fileID: 8314428680398048515}
 --- !u!114 &505871378110136183
 MonoBehaviour:
   m_ObjectHideFlags: 0

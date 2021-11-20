@@ -45,3 +45,42 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background 1
+    uniqueID: 3196615647
+    locked: 0
+  - name: Background 2
+    uniqueID: 4163696149
+    locked: 0
+  - name: Background 3
+    uniqueID: 1896688631
+    locked: 0
+  - name: Background 4
+    uniqueID: 873848263
+    locked: 0
+  - name: Background 5
+    uniqueID: 1284354675
+    locked: 0
+  - name: Background 6
+    uniqueID: 1114251039
+    locked: 0
+  - name: Player
+    uniqueID: 4248844201
+    locked: 0
+  - name: Foreground 1
+    uniqueID: 3148961043
+    locked: 0
+  - name: Foreground 2
+    uniqueID: 3904013081
+    locked: 0
+  - name: Foreground 3
+    uniqueID: 2915367195
+    locked: 0
+  - name: Foreground 4
+    uniqueID: 2922862275
+    locked: 0
+  - name: Foreground 5
+    uniqueID: 3780424055
+    locked: 0
+  - name: Foreground 6
+    uniqueID: 3810060899
+    locked: 0

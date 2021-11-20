@@ -18,6 +18,9 @@ namespace RFG
     private float _walkToRunTimeElapsed = 0f;
     private float _horizontalSpeed = 0f;
     private bool _isCrouching = false;
+    private bool _isFullyStopped = false;
+    private float _fullyStoppedElapsedTime = 0f;
+    private float _fullyStoppedWaitTime = .1f;
 
     #region Unity Methods
     private void Awake()
@@ -44,6 +47,11 @@ namespace RFG
     {
       HandleMovement();
       DetectFallingMovement();
+    }
+
+    private void LateUpdate()
+    {
+      CheckFullyStopped();
     }
 
     private void OnEnable()
@@ -78,6 +86,23 @@ namespace RFG
     #endregion
 
     #region Handlers
+    private void CheckFullyStopped()
+    {
+      if (_horizontalSpeed == 0)
+      {
+        if (_fullyStoppedElapsedTime > _fullyStoppedWaitTime)
+        {
+          _isFullyStopped = true;
+          _fullyStoppedElapsedTime = 0;
+        }
+        _fullyStoppedElapsedTime += Time.deltaTime;
+      }
+      else
+      {
+        _isFullyStopped = false;
+      }
+    }
+
     private void HandleMovement()
     {
       if (!CanMove())
@@ -130,9 +155,9 @@ namespace RFG
         {
           return;
         }
-        if (_horizontalSpeed == 0)
+        if (_isFullyStopped)
         {
-          if (!_character.IsDangling && !_character.IsSwimming)
+          if (!_character.IsDangling && !_character.IsSwimming && !_character.IsIdle)
           {
             _character.MovementState.ChangeState(_isCrouching ? typeof(CrouchIdleState) : typeof(IdleState));
           }
@@ -260,7 +285,8 @@ namespace RFG
         !_character.IsWallClinging &&
         !_character.IsLedgeGrabbing &&
         !_character.IsInCrouchMovementState &&
-        !_character.IsLadderCliming
+        !_character.IsLadderCliming &&
+        !_character.IsSwimming
       )
       {
         _character.MovementState.ChangeState(typeof(FallingState));

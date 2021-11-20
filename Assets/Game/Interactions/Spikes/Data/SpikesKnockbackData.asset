@@ -19,5 +19,5 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   ChangeCharacterState: {fileID: 0}
-  ChangeMovementState: {fileID: 11400000, guid: 7016f70eb3d498b4f8cc7dc3d619b705, type: 2}
+  ChangeMovementState: {fileID: -7715185371958773332, guid: 10642632081255c4b84d443ea26f4c72, type: 2}
   Effects: []

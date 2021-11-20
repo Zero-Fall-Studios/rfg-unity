@@ -83,12 +83,12 @@ namespace RFG
       manager.ApplyModifiedProperties();
     }
 
-    public static void CheckSortLayers(string[] tagNames)
+    public static void AddSortingLayers(string[] layers)
     {
       SerializedObject manager = new SerializedObject(AssetDatabase.LoadAllAssetsAtPath("ProjectSettings/TagManager.asset")[0]);
       SerializedProperty sortLayersProp = manager.FindProperty("m_SortingLayers");
 
-      foreach (string name in tagNames)
+      foreach (string name in layers)
       {
         // check if tag is present
         bool found = false;

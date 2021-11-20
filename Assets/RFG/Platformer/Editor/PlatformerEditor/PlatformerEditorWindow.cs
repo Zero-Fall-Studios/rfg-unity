@@ -83,7 +83,7 @@ namespace RFG
       })
       {
         name = "tags-button",
-        text = "Add Platformer Tags"
+        text = "Add Tags"
       };
 
       Button addLayersButton = new Button(() =>
@@ -92,11 +92,21 @@ namespace RFG
       })
       {
         name = "layers-button",
-        text = "Add Platformer Layers"
+        text = "Add Layers"
+      };
+
+      Button addSortingLayersButton = new Button(() =>
+      {
+        EditorUtils.AddSortingLayers(new string[] { "Background 1", "Background 2", "Background 3", "Background 4", "Background 5", "Background 6", "Player", "Foreground 1", "Foreground 2", "Foreground 3", "Foreground 4", "Foreground 5", "Foreground 6" });
+      })
+      {
+        name = "layers-button",
+        text = "Add Sorting Layers"
       };
 
       platformerManagerButtons.Add(addTagsButton);
       platformerManagerButtons.Add(addLayersButton);
+      platformerManagerButtons.Add(addSortingLayersButton);
 
       return platformerManager;
     }
@@ -255,8 +265,6 @@ namespace RFG
     }
     #endregion
 
-
-
     #region Create
     private string CreateFolderStructure(string name)
     {
@@ -353,11 +361,11 @@ namespace RFG
       statePack.AddToPack<RunningUpSlopeState>("RunningUpSlope");
       statePack.AddToPack<WalkingDownSlopeState>("Walking");
       statePack.AddToPack<RunningDownSlopeState>("Running");
-      statePack.AddToPack<SlidingState>("Sliding", true, 0.5f, fallingState);
+      statePack.AddToPack<SlidingState>("Sliding", true, 0.5f, false, fallingState);
       statePack.AddToPack<PushingState>("Pushing");
       statePack.AddToPack<WallClingingState>("WallClinging");
       statePack.AddToPack<WallJumpingState>("Jumping");
-      SwimmingState swimmingState = statePack.AddToPack<SwimmingState>("Swimming", true, 0, false, idleState);
+      SwimmingState swimmingState = statePack.AddToPack<SwimmingState>("Swimming", true, 0, false, fallingState);
 
       PrimaryAttackStartedState primaryAttackStartedState = statePack.AddToPack<PrimaryAttackStartedState>();
       statePack.AddToPack<PrimaryAttackPerformedState>("PrimaryAttackPerformed", true);
@@ -366,13 +374,13 @@ namespace RFG
       statePack.AddToPack<SecondaryAttackPerformedState>("SecondaryAttackPerformed", true);
       statePack.AddToPack<SecondaryAttackCanceledState>();
 
-      SmashDownStartedState smashDownStartedState = statePack.AddToPack<SmashDownStartedState>("SmashDownStarted", true);
-      SmashDownCollidedState smashDownCollidedState = statePack.AddToPack<SmashDownCollidedState>("SmashDownCollided", true, 1, false, swimmingState);
-      SmashDownPerformedState smashDownPerformedState = statePack.AddToPack<SmashDownPerformedState>("SmashDownPerformed", true, 0, false, smashDownCollidedState, swimmingState);
-      smashDownStartedState.StatesCanUnfreeze = new State[] { smashDownPerformedState };
-
       DamageState damageState = statePack.AddToPack<DamageState>("Damage", true, 0.5f, false);
       damageState.StatesCanUnfreeze = new State[] { damageState };
+
+      SmashDownStartedState smashDownStartedState = statePack.AddToPack<SmashDownStartedState>("SmashDownStarted", true);
+      SmashDownCollidedState smashDownCollidedState = statePack.AddToPack<SmashDownCollidedState>("SmashDownCollided", true, 1, false, swimmingState, damageState);
+      SmashDownPerformedState smashDownPerformedState = statePack.AddToPack<SmashDownPerformedState>("SmashDownPerformed", true, 0, false, smashDownCollidedState, swimmingState, damageState);
+      smashDownStartedState.StatesCanUnfreeze = new State[] { smashDownPerformedState, damageState };
 
       statePack.AddToPack<JumpingState>("Jumping", true, 0, false, ledgeGrabState, primaryAttackStartedState, secondaryAttackStartedState, fallingState, smashDownStartedState, dashingState, ladderClimbingState);
       statePack.AddToPack<JumpingFlipState>("JumpingFlip", true, 0, false, ledgeGrabState, primaryAttackStartedState, secondaryAttackStartedState, smashDownStartedState, dashingState, ladderClimbingState);
