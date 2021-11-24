@@ -115,18 +115,18 @@ namespace RFG
       return objectToSpawn;
     }
 
-    public GameObject SpawnFromPool(string tag)
+    public void SpawnFromPool(string tag)
     {
       if (!poolDictionary.ContainsKey(tag))
       {
         LogExt.Warn<ObjectPool>($"Pool with tag {tag} does not exist");
-        return null;
+        return;
       }
 
       if (poolDictionary[tag].Count == 0)
       {
         LogExt.Warn<ObjectPool>($"Pool with tag {tag} does not contains any objects");
-        return null;
+        return;
       }
 
       QueueObject queueObject = poolDictionary[tag].Dequeue();
@@ -137,7 +137,7 @@ namespace RFG
 
       poolDictionary[tag].Enqueue(queueObject);
 
-      return objectToSpawn;
+      return;
     }
 
     public void DeactivateAllByTag(string tag)

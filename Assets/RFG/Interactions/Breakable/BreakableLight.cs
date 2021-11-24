@@ -14,7 +14,7 @@ namespace RFG
         light2D = GetComponentInChildren<UnityEngine.Rendering.Universal.Light2D>();
       }
     }
-    public void Break(RaycastHit2D hit)
+    public void Break(Vector3 point, Vector3 normal)
     {
       if (light2D)
       {

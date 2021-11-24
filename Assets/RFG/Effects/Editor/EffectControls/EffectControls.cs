@@ -43,6 +43,11 @@ namespace RFG
       Button generateAudioSourceButton = rootElement.Q<Button>("generate-audio-source");
       generateAudioSourceButton.clicked += () =>
       {
+        if (audioTarget.EffectData.soundEffects == null || audioTarget.EffectData.soundEffects.Count == 0)
+        {
+          LogExt.Warn<EffectControls>("Effect Data does not have any sound effects.");
+          return;
+        }
         List<AudioSource> audioSources = new List<AudioSource>(audioTarget.gameObject.GetComponents<AudioSource>());
         for (int i = 0; i < audioTarget.EffectData.soundEffects.Count; i++)
         {

@@ -209,7 +209,8 @@ MonoBehaviour:
   Layer: Base Layer
   EnterClip: JumpingFlip
   ExitClip: 
-  EnterEffects: []
+  EnterEffects:
+  - JumpEffect
   ExitEffects: []
   StopEnterEffectsOnExit: 0
   FreezeState: 1
@@ -234,7 +235,7 @@ MonoBehaviour:
   m_Name: DashingState
   m_EditorClassIdentifier: 
   Layer: Base Layer
-  EnterClip: Dashing
+  EnterClip: PrimaryAttackPerformed
   ExitClip: 
   EnterEffects: []
   ExitEffects: []
@@ -278,11 +279,12 @@ MonoBehaviour:
   Layer: Base Layer
   EnterClip: SmashDownCollided
   ExitClip: 
-  EnterEffects: []
+  EnterEffects:
+  - DustShake
   ExitEffects: []
   StopEnterEffectsOnExit: 0
   FreezeState: 1
-  WaitToUnfreezeTime: 1
+  WaitToUnfreezeTime: 0
   StatesCanUnfreeze:
   - {fileID: -7628632275599571625}
   - {fileID: -7715185371958773332}
@@ -562,7 +564,8 @@ MonoBehaviour:
   Layer: Base Layer
   EnterClip: Landed
   ExitClip: 
-  EnterEffects: []
+  EnterEffects:
+  - LandEffect
   ExitEffects: []
   StopEnterEffectsOnExit: 0
   FreezeState: 0
@@ -667,7 +670,8 @@ MonoBehaviour:
   Layer: Base Layer
   EnterClip: Jumping
   ExitClip: 
-  EnterEffects: []
+  EnterEffects:
+  - JumpEffect
   ExitEffects: []
   StopEnterEffectsOnExit: 0
   FreezeState: 1

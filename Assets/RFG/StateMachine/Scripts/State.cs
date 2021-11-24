@@ -64,7 +64,7 @@ namespace RFG
     protected void PlayEffects(IStateContext context, string[] effects)
     {
       StateTransformContext transformContext = context as StateTransformContext;
-      transformContext.transform.SpawnFromPool(effects);
+      transformContext.transform.SpawnFromPool(effects, transformContext.transform);
     }
 
     protected void StopEffects(IStateContext context, string[] effects)

@@ -23,5 +23,10 @@ namespace RFG
     public float cameraShakeIntensity = 0f;
     public float cameraShakeTime = 0f;
     public bool cameraShakeFade = false;
+
+    [Header("Spawn Offset")]
+    public Vector2 spawnOffset;
+    public bool invertX = false;
+    public bool invertY = false;
   }
 }

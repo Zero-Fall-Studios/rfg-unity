@@ -4,6 +4,6 @@ namespace RFG
 {
   interface IBreakable
   {
-    void Break(RaycastHit2D hit);
+    void Break(Vector3 point, Vector3 normal);
   }
 }

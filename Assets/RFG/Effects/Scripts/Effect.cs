@@ -13,12 +13,16 @@ namespace RFG
     private Animator _animator;
     private SpriteRenderer _sr;
 
-    private void Awake()
+    protected virtual void Awake()
     {
       _transform = transform;
       _audioSources = new List<AudioSource>(GetComponents<AudioSource>());
       _animator = GetComponent<Animator>();
       _sr = GetComponent<SpriteRenderer>();
+    }
+
+    protected virtual void Start()
+    {
     }
 
     public void OnObjectSpawn(params object[] objects)
@@ -39,10 +43,18 @@ namespace RFG
       gameObject.SetActive(false);
     }
 
-    public void Play(params object[] objects)
+    public virtual void Play(params object[] objects)
     {
       if (EffectData == null)
         return;
+
+      bool IsFacingRight = _transform.right.x > 0;
+      bool IsFacingUp = _transform.up.y > 0;
+
+      float x = !IsFacingRight && EffectData.invertX ? -EffectData.spawnOffset.x : EffectData.spawnOffset.x;
+      float y = !IsFacingUp && EffectData.invertY ? -EffectData.spawnOffset.y : EffectData.spawnOffset.y;
+
+      transform.position += new Vector3(x, y, 0);
 
       if (_sr != null)
       {

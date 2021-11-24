@@ -715,11 +715,11 @@ namespace RFG
         State.IsFalling = false;
       }
 
-      if ((Parameters.Gravity > 0) && (!State.IsFalling))
-      {
-        State.IsCollidingBelow = false;
-        return;
-      }
+      // if ((Parameters.Gravity > 0) && (!State.IsFalling))
+      // {
+      //   State.IsCollidingBelow = false;
+      //   return;
+      // }
 
       float rayLength = (_boundsHeight / 2) + Parameters.RayOffset;
 

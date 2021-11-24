@@ -1,25 +1,30 @@
 using UnityEngine;
+using MyBox;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 namespace RFG
 {
   using SceneGraph;
 
-  public enum CharacterBoundsBehaviour { Nothing, Constrain, Kill }
   [AddComponentMenu("RFG/Platformer/Character/Behaviours/Scene Bounds")]
   public class SceneBoundsBehaviour : MonoBehaviour
   {
-    [Header("Bounds Behaviour")]
-    public CharacterBoundsBehaviour Top = CharacterBoundsBehaviour.Constrain;
-    public CharacterBoundsBehaviour Bottom = CharacterBoundsBehaviour.Kill;
-    public CharacterBoundsBehaviour Left = CharacterBoundsBehaviour.Constrain;
-    public CharacterBoundsBehaviour Right = CharacterBoundsBehaviour.Constrain;
+    public enum BoundsBehaviour { Nothing, Constrain, Kill }
 
+    [Header("Bounds Behaviour")]
+    public BoundsBehaviour Top = BoundsBehaviour.Constrain;
+    public BoundsBehaviour Bottom = BoundsBehaviour.Kill;
+    public BoundsBehaviour Left = BoundsBehaviour.Constrain;
+    public BoundsBehaviour Right = BoundsBehaviour.Constrain;
+    public Bounds Bounds = new Bounds(Vector3.zero, Vector3.one * 10);
+
+    private Vector2 _constrainedPosition = Vector2.zero;
     private Character _character;
-    private SceneBounds _sceneBounds;
 
     private void Awake()
     {
-      _sceneBounds = FindObjectOfType<SceneBounds>();
       _character = GetComponent<Character>();
     }
 
@@ -28,92 +33,115 @@ namespace RFG
       if (_character.CharacterState.CurrentStateType != typeof(AliveState))
         return;
 
-      if (_sceneBounds != null)
+      HandleLevelBounds(_character);
+    }
+
+    public void HandleLevelBounds(Character _character)
+    {
+      _character.Controller.State.TouchingLevelBounds = false;
+      Debug.Log("Pos: " + _character.transform.position.y);
+      Debug.Log("Top: " + _character.Controller.ColliderTopPosition.y);
+      if (Bounds.size != Vector3.zero)
       {
-        _sceneBounds.HandleSceneBounds(
-          transform,
-          _character.Controller.ColliderSize,
-          _character.Controller.ColliderLeftPosition.x,
-          _character.Controller.ColliderRightPosition.x,
-          _character.Controller.ColliderBottomPosition.y,
-          _character.Controller.ColliderTopPosition.y
-        );
+        if (Top != BoundsBehaviour.Nothing && _character.Controller.ColliderTopPosition.y > Bounds.max.y)
+        {
+          _constrainedPosition.x = _character.transform.position.x;
+          _constrainedPosition.y = Bounds.max.y - Mathf.Abs(_character.Controller.ColliderSize.y) / 2;
+          ApplyBoundsBehaviour(Top, _constrainedPosition, _character);
+        }
+
+        if (Bottom != BoundsBehaviour.Nothing && _character.Controller.ColliderBottomPosition.y < Bounds.min.y)
+        {
+          _constrainedPosition.x = _character.transform.position.x;
+          _constrainedPosition.y = Bounds.min.y + Mathf.Abs(_character.Controller.ColliderSize.y) / 2;
+          ApplyBoundsBehaviour(Bottom, _constrainedPosition, _character);
+        }
+
+        if (Right != BoundsBehaviour.Nothing && _character.Controller.ColliderRightPosition.x > Bounds.max.x)
+        {
+          _constrainedPosition.x = Bounds.max.x - Mathf.Abs(_character.Controller.ColliderSize.x) / 2;
+          _constrainedPosition.y = _character.transform.position.y;
+          ApplyBoundsBehaviour(Right, _constrainedPosition, _character);
+        }
+
+        if (Left != BoundsBehaviour.Nothing && _character.Controller.ColliderLeftPosition.x < Bounds.min.x)
+        {
+          _constrainedPosition.x = Bounds.min.x + Mathf.Abs(_character.Controller.ColliderSize.x) / 2;
+          _constrainedPosition.y = _character.transform.position.y;
+          ApplyBoundsBehaviour(Left, _constrainedPosition, _character);
+        }
       }
     }
 
-    private void OnBoundsLeft(Vector2 constrainedPosition, Transform constrainedTransform)
+    private void ApplyBoundsBehaviour(BoundsBehaviour Behaviour, Vector2 constrainedPosition, Character _character)
     {
-      if (Left == CharacterBoundsBehaviour.Kill)
+      _character.Controller.State.TouchingLevelBounds = true;
+      if (Behaviour == BoundsBehaviour.Kill)
       {
         _character.transform.position = constrainedPosition;
         _character.Kill();
       }
-      else if (Left == CharacterBoundsBehaviour.Constrain)
+      else if (Behaviour == BoundsBehaviour.Constrain)
       {
         _character.transform.position = constrainedPosition;
       }
     }
 
-    private void OnBoundsBottom(Vector2 constrainedPosition, Transform constrainedTransform)
+#if UNITY_EDITOR
+    [ButtonMethod]
+    private void CopyBoundsFromScene()
     {
-      if (Bottom == CharacterBoundsBehaviour.Kill)
-      {
-        _character.transform.position = constrainedPosition;
-        _character.Kill();
-      }
-      else if (Bottom == CharacterBoundsBehaviour.Constrain)
-      {
-        _character.transform.position = constrainedPosition;
-      }
+      Scene _scene = SceneGraphManager.Instance.CurrentScene;
+      Bounds = _scene.bounds;
     }
 
-    private void OnBoundsRight(Vector2 constrainedPosition, Transform constrainedTransform)
+    [ButtonMethod]
+    private void GeneratePolygonCollider2DToSelection()
     {
-      if (Right == CharacterBoundsBehaviour.Kill)
+      Scene _scene = SceneGraphManager.Instance.CurrentScene;
+      PolygonCollider2D collider = Selection.activeGameObject.AddComponent<PolygonCollider2D>();
+      Vector2[] points = new Vector2[]
       {
-        _character.transform.position = constrainedPosition;
-        _character.Kill();
-      }
-      else if (Right == CharacterBoundsBehaviour.Constrain)
-      {
-        _character.transform.position = constrainedPosition;
-      }
+        new Vector2(_scene.bounds.min.x, _scene.bounds.min.y),
+        new Vector2(_scene.bounds.min.x, _scene.bounds.max.y),
+        new Vector2(_scene.bounds.max.x, _scene.bounds.max.y),
+        new Vector2(_scene.bounds.max.x, _scene.bounds.min.y),
+      };
+      collider.SetPath(0, points);
+      EditorUtility.SetDirty(Selection.activeGameObject);
     }
 
-    private void OnBoundsTop(Vector2 constrainedPosition, Transform constrainedTransform)
+    private void OnDrawGizmos()
     {
-      if (Top == CharacterBoundsBehaviour.Kill)
-      {
-        _character.transform.position = constrainedPosition;
-        _character.Kill();
-      }
-      else if (Top == CharacterBoundsBehaviour.Constrain)
-      {
-        _character.transform.position = constrainedPosition;
-      }
-    }
+      Scene _scene = SceneGraphManager.Instance.CurrentScene;
+      var b = Bounds;
+      var p1 = new Vector3(b.min.x, b.min.y, b.min.z);
+      var p2 = new Vector3(b.max.x, b.min.y, b.min.z);
+      var p3 = new Vector3(b.max.x, b.min.y, b.max.z);
+      var p4 = new Vector3(b.min.x, b.min.y, b.max.z);
 
-    private void OnEnable()
-    {
-      if (_sceneBounds != null)
-      {
-        _sceneBounds.OnBoundsTop += OnBoundsTop;
-        _sceneBounds.OnBoundsRight += OnBoundsRight;
-        _sceneBounds.OnBoundsBottom += OnBoundsBottom;
-        _sceneBounds.OnBoundsLeft += OnBoundsLeft;
-      }
-    }
+      Gizmos.DrawLine(p1, p2);
+      Gizmos.DrawLine(p2, p3);
+      Gizmos.DrawLine(p3, p4);
+      Gizmos.DrawLine(p4, p1);
 
-    private void OnDisable()
-    {
-      if (_sceneBounds != null)
-      {
-        _sceneBounds.OnBoundsTop -= OnBoundsTop;
-        _sceneBounds.OnBoundsRight -= OnBoundsRight;
-        _sceneBounds.OnBoundsBottom -= OnBoundsBottom;
-        _sceneBounds.OnBoundsLeft -= OnBoundsLeft;
-      }
-    }
+      // top
+      var p5 = new Vector3(b.min.x, b.max.y, b.min.z);
+      var p6 = new Vector3(b.max.x, b.max.y, b.min.z);
+      var p7 = new Vector3(b.max.x, b.max.y, b.max.z);
+      var p8 = new Vector3(b.min.x, b.max.y, b.max.z);
 
+      Gizmos.DrawLine(p5, p6);
+      Gizmos.DrawLine(p6, p7);
+      Gizmos.DrawLine(p7, p8);
+      Gizmos.DrawLine(p8, p5);
+
+      // sides
+      Gizmos.DrawLine(p1, p5);
+      Gizmos.DrawLine(p2, p6);
+      Gizmos.DrawLine(p3, p7);
+      Gizmos.DrawLine(p4, p8);
+    }
+#endif
   }
 }

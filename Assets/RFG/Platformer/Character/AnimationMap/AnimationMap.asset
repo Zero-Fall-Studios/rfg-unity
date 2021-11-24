@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AnimationMap
   m_EditorClassIdentifier: 
   cellSize: {x: 16, y: 16}
-  alignment: 7
+  alignment: 0
   animations:
   - name: Idle
     frames: 2

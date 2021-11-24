@@ -17,7 +17,7 @@ namespace RFG
       characterContext.controller.SetForce(Vector2.zero);
       characterContext.controller.GravityActive(true);
       characterContext.character.EnableAllInput(true);
-      base.Enter(context);
+      base.Exit(context);
     }
   }
 }

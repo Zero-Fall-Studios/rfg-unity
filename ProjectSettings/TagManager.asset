@@ -8,6 +8,10 @@ TagManager:
   - Trigger
   - Checkpoint
   - Warp
+  - Ground
+  - AttackCollider
+  - Breakable
+  - SmashDownCollider
   layers:
   - Default
   - TransparentFX
