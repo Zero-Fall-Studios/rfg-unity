@@ -350,7 +350,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.035388947, y: 0.4063152}
+  m_Offset: {x: -0.035388947, y: -0.28}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -764,7 +764,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.03772354, y: 0.37844622}
+  m_Offset: {x: -0.032179356, y: -0.12182188}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -775,7 +775,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.32097626, y: 0.75689244}
+  m_Size: {x: 0.32882977, y: 0.75635624}
   m_EdgeRadius: 0
 --- !u!50 &148615118
 Rigidbody2D:
@@ -20790,7 +20790,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.724473, y: 5, z: -10}
+  m_LocalPosition: {x: 9.448935, y: 5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -21978,6 +21978,9 @@ MonoBehaviour:
   - tag: ScreenShake
     prefab: {fileID: 4531718760120479492, guid: 7850ca0523959074eb01509cc648df0e, type: 3}
     size: 1
+  - tag: AfterImage
+    prefab: {fileID: 3834784586685945564, guid: defb11801504a6545bde4941290e0fad, type: 3}
+    size: 6
 --- !u!4 &1222071065
 Transform:
   m_ObjectHideFlags: 0
@@ -22729,7 +22732,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.026081085, y: 0.35986328}
+  m_Offset: {x: -0.03217888, y: -0.09653807}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -22740,7 +22743,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5723343, y: 0.78095245}
+  m_Size: {x: 0.4851303, y: 0.80692387}
   m_EdgeRadius: 0
 --- !u!1 &1575349611
 GameObject:
@@ -22961,7 +22964,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.9448947, y: 1}
+    m_SensorSize: {x: 1.8897893, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -23315,7 +23318,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.035388947, y: 0.4063152}
+  m_Offset: {x: -0.035388947, y: -0.28}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}

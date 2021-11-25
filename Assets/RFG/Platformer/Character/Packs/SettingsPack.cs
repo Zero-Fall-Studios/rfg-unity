@@ -36,6 +36,7 @@ namespace RFG
     public int TotalDashes = 2;
     public float MinInputThreshold = 0.1f;
     public float Cooldown = 1f;
+    public string[] DashEffects;
 
     [Header("Jump Settings")]
 

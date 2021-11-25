@@ -137,6 +137,7 @@ namespace RFG
 
     private IEnumerator Dash()
     {
+      bool effectSwitch = false;
       while (_distanceTraveled < _settings.DashDistance && _shouldKeepDashing && _character.MovementState.CurrentStateType == typeof(DashingState))
       {
         _distanceTraveled = Vector3.Distance(_initialPosition, _transform.position);
@@ -151,6 +152,11 @@ namespace RFG
         }
         else
         {
+          if (effectSwitch)
+          {
+            _transform.SpawnFromPool(_settings.DashEffects, _transform);
+          }
+          effectSwitch = !effectSwitch;
           _controller.GravityActive(false);
           _controller.SetForce(_dashDirection * _settings.DashForce);
         }
@@ -205,9 +211,6 @@ namespace RFG
 
     private void OnEnable()
     {
-      // Make sure to setup new events
-      OnDisable();
-
       if (_dashInput != null)
       {
         _dashInput.action.started += OnDashStarted;

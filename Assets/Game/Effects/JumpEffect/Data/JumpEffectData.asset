@@ -20,4 +20,6 @@ MonoBehaviour:
   cameraShakeIntensity: 0
   cameraShakeTime: 0
   cameraShakeFade: 0
-  spawnOffset: {x: 0, y: 0.5}
+  spawnOffset: {x: 0, y: 0}
+  invertX: 0
+  invertY: 0

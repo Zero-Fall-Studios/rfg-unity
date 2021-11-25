@@ -39,8 +39,6 @@ namespace RFG
     public void HandleLevelBounds(Character _character)
     {
       _character.Controller.State.TouchingLevelBounds = false;
-      Debug.Log("Pos: " + _character.transform.position.y);
-      Debug.Log("Top: " + _character.Controller.ColliderTopPosition.y);
       if (Bounds.size != Vector3.zero)
       {
         if (Top != BoundsBehaviour.Nothing && _character.Controller.ColliderTopPosition.y > Bounds.max.y)

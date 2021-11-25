@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 46a070f1a6392dd4e94f32502b3d2a2c, type: 3}
-  m_Name: SmashDownCrackEffectData
+  m_Name: EffectData
   m_EditorClassIdentifier: 
-  lifetime: 3
+  lifetime: 0.5
   pooledObject: 1
-  animationClip: SmashDownCrack
+  animationClip: 
   soundEffects: []
   spawnEffects: []
-  cameraShakeIntensity: 1
-  cameraShakeTime: 1
-  cameraShakeFade: 1
-  spawnOffset: {x: 0, y: -1.5}
+  cameraShakeIntensity: 0
+  cameraShakeTime: 0
+  cameraShakeFade: 0
+  spawnOffset: {x: 0, y: 0}
   invertX: 0
   invertY: 0

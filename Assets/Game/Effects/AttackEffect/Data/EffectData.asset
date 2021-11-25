@@ -20,6 +20,6 @@ MonoBehaviour:
   cameraShakeIntensity: 1
   cameraShakeTime: 1
   cameraShakeFade: 1
-  spawnOffset: {x: 1.24, y: 0.5}
+  spawnOffset: {x: 1.24, y: 0}
   invertX: 1
   invertY: 0
