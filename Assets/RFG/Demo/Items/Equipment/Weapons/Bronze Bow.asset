@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf054f31d05cad54d9077ac47693c67e, type: 3}
+  m_Name: Bronze Bow
+  m_EditorClassIdentifier: 
+  Guid: f1d84f64-0d63-4f8d-a79a-ac76fa32855e
+  Description: Bronze Bow
+  IsStackable: 0
+  StackableLimit: 1
+  PickUpSprite: {fileID: 3792280848640352065, guid: b38d0f7b87e138a4fbe29083da02a2c2, type: 3}
+  PickUpText: Bronze Bow
+  PickUpEffects: []
+  EquipmentType: 7
+  IsEquipped: 0
+  EquipOnPickUp: 0
+  EquipSprite: {fileID: 0}
+  EquipText: 
+  UnequipText: 
+  EquipEffects: []
+  UnequipEffects: []

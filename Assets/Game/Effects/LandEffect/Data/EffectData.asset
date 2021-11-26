@@ -15,7 +15,8 @@ MonoBehaviour:
   lifetime: 0.2
   pooledObject: 1
   animationClip: Land
-  soundEffects: []
+  soundEffects:
+  - {fileID: 11400000, guid: 7879553f61432ad45bff9c19f0defe1c, type: 2}
   spawnEffects: []
   cameraShakeIntensity: 0
   cameraShakeTime: 0

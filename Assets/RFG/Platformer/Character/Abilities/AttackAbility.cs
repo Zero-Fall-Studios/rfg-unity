@@ -21,13 +21,9 @@ namespace RFG
       _secondaryAttackInput = _character.InputPack.SecondaryAttackInput;
     }
 
-    private void Update()
-    {
-      _pointerOverUi = EventSystem.current.IsPointerOverGameObject();
-    }
-
     public void OnPrimaryAttackStarted(InputAction.CallbackContext ctx)
     {
+      _pointerOverUi = MouseOverUILayerObject.IsPointerOverUIObject();
       if (!_pointerOverUi)
       {
         if (
@@ -85,6 +81,7 @@ namespace RFG
 
     public void OnSecondaryAttackStarted(InputAction.CallbackContext ctx)
     {
+      _pointerOverUi = MouseOverUILayerObject.IsPointerOverUIObject();
       if (!_pointerOverUi)
       {
         if (

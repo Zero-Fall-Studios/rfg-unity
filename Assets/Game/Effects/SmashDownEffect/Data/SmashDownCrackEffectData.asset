@@ -15,7 +15,8 @@ MonoBehaviour:
   lifetime: 3
   pooledObject: 1
   animationClip: SmashDownCrack
-  soundEffects: []
+  soundEffects:
+  - {fileID: 11400000, guid: 394b5e7d667ac8d4a9e7b406b9fdc302, type: 2}
   spawnEffects: []
   cameraShakeIntensity: 1
   cameraShakeTime: 1

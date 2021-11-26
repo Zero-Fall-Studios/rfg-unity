@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,6 +11,8 @@ namespace RFG
     [field: SerializeField] private string[] ExitEffects { get; set; }
     [field: SerializeField] private bool OnlyOnce { get; set; } = false;
     [field: SerializeField] private string[] Tags { get; set; }
+    [field: SerializeField] private float OnTriggerEnterWaitTime { get; set; } = 0f;
+    [field: SerializeField] private float OnTriggerExitWaitTime { get; set; } = 0f;
     [field: SerializeField] private UnityEvent OnTriggerEnter;
     [field: SerializeField] private UnityEvent OnTriggerExit;
 
@@ -28,7 +31,7 @@ namespace RFG
         {
           col.transform.SpawnFromPool(EnterEffects, col.gameObject);
           _triggered = true;
-          OnTriggerEnter?.Invoke();
+          StartCoroutine(InvokeEvent(OnTriggerEnter, OnTriggerEnterWaitTime));
         }
       }
     }
@@ -43,10 +46,17 @@ namespace RFG
           {
             _triggered = false;
             col.transform.SpawnFromPool(ExitEffects, col.gameObject);
-            OnTriggerExit?.Invoke();
+            StartCoroutine(InvokeEvent(OnTriggerExit, OnTriggerEnterWaitTime));
           }
         }
       }
     }
+
+    private IEnumerator InvokeEvent(UnityEvent unityEvent, float waitTime)
+    {
+      yield return new WaitForSeconds(waitTime);
+      unityEvent?.Invoke();
+    }
+
   }
 }

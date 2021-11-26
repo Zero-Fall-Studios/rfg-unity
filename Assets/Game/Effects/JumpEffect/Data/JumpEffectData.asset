@@ -15,7 +15,8 @@ MonoBehaviour:
   lifetime: 0.2
   pooledObject: 1
   animationClip: JumpEffect
-  soundEffects: []
+  soundEffects:
+  - {fileID: 11400000, guid: ea10dca516d73214385808b3ccfc735e, type: 2}
   spawnEffects: []
   cameraShakeIntensity: 0
   cameraShakeTime: 0

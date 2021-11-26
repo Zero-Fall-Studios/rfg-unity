@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 267e8d95b29291a47aff89af417c1b84, type: 3}
+  m_Name: SampleInventory
+  m_EditorClassIdentifier: 
+  Items:
+    list:
+    - Key: 0
+      Value:
+        item: {fileID: 11400000, guid: 0e93b572104f81b4389332d8712d1afe, type: 2}
+        quantity: 10
+    - Key: 1
+      Value:
+        item: {fileID: 11400000, guid: 0e93b572104f81b4389332d8712d1afe, type: 2}
+        quantity: 1
+    - Key: 2
+      Value:
+        item: {fileID: 11400000, guid: 11299445000266b4d8b32badb83ce8b9, type: 2}
+        quantity: 1
+    - Key: 3
+      Value:
+        item: {fileID: 11400000, guid: 1315841ce47fda34aa39c43b45d2215e, type: 2}
+        quantity: 1
+  Helmet: {fileID: 0}
+  Amulet: {fileID: 11400000, guid: 2ce9a6d5895b1484ba73eefb5070e9f0, type: 2}
+  Armor: {fileID: 0}
+  Belt: {fileID: 0}
+  Legs: {fileID: 0}
+  Boots: {fileID: 0}
+  Gloves: {fileID: 0}
+  LeftHand: {fileID: 0}
+  RightHand: {fileID: 0}
+  LeftRing: {fileID: 0}
+  RightRing: {fileID: 0}
+  Money: 0

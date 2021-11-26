@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ad0ac2d9fcb400459a3ec2e8db260bd, type: 3}
+  m_Name: Grapefruit
+  m_EditorClassIdentifier: 
+  Guid: 0ecfc0b1-fe24-47df-a798-9703ab35fe1a
+  Description: Grapefruit
+  IsStackable: 1
+  StackableLimit: 10
+  PickUpSprite: {fileID: 2306877795921407931, guid: 83a836d59f435ee49a0135b600668645, type: 3}
+  PickUpText: Grapefruit
+  PickUpEffects: []
+  ConsumeOnPickUp: 0
+  ConsumeText: 
+  ConsumeEffects: []
+  healthToAdd: 1

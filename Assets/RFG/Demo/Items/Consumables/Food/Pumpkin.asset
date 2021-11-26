@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ad0ac2d9fcb400459a3ec2e8db260bd, type: 3}
+  m_Name: Pumpkin
+  m_EditorClassIdentifier: 
+  Guid: bb9fb05f-f1ce-4430-8a19-3b3d6e83f75a
+  Description: Pumpkin
+  IsStackable: 1
+  StackableLimit: 10
+  PickUpSprite: {fileID: 3182993990423319387, guid: 83a836d59f435ee49a0135b600668645, type: 3}
+  PickUpText: Pumpkin
+  PickUpEffects: []
+  ConsumeOnPickUp: 0
+  ConsumeText: 
+  ConsumeEffects: []
+  healthToAdd: 1

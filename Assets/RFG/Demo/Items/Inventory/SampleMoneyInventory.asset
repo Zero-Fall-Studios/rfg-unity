@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 267e8d95b29291a47aff89af417c1b84, type: 3}
+  m_Name: SampleMoneyInventory
+  m_EditorClassIdentifier: 
+  Items:
+    list: []
+  Helmet: {fileID: 0}
+  Amulet: {fileID: 0}
+  Armor: {fileID: 0}
+  Belt: {fileID: 0}
+  Legs: {fileID: 0}
+  Boots: {fileID: 0}
+  Gloves: {fileID: 0}
+  LeftHand: {fileID: 0}
+  RightHand: {fileID: 0}
+  LeftRing: {fileID: 0}
+  RightRing: {fileID: 0}
+  Money: 0

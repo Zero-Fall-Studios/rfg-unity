@@ -23,11 +23,6 @@ namespace RFG
       _smashDownInput = _character.InputPack.SmashDownInput;
     }
 
-    private void Update()
-    {
-      _pointerOverUi = EventSystem.current.IsPointerOverGameObject();
-    }
-
     private void LateUpdate()
     {
       if (_smashingInAir && _character.IsGrounded)
@@ -54,6 +49,7 @@ namespace RFG
 
     private void OnSmashDownStarted(InputAction.CallbackContext ctx)
     {
+      _pointerOverUi = MouseOverUILayerObject.IsPointerOverUIObject();
       if (!_pointerOverUi)
       {
         if (_character.IsInAirMovementState && !_character.SettingsPack.CanSmashDownInAir)

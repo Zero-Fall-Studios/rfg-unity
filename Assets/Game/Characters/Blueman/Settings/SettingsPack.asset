@@ -34,7 +34,7 @@ MonoBehaviour:
   JumpIsProportionalToThePressTime: 1
   JumpMinAirTime: 0.1
   JumpReleaseForceFactor: 1.5
-  PauseEvent: {fileID: 0}
+  PauseEvent: {fileID: 11400000, guid: 313c80fc5e6491c4e82451537c51b72d, type: 2}
   RunningSpeed: 3
   RunningPower: 5
   PowerGainPerFrame: 0.01

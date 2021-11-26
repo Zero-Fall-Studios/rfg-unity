@@ -144,7 +144,7 @@ namespace RFG
                 {
                     ""name"": """",
                     ""id"": ""e92ae915-54d9-4a90-919a-87d72bf96d97"",
-                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
@@ -298,7 +298,7 @@ namespace RFG
                 {
                     ""name"": """",
                     ""id"": ""d3807bd5-d3ad-4ef7-9d56-3edab2a242ae"",
-                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
@@ -320,7 +320,7 @@ namespace RFG
                 {
                     ""name"": """",
                     ""id"": ""052e1a56-a05c-4de0-8f45-0cf0c64819f0"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
@@ -342,7 +342,7 @@ namespace RFG
                 {
                     ""name"": """",
                     ""id"": ""14c6d7ba-ad72-46f0-a702-9a6aa2f36ba0"",
-                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
@@ -386,7 +386,7 @@ namespace RFG
                 {
                     ""name"": """",
                     ""id"": ""55f72983-9e05-462e-82c1-380a6edc352c"",
-                    ""path"": ""<Gamepad>/leftStickPress"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
@@ -408,7 +408,7 @@ namespace RFG
                 {
                     ""name"": """",
                     ""id"": ""a9e9d595-7bd6-4078-acb8-acfa0548b213"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
@@ -430,7 +430,7 @@ namespace RFG
                 {
                     ""name"": """",
                     ""id"": ""7f16a86a-38c8-4a82-8025-77e56f5a5f4c"",
-                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
@@ -452,7 +452,7 @@ namespace RFG
                 {
                     ""name"": """",
                     ""id"": ""2d434656-04f2-4741-8ea7-a69230898b0d"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""path"": ""<Gamepad>/rightStickPress"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",

@@ -175,6 +175,7 @@ namespace RFG
       EnableInput(InputPack?.SmashDownInput, enabled);
       EnableInput(InputPack?.SlideInput, enabled);
       EnableInput(InputPack?.UseInput, enabled);
+      EnableInput(InputPack?.PauseInput, enabled);
     }
 
     public void EnableInput(InputActionReference reference, bool enabled)
@@ -268,7 +269,6 @@ namespace RFG
         typeof(RunningDownSlopeState)
       )
     );
-
 
     public bool IsInSlopeMovementState =>
       MovementState.IsInState(
