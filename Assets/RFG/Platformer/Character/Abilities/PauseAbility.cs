@@ -6,16 +6,9 @@ namespace RFG
   [AddComponentMenu("RFG/Platformer/Character/Ability/Pause")]
   public class PauseAbility : MonoBehaviour, IAbility
   {
-    [HideInInspector]
-    private Transform _transform;
     private Character _character;
     private InputActionReference _pauseInput;
     private SettingsPack _settings;
-
-    private void Awake()
-    {
-      _transform = transform;
-    }
 
     private void Start()
     {
@@ -30,15 +23,14 @@ namespace RFG
     public void OnPausedPerformed(InputAction.CallbackContext ctx)
     {
       _settings.PauseEvent?.Raise();
+      _character.EnableAllInput(!GameManager.Instance.IsPaused);
     }
 
     private void OnEnable()
     {
-      // Make sure to setup new events
-      OnDisable();
-
       if (_pauseInput != null)
       {
+        _pauseInput.action.Enable();
         _pauseInput.action.performed += OnPausedPerformed;
       }
     }
@@ -47,6 +39,7 @@ namespace RFG
     {
       if (_pauseInput != null)
       {
+        _pauseInput.action.Disable();
         _pauseInput.action.performed -= OnPausedPerformed;
       }
     }

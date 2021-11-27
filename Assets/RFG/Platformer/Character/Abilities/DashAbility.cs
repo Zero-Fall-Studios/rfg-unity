@@ -59,6 +59,10 @@ namespace RFG
 
     private void LateUpdate()
     {
+      if (Time.timeScale == 0f)
+      {
+        return;
+      }
       if (_character.MovementState.CurrentStateType == typeof(DashingState))
       {
         _controller.GravityActive(false);

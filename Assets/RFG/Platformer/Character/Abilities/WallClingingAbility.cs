@@ -32,6 +32,10 @@ namespace RFG
 
     private void Update()
     {
+      if (Time.timeScale == 0f)
+      {
+        return;
+      }
       if (!_hasWallCling || (!_settings.SwimCanWallCling && _character.IsSwimming))
         return;
 

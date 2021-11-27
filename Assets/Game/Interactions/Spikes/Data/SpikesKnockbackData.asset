@@ -18,6 +18,9 @@ MonoBehaviour:
   LayerMask:
     serializedVersion: 2
     m_Bits: 256
+  Tags: []
+  AffectCharacterController2D: 1
+  AffectRigidBody2D: 0
   ChangeCharacterState: {fileID: 0}
   ChangeMovementState: {fileID: -7715185371958773332, guid: 10642632081255c4b84d443ea26f4c72, type: 2}
   Effects: []

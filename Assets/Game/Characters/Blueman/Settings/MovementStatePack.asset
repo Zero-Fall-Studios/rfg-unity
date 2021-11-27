@@ -106,7 +106,8 @@ MonoBehaviour:
   StopEnterEffectsOnExit: 0
   FreezeState: 1
   WaitToUnfreezeTime: 0.5
-  StatesCanUnfreeze: []
+  StatesCanUnfreeze:
+  - {fileID: -7806633455591822282}
 --- !u!114 &-5862359997606552384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,7 +236,7 @@ MonoBehaviour:
   m_Name: DashingState
   m_EditorClassIdentifier: 
   Layer: Base Layer
-  EnterClip: PrimaryAttackPerformed
+  EnterClip: Dashing
   ExitClip: 
   EnterEffects: []
   ExitEffects: []
@@ -284,7 +285,7 @@ MonoBehaviour:
   ExitEffects: []
   StopEnterEffectsOnExit: 0
   FreezeState: 1
-  WaitToUnfreezeTime: 0
+  WaitToUnfreezeTime: 1
   StatesCanUnfreeze:
   - {fileID: -7628632275599571625}
   - {fileID: -7715185371958773332}
@@ -380,6 +381,7 @@ MonoBehaviour:
   - {fileID: 6937487228426015570}
   - {fileID: -3247352750233730808}
   - {fileID: -4780916624445742120}
+  - {fileID: 6442155306121321745}
   DefaultState: {fileID: 8314428680398048515}
 --- !u!114 &505871378110136183
 MonoBehaviour:
@@ -568,9 +570,12 @@ MonoBehaviour:
   - LandEffect
   ExitEffects: []
   StopEnterEffectsOnExit: 0
-  FreezeState: 0
-  WaitToUnfreezeTime: 0
-  StatesCanUnfreeze: []
+  FreezeState: 1
+  WaitToUnfreezeTime: 0.25
+  StatesCanUnfreeze:
+  - {fileID: 6937487228426015570}
+  - {fileID: -3247352750233730808}
+  - {fileID: -4780916624445742120}
 --- !u!114 &3133520842508224365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -648,6 +653,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Layer: Base Layer
   EnterClip: RunningUpSlope
+  ExitClip: 
+  EnterEffects: []
+  ExitEffects: []
+  StopEnterEffectsOnExit: 0
+  FreezeState: 0
+  WaitToUnfreezeTime: 0
+  StatesCanUnfreeze: []
+--- !u!114 &6442155306121321745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ced94e6b10814794888d19132319e8c2, type: 3}
+  m_Name: PushingIdleState
+  m_EditorClassIdentifier: 
+  Layer: Base Layer
+  EnterClip: PushingIdle
   ExitClip: 
   EnterEffects: []
   ExitEffects: []

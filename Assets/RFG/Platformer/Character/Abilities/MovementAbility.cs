@@ -21,6 +21,9 @@ namespace RFG
     private bool _isFullyStopped = false;
     private float _fullyStoppedElapsedTime = 0f;
     private float _fullyStoppedWaitTime = .1f;
+    private bool _isFalling = false;
+    private float _isFallingElapsedTime = 0;
+    private float _isFallingTimeThreshold = .1f;
 
     #region Unity Methods
     private void Awake()
@@ -45,13 +48,22 @@ namespace RFG
 
     private void Update()
     {
+      if (Time.timeScale == 0f)
+      {
+        return;
+      }
       HandleMovement();
-      DetectFallingMovement();
     }
 
     private void LateUpdate()
     {
+      if (Time.timeScale == 0f)
+      {
+        return;
+      }
       CheckFullyStopped();
+      CheckIsFalling();
+      DetectFallingMovement();
     }
 
     private void OnEnable()
@@ -100,6 +112,28 @@ namespace RFG
       else
       {
         _isFullyStopped = false;
+      }
+    }
+
+    private void CheckIsFalling()
+    {
+      if (_state.JustGotGrounded)
+      {
+        _isFalling = false;
+        return;
+      }
+      if (_controller.Speed.y < 0)
+      {
+        if (_isFallingElapsedTime > _isFallingTimeThreshold)
+        {
+          _isFalling = true;
+          _isFallingElapsedTime = 0;
+        }
+        _isFallingElapsedTime += Time.deltaTime;
+      }
+      else
+      {
+        _isFalling = false;
       }
     }
 
@@ -153,6 +187,10 @@ namespace RFG
       {
         if (_character.IsPushing)
         {
+          if (!_settings.AlwaysRun)
+          {
+            _isRunning = false;
+          }
           return;
         }
         if (_isFullyStopped)
@@ -279,14 +317,13 @@ namespace RFG
     private void DetectFallingMovement()
     {
       if (
-        _controller.Speed.y < 0 &&
-        !_character.IsIdle &&
+        _isFalling &&
         !_character.IsInSlopeMovementState &&
         !_character.IsWallClinging &&
         !_character.IsLedgeGrabbing &&
-        !_character.IsInCrouchMovementState &&
         !_character.IsLadderCliming &&
-        !_character.IsSwimming
+        !_character.IsSwimming &&
+        !_character.IsFalling
       )
       {
         _character.MovementState.ChangeState(typeof(FallingState));

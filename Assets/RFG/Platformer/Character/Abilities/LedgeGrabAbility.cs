@@ -35,6 +35,10 @@ namespace RFG
 
     private void Update()
     {
+      if (Time.timeScale == 0f)
+      {
+        return;
+      }
       HandleLedgeGrab();
     }
     #endregion

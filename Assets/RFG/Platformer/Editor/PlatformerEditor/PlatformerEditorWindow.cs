@@ -308,8 +308,8 @@ namespace RFG
           character.CharacterState.StatePack = characterStatePack;
           character.MovementState.StatePack = movementStatePack;
 
-          GenerateCharacterStates(characterStatePack);
-          GenerateMovementStates(movementStatePack);
+          characterStatePack.GenerateCharacterStates();
+          movementStatePack.GenerateMovementStates();
         }
       }
     }
@@ -330,62 +330,7 @@ namespace RFG
       }
     }
 
-    private void GenerateCharacterStates(StatePack statePack)
-    {
-      statePack.AddToPack<SpawnState>(true);
-      statePack.AddToPack<AliveState>();
-      statePack.AddToPack<DeadState>();
-      statePack.AddToPack<DeathState>("Death", true, 1f);
-    }
 
-    private void GenerateMovementStates(StatePack statePack)
-    {
-      IdleState idleState = statePack.AddToPack<IdleState>("Idle", false, 0, true);
-      statePack.AddToPack<WalkingState>("Walking");
-      statePack.AddToPack<RunningState>("Running");
-
-      FallingState fallingState = statePack.AddToPack<FallingState>("Falling");
-      statePack.AddToPack<LandedState>("Landed");
-
-      statePack.AddToPack<CrouchIdleState>("CrouchIdle");
-      statePack.AddToPack<CrouchWalkingState>("CrouchWalking");
-
-      statePack.AddToPack<DanglingState>("Dangling");
-      DashingState dashingState = statePack.AddToPack<DashingState>("Dashing");
-      statePack.AddToPack<LadderIdleState>("LadderIdle");
-      LadderClimbingState ladderClimbingState = statePack.AddToPack<LadderClimbingState>("LadderClimbing");
-      statePack.AddToPack<LedgeClimbingState>("LedgeClimbing");
-      LedgeGrabState ledgeGrabState = statePack.AddToPack<LedgeGrabState>("LedgeGrab");
-
-      statePack.AddToPack<WalkingUpSlopeState>("WalkingUpSlope");
-      statePack.AddToPack<RunningUpSlopeState>("RunningUpSlope");
-      statePack.AddToPack<WalkingDownSlopeState>("Walking");
-      statePack.AddToPack<RunningDownSlopeState>("Running");
-      statePack.AddToPack<SlidingState>("Sliding", true, 0.5f, false, fallingState);
-      statePack.AddToPack<PushingState>("Pushing");
-      statePack.AddToPack<WallClingingState>("WallClinging");
-      statePack.AddToPack<WallJumpingState>("Jumping");
-      SwimmingState swimmingState = statePack.AddToPack<SwimmingState>("Swimming", true, 0, false, fallingState);
-
-      PrimaryAttackStartedState primaryAttackStartedState = statePack.AddToPack<PrimaryAttackStartedState>();
-      statePack.AddToPack<PrimaryAttackPerformedState>("PrimaryAttackPerformed", true);
-      statePack.AddToPack<PrimaryAttackCanceledState>();
-      SecondaryAttackStartedState secondaryAttackStartedState = statePack.AddToPack<SecondaryAttackStartedState>();
-      statePack.AddToPack<SecondaryAttackPerformedState>("SecondaryAttackPerformed", true);
-      statePack.AddToPack<SecondaryAttackCanceledState>();
-
-      DamageState damageState = statePack.AddToPack<DamageState>("Damage", true, 0.5f, false);
-      damageState.StatesCanUnfreeze = new State[] { damageState };
-
-      SmashDownStartedState smashDownStartedState = statePack.AddToPack<SmashDownStartedState>("SmashDownStarted", true);
-      SmashDownCollidedState smashDownCollidedState = statePack.AddToPack<SmashDownCollidedState>("SmashDownCollided", true, 1, false, swimmingState, damageState);
-      SmashDownPerformedState smashDownPerformedState = statePack.AddToPack<SmashDownPerformedState>("SmashDownPerformed", true, 0, false, smashDownCollidedState, swimmingState, damageState);
-      smashDownStartedState.StatesCanUnfreeze = new State[] { smashDownPerformedState, damageState };
-
-      statePack.AddToPack<JumpingState>("Jumping", true, 0, false, ledgeGrabState, primaryAttackStartedState, secondaryAttackStartedState, fallingState, smashDownStartedState, dashingState, ladderClimbingState);
-      statePack.AddToPack<JumpingFlipState>("JumpingFlip", true, 0, false, ledgeGrabState, primaryAttackStartedState, secondaryAttackStartedState, smashDownStartedState, dashingState, ladderClimbingState);
-      statePack.AddToPack<DoubleJumpState>("Jumping", true, 0, false);
-    }
 
     private void CreateInventory(GameObject activeGameObject, string path)
     {

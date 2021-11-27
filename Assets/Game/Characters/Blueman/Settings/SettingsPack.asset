@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SettingsPack
   m_EditorClassIdentifier: 
   AttackSpeed: 5
-  DanglingRaycastOrigin: {x: 0.1, y: -0.1, z: 0}
+  DanglingRaycastOrigin: {x: 0.25, y: -0.25, z: 0}
   DanglingRaycastLength: 0.5
   CanDangle: 1
   DashDistance: 3

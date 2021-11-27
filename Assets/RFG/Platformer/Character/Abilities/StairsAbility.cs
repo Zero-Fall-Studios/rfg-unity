@@ -55,6 +55,10 @@ namespace RFG
 
     private void Update()
     {
+      if (Time.timeScale == 0f)
+      {
+        return;
+      }
       float verticalInput = _movement.action.ReadValue<Vector2>().y;
       _stairsInputUp = (verticalInput > _settings.Threshold.y);
       _stairsInputDown = (verticalInput < -_settings.Threshold.y);

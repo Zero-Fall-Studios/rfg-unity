@@ -47,6 +47,10 @@ namespace RFG
 
     private void Update()
     {
+      if (Time.timeScale == 0f)
+      {
+        return;
+      }
       CharacterState.Update();
       MovementState.Update();
     }
@@ -54,7 +58,6 @@ namespace RFG
     private void OnEnable()
     {
       EnableAllInput(true);
-      EnableInput(InputPack.PauseInput, true);
     }
 
     private void OnDisable()
@@ -175,7 +178,6 @@ namespace RFG
       EnableInput(InputPack?.SmashDownInput, enabled);
       EnableInput(InputPack?.SlideInput, enabled);
       EnableInput(InputPack?.UseInput, enabled);
-      EnableInput(InputPack?.PauseInput, enabled);
     }
 
     public void EnableInput(InputActionReference reference, bool enabled)
@@ -304,7 +306,8 @@ namespace RFG
     public bool IsSliding => MovementState.CurrentStateType == typeof(SlidingState);
     public bool IsLedgeGrabbing => MovementState.CurrentStateType == typeof(LedgeGrabState);
     public bool IsSwimming => MovementState.CurrentStateType == typeof(SwimmingState);
-    public bool IsPushing => MovementState.CurrentStateType == typeof(PushingState);
+    public bool IsPushing => MovementState.IsInState(typeof(PushingState), typeof(PushingIdleState));
+    public bool IsFalling => MovementState.CurrentStateType == typeof(FallingState);
     public bool IsLadderCliming => MovementState.IsInState(typeof(LadderClimbingState), typeof(LadderIdleState));
     public bool IsAnyPrimaryAttack => MovementState.IsInState(typeof(PrimaryAttackStartedState), typeof(PrimaryAttackCanceledState), typeof(PrimaryAttackPerformedState));
     public bool IsAnySecondaryAttack => MovementState.IsInState(typeof(SecondaryAttackStartedState), typeof(SecondaryAttackCanceledState), typeof(SecondaryAttackPerformedState));

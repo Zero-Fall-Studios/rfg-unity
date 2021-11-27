@@ -35,7 +35,11 @@ namespace RFG
 
     private void LateUpdate()
     {
-      if (_state.JustGotGrounded && !_character.IsSwimming)
+      if (Time.timeScale == 0f)
+      {
+        return;
+      }
+      if (!_character.IsIdle && _state.JustGotGrounded && !_character.IsSwimming)
       {
         _character.MovementState.ChangeState(typeof(LandedState));
         SetNumberOfJumpsLeft();
@@ -97,7 +101,6 @@ namespace RFG
     {
       if (EvaluateJumpConditions())
       {
-
         float _horizontalInput = _movement.action.ReadValue<Vector2>().x;
 
         if (_horizontalInput > -_settings.JumpThreshold.x && _horizontalInput < _settings.JumpThreshold.x)
@@ -187,9 +190,6 @@ namespace RFG
 
     private void OnEnable()
     {
-      // Make sure to setup new events
-      OnDisable();
-
       if (_jumpInput != null)
       {
         _jumpInput.action.started += OnJumpStarted;

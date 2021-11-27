@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace RFG
 {
@@ -9,9 +10,12 @@ namespace RFG
     private CharacterController2D _controller;
     private CharacterControllerState2D _state;
     private SettingsPack _settings;
+    private InputActionReference _movement;
     private bool _collidingWithPushable = false;
     private Vector3 _raycastDirection;
     private Vector3 _raycastOrigin;
+    private float _horizontalSpeed = 0f;
+    private bool _isPushing = false;
 
 
     #region Unity Methods
@@ -20,6 +24,7 @@ namespace RFG
       _character = GetComponent<Character>();
       _controller = GetComponent<CharacterController2D>();
       _settings = _character.SettingsPack;
+      _movement = _character.InputPack.Movement;
     }
 
     private void Start()
@@ -29,6 +34,10 @@ namespace RFG
 
     private void Update()
     {
+      if (Time.timeScale == 0f)
+      {
+        return;
+      }
       HandlePush();
     }
     #endregion
@@ -49,14 +58,29 @@ namespace RFG
         }
       }
 
-      if (_character.IsGrounded && _collidingWithPushable && !_character.IsPushing && !_character.IsInAirMovementState && !_character.IsInCrouchMovementState)
+      if (_character.IsGrounded && _collidingWithPushable && !_character.IsInAirMovementState && !_character.IsInCrouchMovementState)
       {
-        _character.MovementState.ChangeState(typeof(PushingState));
+        _isPushing = true;
       }
-      else if (!_collidingWithPushable && _character.IsPushing)
+      else if (!_collidingWithPushable && _isPushing)
       {
+        _isPushing = false;
         _character.MovementState.ChangeState(typeof(IdleState));
       }
+
+      if (_isPushing)
+      {
+        _horizontalSpeed = _movement.action.ReadValue<Vector2>().x;
+        if (_horizontalSpeed == 0)
+        {
+          _character.MovementState.ChangeState(typeof(PushingIdleState));
+        }
+        else
+        {
+          _character.MovementState.ChangeState(typeof(PushingState));
+        }
+      }
+
     }
   }
 }

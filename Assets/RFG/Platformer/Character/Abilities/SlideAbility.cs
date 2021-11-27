@@ -36,6 +36,10 @@ namespace RFG
 
     private void Update()
     {
+      if (Time.timeScale == 0f)
+      {
+        return;
+      }
       if (_isSlidingCooldown)
       {
         if (_slideCooldownTimeElapsed > _settings.SlideCooldownTime)
