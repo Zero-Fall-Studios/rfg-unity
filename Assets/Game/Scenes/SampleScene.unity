@@ -598,6 +598,10 @@ GameObject:
   - component: {fileID: 148615098}
   - component: {fileID: 148615097}
   - component: {fileID: 148615096}
+  - component: {fileID: 148615122}
+  - component: {fileID: 148615121}
+  - component: {fileID: 148615124}
+  - component: {fileID: 148615123}
   m_Layer: 8
   m_Name: Blueman
   m_TagString: Player
@@ -1044,6 +1048,118 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &148615121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 148615095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9d151ab8084e4943ae75138996bd208, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 8dc4f7b81753d824b9d4ad838b491a3b, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 148615119}
+        m_TargetAssemblyTypeName: RFG.Character, Assembly-CSharp
+        m_MethodName: EnablePauseInput
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+--- !u!114 &148615122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 148615095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9d151ab8084e4943ae75138996bd208, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: bff89a1192c3e8d4994f1aa1de815bbe, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 148615119}
+        m_TargetAssemblyTypeName: RFG.Character, Assembly-CSharp
+        m_MethodName: EnablePauseInput
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &148615123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 148615095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9d151ab8084e4943ae75138996bd208, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 4462692363e8bb44f8bb70ab11274fe1, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 148615119}
+        m_TargetAssemblyTypeName: RFG.Character, Assembly-CSharp
+        m_MethodName: EnableAllInput
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+--- !u!114 &148615124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 148615095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9d151ab8084e4943ae75138996bd208, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 313c80fc5e6491c4e82451537c51b72d, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 148615119}
+        m_TargetAssemblyTypeName: RFG.Character, Assembly-CSharp
+        m_MethodName: EnableAllInput
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &157345968
 GameObject:
   m_ObjectHideFlags: 0
@@ -24080,9 +24196,10 @@ GameObject:
   - component: {fileID: 1002912151}
   - component: {fileID: 1002912150}
   - component: {fileID: 1002912154}
-  - component: {fileID: 1002912157}
   - component: {fileID: 1002912156}
+  - component: {fileID: 1002912159}
   - component: {fileID: 1002912155}
+  - component: {fileID: 1002912158}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -24214,9 +24331,21 @@ MonoBehaviour:
   Response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1002912157}
-        m_TargetAssemblyTypeName: Game.PauseMenu, Assembly-CSharp
-        m_MethodName: ToggleMenu
+      - m_Target: {fileID: 1002912156}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: SlideLeft
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1002912159}
+        m_TargetAssemblyTypeName: RFG.AnimationWait, Assembly-CSharp
+        m_MethodName: AnimationWaitRaise
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -24246,7 +24375,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1002912157
+--- !u!114 &1002912158
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -24255,10 +24384,51 @@ MonoBehaviour:
   m_GameObject: {fileID: 1002912149}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 658a2246b9a8ed44e948abc2236c10e6, type: 3}
+  m_Script: {fileID: 11500000, guid: c9d151ab8084e4943ae75138996bd208, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animator: {fileID: 1002912156}
+  Event: {fileID: 11400000, guid: 4462692363e8bb44f8bb70ab11274fe1, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1002912156}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: SlideRight
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1002912159}
+        m_TargetAssemblyTypeName: RFG.AnimationWait, Assembly-CSharp
+        m_MethodName: AnimationWaitRaise
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1002912159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1002912149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19533f236623db745a52a8f2425d8c8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <AnimationWaitEvent>k__BackingField: {fileID: 11400000, guid: bff89a1192c3e8d4994f1aa1de815bbe, type: 2}
+  <AnimationDoneEvent>k__BackingField: {fileID: 11400000, guid: 8dc4f7b81753d824b9d4ad838b491a3b, type: 2}
 --- !u!1 &1029946528
 GameObject:
   m_ObjectHideFlags: 0
@@ -27244,19 +27414,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1002912157}
-        m_TargetAssemblyTypeName: Game.PauseMenu, Assembly-CSharp
-        m_MethodName: ToggleMenu
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 11400000, guid: 313c80fc5e6491c4e82451537c51b72d, type: 2}
+      - m_Target: {fileID: 11400000, guid: 4462692363e8bb44f8bb70ab11274fe1, type: 2}
         m_TargetAssemblyTypeName: RFG.GameEvent, Assembly-CSharp
         m_MethodName: Raise
         m_Mode: 1

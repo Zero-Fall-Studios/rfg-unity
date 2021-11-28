@@ -16,21 +16,26 @@ namespace RFG
       _pauseInput = _character.Context.inputPack.PauseInput;
       _settings = _character.Context.settingsPack;
 
-      // Setup events
       OnEnable();
     }
 
     public void OnPausedPerformed(InputAction.CallbackContext ctx)
     {
-      _settings.PauseEvent?.Raise();
-      _character.EnableAllInput(!GameManager.Instance.IsPaused);
+      if (GameManager.Instance.IsPaused)
+      {
+        _settings.UnPauseEvent?.Raise();
+      }
+      else
+      {
+        _settings.PauseEvent?.Raise();
+      }
     }
 
     private void OnEnable()
     {
+      OnDisable();
       if (_pauseInput != null)
       {
-        _pauseInput.action.Enable();
         _pauseInput.action.performed += OnPausedPerformed;
       }
     }
@@ -39,7 +44,6 @@ namespace RFG
     {
       if (_pauseInput != null)
       {
-        _pauseInput.action.Disable();
         _pauseInput.action.performed -= OnPausedPerformed;
       }
     }

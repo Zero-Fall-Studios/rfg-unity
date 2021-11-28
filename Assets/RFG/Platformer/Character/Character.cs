@@ -58,11 +58,13 @@ namespace RFG
     private void OnEnable()
     {
       EnableAllInput(true);
+      EnablePauseInput(true);
     }
 
     private void OnDisable()
     {
       EnableAllInput(false);
+      EnablePauseInput(false);
     }
     #endregion
 
@@ -178,6 +180,11 @@ namespace RFG
       EnableInput(InputPack?.SmashDownInput, enabled);
       EnableInput(InputPack?.SlideInput, enabled);
       EnableInput(InputPack?.UseInput, enabled);
+    }
+
+    public void EnablePauseInput(bool enabled)
+    {
+      EnableInput(InputPack?.PauseInput, enabled);
     }
 
     public void EnableInput(InputActionReference reference, bool enabled)

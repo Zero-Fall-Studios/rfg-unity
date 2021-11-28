@@ -1,13 +1,14 @@
 using System.Collections;
 using UnityEngine;
+using MyBox;
 
 namespace RFG
 {
   [AddComponentMenu("RFG/Game/Game Manager")]
   public class GameManager : Singleton<GameManager>
   {
-    public GameSettings GameSettings;
-    public bool IsPaused { get; set; }
+    [field: SerializeField] private GameSettings GameSettings { get; set; }
+    [field: SerializeField, ReadOnly] public bool IsPaused { get; set; }
 
     private void Start()
     {
@@ -26,18 +27,6 @@ namespace RFG
     {
       IsPaused = false;
       Time.timeScale = 1f;
-    }
-
-    public void TogglePause()
-    {
-      if (IsPaused)
-      {
-        UnPause();
-      }
-      else
-      {
-        Pause();
-      }
     }
 
     public void Quit()

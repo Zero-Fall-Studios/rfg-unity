@@ -66,6 +66,7 @@ namespace RFG
 
     [Header("Pause Settings")]
     public GameEvent PauseEvent;
+    public GameEvent UnPauseEvent;
 
     [Header("Running Settings")]
     public float RunningSpeed = 5f;
