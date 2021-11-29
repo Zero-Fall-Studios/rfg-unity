@@ -142,7 +142,7 @@ namespace RFG
     private IEnumerator Dash()
     {
       bool effectSwitch = false;
-      while (_distanceTraveled < _settings.DashDistance && _shouldKeepDashing && _character.MovementState.CurrentStateType == typeof(DashingState))
+      while (_distanceTraveled < _settings.DashDistance && _shouldKeepDashing && !_state.TouchingLevelBounds && _character.MovementState.CurrentStateType == typeof(DashingState))
       {
         _distanceTraveled = Vector3.Distance(_initialPosition, _transform.position);
 
@@ -179,11 +179,20 @@ namespace RFG
       _controller.DefaultParameters.MaxSlopeAngle = _slopeAngleSave;
       _controller.Parameters.MaxSlopeAngle = _slopeAngleSave;
       _controller.GravityActive(true);
+
+      Debug.Log("Set force 0");
       _controller.SetForce(Vector2.zero);
 
       if (_character.MovementState.CurrentStateType == typeof(DashingState))
       {
-        _character.MovementState.RestorePreviousState();
+        if (_state.IsGrounded)
+        {
+          _character.MovementState.ChangeState(typeof(IdleState), true);
+        }
+        else
+        {
+          _character.MovementState.RestorePreviousState(true);
+        }
       }
     }
 

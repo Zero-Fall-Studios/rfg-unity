@@ -223,6 +223,7 @@ MonoBehaviour:
   - {fileID: -901595729985047435}
   - {fileID: -2768044906280426261}
   - {fileID: -7520128619571668608}
+  - {fileID: -7806633455591822282}
 --- !u!114 &-2768044906280426261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,7 +242,7 @@ MonoBehaviour:
   EnterEffects: []
   ExitEffects: []
   StopEnterEffectsOnExit: 0
-  FreezeState: 0
+  FreezeState: 1
   WaitToUnfreezeTime: 0
   StatesCanUnfreeze: []
 --- !u!114 &-2086255369653386821

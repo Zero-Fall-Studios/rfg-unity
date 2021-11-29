@@ -15,6 +15,9 @@ namespace RFG
     private SettingsPack _settings;
     private int _numberOfJumpsLeft = 0;
     private float _lastJumpTime = 0f;
+    private float _jumpButtonPressTime = 0f;
+    private bool _jumpButtonPressed = false;
+    private bool _jumpButtonReleased = false;
 
     #region Unity Methods
     private void Awake()
@@ -31,6 +34,18 @@ namespace RFG
     {
       _state = _controller.State;
       SetNumberOfJumpsLeft();
+    }
+
+    private void Update()
+    {
+      if (Time.timeScale == 0f)
+      {
+        return;
+      }
+      if (_jumpButtonPressTime != 0f)
+      {
+        JumpStop();
+      }
     }
 
     private void LateUpdate()
@@ -99,40 +114,47 @@ namespace RFG
 
     private void JumpStart()
     {
-      if (EvaluateJumpConditions())
+      if (!EvaluateJumpConditions())
       {
-        float _horizontalInput = _movement.action.ReadValue<Vector2>().x;
-
-        if (_horizontalInput > -_settings.JumpThreshold.x && _horizontalInput < _settings.JumpThreshold.x)
-        {
-          _character.MovementState.ChangeState(typeof(JumpingState));
-        }
-        else
-        {
-          _character.MovementState.ChangeState(typeof(JumpingFlipState));
-        }
-
-        _numberOfJumpsLeft--;
-
-        _controller.GravityActive(true);
-        _controller.CollisionsOn();
-
-        _lastJumpTime = Time.time;
-        _state.IsJumping = true;
-
-        _controller.SetVerticalForce(Mathf.Sqrt(2f * _settings.JumpHeight * Mathf.Abs(_controller.Parameters.Gravity)));
+        return;
       }
+
+      float _horizontalInput = _movement.action.ReadValue<Vector2>().x;
+
+      if (_horizontalInput > -_settings.JumpThreshold.x && _horizontalInput < _settings.JumpThreshold.x)
+      {
+        _character.MovementState.ChangeState(typeof(JumpingState));
+      }
+      else
+      {
+        _character.MovementState.ChangeState(typeof(JumpingFlipState));
+      }
+
+      _numberOfJumpsLeft--;
+
+      _controller.GravityActive(true);
+      _controller.CollisionsOn();
+
+      _lastJumpTime = Time.time;
+      _jumpButtonPressTime = Time.time;
+      _jumpButtonReleased = false;
+      _jumpButtonPressed = true;
+      _state.IsJumping = true;
+
+      _controller.SetVerticalForce(Mathf.Sqrt(2f * _settings.JumpHeight * Mathf.Abs(_controller.Parameters.Gravity)));
+
     }
 
     private void JumpStop()
     {
-      if (_settings.JumpIsProportionalToThePressTime)
+      bool hasMinAirTime = Time.time - _lastJumpTime >= _settings.JumpMinAirTime;
+      bool speedGreaterThanGravity = _controller.Speed.y > Mathf.Sqrt(Mathf.Abs(_controller.Parameters.Gravity));
+      if (hasMinAirTime && speedGreaterThanGravity && _jumpButtonReleased && !_jumpButtonPressed)
       {
-        bool hasMinAirTime = Time.time - _lastJumpTime >= _settings.JumpMinAirTime;
-        bool speedGreaterThanGravity = _controller.Speed.y > Mathf.Sqrt(Mathf.Abs(_controller.Parameters.Gravity));
-        if (hasMinAirTime && speedGreaterThanGravity)
+        _jumpButtonReleased = false;
+        if (_settings.JumpIsProportionalToThePressTime)
         {
-          _lastJumpTime = 0f;
+          _jumpButtonPressTime = 0f;
           if (_settings.JumpReleaseForceFactor == 0f)
           {
             _controller.SetVerticalForce(0f);
@@ -185,7 +207,8 @@ namespace RFG
 
     private void OnJumpCanceled(InputAction.CallbackContext ctx)
     {
-      JumpStop();
+      _jumpButtonPressed = false;
+      _jumpButtonReleased = true;
     }
 
     private void OnEnable()

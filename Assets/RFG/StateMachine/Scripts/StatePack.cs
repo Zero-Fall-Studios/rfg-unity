@@ -167,7 +167,7 @@ namespace RFG
       smashDownStartedState.StatesCanUnfreeze = new State[] { smashDownPerformedState, damageState };
 
       JumpingState jumpingState = AddToPack<JumpingState>("Jumping", true, 0, false, ledgeGrabState, primaryAttackStartedState, secondaryAttackStartedState, fallingState, smashDownStartedState, dashingState, ladderClimbingState);
-      JumpingFlipState jumpingFlipState = AddToPack<JumpingFlipState>("JumpingFlip", true, 0, false, ledgeGrabState, primaryAttackStartedState, secondaryAttackStartedState, smashDownStartedState, dashingState, ladderClimbingState);
+      JumpingFlipState jumpingFlipState = AddToPack<JumpingFlipState>("JumpingFlip", true, 0, false, ledgeGrabState, primaryAttackStartedState, secondaryAttackStartedState, fallingState, smashDownStartedState, dashingState, ladderClimbingState);
       DoubleJumpState doubleJumpState = AddToPack<DoubleJumpState>("Jumping", true, 0, false);
 
       AddToPack<LandedState>("Landed", true, .25f, false, jumpingState, jumpingFlipState, doubleJumpState);

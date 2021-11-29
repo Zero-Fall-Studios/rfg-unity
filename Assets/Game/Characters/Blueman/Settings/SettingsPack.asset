@@ -16,11 +16,11 @@ MonoBehaviour:
   DanglingRaycastOrigin: {x: 0.25, y: -0.25, z: 0}
   DanglingRaycastLength: 0.5
   CanDangle: 1
-  DashDistance: 3
+  DashDistance: 10
   DashForce: 40
   TotalDashes: 2
   MinInputThreshold: 0.1
-  Cooldown: 1
+  Cooldown: 0.5
   DashEffects:
   - AfterImage
   JumpHeight: 4

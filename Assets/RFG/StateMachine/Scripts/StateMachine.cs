@@ -64,15 +64,18 @@ namespace RFG
       }
     }
 
-    public bool ChangeState(Type newStateType)
+    public bool ChangeState(Type newStateType, bool force = false)
     {
-      // Really frozen means that the new state type cant unfreeze and the state is currently frozen
-      bool reallyFrozen = Frozen && !CanStateUnfreeze(newStateType);
-
-      // Dont change if current state or if frozen
-      if ((CurrentStateType != null && CurrentStateType.Equals(newStateType)) || reallyFrozen)
+      if (!force)
       {
-        return false;
+        // Really frozen means that the new state type cant unfreeze and the state is currently frozen
+        bool reallyFrozen = Frozen && !CanStateUnfreeze(newStateType);
+
+        // Dont change if current state or if frozen
+        if ((CurrentStateType != null && CurrentStateType.Equals(newStateType)) || reallyFrozen)
+        {
+          return false;
+        }
       }
 
       // Exit the previous state if there was one
@@ -115,9 +118,9 @@ namespace RFG
       }
     }
 
-    public void RestorePreviousState()
+    public void RestorePreviousState(bool force = false)
     {
-      ChangeState(PreviousStateType);
+      ChangeState(PreviousStateType, force);
     }
 
     public bool HasState(Type type)
