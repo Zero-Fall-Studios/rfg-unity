@@ -30,6 +30,7 @@ namespace RFG
     private int _numberOfDashesLeft = 2;
     private bool _hasDashing;
 
+    #region Unity Methods
     private void Awake()
     {
       _transform = transform;
@@ -69,6 +70,23 @@ namespace RFG
       }
       HandleAmountOfDashesLeft();
     }
+
+    private void OnEnable()
+    {
+      if (_dashInput != null)
+      {
+        _dashInput.action.started += OnDashStarted;
+      }
+    }
+
+    private void OnDisable()
+    {
+      if (_dashInput != null)
+      {
+        _dashInput.action.started -= OnDashStarted;
+      }
+    }
+    #endregion
 
     private void StartDash()
     {
@@ -141,10 +159,17 @@ namespace RFG
 
     private IEnumerator Dash()
     {
+      yield return new WaitForEndOfFrame();
       bool effectSwitch = false;
       while (_distanceTraveled < _settings.DashDistance && _shouldKeepDashing && !_state.TouchingLevelBounds && _character.MovementState.CurrentStateType == typeof(DashingState))
       {
         _distanceTraveled = Vector3.Distance(_initialPosition, _transform.position);
+
+        if (effectSwitch)
+        {
+          _transform.SpawnFromPool(_settings.DashEffects, _transform);
+        }
+        effectSwitch = !effectSwitch;
 
         if ((_state.IsCollidingLeft && _dashDirection.x < 0f)
           || (_state.IsCollidingRight && _dashDirection.x > 0f)
@@ -156,11 +181,6 @@ namespace RFG
         }
         else
         {
-          if (effectSwitch)
-          {
-            _transform.SpawnFromPool(_settings.DashEffects, _transform);
-          }
-          effectSwitch = !effectSwitch;
           _controller.GravityActive(false);
           _controller.SetForce(_dashDirection * _settings.DashForce);
         }
@@ -180,7 +200,6 @@ namespace RFG
       _controller.Parameters.MaxSlopeAngle = _slopeAngleSave;
       _controller.GravityActive(true);
 
-      Debug.Log("Set force 0");
       _controller.SetForce(Vector2.zero);
 
       if (_character.MovementState.CurrentStateType == typeof(DashingState))
@@ -220,22 +239,6 @@ namespace RFG
         return;
 
       StartDash();
-    }
-
-    private void OnEnable()
-    {
-      if (_dashInput != null)
-      {
-        _dashInput.action.started += OnDashStarted;
-      }
-    }
-
-    private void OnDisable()
-    {
-      if (_dashInput != null)
-      {
-        _dashInput.action.started -= OnDashStarted;
-      }
     }
 
   }

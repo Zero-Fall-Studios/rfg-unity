@@ -726,7 +726,8 @@ MonoBehaviour:
   Layer: Base Layer
   EnterClip: Jumping
   ExitClip: 
-  EnterEffects: []
+  EnterEffects:
+  - WallJumpEffect
   ExitEffects: []
   StopEnterEffectsOnExit: 0
   FreezeState: 0

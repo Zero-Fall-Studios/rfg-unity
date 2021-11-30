@@ -86,7 +86,7 @@ namespace RFG
         CurrentState.Exit(_context);
       }
 
-      // Debug.Log(newStateType.ToString());
+      Debug.Log(newStateType.ToString());
 
       // Enter the new state
       CurrentState = Find(newStateType);

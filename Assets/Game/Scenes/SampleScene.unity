@@ -22385,7 +22385,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 3
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -22409,7 +22409,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.502, y: 3.88, z: -10}
+  m_LocalPosition: {x: 9.448935, y: 5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -25101,6 +25101,9 @@ MonoBehaviour:
   - tag: AfterImage
     prefab: {fileID: 3834784586685945564, guid: defb11801504a6545bde4941290e0fad, type: 3}
     size: 6
+  - tag: WallJumpEffect
+    prefab: {fileID: 8728517854022493443, guid: 6f99b0ca7fe80ff4e81c69bb2a4ad6c4, type: 3}
+    size: 1
 --- !u!4 &1222071065
 Transform:
   m_ObjectHideFlags: 0
@@ -26870,7 +26873,7 @@ MonoBehaviour:
   m_Follow: {fileID: 148615120}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 3
+    OrthographicSize: 5
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
