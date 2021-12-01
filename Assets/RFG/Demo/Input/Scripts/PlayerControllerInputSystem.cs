@@ -8,46 +8,32 @@ public class PlayerControllerInputSystem : MonoBehaviour
   [field: SerializeField] private float MovementSmoothingSpeed { get; set; } = 1f;
   [field: SerializeField] private Aim Aim { get; set; }
   [field: SerializeField] private float DashSpeed { get; set; } = 100f;
+  [field: SerializeField] private GameEvent PauseEvent { get; set; }
+  [field: SerializeField] private GameEvent UnPauseEvent { get; set; }
 
-  private PlayerInputActions _inputActions;
-  private InputAction _movement;
-
+  private PlayerInput _playerInput;
   private Vector2 _velocity;
   private Vector2 _rawInputMovement;
   private Vector2 _dashDirection;
 
   private void Awake()
   {
-    _inputActions = new PlayerInputActions();
+    _playerInput = GetComponent<PlayerInput>();
     Aim.Init();
   }
 
   private void Update()
   {
-    CalculateMovementInputSmoothing();
-    UpdatePlayerMovement();
-  }
-
-  private void FixedUpdate()
-  {
-    Vector2 inputMovement = _movement.ReadValue<Vector2>();
-    _rawInputMovement = inputMovement;
-  }
-
-  private void CalculateMovementInputSmoothing()
-  {
+    _rawInputMovement = _playerInput.actions["Movement"].ReadValue<Vector2>();
     Vector2 speed = _rawInputMovement * MovementSpeed;
     _velocity = Vector2.Lerp(_velocity, speed, Time.deltaTime * MovementSmoothingSpeed);
-  }
-
-  private void UpdatePlayerMovement()
-  {
     transform.Translate(_velocity * Time.deltaTime, Space.World);
   }
 
+
   private void ComputerDashDirection()
   {
-    Aim.PrimaryMovement = _movement.ReadValue<Vector2>();
+    Aim.PrimaryMovement = _playerInput.actions["Movement"].ReadValue<Vector2>();
     Aim.CurrentPosition = transform.position;
     _dashDirection = Aim.GetCurrentAim();
     _dashDirection = _dashDirection.normalized;
@@ -55,7 +41,6 @@ public class PlayerControllerInputSystem : MonoBehaviour
 
   private void OnAttack(InputAction.CallbackContext ctx)
   {
-    // if (ctx.started)
     Debug.Log("Attack!");
     ComputerDashDirection();
     transform.Translate((_dashDirection * DashSpeed) * Time.deltaTime, Space.World);
@@ -63,41 +48,49 @@ public class PlayerControllerInputSystem : MonoBehaviour
 
   private void OnAttackCanceled(InputAction.CallbackContext ctx)
   {
-    // if (ctx.started)
     Debug.Log("Attack Canceled!");
   }
 
   private void OnAttackStarted(InputAction.CallbackContext ctx)
   {
-    // if (ctx.started)
     Debug.Log("Attack Started!");
   }
 
-  private void OnPause(InputAction.CallbackContext ctx)
+  public void OnPause(InputValue value)
   {
     Debug.Log("Pause");
+    if (GameManager.Instance.IsPaused)
+    {
+      UnPauseEvent?.Raise();
+    }
+    else
+    {
+      PauseEvent?.Raise();
+    }
   }
 
   private void OnEnable()
   {
-    //inputActions.PlayerControls
-    _movement = _inputActions.PlayerControls.Movement;
-    _movement.Enable();
+    _playerInput.actions["Movement"].Enable();
+    _playerInput.actions["PrimaryAttack"].Enable();
+    _playerInput.actions["Pause"].Enable();
 
-    _inputActions.PlayerControls.PrimaryAttack.performed += OnAttack;
-    _inputActions.PlayerControls.PrimaryAttack.started += OnAttackStarted;
-    _inputActions.PlayerControls.PrimaryAttack.canceled += OnAttackCanceled;
-    _inputActions.PlayerControls.Pause.performed += OnPause;
-
-    _inputActions.PlayerControls.PrimaryAttack.Enable();
-    _inputActions.PlayerControls.Pause.Enable();
+    _playerInput.actions["PrimaryAttack"].performed += OnAttack;
+    _playerInput.actions["PrimaryAttack"].started += OnAttackStarted;
+    _playerInput.actions["PrimaryAttack"].canceled += OnAttackCanceled;
+    // _playerInput.actions["Pause"].performed += OnPause;
   }
 
   private void OnDisable()
   {
-    _movement.Disable();
-    _inputActions.PlayerControls.PrimaryAttack.Disable();
-    _inputActions.PlayerControls.Pause.Disable();
+    _playerInput.actions["Movement"].Disable();
+    _playerInput.actions["PrimaryAttack"].Disable();
+    _playerInput.actions["Pause"].Disable();
+
+    _playerInput.actions["PrimaryAttack"].performed -= OnAttack;
+    _playerInput.actions["PrimaryAttack"].started -= OnAttackStarted;
+    _playerInput.actions["PrimaryAttack"].canceled -= OnAttackCanceled;
+    // _playerInput.actions["Pause"].performed -= OnPause;
   }
 
 }

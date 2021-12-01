@@ -15,7 +15,8 @@ MonoBehaviour:
   lifetime: 0.5
   pooledObject: 1
   animationClip: 
-  soundEffects: []
+  soundEffects:
+  - {fileID: 11400000, guid: 05f8cb365f886ea4daae5009a88726a8, type: 2}
   spawnEffects: []
   cameraShakeIntensity: 0
   cameraShakeTime: 0
