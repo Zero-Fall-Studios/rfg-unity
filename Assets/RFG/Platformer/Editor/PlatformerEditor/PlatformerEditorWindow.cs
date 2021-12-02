@@ -151,15 +151,11 @@ namespace RFG
 
     private void CreateCharacter(string name)
     {
-      GameObject activeGameObject = Selection.activeGameObject;
+      // Create Folders
+      string newFolderPath = EditorUtils.CreateFolderStructure(name, "Animations", "Prefabs", "Sprites", "Settings", "Items");
 
-      if (activeGameObject == null)
-      {
-        activeGameObject = new GameObject();
-        EditorGUIUtility.PingObject(activeGameObject);
-        Selection.activeGameObject = activeGameObject;
-      }
-
+      // Create GameObject
+      GameObject activeGameObject = new GameObject();
       activeGameObject.name = name;
 
       Character character = activeGameObject.GetOrAddComponent<Character>();
@@ -190,7 +186,9 @@ namespace RFG
       controller.StairsMask = LayerMask.GetMask("Stairs");
 
       activeGameObject.GetOrAddComponent<SpriteRenderer>();
-      activeGameObject.GetOrAddComponent<Animator>();
+      Animator animator = activeGameObject.GetOrAddComponent<Animator>();
+      UnityEditor.Animations.AnimatorController animatorController = UnityEditor.Animations.AnimatorController.CreateAnimatorControllerAtPath($"{newFolderPath}/Animations/{name}.controller");
+      animator.runtimeAnimatorController = animatorController;
 
       activeGameObject.GetOrAddComponent<AttackAbility>();
       activeGameObject.GetOrAddComponent<DashAbility>();
@@ -211,21 +209,24 @@ namespace RFG
       activeGameObject.GetOrAddComponent<HealthBehaviour>();
       activeGameObject.GetOrAddComponent<SceneBoundsBehaviour>();
 
-      string newFolderPath = CreateFolderStructure(name);
       CreatePacks(activeGameObject, newFolderPath + "/Settings");
       CreateParams(activeGameObject, newFolderPath + "/Settings");
       CreateInventory(activeGameObject, newFolderPath + "/Items");
+
+      // Create Prefab
+      EditorUtils.SaveAsPrefabAsset(activeGameObject, newFolderPath, name);
+
+      DestroyImmediate(activeGameObject);
     }
 
     private void CreateAICharacter(string name)
     {
-      GameObject activeGameObject = Selection.activeGameObject;
+      // Create Folders
+      string newFolderPath = EditorUtils.CreateFolderStructure(name, "Animations", "Prefabs", "Sprites", "Settings", "Items");
 
-      if (activeGameObject == null)
-      {
-        LogExt.Warn<PlatformerEditorWindow>("Please select a game object first before clicking create ai character");
-        return;
-      }
+      // Create GameObject
+      GameObject activeGameObject = new GameObject();
+      activeGameObject.name = name;
 
       Character character = activeGameObject.GetOrAddComponent<Character>();
       character.CharacterType = CharacterType.AI;
@@ -266,27 +267,6 @@ namespace RFG
     #endregion
 
     #region Create
-    private string CreateFolderStructure(string name)
-    {
-      string path;
-      if (EditorUtils.TryGetActiveFolderPath(out path))
-      {
-        string guid = AssetDatabase.CreateFolder(path, name);
-        string newFolderPath = AssetDatabase.GUIDToAssetPath(guid);
-
-        AssetDatabase.CreateFolder(newFolderPath, "Animations");
-        AssetDatabase.CreateFolder(newFolderPath, "Settings");
-        AssetDatabase.CreateFolder(newFolderPath, "Items");
-        AssetDatabase.CreateFolder(newFolderPath, "Sprites");
-
-        AssetDatabase.SaveAssets();
-        EditorUtility.SetDirty(this);
-        return newFolderPath;
-      }
-
-      return null;
-    }
-
     private void CreatePacks(GameObject activeGameObject, string path)
     {
       InputPack inputPack = EditorUtils.CreateScriptableObject<InputPack>(path);
@@ -296,7 +276,10 @@ namespace RFG
       EditorUtility.SetDirty(settingsPack);
 
       StatePack characterStatePack = EditorUtils.CreateScriptableObject<StatePack>(path, "CharacterStatePack");
+      EditorUtility.SetDirty(characterStatePack);
+
       StatePack movementStatePack = EditorUtils.CreateScriptableObject<StatePack>(path, "MovementStatePack");
+      EditorUtility.SetDirty(movementStatePack);
 
       if (activeGameObject != null)
       {
@@ -305,7 +288,15 @@ namespace RFG
         {
           character.InputPack = inputPack;
           character.SettingsPack = settingsPack;
+          if (character.CharacterState == null)
+          {
+            character.CharacterState = new StateMachine();
+          }
           character.CharacterState.StatePack = characterStatePack;
+          if (character.MovementState == null)
+          {
+            character.MovementState = new StateMachine();
+          }
           character.MovementState.StatePack = movementStatePack;
 
           characterStatePack.GenerateCharacterStates();

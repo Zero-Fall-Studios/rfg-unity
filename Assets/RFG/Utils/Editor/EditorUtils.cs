@@ -190,5 +190,30 @@ namespace RFG
       string path = EditorUtils.GetDirName(dirName);
       return AssetDatabase.LoadAssetAtPath<T>($"{path}/{name}");
     }
+
+    public static string CreateFolderStructure(string folderName, params string[] subfolderNames)
+    {
+      string path;
+      if (EditorUtils.TryGetActiveFolderPath(out path))
+      {
+        string guid = AssetDatabase.CreateFolder(path, folderName);
+        string newFolderPath = AssetDatabase.GUIDToAssetPath(guid);
+
+        foreach (string subfolderName in subfolderNames)
+        {
+          AssetDatabase.CreateFolder(newFolderPath, subfolderName);
+        }
+
+        AssetDatabase.SaveAssets();
+        return newFolderPath;
+      }
+
+      return null;
+    }
+
+    public static GameObject SaveAsPrefabAsset(GameObject obj, string folderPath, string name)
+    {
+      return PrefabUtility.SaveAsPrefabAsset(obj, $"{folderPath}/Prefabs/{name}.prefab");
+    }
   }
 }

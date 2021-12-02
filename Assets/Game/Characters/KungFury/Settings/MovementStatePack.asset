@@ -1,0 +1,835 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9081488980539258611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f2054efcb9521145a379cb19a63dd6b, type: 3}
+  m_Name: LandedState
+  m_EditorClassIdentifier: 
+  Layer: Base Layer
+  EnterClip: Landed
+  ExitClip: 
+  EnterEffects: []
+  ExitEffects: []
+  StopEnterEffectsOnExit: 0
+  FreezeState: 1
+  WaitToUnfreezeTime: 0.25
+  StatesCanUnfreeze:
+  - {fileID: -1567130092146962080}
+  - {fileID: -3127913879491874042}
+  - {fileID: 711729981588977376}
+--- !u!114 &-8932854997476813635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5f678b85c937c847b9f2f0702b3e67b, type: 3}
+  m_Name: CrouchIdleState
+  m_EditorClassIdentifier: 
+  Layer: Base Layer
+  EnterClip: CrouchIdle
+  ExitClip: 
+  EnterEffects: []
+  ExitEffects: []
+  StopEnterEffectsOnExit: 0
+  FreezeState: 0
+  WaitToUnfreezeTime: 0
+  StatesCanUnfreeze: []
+--- !u!114 &-8053921087198685467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7af016b48d35d304a8215a4026a88d63, type: 3}
+  m_Name: RunningDownSlopeState
+  m_EditorClassIdentifier: 
+  Layer: Base Layer
+  EnterClip: Running
+  ExitClip: 
+  EnterEffects: []
+  ExitEffects: []
+  StopEnterEffectsOnExit: 0
+  FreezeState: 0
+  WaitToUnfreezeTime: 0
+  StatesCanUnfreeze: []
+--- !u!114 &-7756412503619230711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 341599682cb09424396d5e7de96958d0, type: 3}
+  m_Name: IdleState
+  m_EditorClassIdentifier: 
+  Layer: Base Layer
+  EnterClip: Idle
+  ExitClip: 
+  EnterEffects: []
+  ExitEffects: []
+  StopEnterEffectsOnExit: 0
+  FreezeState: 0
+  WaitToUnfreezeTime: 0
+  StatesCanUnfreeze: []
+--- !u!114 &-7207929367668081408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a1da46b1cf7ee945ab8e01526d7f70b, type: 3}
+  m_Name: SecondaryAttackCanceledState
+  m_EditorClassIdentifier: 
+  Layer: Base Layer
+  EnterClip: 
+  ExitClip: 
+  EnterEffects: []
+  ExitEffects: []
+  StopEnterEffectsOnExit: 0
+  FreezeState: 0
+  WaitToUnfreezeTime: 0
+  StatesCanUnfreeze: []
+--- !u!114 &-6446255709161210515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ced94e6b10814794888d19132319e8c2, type: 3}
+  m_Name: PushingIdleState
+  m_EditorClassIdentifier: 
+  Layer: Base Layer
+  EnterClip: PushingIdle
+  ExitClip: 
+  EnterEffects: []
+  ExitEffects: []
+  StopEnterEffectsOnExit: 0
+  FreezeState: 0
+  WaitToUnfreezeTime: 0
+  StatesCanUnfreeze: []
+--- !u!114 &-6326550640564310617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40805195a6c09c94cad71b93782db6b2, type: 3}
+  m_Name: SmashDownCollidedState
+  m_EditorClassIdentifier: 
+  Layer: Base Layer
+  EnterClip: SmashDownCollided
+  ExitClip: 
+  EnterEffects: []
+  ExitEffects: []
+  StopEnterEffectsOnExit: 0
+  FreezeState: 1
+  WaitToUnfreezeTime: 1
+  StatesCanUnfreeze:
+  - {fileID: -1968000623417361612}
+  - {fileID: -6127789174106265681}
+--- !u!114 &-6127789174106265681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0879e987d4e438245b2bac28c31f4a33, type: 3}
+  m_Name: DamageState
+  m_EditorClassIdentifier: 
+  Layer: Base Layer
+  EnterClip: Damage
+  ExitClip: 
+  EnterEffects: []
+  ExitEffects: []
+  StopEnterEffectsOnExit: 0
+  FreezeState: 1
+  WaitToUnfreezeTime: 0.5
+  StatesCanUnfreeze:
+  - {fileID: -6127789174106265681}
+--- !u!114 &-5283520488263475959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69851db5298d80c4286f7053fcb3c113, type: 3}
+  m_Name: WalkingState
+  m_EditorClassIdentifier: 
+  Layer: Base Layer
+  EnterClip: Walking
+  ExitClip: 
+  EnterEffects: []
+  ExitEffects: []
+  StopEnterEffectsOnExit: 0
+  FreezeState: 0
+  WaitToUnfreezeTime: 0
+  StatesCanUnfreeze: []
+--- !u!114 &-4436467642533766209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f3709195126ddd41a8c94558cbf8c75, type: 3}
+  m_Name: SmashDownPerformedState
+  m_EditorClassIdentifier: 
+  Layer: Base Layer
+  EnterClip: SmashDownPerformed
+  ExitClip: 
+  EnterEffects: []
+  ExitEffects: []
+  StopEnterEffectsOnExit: 0
+  FreezeState: 1
+  WaitToUnfreezeTime: 0
+  StatesCanUnfreeze:
+  - {fileID: -6326550640564310617}
+  - {fileID: -1968000623417361612}
+  - {fileID: -6127789174106265681}
+--- !u!114 &-4149558851559504161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8a9685827fb04547b478cc83eb3e4e7, type: 3}
+  m_Name: CrouchWalkingState
+  m_EditorClassIdentifier: 
+  Layer: Base Layer
+  EnterClip: CrouchWalking
+  ExitClip: 
+  EnterEffects: []
+  ExitEffects: []
+  StopEnterEffectsOnExit: 0
+  FreezeState: 0
+  WaitToUnfreezeTime: 0
+  StatesCanUnfreeze: []
+--- !u!114 &-3127913879491874042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 187c98e7ebee7964389f46498716506c, type: 3}
+  m_Name: JumpingFlipState
+  m_EditorClassIdentifier: 
+  Layer: Base Layer
+  EnterClip: JumpingFlip
+  ExitClip: 
+  EnterEffects: []
+  ExitEffects: []
+  StopEnterEffectsOnExit: 0
+  FreezeState: 1
+  WaitToUnfreezeTime: 0
+  StatesCanUnfreeze:
+  - {fileID: 6846757461870679926}
+  - {fileID: 9004714274925719844}
+  - {fileID: 3801280413492371070}
+  - {fileID: 3161133268535257657}
+  - {fileID: -3111171993642978964}
+  - {fileID: 5456327028039537476}
+  - {fileID: 106856730403467968}
+--- !u!114 &-3111171993642978964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c636326e4661d042bd7d13ce0cf8266, type: 3}
+  m_Name: SmashDownStartedState
+  m_EditorClassIdentifier: 
+  Layer: Base Layer
+  EnterClip: SmashDownStarted
+  ExitClip: 
+  EnterEffects: []
+  ExitEffects: []
+  StopEnterEffectsOnExit: 0
+  FreezeState: 1
+  WaitToUnfreezeTime: 0
+  StatesCanUnfreeze:
+  - {fileID: -4436467642533766209}
+  - {fileID: -6127789174106265681}
+--- !u!114 &-2114082395765110815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1670ec9f276262e4a8121d47d90aae6b, type: 3}
+  m_Name: PrimaryAttackPerformedState
+  m_EditorClassIdentifier: 
+  Layer: Base Layer
+  EnterClip: PrimaryAttackPerformed
+  ExitClip: 
+  EnterEffects: []
+  ExitEffects: []
+  StopEnterEffectsOnExit: 0
+  FreezeState: 1
+  WaitToUnfreezeTime: 0
+  StatesCanUnfreeze: []
+--- !u!114 &-1968000623417361612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 789d2d8b6bd0ff74ba178dbe5c8e3caf, type: 3}
+  m_Name: SwimmingState
+  m_EditorClassIdentifier: 
+  Layer: Base Layer
+  EnterClip: Swimming
+  ExitClip: 
+  EnterEffects: []
+  ExitEffects: []
+  StopEnterEffectsOnExit: 0
+  FreezeState: 1
+  WaitToUnfreezeTime: 0
+  StatesCanUnfreeze:
+  - {fileID: 3161133268535257657}
+--- !u!114 &-1923580547272820865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91607af4c569a2a4e8749dd8e773b5e7, type: 3}
+  m_Name: WalkingUpSlopeState
+  m_EditorClassIdentifier: 
+  Layer: Base Layer
+  EnterClip: WalkingUpSlope
+  ExitClip: 
+  EnterEffects: []
+  ExitEffects: []
+  StopEnterEffectsOnExit: 0
+  FreezeState: 0
+  WaitToUnfreezeTime: 0
+  StatesCanUnfreeze: []
+--- !u!114 &-1567130092146962080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3d919180d3a0ab4f86ab10d64f209fd, type: 3}
+  m_Name: JumpingState
+  m_EditorClassIdentifier: 
+  Layer: Base Layer
+  EnterClip: Jumping
+  ExitClip: 
+  EnterEffects: []
+  ExitEffects: []
+  StopEnterEffectsOnExit: 0
+  FreezeState: 1
+  WaitToUnfreezeTime: 0
+  StatesCanUnfreeze:
+  - {fileID: 6846757461870679926}
+  - {fileID: 9004714274925719844}
+  - {fileID: 3801280413492371070}
+  - {fileID: 3161133268535257657}
+  - {fileID: -3111171993642978964}
+  - {fileID: 5456327028039537476}
+  - {fileID: 106856730403467968}
+--- !u!114 &-1034474360818753132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab759630c22e3774f89490af58d55a80, type: 3}
+  m_Name: SecondaryAttackPerformedState
+  m_EditorClassIdentifier: 
+  Layer: Base Layer
+  EnterClip: SecondaryAttackPerformed
+  ExitClip: 
+  EnterEffects: []
+  ExitEffects: []
+  StopEnterEffectsOnExit: 0
+  FreezeState: 1
+  WaitToUnfreezeTime: 0
+  StatesCanUnfreeze: []
+--- !u!114 &-390303985486749984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e97628345bf4a047ab16056475015ab, type: 3}
+  m_Name: WalkingDownSlopeState
+  m_EditorClassIdentifier: 
+  Layer: Base Layer
+  EnterClip: Walking
+  ExitClip: 
+  EnterEffects: []
+  ExitEffects: []
+  StopEnterEffectsOnExit: 0
+  FreezeState: 0
+  WaitToUnfreezeTime: 0
+  StatesCanUnfreeze: []
+--- !u!114 &-30468267007276208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8e6f6e19161377408f97a1ba1157c45, type: 3}
+  m_Name: PushingState
+  m_EditorClassIdentifier: 
+  Layer: Base Layer
+  EnterClip: Pushing
+  ExitClip: 
+  EnterEffects: []
+  ExitEffects: []
+  StopEnterEffectsOnExit: 0
+  FreezeState: 0
+  WaitToUnfreezeTime: 0
+  StatesCanUnfreeze: []
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65162ed32c230984dadb5cab2a59c5c7, type: 3}
+  m_Name: MovementStatePack
+  m_EditorClassIdentifier: 
+  States:
+  - {fileID: -7756412503619230711}
+  - {fileID: -5283520488263475959}
+  - {fileID: 6078880213826366704}
+  - {fileID: 3161133268535257657}
+  - {fileID: -8932854997476813635}
+  - {fileID: -4149558851559504161}
+  - {fileID: 4388765398102599596}
+  - {fileID: 5456327028039537476}
+  - {fileID: 2599207129558484159}
+  - {fileID: 106856730403467968}
+  - {fileID: 8400370336480415865}
+  - {fileID: 6846757461870679926}
+  - {fileID: -1923580547272820865}
+  - {fileID: 1293491538598393015}
+  - {fileID: -390303985486749984}
+  - {fileID: -8053921087198685467}
+  - {fileID: 8569089983885744626}
+  - {fileID: -6446255709161210515}
+  - {fileID: -30468267007276208}
+  - {fileID: 5159570360604939184}
+  - {fileID: 6705589012487390218}
+  - {fileID: -1968000623417361612}
+  - {fileID: 9004714274925719844}
+  - {fileID: -2114082395765110815}
+  - {fileID: 8116323475539354515}
+  - {fileID: 3801280413492371070}
+  - {fileID: -1034474360818753132}
+  - {fileID: -7207929367668081408}
+  - {fileID: -6127789174106265681}
+  - {fileID: -3111171993642978964}
+  - {fileID: -6326550640564310617}
+  - {fileID: -4436467642533766209}
+  - {fileID: -1567130092146962080}
+  - {fileID: -3127913879491874042}
+  - {fileID: 711729981588977376}
+  - {fileID: -9081488980539258611}
+  DefaultState: {fileID: -7756412503619230711}
+--- !u!114 &106856730403467968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bdd906ed9d5df444a0f32b5ac246cf7, type: 3}
+  m_Name: LadderClimbingState
+  m_EditorClassIdentifier: 
+  Layer: Base Layer
+  EnterClip: LadderClimbing
+  ExitClip: 
+  EnterEffects: []
+  ExitEffects: []
+  StopEnterEffectsOnExit: 0
+  FreezeState: 0
+  WaitToUnfreezeTime: 0
+  StatesCanUnfreeze: []
+--- !u!114 &711729981588977376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f92702158a8ea049a5e950a543a3b16, type: 3}
+  m_Name: DoubleJumpState
+  m_EditorClassIdentifier: 
+  Layer: Base Layer
+  EnterClip: Jumping
+  ExitClip: 
+  EnterEffects: []
+  ExitEffects: []
+  StopEnterEffectsOnExit: 0
+  FreezeState: 1
+  WaitToUnfreezeTime: 0
+  StatesCanUnfreeze: []
+--- !u!114 &1293491538598393015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d82acd05427e57b4b845e303fc99c81f, type: 3}
+  m_Name: RunningUpSlopeState
+  m_EditorClassIdentifier: 
+  Layer: Base Layer
+  EnterClip: RunningUpSlope
+  ExitClip: 
+  EnterEffects: []
+  ExitEffects: []
+  StopEnterEffectsOnExit: 0
+  FreezeState: 0
+  WaitToUnfreezeTime: 0
+  StatesCanUnfreeze: []
+--- !u!114 &2599207129558484159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff305f71ee87ab94685e1df1aba551ae, type: 3}
+  m_Name: LadderIdleState
+  m_EditorClassIdentifier: 
+  Layer: Base Layer
+  EnterClip: LadderIdle
+  ExitClip: 
+  EnterEffects: []
+  ExitEffects: []
+  StopEnterEffectsOnExit: 0
+  FreezeState: 0
+  WaitToUnfreezeTime: 0
+  StatesCanUnfreeze: []
+--- !u!114 &3161133268535257657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d377ffa886694f44fb6f04d4d7c7f826, type: 3}
+  m_Name: FallingState
+  m_EditorClassIdentifier: 
+  Layer: Base Layer
+  EnterClip: Falling
+  ExitClip: 
+  EnterEffects: []
+  ExitEffects: []
+  StopEnterEffectsOnExit: 0
+  FreezeState: 0
+  WaitToUnfreezeTime: 0
+  StatesCanUnfreeze: []
+--- !u!114 &3801280413492371070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6745d8fae5a51e642959104c4597d9c4, type: 3}
+  m_Name: SecondaryAttackStartedState
+  m_EditorClassIdentifier: 
+  Layer: Base Layer
+  EnterClip: 
+  ExitClip: 
+  EnterEffects: []
+  ExitEffects: []
+  StopEnterEffectsOnExit: 0
+  FreezeState: 0
+  WaitToUnfreezeTime: 0
+  StatesCanUnfreeze: []
+--- !u!114 &4388765398102599596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01b41813df4d38049ad9b53f2a99175c, type: 3}
+  m_Name: DanglingState
+  m_EditorClassIdentifier: 
+  Layer: Base Layer
+  EnterClip: Dangling
+  ExitClip: 
+  EnterEffects: []
+  ExitEffects: []
+  StopEnterEffectsOnExit: 0
+  FreezeState: 0
+  WaitToUnfreezeTime: 0
+  StatesCanUnfreeze: []
+--- !u!114 &5159570360604939184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2917ff29cdfb434b98509e3421a7aa4, type: 3}
+  m_Name: WallClingingState
+  m_EditorClassIdentifier: 
+  Layer: Base Layer
+  EnterClip: WallClinging
+  ExitClip: 
+  EnterEffects: []
+  ExitEffects: []
+  StopEnterEffectsOnExit: 0
+  FreezeState: 0
+  WaitToUnfreezeTime: 0
+  StatesCanUnfreeze: []
+--- !u!114 &5456327028039537476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdf4ae9f66c0ea647bf89163a1477f7d, type: 3}
+  m_Name: DashingState
+  m_EditorClassIdentifier: 
+  Layer: Base Layer
+  EnterClip: Dashing
+  ExitClip: 
+  EnterEffects: []
+  ExitEffects: []
+  StopEnterEffectsOnExit: 0
+  FreezeState: 0
+  WaitToUnfreezeTime: 0
+  StatesCanUnfreeze: []
+--- !u!114 &6078880213826366704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33bb93f229196cd44882dd12859219d1, type: 3}
+  m_Name: RunningState
+  m_EditorClassIdentifier: 
+  Layer: Base Layer
+  EnterClip: Running
+  ExitClip: 
+  EnterEffects: []
+  ExitEffects: []
+  StopEnterEffectsOnExit: 0
+  FreezeState: 0
+  WaitToUnfreezeTime: 0
+  StatesCanUnfreeze: []
+--- !u!114 &6705589012487390218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2342611af6625b488cd6f102bebe2b7, type: 3}
+  m_Name: WallJumpingState
+  m_EditorClassIdentifier: 
+  Layer: Base Layer
+  EnterClip: Jumping
+  ExitClip: 
+  EnterEffects: []
+  ExitEffects: []
+  StopEnterEffectsOnExit: 0
+  FreezeState: 0
+  WaitToUnfreezeTime: 0
+  StatesCanUnfreeze: []
+--- !u!114 &6846757461870679926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b61c735f8992c24fb31ff95fdaf97b3, type: 3}
+  m_Name: LedgeGrabState
+  m_EditorClassIdentifier: 
+  Layer: Base Layer
+  EnterClip: LedgeGrab
+  ExitClip: 
+  EnterEffects: []
+  ExitEffects: []
+  StopEnterEffectsOnExit: 0
+  FreezeState: 0
+  WaitToUnfreezeTime: 0
+  StatesCanUnfreeze: []
+--- !u!114 &8116323475539354515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6a7afc1ada48984699f2141fafda0ce, type: 3}
+  m_Name: PrimaryAttackCanceledState
+  m_EditorClassIdentifier: 
+  Layer: Base Layer
+  EnterClip: 
+  ExitClip: 
+  EnterEffects: []
+  ExitEffects: []
+  StopEnterEffectsOnExit: 0
+  FreezeState: 0
+  WaitToUnfreezeTime: 0
+  StatesCanUnfreeze: []
+--- !u!114 &8400370336480415865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fadbf1af7c22fcf438aeee2f4caaf7a1, type: 3}
+  m_Name: LedgeClimbingState
+  m_EditorClassIdentifier: 
+  Layer: Base Layer
+  EnterClip: LedgeClimbing
+  ExitClip: 
+  EnterEffects: []
+  ExitEffects: []
+  StopEnterEffectsOnExit: 0
+  FreezeState: 0
+  WaitToUnfreezeTime: 0
+  StatesCanUnfreeze: []
+--- !u!114 &8569089983885744626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd2cdb38fac6c5645b908238bdd3d9b1, type: 3}
+  m_Name: SlidingState
+  m_EditorClassIdentifier: 
+  Layer: Base Layer
+  EnterClip: Sliding
+  ExitClip: 
+  EnterEffects: []
+  ExitEffects: []
+  StopEnterEffectsOnExit: 0
+  FreezeState: 1
+  WaitToUnfreezeTime: 0.5
+  StatesCanUnfreeze:
+  - {fileID: 3161133268535257657}
+--- !u!114 &9004714274925719844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 320e7649c9f82ba46a7185764048fb52, type: 3}
+  m_Name: PrimaryAttackStartedState
+  m_EditorClassIdentifier: 
+  Layer: Base Layer
+  EnterClip: 
+  ExitClip: 
+  EnterEffects: []
+  ExitEffects: []
+  StopEnterEffectsOnExit: 0
+  FreezeState: 0
+  WaitToUnfreezeTime: 0
+  StatesCanUnfreeze: []

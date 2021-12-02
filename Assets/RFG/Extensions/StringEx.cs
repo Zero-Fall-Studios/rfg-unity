@@ -11,5 +11,10 @@ namespace RFG
     {
       return str.Substring(str.LastIndexOf(delimiter) + 1);
     }
+
+    public static string RemoveLast(this string str, string delimiter = ".")
+    {
+      return str.Substring(0, str.LastIndexOf(delimiter));
+    }
   }
 }

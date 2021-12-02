@@ -6,13 +6,13 @@ using UnityEngine;
 
 namespace RFG
 {
-  public class AnimationSpriteSlicer
+  public class AnimationMapSpriteSlicer
   {
     public static void Slice(AnimationMap animationMap)
     {
       if (animationMap.animations.Count == 0)
       {
-        LogExt.Warn<AnimationSpriteSlicer>("This animation map contains no animations");
+        LogExt.Warn<AnimationMapSpriteSlicer>("This animation map contains no animations");
         return;
       }
       Texture2D texture = Selection.activeObject as Texture2D;

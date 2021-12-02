@@ -125,7 +125,7 @@ namespace RFG
     private void CreateEnvironmentSprite(string name)
     {
       // Create Folders
-      string newFolderPath = CreateFolderStructure(name, "Animation", "Prefabs", "Sprites");
+      string newFolderPath = EditorUtils.CreateFolderStructure(name, "Animations", "Prefabs", "Sprites");
 
       // Create GameObject
       GameObject activeGameObject = new GameObject();
@@ -134,11 +134,11 @@ namespace RFG
       // Create Animator Controller
       activeGameObject.GetOrAddComponent<SpriteRenderer>();
       Animator animator = activeGameObject.GetOrAddComponent<Animator>();
-      UnityEditor.Animations.AnimatorController controller = UnityEditor.Animations.AnimatorController.CreateAnimatorControllerAtPath($"{newFolderPath}/Animation/{name}.controller");
-      animator.runtimeAnimatorController = controller;
+      UnityEditor.Animations.AnimatorController animatorController = UnityEditor.Animations.AnimatorController.CreateAnimatorControllerAtPath($"{newFolderPath}/Animations/{name}.controller");
+      animator.runtimeAnimatorController = animatorController;
 
       // Create Prefab
-      CreatePrefab(activeGameObject, newFolderPath, name);
+      EditorUtils.SaveAsPrefabAsset(activeGameObject, newFolderPath, name);
 
       DestroyImmediate(activeGameObject);
     }
@@ -174,7 +174,7 @@ namespace RFG
     private void CreateEffect(string name)
     {
       // Create Folders
-      string newFolderPath = CreateFolderStructure(name, "Animation", "Data", "Prefabs", "Sprites");
+      string newFolderPath = EditorUtils.CreateFolderStructure(name, "Animation", "Data", "Prefabs", "Sprites");
 
       // Create GameObject
       GameObject activeGameObject = new GameObject();
@@ -196,37 +196,9 @@ namespace RFG
       animator.runtimeAnimatorController = controller;
 
       // Create Prefab
-      CreatePrefab(activeGameObject, newFolderPath, name);
+      EditorUtils.SaveAsPrefabAsset(activeGameObject, newFolderPath, name);
 
       DestroyImmediate(activeGameObject);
-    }
-    #endregion
-
-    #region Create Helpers
-    private string CreateFolderStructure(string folderName, params string[] subfolderNames)
-    {
-      string path;
-      if (EditorUtils.TryGetActiveFolderPath(out path))
-      {
-        string guid = AssetDatabase.CreateFolder(path, folderName);
-        string newFolderPath = AssetDatabase.GUIDToAssetPath(guid);
-
-        foreach (string subfolderName in subfolderNames)
-        {
-          AssetDatabase.CreateFolder(newFolderPath, subfolderName);
-        }
-
-        AssetDatabase.SaveAssets();
-        EditorUtility.SetDirty(this);
-        return newFolderPath;
-      }
-
-      return null;
-    }
-
-    private void CreatePrefab(GameObject obj, string folderPath, string name)
-    {
-      PrefabUtility.SaveAsPrefabAsset(obj, $"{folderPath}/Prefabs/{name}.prefab");
     }
     #endregion
   }
