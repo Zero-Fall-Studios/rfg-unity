@@ -1,0 +1,102 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7eae063911bb5474986b3caa6a57a787, type: 3}
+  m_Name: AnimationClips
+  m_EditorClassIdentifier: 
+  clips:
+  - name: Idle
+    framesStart: 0
+    framesEnd: 1
+  - name: Walking
+    framesStart: 2
+    framesEnd: 7
+  - name: Running
+    framesStart: 8
+    framesEnd: 13
+  - name: Jumping
+    framesStart: 14
+    framesEnd: 19
+  - name: Falling
+    framesStart: 19
+    framesEnd: 19
+  - name: Dashing
+    framesStart: 20
+    framesEnd: 21
+  - name: PrimaryAttackPerformed
+    framesStart: 20
+    framesEnd: 21
+  - name: SecondaryAttackPerformed
+    framesStart: 22
+    framesEnd: 23
+  - name: PushingIdle
+    framesStart: 24
+    framesEnd: 24
+  - name: Pushing
+    framesStart: 24
+    framesEnd: 29
+  - name: SmashDownStarted
+    framesStart: 30
+    framesEnd: 30
+  - name: SmashDownPerformed
+    framesStart: 31
+    framesEnd: 31
+  - name: SmashDownCollided
+    framesStart: 32
+    framesEnd: 32
+  - name: WallClinging
+    framesStart: 33
+    framesEnd: 34
+  - name: LedgeGrab
+    framesStart: 35
+    framesEnd: 35
+  - name: LedgeClimbing
+    framesStart: 36
+    framesEnd: 38
+  - name: Dangling
+    framesStart: 39
+    framesEnd: 42
+  - name: WalkingUpSlope
+    framesStart: 43
+    framesEnd: 48
+  - name: RunningUpSlope
+    framesStart: 49
+    framesEnd: 54
+  - name: JumpingFlip
+    framesStart: 55
+    framesEnd: 60
+  - name: CrouchIdle
+    framesStart: 61
+    framesEnd: 62
+  - name: CrouchWalking
+    framesStart: 63
+    framesEnd: 68
+  - name: Death
+    framesStart: 69
+    framesEnd: 74
+  - name: Sliding
+    framesStart: 75
+    framesEnd: 76
+  - name: Swimming
+    framesStart: 77
+    framesEnd: 79
+  - name: Damage
+    framesStart: 80
+    framesEnd: 81
+  - name: LadderIdle
+    framesStart: 82
+    framesEnd: 82
+  - name: LadderClimbing
+    framesStart: 82
+    framesEnd: 85
+  - name: Landed
+    framesStart: 86
+    framesEnd: 88
