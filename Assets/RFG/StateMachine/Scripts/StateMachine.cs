@@ -86,12 +86,10 @@ namespace RFG
         CurrentState.Exit(_context);
       }
 
-      Debug.Log(newStateType.ToString());
-
       // Enter the new state
       CurrentState = Find(newStateType);
 
-      Debug.Log("Current State is null: " + CurrentState == null);
+      // Debug.Log("Current State is null: " + CurrentState == null);
 
       // TODO - check if has sub states
       // Example - there might be many death states. Need to find a way to pull that substate

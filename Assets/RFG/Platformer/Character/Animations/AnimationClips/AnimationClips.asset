@@ -16,87 +16,174 @@ MonoBehaviour:
   - name: Idle
     framesStart: 0
     framesEnd: 1
+    loop: 1
+    animationEventFunction: 
+    animationEventTime: 0
   - name: Walking
     framesStart: 2
     framesEnd: 7
+    loop: 1
+    animationEventFunction: 
+    animationEventTime: 0
   - name: Running
     framesStart: 8
     framesEnd: 13
+    loop: 1
+    animationEventFunction: 
+    animationEventTime: 0
   - name: Jumping
     framesStart: 14
     framesEnd: 19
+    loop: 0
+    animationEventFunction: 
+    animationEventTime: 0
   - name: Falling
     framesStart: 19
     framesEnd: 19
+    loop: 0
+    animationEventFunction: 
+    animationEventTime: 0
   - name: Dashing
     framesStart: 20
     framesEnd: 21
+    loop: 0
+    animationEventFunction: 
+    animationEventTime: 0
   - name: PrimaryAttackPerformed
     framesStart: 20
     framesEnd: 21
+    loop: 0
+    animationEventFunction: UnFreezeMovementState
+    animationEventTime: 0.2
   - name: SecondaryAttackPerformed
     framesStart: 22
     framesEnd: 23
+    loop: 0
+    animationEventFunction: UnFreezeMovementState
+    animationEventTime: 0.2
   - name: PushingIdle
     framesStart: 24
     framesEnd: 24
+    loop: 1
+    animationEventFunction: 
+    animationEventTime: 0
   - name: Pushing
     framesStart: 24
     framesEnd: 29
+    loop: 1
+    animationEventFunction: 
+    animationEventTime: 0
   - name: SmashDownStarted
     framesStart: 30
     framesEnd: 30
+    loop: 0
+    animationEventFunction: ChangeToSmashDownPerform
+    animationEventTime: 0.1
   - name: SmashDownPerformed
     framesStart: 31
     framesEnd: 31
+    loop: 0
+    animationEventFunction: HandleSmashDownCollision
+    animationEventTime: 0.1
   - name: SmashDownCollided
     framesStart: 32
     framesEnd: 32
+    loop: 0
+    animationEventFunction: UnFreezeMovementState
+    animationEventTime: 0.1
   - name: WallClinging
     framesStart: 33
     framesEnd: 34
+    loop: 1
+    animationEventFunction: 
+    animationEventTime: 0
   - name: LedgeGrab
     framesStart: 35
     framesEnd: 35
+    loop: 0
+    animationEventFunction: 
+    animationEventTime: 0
   - name: LedgeClimbing
     framesStart: 36
     framesEnd: 38
+    loop: 0
+    animationEventFunction: 
+    animationEventTime: 0
   - name: Dangling
     framesStart: 39
     framesEnd: 42
+    loop: 1
+    animationEventFunction: 
+    animationEventTime: 0
   - name: WalkingUpSlope
     framesStart: 43
     framesEnd: 48
+    loop: 1
+    animationEventFunction: 
+    animationEventTime: 0
   - name: RunningUpSlope
     framesStart: 49
     framesEnd: 54
+    loop: 1
+    animationEventFunction: 
+    animationEventTime: 0
   - name: JumpingFlip
     framesStart: 55
     framesEnd: 60
+    loop: 0
+    animationEventFunction: UnFreezeMovementState
+    animationEventTime: 0.6
   - name: CrouchIdle
     framesStart: 61
     framesEnd: 62
+    loop: 1
+    animationEventFunction: 
+    animationEventTime: 0
   - name: CrouchWalking
     framesStart: 63
     framesEnd: 68
+    loop: 1
+    animationEventFunction: 
+    animationEventTime: 0
   - name: Death
     framesStart: 69
     framesEnd: 74
+    loop: 0
+    animationEventFunction: 
+    animationEventTime: 0
   - name: Sliding
     framesStart: 75
     framesEnd: 76
+    loop: 0
+    animationEventFunction: 
+    animationEventTime: 0
   - name: Swimming
     framesStart: 77
     framesEnd: 79
+    loop: 1
+    animationEventFunction: 
+    animationEventTime: 0
   - name: Damage
     framesStart: 80
     framesEnd: 81
+    loop: 0
+    animationEventFunction: 
+    animationEventTime: 0
   - name: LadderIdle
     framesStart: 82
     framesEnd: 82
+    loop: 1
+    animationEventFunction: 
+    animationEventTime: 0
   - name: LadderClimbing
     framesStart: 82
     framesEnd: 85
+    loop: 1
+    animationEventFunction: 
+    animationEventTime: 0
   - name: Landed
     framesStart: 86
     framesEnd: 88
+    loop: 0
+    animationEventFunction: 
+    animationEventTime: 0

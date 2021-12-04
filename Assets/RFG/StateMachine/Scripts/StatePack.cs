@@ -134,7 +134,7 @@ namespace RFG
       AddToPack<CrouchWalkingState>("CrouchWalking");
 
       AddToPack<DanglingState>("Dangling");
-      DashingState dashingState = AddToPack<DashingState>("Dashing");
+      DashingState dashingState = AddToPack<DashingState>("Dashing", true);
       AddToPack<LadderIdleState>("LadderIdle");
       LadderClimbingState ladderClimbingState = AddToPack<LadderClimbingState>("LadderClimbing");
       AddToPack<LedgeClimbingState>("LedgeClimbing");

@@ -76,7 +76,7 @@ namespace RFG
       Texture2D texture = Selection.activeObject as Texture2D;
 
       string path = AssetDatabase.GetAssetPath(texture);
-      string animationsPath = $"{path.RemoveLast("/")}/../Animations";
+      string animationsPath = animatorControllerPath.RemoveLast("/");
 
       UnityEditor.Animations.AnimatorController animatorController = AssetDatabase.LoadAssetAtPath<UnityEditor.Animations.AnimatorController>(animatorControllerPath);
       if (animatorController == null)
@@ -92,14 +92,22 @@ namespace RFG
 
       foreach (AnimationClipItem animationItem in animationClips.clips)
       {
-        AnimationClip animClip = new AnimationClip();
-        animClip.name = animationItem.name;
+        bool newClip = false;
+        AnimationClip animClip = AssetDatabase.LoadAssetAtPath<AnimationClip>($"{animationsPath}/{animationItem.name}.anim");
+
+        if (animClip == null)
+        {
+          animClip = new AnimationClip();
+          animClip.name = animationItem.name;
+          newClip = true;
+        }
+
         animClip.frameRate = frameRate;
 
-        EditorCurveBinding spriteBinding = new EditorCurveBinding();
-        spriteBinding.type = typeof(SpriteRenderer);
-        spriteBinding.path = "";
-        spriteBinding.propertyName = "m_Sprite";
+        if (!newClip)
+        {
+          animClip.ClearCurves();
+        }
 
         List<ObjectReferenceKeyframe> spriteKeyFrames = new List<ObjectReferenceKeyframe>();
         float time = 0;
@@ -111,10 +119,30 @@ namespace RFG
           time += timeStep;
           spriteKeyFrames.Add(spriteKeyFrame);
         }
-        AnimationUtility.SetObjectReferenceCurve(animClip, spriteBinding, spriteKeyFrames.ToArray());
-        AssetDatabase.CreateAsset(animClip, $"{animationsPath}/{animClip.name}.anim");
 
-        animatorController.AddMotion(animClip);
+        EditorCurveBinding spriteBinding = new EditorCurveBinding();
+        spriteBinding.type = typeof(SpriteRenderer);
+        spriteBinding.path = "";
+        spriteBinding.propertyName = "m_Sprite";
+        AnimationUtility.SetObjectReferenceCurve(animClip, spriteBinding, spriteKeyFrames.ToArray());
+
+        AnimationClipSettings settings = AnimationUtility.GetAnimationClipSettings(animClip);
+        settings.loopTime = animationItem.loop;
+        AnimationUtility.SetAnimationClipSettings(animClip, settings);
+
+        if (!string.IsNullOrEmpty(animationItem.animationEventFunction))
+        {
+          AnimationEvent evt = new AnimationEvent();
+          evt.time = animationItem.animationEventTime;
+          evt.functionName = animationItem.animationEventFunction;
+          AnimationUtility.SetAnimationEvents(animClip, new AnimationEvent[] { evt });
+        }
+
+        if (newClip)
+        {
+          AssetDatabase.CreateAsset(animClip, $"{animationsPath}/{animClip.name}.anim");
+          animatorController.AddMotion(animClip);
+        }
       }
 
       EditorUtility.SetDirty(animatorController);

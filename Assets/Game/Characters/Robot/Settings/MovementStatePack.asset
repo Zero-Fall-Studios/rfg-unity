@@ -212,7 +212,7 @@ MonoBehaviour:
   EnterEffects: []
   ExitEffects: []
   StopEnterEffectsOnExit: 0
-  FreezeState: 0
+  FreezeState: 1
   WaitToUnfreezeTime: 0
   StatesCanUnfreeze: []
 --- !u!114 &-5829935587789311107
