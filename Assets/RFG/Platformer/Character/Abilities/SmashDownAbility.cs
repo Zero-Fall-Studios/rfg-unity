@@ -11,7 +11,8 @@ namespace RFG
   {
     private Character _character;
     private CharacterController2D _controller;
-    private InputActionReference _smashDownInput;
+    private PlayerInput _playerInput;
+    private InputAction _smashDownInput;
     private bool _pointerOverUi = false;
     private bool _smashingInAir = false;
 
@@ -20,7 +21,8 @@ namespace RFG
     {
       _character = GetComponent<Character>();
       _controller = GetComponent<CharacterController2D>();
-      _smashDownInput = _character.InputPack.SmashDownInput;
+      _playerInput = GetComponent<PlayerInput>();
+      _smashDownInput = _playerInput.actions["SmashDown"];
     }
 
     private void LateUpdate()
@@ -33,6 +35,24 @@ namespace RFG
       {
         HandleSmashDownCollision();
       }
+    }
+
+    private void OnEnable()
+    {
+      if (_smashDownInput != null)
+      {
+        _smashDownInput.started += OnSmashDownStarted;
+      }
+      _character.MovementState.OnStateTypeChange += OnStateTypeChange;
+    }
+
+    private void OnDisable()
+    {
+      if (_smashDownInput != null)
+      {
+        _smashDownInput.started -= OnSmashDownStarted;
+      }
+      _character.MovementState.OnStateTypeChange -= OnStateTypeChange;
     }
     #endregion
 
@@ -75,24 +95,5 @@ namespace RFG
         _smashingInAir = false;
       }
     }
-
-    private void OnEnable()
-    {
-      if (_smashDownInput != null)
-      {
-        _smashDownInput.action.started += OnSmashDownStarted;
-      }
-      _character.MovementState.OnStateTypeChange += OnStateTypeChange;
-    }
-
-    private void OnDisable()
-    {
-      if (_smashDownInput != null)
-      {
-        _smashDownInput.action.started -= OnSmashDownStarted;
-      }
-      _character.MovementState.OnStateTypeChange -= OnStateTypeChange;
-    }
-
   }
 }

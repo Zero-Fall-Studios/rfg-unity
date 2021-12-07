@@ -269,9 +269,6 @@ namespace RFG
 
       // Configure the rebind.
       m_RebindOperation = action.PerformInteractiveRebinding(bindingIndex)
-        .WithControlsExcluding("<Mouse>/leftButton")
-        .WithControlsExcluding("<Mouse>/rightButton")
-        .WithControlsExcluding("<Mouse>/press")
         .WithControlsExcluding("<Pointer>/position")
         .WithCancelingThrough("<Keyboard>/escape")
           .OnCancel(
@@ -347,7 +344,7 @@ namespace RFG
         }
         if (binding.effectivePath == newBinding.effectivePath)
         {
-          Debug.Log("Duplicate binding found: " + newBinding.effectivePath);
+          // Debug.Log("Duplicate binding found: " + newBinding.effectivePath);
           return true;
         }
       }
@@ -357,7 +354,7 @@ namespace RFG
         {
           if (action.bindings[i].effectivePath == newBinding.effectivePath)
           {
-            Debug.Log("Duplicate binding found: " + newBinding.effectivePath);
+            // Debug.Log("Duplicate binding found: " + newBinding.effectivePath);
             return true;
           }
         }

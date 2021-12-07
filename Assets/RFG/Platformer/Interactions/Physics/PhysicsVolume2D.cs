@@ -18,7 +18,6 @@ namespace RFG
     [field: SerializeField] private State ExitCharacterState { get; set; }
     [field: SerializeField] private State ExitMovementState { get; set; }
     [field: SerializeField] private SettingsPack SettingsPack { get; set; }
-    [field: SerializeField] private InputPack InputPack { get; set; }
     [field: SerializeField] private UnityEvent OnBeforeEnter { get; set; }
     [field: SerializeField] private UnityEvent OnBeforeExit { get; set; }
 
@@ -46,10 +45,6 @@ namespace RFG
         if (SettingsPack != null)
         {
           character.OverrideSettingsPack(SettingsPack);
-        }
-        if (InputPack != null)
-        {
-          character.OverrideInputPack(InputPack);
         }
       }
 
@@ -94,7 +89,6 @@ namespace RFG
           character.MovementState.ChangeState(ExitMovementState.GetType());
         }
         character.ResetSettingsPack();
-        character.ResetInputPack();
       }
 
       CharacterController2D characterController = other.gameObject.GetComponentInParent<CharacterController2D>();

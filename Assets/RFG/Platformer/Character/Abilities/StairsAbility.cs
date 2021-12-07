@@ -32,24 +32,24 @@ namespace RFG
     private Vector3 _raycastDirection;
     private Collider2D _goingDownEntryBoundsCollider;
     private float _goingDownEntryAt;
-
     private Character _character;
     private CharacterController2D _controller;
     private CharacterControllerState2D _state;
-
-    private InputActionReference _movement;
+    private PlayerInput _playerInput;
+    private InputAction _movement;
     private SettingsPack _settings;
 
     private void Awake()
     {
       _character = GetComponent<Character>();
+      _playerInput = GetComponent<PlayerInput>();
     }
 
     private void Start()
     {
       _controller = _character.Context.controller;
       _state = _character.Context.controller.State;
-      _movement = _character.Context.inputPack.Movement;
+      _movement = _playerInput.actions["Movement"];
       _settings = _character.Context.settingsPack;
     }
 
@@ -59,7 +59,7 @@ namespace RFG
       {
         return;
       }
-      float verticalInput = _movement.action.ReadValue<Vector2>().y;
+      float verticalInput = _movement.ReadValue<Vector2>().y;
       _stairsInputUp = (verticalInput > _settings.Threshold.y);
       _stairsInputDown = (verticalInput < -_settings.Threshold.y);
       HandleEntryBounds();

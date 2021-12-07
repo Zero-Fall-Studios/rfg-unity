@@ -10,10 +10,11 @@ namespace RFG
     private Character _character;
     private CharacterController2D _controller;
     private CharacterControllerState2D _state;
-    private InputActionReference _movement;
+    private PlayerInput _playerInput;
+    private InputAction _movement;
     private SettingsPack _settings;
-    private InputActionReference _runInput;
-    private InputActionReference _crouchInput;
+    private InputAction _runInput;
+    private InputAction _crouchInput;
     private bool _isRunning = false;
     private float _walkToRunTimeElapsed = 0f;
     private float _horizontalSpeed = 0f;
@@ -30,9 +31,10 @@ namespace RFG
     {
       _character = GetComponent<Character>();
       _controller = GetComponent<CharacterController2D>();
-      _movement = _character.InputPack.Movement;
-      _runInput = _character.InputPack.RunInput;
-      _crouchInput = _character.InputPack.CrouchInput;
+      _playerInput = GetComponent<PlayerInput>();
+      _movement = _playerInput.actions["Movement"];
+      _runInput = _playerInput.actions["Run"];
+      _crouchInput = _playerInput.actions["Crouch"];
       _settings = _character.SettingsPack;
 
       if (_settings.AlwaysRun)
@@ -70,13 +72,13 @@ namespace RFG
     {
       if (_runInput != null)
       {
-        _runInput.action.started += OnRunStarted;
-        _runInput.action.canceled += OnRunCanceled;
+        _runInput.started += OnRunStarted;
+        _runInput.canceled += OnRunCanceled;
       }
       if (_crouchInput != null)
       {
-        _crouchInput.action.started += OnCrouchStarted;
-        _crouchInput.action.canceled += OnCrouchCanceled;
+        _crouchInput.started += OnCrouchStarted;
+        _crouchInput.canceled += OnCrouchCanceled;
       }
       _character.MovementState.OnStateTypeChange += OnStateTypeChange;
     }
@@ -85,13 +87,13 @@ namespace RFG
     {
       if (_runInput != null)
       {
-        _runInput.action.started -= OnRunStarted;
-        _runInput.action.canceled -= OnRunCanceled;
+        _runInput.started -= OnRunStarted;
+        _runInput.canceled -= OnRunCanceled;
       }
       if (_crouchInput != null)
       {
-        _crouchInput.action.started -= OnCrouchStarted;
-        _crouchInput.action.canceled -= OnCrouchCanceled;
+        _crouchInput.started -= OnCrouchStarted;
+        _crouchInput.canceled -= OnCrouchCanceled;
       }
       _character.MovementState.OnStateTypeChange -= OnStateTypeChange;
     }
@@ -145,7 +147,7 @@ namespace RFG
       }
 
       // Read in horizontal input
-      _horizontalSpeed = _movement.action.ReadValue<Vector2>().x;
+      _horizontalSpeed = _movement.ReadValue<Vector2>().x;
 
       HandleFacing();
       DetectMovementState();

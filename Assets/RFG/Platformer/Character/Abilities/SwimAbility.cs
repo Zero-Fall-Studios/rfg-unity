@@ -10,7 +10,8 @@ namespace RFG
     private Transform _transform;
     private CharacterController2D _controller;
     private CharacterControllerState2D _state;
-    private InputActionReference _swimInput;
+    private PlayerInput _playerInput;
+    private InputAction _swimInput;
     private SettingsPack _settings;
 
     #region Unity Methods
@@ -19,13 +20,29 @@ namespace RFG
       _transform = transform;
       _character = GetComponent<Character>();
       _controller = GetComponent<CharacterController2D>();
-      _swimInput = _character.InputPack.JumpInput;
+      _playerInput = GetComponent<PlayerInput>();
+      _swimInput = _playerInput.actions["Jump"];
       _settings = _character.SettingsPack;
     }
 
     private void Start()
     {
       _state = _controller.State;
+    }
+    private void OnEnable()
+    {
+      if (_swimInput != null)
+      {
+        _swimInput.started += OnSwimStarted;
+      }
+    }
+
+    private void OnDisable()
+    {
+      if (_swimInput != null)
+      {
+        _swimInput.started -= OnSwimStarted;
+      }
     }
     #endregion
 
@@ -42,22 +59,6 @@ namespace RFG
     private void OnSwimStarted(InputAction.CallbackContext ctx)
     {
       HandleSwim();
-    }
-
-    private void OnEnable()
-    {
-      if (_swimInput != null)
-      {
-        _swimInput.action.started += OnSwimStarted;
-      }
-    }
-
-    private void OnDisable()
-    {
-      if (_swimInput != null)
-      {
-        _swimInput.action.started -= OnSwimStarted;
-      }
     }
     #endregion
 

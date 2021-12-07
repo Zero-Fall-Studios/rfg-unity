@@ -8,16 +8,15 @@ namespace RFG
   public class DashAbility : MonoBehaviour, IAbility
   {
     public Aim Aim;
-
-    [HideInInspector]
     private StateCharacterContext _context;
     private Character _character;
+    private PlayerInput _playerInput;
     private Transform _transform;
     private CharacterController2D _controller;
     private Animator _animator;
     private CharacterControllerState2D _state;
-    private InputActionReference _movement;
-    private InputActionReference _dashInput;
+    private InputAction _movement;
+    private InputAction _dashInput;
     private SettingsPack _settings;
     private Vector2 _dashDirection;
     private float _slopeAngleSave = 0f;
@@ -36,6 +35,7 @@ namespace RFG
       _transform = transform;
       _character = GetComponent<Character>();
       _controller = GetComponent<CharacterController2D>();
+      _playerInput = GetComponent<PlayerInput>();
     }
 
     private void Start()
@@ -44,8 +44,8 @@ namespace RFG
       _animator = _context.animator;
       _controller = _context.controller;
       _state = _context.controller.State;
-      _movement = _context.inputPack.Movement;
-      _dashInput = _context.inputPack.DashInput;
+      _movement = _playerInput.actions["Movement"];
+      _dashInput = _playerInput.actions["Dash"];
       _settings = _context.settingsPack;
       _hasDashing = _character.MovementState.HasState(typeof(DashingState));
 
@@ -75,7 +75,7 @@ namespace RFG
     {
       if (_dashInput != null)
       {
-        _dashInput.action.started += OnDashStarted;
+        _dashInput.started += OnDashStarted;
       }
     }
 
@@ -83,11 +83,12 @@ namespace RFG
     {
       if (_dashInput != null)
       {
-        _dashInput.action.started -= OnDashStarted;
+        _dashInput.started -= OnDashStarted;
       }
     }
     #endregion
 
+    #region Handlers
     private void StartDash()
     {
       if (_cooldownTimestamp > Time.time)
@@ -122,7 +123,7 @@ namespace RFG
 
     private void ComputerDashDirection()
     {
-      Aim.PrimaryMovement = _movement.action.ReadValue<Vector2>();
+      Aim.PrimaryMovement = _movement.ReadValue<Vector2>();
       Aim.CurrentPosition = _transform.position;
       _dashDirection = Aim.GetCurrentAim();
 
@@ -232,7 +233,9 @@ namespace RFG
         SetNumberOfDashesLeft(_settings.TotalDashes);
       }
     }
+    #endregion
 
+    #region Events
     public void OnDashStarted(InputAction.CallbackContext ctx)
     {
       if (!_hasDashing || (!_settings.SwimCanDash && _character.IsSwimming))
@@ -240,6 +243,7 @@ namespace RFG
 
       StartDash();
     }
+    #endregion
 
   }
 }

@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -26,12 +25,13 @@ namespace RFG
     private Vector2 CurrentLadderClimbingSpeed { get; set; }
 
     private Character _character;
+    private PlayerInput _playerInput;
     private CharacterController2D _controller;
     private CharacterControllerState2D _state;
     private SettingsPack _settings;
     private List<Collider2D> _colliders;
     private BoxCollider2D _boxCollider;
-    private InputActionReference _movement;
+    private InputAction _movement;
     private float _horizontalSpeed;
     private float _verticalSpeed;
     // private CharacterGravity _characterGravity;
@@ -44,7 +44,8 @@ namespace RFG
     {
       _character = GetComponent<Character>();
       _controller = GetComponent<CharacterController2D>();
-      _movement = _character.InputPack.Movement;
+      _playerInput = GetComponent<PlayerInput>();
+      _movement = _playerInput.actions["Movement"];
       _settings = _character.SettingsPack;
       _colliders = new List<Collider2D>();
       _boxCollider = GetComponent<BoxCollider2D>();
@@ -78,6 +79,7 @@ namespace RFG
     }
     #endregion
 
+    #region Handlers
     private void ComputeClosestLadder()
     {
       CurrentLadder = null;
@@ -135,8 +137,9 @@ namespace RFG
           return;
         }
 
-        _verticalSpeed = _movement.action.ReadValue<Vector2>().y;
-        _horizontalSpeed = _movement.action.ReadValue<Vector2>().x;
+        var speed = _movement.ReadValue<Vector2>();
+        _verticalSpeed = speed.y;
+        _horizontalSpeed = speed.x;
 
         if (_verticalSpeed > _settings.Threshold.y && !_character.IsLadderCliming && !_character.IsJumping)
         {
@@ -378,5 +381,7 @@ namespace RFG
         GetOffTheLadder();
       }
     }
+    #endregion
+
   }
 }

@@ -1,6 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.InputSystem;
 
 namespace RFG
 {
@@ -190,6 +191,7 @@ namespace RFG
       UnityEditor.Animations.AnimatorController animatorController = UnityEditor.Animations.AnimatorController.CreateAnimatorControllerAtPath($"{newFolderPath}/Animations/{name}.controller");
       animator.runtimeAnimatorController = animatorController;
 
+      activeGameObject.GetOrAddComponent<PlayerInput>();
       activeGameObject.GetOrAddComponent<AttackAbility>();
       activeGameObject.GetOrAddComponent<DashAbility>();
       activeGameObject.GetOrAddComponent<JumpAbility>();
@@ -269,9 +271,6 @@ namespace RFG
     #region Create
     private void CreatePacks(GameObject activeGameObject, string path)
     {
-      InputPack inputPack = EditorUtils.CreateScriptableObject<InputPack>(path);
-      EditorUtility.SetDirty(inputPack);
-
       SettingsPack settingsPack = EditorUtils.CreateScriptableObject<SettingsPack>(path);
       EditorUtility.SetDirty(settingsPack);
 
@@ -286,7 +285,6 @@ namespace RFG
         Character character = activeGameObject.GetOrAddComponent<Character>();
         if (character != null)
         {
-          character.InputPack = inputPack;
           character.SettingsPack = settingsPack;
           if (character.CharacterState == null)
           {

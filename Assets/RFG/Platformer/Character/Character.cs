@@ -18,7 +18,6 @@ namespace RFG
     public Transform SpawnAt;
 
     [Header("Settings")]
-    public InputPack InputPack;
     public SettingsPack SettingsPack;
 
     [Header("Character State")]
@@ -34,6 +33,7 @@ namespace RFG
     public CharacterController2D Controller => _controller;
     private StateCharacterContext _characterContext = new StateCharacterContext();
     private CharacterController2D _controller;
+    private PlayerInput _playerInput;
     private List<Component> _abilities;
     private List<SceneDoor> _sceneDoors;
 
@@ -73,11 +73,12 @@ namespace RFG
     {
       _characterContext = new StateCharacterContext();
       _controller = GetComponent<CharacterController2D>();
+      _playerInput = GetComponent<PlayerInput>();
       _characterContext.transform = transform;
       _characterContext.animator = GetComponent<Animator>();
       _characterContext.character = this;
       _characterContext.controller = _controller;
-      _characterContext.inputPack = InputPack;
+      _characterContext.playerInput = _playerInput;
       _characterContext.DefaultSettingsPack = SettingsPack;
       _characterContext.healthBehaviour = GetComponent<HealthBehaviour>();
 
@@ -170,45 +171,37 @@ namespace RFG
     #region Input
     public void EnableAllInput(bool enabled)
     {
-      EnableInput(InputPack?.Movement, enabled);
-      EnableInput(InputPack?.RunInput, enabled);
-      EnableInput(InputPack?.CrouchInput, enabled);
-      EnableInput(InputPack?.JumpInput, enabled);
-      EnableInput(InputPack?.DashInput, enabled);
-      EnableInput(InputPack?.PrimaryAttackInput, enabled);
-      EnableInput(InputPack?.SecondaryAttackInput, enabled);
-      EnableInput(InputPack?.SmashDownInput, enabled);
-      EnableInput(InputPack?.SlideInput, enabled);
-      EnableInput(InputPack?.UseInput, enabled);
+      EnableInputAction(_playerInput.actions["Movement"], enabled);
+      EnableInputAction(_playerInput.actions["Run"], enabled);
+      EnableInputAction(_playerInput.actions["Crouch"], enabled);
+      EnableInputAction(_playerInput.actions["Jump"], enabled);
+      EnableInputAction(_playerInput.actions["Dash"], enabled);
+      EnableInputAction(_playerInput.actions["PrimaryAttack"], enabled);
+      EnableInputAction(_playerInput.actions["SecondaryAttack"], enabled);
+      EnableInputAction(_playerInput.actions["SmashDown"], enabled);
+      EnableInputAction(_playerInput.actions["Slide"], enabled);
+      EnableInputAction(_playerInput.actions["Use"], enabled);
     }
 
     public void EnablePauseInput(bool enabled)
     {
-      EnableInput(InputPack?.PauseInput, enabled);
+      EnableInputAction(_playerInput.actions["Pause"], enabled);
     }
 
-    public void EnableInput(InputActionReference reference, bool enabled)
+    public void EnableInputAction(InputAction action, bool enabled)
     {
-      if (reference == null)
+      if (action == null)
       {
-        LogExt.Warn<Character>($"InputActionReference not set in input pack");
+        LogExt.Warn<Character>($"InputAction not set in player input");
       }
       if (enabled)
       {
-        reference?.action.Enable();
+        action?.Enable();
       }
       else
       {
-        reference?.action.Disable();
+        action?.Disable();
       }
-    }
-
-    public void OverrideInputPack(InputPack input)
-    {
-    }
-
-    public void ResetInputPack()
-    {
     }
     #endregion
 

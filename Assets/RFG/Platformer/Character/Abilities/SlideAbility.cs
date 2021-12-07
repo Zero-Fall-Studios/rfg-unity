@@ -8,11 +8,12 @@ namespace RFG
   public class SlideAbility : MonoBehaviour, IAbility
   {
     private Character _character;
+    private PlayerInput _playerInput;
     private CharacterController2D _controller;
     private CharacterControllerState2D _state;
-    private InputActionReference _movement;
+    private InputAction _movement;
     private SettingsPack _settings;
-    private InputActionReference _slideInput;
+    private InputAction _slideInput;
     private float _horizontalSpeed = 0f;
     private bool _isSliding;
     private bool _isSlidingCooldown;
@@ -24,8 +25,9 @@ namespace RFG
     {
       _character = GetComponent<Character>();
       _controller = GetComponent<CharacterController2D>();
-      _movement = _character.InputPack.Movement;
-      _slideInput = _character.InputPack.SlideInput;
+      _playerInput = GetComponent<PlayerInput>();
+      _movement = _playerInput.actions["Movement"];
+      _slideInput = _playerInput.actions["Slide"];
       _settings = _character.SettingsPack;
     }
 
@@ -70,7 +72,7 @@ namespace RFG
     {
       if (_slideInput != null)
       {
-        _slideInput.action.started += OnSlideStarted;
+        _slideInput.started += OnSlideStarted;
       }
     }
 
@@ -78,7 +80,7 @@ namespace RFG
     {
       if (_slideInput != null)
       {
-        _slideInput.action.started -= OnSlideStarted;
+        _slideInput.started -= OnSlideStarted;
       }
     }
     #endregion
@@ -91,7 +93,7 @@ namespace RFG
         return;
       }
       _isSliding = true;
-      _horizontalSpeed = _movement.action.ReadValue<Vector2>().x;
+      _horizontalSpeed = _movement.ReadValue<Vector2>().x;
       // _character.EnableAllInput(false);
       _character.MovementState.ChangeState(typeof(SlidingState));
     }

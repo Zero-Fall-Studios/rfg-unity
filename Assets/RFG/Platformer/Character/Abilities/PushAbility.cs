@@ -7,10 +7,11 @@ namespace RFG
   public class PushAbility : MonoBehaviour, IAbility
   {
     private Character _character;
+    private PlayerInput _playerInput;
     private CharacterController2D _controller;
     private CharacterControllerState2D _state;
     private SettingsPack _settings;
-    private InputActionReference _movement;
+    private InputAction _movement;
     private bool _collidingWithPushable = false;
     private Vector3 _raycastDirection;
     private Vector3 _raycastOrigin;
@@ -23,8 +24,9 @@ namespace RFG
     {
       _character = GetComponent<Character>();
       _controller = GetComponent<CharacterController2D>();
+      _playerInput = GetComponent<PlayerInput>();
       _settings = _character.SettingsPack;
-      _movement = _character.InputPack.Movement;
+      _movement = _playerInput.actions["Movement"];
     }
 
     private void Start()
@@ -70,7 +72,7 @@ namespace RFG
 
       if (_isPushing)
       {
-        _horizontalSpeed = _movement.action.ReadValue<Vector2>().x;
+        _horizontalSpeed = _movement.ReadValue<Vector2>().x;
         if (_horizontalSpeed == 0)
         {
           _character.MovementState.ChangeState(typeof(PushingIdleState));

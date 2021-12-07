@@ -10,7 +10,8 @@ namespace RFG
     private Character _character;
     private CharacterController2D _controller;
     private CharacterControllerState2D _state;
-    private InputActionReference _movement;
+    private PlayerInput _playerInput;
+    private InputAction _movement;
     private SettingsPack _settings;
     private float _ledgeHangingStartedTimestamp;
     private Ledge _ledge;
@@ -24,7 +25,8 @@ namespace RFG
       _controller = GetComponent<CharacterController2D>();
       _movementAbility = GetComponent<MovementAbility>();
       _jumpAbility = GetComponent<JumpAbility>();
-      _movement = _character.InputPack.Movement;
+      _playerInput = GetComponent<PlayerInput>();
+      _movement = _playerInput.actions["Movement"];
       _settings = _character.SettingsPack;
     }
 
@@ -56,7 +58,7 @@ namespace RFG
         return;
       }
 
-      float verticalSpeed = _movement.action.ReadValue<Vector2>().y;
+      float verticalSpeed = _movement.ReadValue<Vector2>().y;
 
       if (verticalSpeed > _settings.Threshold.y)
       {

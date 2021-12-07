@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.EventSystems;
 
 namespace RFG
 {
@@ -8,19 +7,58 @@ namespace RFG
   public class AttackAbility : MonoBehaviour, IAbility
   {
     private Character _character;
+    private PlayerInput _playerInput;
     private PlayerInventory _playerInventory;
-    private InputActionReference _primaryAttackInput;
-    private InputActionReference _secondaryAttackInput;
+    private InputAction _primaryAttackInput;
+    private InputAction _secondaryAttackInput;
     private bool _pointerOverUi = false;
 
+    #region Unity Methods
     private void Awake()
     {
       _character = GetComponent<Character>();
+      _playerInput = GetComponent<PlayerInput>();
       _playerInventory = GetComponent<PlayerInventory>();
-      _primaryAttackInput = _character.InputPack.PrimaryAttackInput;
-      _secondaryAttackInput = _character.InputPack.SecondaryAttackInput;
+      _primaryAttackInput = _playerInput.actions["PrimaryAttack"];
+      _secondaryAttackInput = _playerInput.actions["SecondaryAttack"];
     }
 
+    private void OnEnable()
+    {
+      if (_primaryAttackInput != null)
+      {
+        _primaryAttackInput.started += OnPrimaryAttackStarted;
+        _primaryAttackInput.canceled += OnPrimaryAttackCanceled;
+        _primaryAttackInput.performed += OnPrimaryAttackPerformed;
+      }
+
+      if (_secondaryAttackInput != null)
+      {
+        _secondaryAttackInput.started += OnSecondaryAttackStarted;
+        _secondaryAttackInput.canceled += OnSecondaryAttackCanceled;
+        _secondaryAttackInput.performed += OnSecondaryAttackPerformed;
+      }
+    }
+
+    private void OnDisable()
+    {
+      if (_primaryAttackInput != null)
+      {
+        _primaryAttackInput.started -= OnPrimaryAttackStarted;
+        _primaryAttackInput.canceled -= OnPrimaryAttackCanceled;
+        _primaryAttackInput.performed -= OnPrimaryAttackPerformed;
+      }
+
+      if (_secondaryAttackInput != null)
+      {
+        _secondaryAttackInput.started -= OnSecondaryAttackStarted;
+        _secondaryAttackInput.canceled -= OnSecondaryAttackCanceled;
+        _secondaryAttackInput.performed -= OnSecondaryAttackPerformed;
+      }
+    }
+    #endregion
+
+    #region Events
     public void OnPrimaryAttackStarted(InputAction.CallbackContext ctx)
     {
       _pointerOverUi = MouseOverUILayerObject.IsPointerOverUIObject();
@@ -136,40 +174,7 @@ namespace RFG
         }
       }
     }
-
-    private void OnEnable()
-    {
-      if (_primaryAttackInput != null)
-      {
-        _primaryAttackInput.action.started += OnPrimaryAttackStarted;
-        _primaryAttackInput.action.canceled += OnPrimaryAttackCanceled;
-        _primaryAttackInput.action.performed += OnPrimaryAttackPerformed;
-      }
-
-      if (_secondaryAttackInput != null)
-      {
-        _secondaryAttackInput.action.started += OnSecondaryAttackStarted;
-        _secondaryAttackInput.action.canceled += OnSecondaryAttackCanceled;
-        _secondaryAttackInput.action.performed += OnSecondaryAttackPerformed;
-      }
-    }
-
-    private void OnDisable()
-    {
-      if (_primaryAttackInput != null)
-      {
-        _primaryAttackInput.action.started -= OnPrimaryAttackStarted;
-        _primaryAttackInput.action.canceled -= OnPrimaryAttackCanceled;
-        _primaryAttackInput.action.performed -= OnPrimaryAttackPerformed;
-      }
-
-      if (_secondaryAttackInput != null)
-      {
-        _secondaryAttackInput.action.started -= OnSecondaryAttackStarted;
-        _secondaryAttackInput.action.canceled -= OnSecondaryAttackCanceled;
-        _secondaryAttackInput.action.performed -= OnSecondaryAttackPerformed;
-      }
-    }
+    #endregion
 
   }
 }

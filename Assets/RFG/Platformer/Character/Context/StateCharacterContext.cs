@@ -1,12 +1,14 @@
+using UnityEngine.InputSystem;
+
 namespace RFG
 {
   public class StateCharacterContext : StateAnimatorContext
   {
     public Character character;
     public CharacterController2D controller;
+    public PlayerInput playerInput;
 
     // Packs
-    public InputPack inputPack;
     public SettingsPack settingsPack
     {
       get

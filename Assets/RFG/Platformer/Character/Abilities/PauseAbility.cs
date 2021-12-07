@@ -7,13 +7,15 @@ namespace RFG
   public class PauseAbility : MonoBehaviour, IAbility
   {
     private Character _character;
-    private InputActionReference _pauseInput;
+    private PlayerInput _playerInput;
+    private InputAction _pauseInput;
     private SettingsPack _settings;
 
     private void Start()
     {
       _character = GetComponent<Character>();
-      _pauseInput = _character.Context.inputPack.PauseInput;
+      _playerInput = GetComponent<PlayerInput>();
+      _pauseInput = _playerInput.actions["Pause"];
       _settings = _character.Context.settingsPack;
 
       OnEnable();
@@ -36,7 +38,7 @@ namespace RFG
       OnDisable();
       if (_pauseInput != null)
       {
-        _pauseInput.action.performed += OnPausedPerformed;
+        _pauseInput.performed += OnPausedPerformed;
       }
     }
 
@@ -44,7 +46,7 @@ namespace RFG
     {
       if (_pauseInput != null)
       {
-        _pauseInput.action.performed -= OnPausedPerformed;
+        _pauseInput.performed -= OnPausedPerformed;
       }
     }
 

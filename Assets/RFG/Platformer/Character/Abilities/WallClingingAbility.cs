@@ -6,12 +6,12 @@ namespace RFG
   [AddComponentMenu("RFG/Platformer/Character/Ability/Wall Clinging")]
   public class WallClingingAbility : MonoBehaviour, IAbility
   {
-    [HideInInspector]
     private Transform _transform;
     private Character _character;
     private CharacterController2D _controller;
     private CharacterControllerState2D _state;
-    private InputActionReference _movement;
+    private PlayerInput _playerInput;
+    private InputAction _movement;
     private SettingsPack _settings;
     private bool _hasWallCling = false;
 
@@ -20,7 +20,8 @@ namespace RFG
       _transform = transform;
       _character = GetComponent<Character>();
       _controller = GetComponent<CharacterController2D>();
-      _movement = _character.InputPack.Movement;
+      _playerInput = GetComponent<PlayerInput>();
+      _movement = _playerInput.actions["Movement"];
       _settings = _character.SettingsPack;
     }
 
@@ -50,7 +51,7 @@ namespace RFG
         return;
       }
 
-      Vector2 _movementVector = _movement.action.ReadValue<Vector2>();
+      Vector2 _movementVector = _movement.ReadValue<Vector2>();
 
       float _horizontalInput = _movementVector.x;
       float _verticalInput = _movementVector.y;

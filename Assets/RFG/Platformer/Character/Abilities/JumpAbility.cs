@@ -7,11 +7,12 @@ namespace RFG
   public class JumpAbility : MonoBehaviour, IAbility
   {
     private Character _character;
+    private PlayerInput _playerInput;
     private Transform _transform;
     private CharacterController2D _controller;
     private CharacterControllerState2D _state;
-    private InputActionReference _movement;
-    private InputActionReference _jumpInput;
+    private InputAction _movement;
+    private InputAction _jumpInput;
     private SettingsPack _settings;
     private int _numberOfJumpsLeft = 0;
     private float _lastJumpTime = 0f;
@@ -25,8 +26,9 @@ namespace RFG
       _transform = transform;
       _character = GetComponent<Character>();
       _controller = GetComponent<CharacterController2D>();
-      _movement = _character.InputPack.Movement;
-      _jumpInput = _character.InputPack.JumpInput;
+      _playerInput = GetComponent<PlayerInput>();
+      _movement = _playerInput.actions["Movement"];
+      _jumpInput = _playerInput.actions["Jump"];
       _settings = _character.SettingsPack;
     }
 
@@ -58,6 +60,24 @@ namespace RFG
       {
         _character.MovementState.ChangeState(typeof(LandedState));
         SetNumberOfJumpsLeft();
+      }
+    }
+
+    private void OnEnable()
+    {
+      if (_jumpInput != null)
+      {
+        _jumpInput.started += OnJumpStarted;
+        _jumpInput.canceled += OnJumpCanceled;
+      }
+    }
+
+    private void OnDisable()
+    {
+      if (_jumpInput != null)
+      {
+        _jumpInput.started -= OnJumpStarted;
+        _jumpInput.canceled -= OnJumpCanceled;
       }
     }
     #endregion
@@ -92,7 +112,7 @@ namespace RFG
         return false;
       }
 
-      float _verticalInput = _movement.action.ReadValue<Vector2>().y;
+      float _verticalInput = _movement.ReadValue<Vector2>().y;
 
       // if the character is standing on a one way platform and is also pressing the down button,
       if (_verticalInput < -_settings.JumpThreshold.y && _state.IsGrounded)
@@ -119,7 +139,7 @@ namespace RFG
         return;
       }
 
-      float _horizontalInput = _movement.action.ReadValue<Vector2>().x;
+      float _horizontalInput = _movement.ReadValue<Vector2>().x;
 
       if (_horizontalInput > -_settings.JumpThreshold.x && _horizontalInput < _settings.JumpThreshold.x)
       {
@@ -209,24 +229,6 @@ namespace RFG
     {
       _jumpButtonPressed = false;
       _jumpButtonReleased = true;
-    }
-
-    private void OnEnable()
-    {
-      if (_jumpInput != null)
-      {
-        _jumpInput.action.started += OnJumpStarted;
-        _jumpInput.action.canceled += OnJumpCanceled;
-      }
-    }
-
-    private void OnDisable()
-    {
-      if (_jumpInput != null)
-      {
-        _jumpInput.action.started -= OnJumpStarted;
-        _jumpInput.action.canceled -= OnJumpCanceled;
-      }
     }
     #endregion
 
