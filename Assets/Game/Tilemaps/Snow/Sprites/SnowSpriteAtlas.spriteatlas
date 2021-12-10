@@ -1,0 +1,162 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: SnowSpriteAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 0
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 9db6d315d44dac649a973d566e720c79, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: -641790437579857962, guid: 9db6d315d44dac649a973d566e720c79, type: 3}
+  - {fileID: 9121324987074707635, guid: 9db6d315d44dac649a973d566e720c79, type: 3}
+  - {fileID: 8479425497195606643, guid: 9db6d315d44dac649a973d566e720c79, type: 3}
+  - {fileID: -4928827357259080041, guid: 9db6d315d44dac649a973d566e720c79, type: 3}
+  - {fileID: -3044578878423539108, guid: 9db6d315d44dac649a973d566e720c79, type: 3}
+  - {fileID: -5862615501458450806, guid: 9db6d315d44dac649a973d566e720c79, type: 3}
+  - {fileID: 6871284520299116786, guid: 9db6d315d44dac649a973d566e720c79, type: 3}
+  - {fileID: -6192554690608368711, guid: 9db6d315d44dac649a973d566e720c79, type: 3}
+  - {fileID: -1302267163115463788, guid: 9db6d315d44dac649a973d566e720c79, type: 3}
+  - {fileID: 135887608266392802, guid: 9db6d315d44dac649a973d566e720c79, type: 3}
+  - {fileID: -6994735842606529550, guid: 9db6d315d44dac649a973d566e720c79, type: 3}
+  - {fileID: 1792980732293060545, guid: 9db6d315d44dac649a973d566e720c79, type: 3}
+  - {fileID: -411971134392537016, guid: 9db6d315d44dac649a973d566e720c79, type: 3}
+  - {fileID: 4403257591268872007, guid: 9db6d315d44dac649a973d566e720c79, type: 3}
+  - {fileID: -7402151509081150721, guid: 9db6d315d44dac649a973d566e720c79, type: 3}
+  - {fileID: -871974912190752304, guid: 9db6d315d44dac649a973d566e720c79, type: 3}
+  - {fileID: -5854459414059561291, guid: 9db6d315d44dac649a973d566e720c79, type: 3}
+  - {fileID: 5981716848782239869, guid: 9db6d315d44dac649a973d566e720c79, type: 3}
+  - {fileID: 1528593225494166885, guid: 9db6d315d44dac649a973d566e720c79, type: 3}
+  - {fileID: -8407903282868792508, guid: 9db6d315d44dac649a973d566e720c79, type: 3}
+  - {fileID: -4451682302659167997, guid: 9db6d315d44dac649a973d566e720c79, type: 3}
+  - {fileID: 331559933500368578, guid: 9db6d315d44dac649a973d566e720c79, type: 3}
+  - {fileID: 6320668689457282532, guid: 9db6d315d44dac649a973d566e720c79, type: 3}
+  - {fileID: -6478006335681717755, guid: 9db6d315d44dac649a973d566e720c79, type: 3}
+  - {fileID: 8122664259206636790, guid: 9db6d315d44dac649a973d566e720c79, type: 3}
+  - {fileID: 5969909208988483253, guid: 9db6d315d44dac649a973d566e720c79, type: 3}
+  - {fileID: -8904123369515756183, guid: 9db6d315d44dac649a973d566e720c79, type: 3}
+  - {fileID: -5187736045970856006, guid: 9db6d315d44dac649a973d566e720c79, type: 3}
+  - {fileID: 6601760775094224037, guid: 9db6d315d44dac649a973d566e720c79, type: 3}
+  - {fileID: 4282796710223758119, guid: 9db6d315d44dac649a973d566e720c79, type: 3}
+  - {fileID: -5636416167735430471, guid: 9db6d315d44dac649a973d566e720c79, type: 3}
+  - {fileID: -2531223393544273572, guid: 9db6d315d44dac649a973d566e720c79, type: 3}
+  - {fileID: 8224720680761538565, guid: 9db6d315d44dac649a973d566e720c79, type: 3}
+  - {fileID: -6960974195015528980, guid: 9db6d315d44dac649a973d566e720c79, type: 3}
+  - {fileID: 1353659637807527162, guid: 9db6d315d44dac649a973d566e720c79, type: 3}
+  - {fileID: 6975336288422143326, guid: 9db6d315d44dac649a973d566e720c79, type: 3}
+  - {fileID: -3649029470560583740, guid: 9db6d315d44dac649a973d566e720c79, type: 3}
+  - {fileID: -6942967239492728488, guid: 9db6d315d44dac649a973d566e720c79, type: 3}
+  - {fileID: -2115082820392159823, guid: 9db6d315d44dac649a973d566e720c79, type: 3}
+  - {fileID: -895766508043312078, guid: 9db6d315d44dac649a973d566e720c79, type: 3}
+  - {fileID: 3818329319663473391, guid: 9db6d315d44dac649a973d566e720c79, type: 3}
+  - {fileID: -4231342404618314310, guid: 9db6d315d44dac649a973d566e720c79, type: 3}
+  - {fileID: -8837043951992613025, guid: 9db6d315d44dac649a973d566e720c79, type: 3}
+  - {fileID: -1204967432216413608, guid: 9db6d315d44dac649a973d566e720c79, type: 3}
+  - {fileID: 3457388750913200929, guid: 9db6d315d44dac649a973d566e720c79, type: 3}
+  - {fileID: 9092331098250075244, guid: 9db6d315d44dac649a973d566e720c79, type: 3}
+  - {fileID: -3077802687582885258, guid: 9db6d315d44dac649a973d566e720c79, type: 3}
+  - {fileID: -5673122574944667799, guid: 9db6d315d44dac649a973d566e720c79, type: 3}
+  - {fileID: -4197595911146491913, guid: 9db6d315d44dac649a973d566e720c79, type: 3}
+  - {fileID: 6808623726518534510, guid: 9db6d315d44dac649a973d566e720c79, type: 3}
+  - {fileID: -1012679808429317550, guid: 9db6d315d44dac649a973d566e720c79, type: 3}
+  - {fileID: -6431279544290124260, guid: 9db6d315d44dac649a973d566e720c79, type: 3}
+  - {fileID: -4457881823861605025, guid: 9db6d315d44dac649a973d566e720c79, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - SnowTiles_28_SlopeTopRightLeft
+  - SnowTiles_20_InnerCenterBottom
+  - SnowTiles_2_LeftTop
+  - SnowTiles_21_InnerInnerLeftTop
+  - SnowTiles_43_BackgroundInner
+  - SnowTiles_1_CenterTop
+  - SnowTiles_30_SlopeBottomLeftLeft
+  - SnowTiles_14_InnerLeftSideCenter
+  - SnowTiles_7_LeftBottom
+  - SnowTiles_23_InnerInnerLeftBottom
+  - SnowTiles_9_InnerCenterTop
+  - SnowTiles_8_RightBottom
+  - SnowTiles_41_BackgroundBottomCenter
+  - SnowTiles_29_SlopeTopRightRight
+  - SnowTiles_13_InnerRightSideTop
+  - SnowTiles_36_BackgroundTopCenter
+  - SnowTiles_17_InnerRightSideBottom
+  - SnowTiles_12_InnerLeftSideTop
+  - SnowTiles_19_InnerRightBottom
+  - SnowTiles_44_LongCenter
+  - SnowTiles_31_SlopeBottomLeftRight
+  - SnowTiles_35_BackgroundTopLeft
+  - SnowTiles_10_InnerLeftTop
+  - SnowTiles_46_LongRight
+  - SnowTiles_3_RightTop
+  - SnowTiles_27_SlopeTopLeftLeft
+  - SnowTiles_50_Block
+  - SnowTiles_0_CenterCenter
+  - SnowTiles_24_InnerInnerRightBottom
+  - SnowTiles_5_RightCenter
+  - SnowTiles_45_LongLeft
+  - SnowTiles_25_Inner
+  - SnowTiles_38_BackgroundCenterLeft
+  - SnowTiles_33_SlopeBottomRightRight
+  - SnowTiles_32_SlopeBottomRightLeft
+  - SnowTiles_15_InnerRightSideCenter
+  - SnowTiles_18_InnerLeftBottom
+  - SnowTiles_49_TallBottom
+  - SnowTiles_16_InnerLeftSideBottom
+  - SnowTiles_40_BackgroundBottomLeft
+  - SnowTiles_48_TallTop
+  - SnowTiles_39_BackgroundCenterRight
+  - SnowTiles_22_InnerInnerRightTop
+  - SnowTiles_11_InnerRightTop
+  - SnowTiles_26_SlopeTopLeftRight
+  - SnowTiles_37_BackgroundTopRight
+  - SnowTiles_47_TallCenter
+  - SnowTiles_6_CenterBottom
+  - SnowTiles_4_LeftCenter
+  - SnowTiles_34_BackgroundCenter
+  - SnowTiles_42_BackgroundBottomRight
+  - SnowTiles_52
+  - SnowTiles_51
+  m_RenderDataMap: {}
+  m_Tag: SnowSpriteAtlas
+  m_IsVariant: 0
