@@ -9,46 +9,47 @@ using UnityEngine.UIElements;
 
 namespace RFG
 {
-  [CustomEditor(typeof(AnimationClips))]
-  public class AnimationClipsEditor : Editor
+  public class AnimationClipsEditor : EditorWindow
   {
-    private VisualElement rootElement;
-    private Editor editor;
+    private int _pixelsPerUnit = 16;
+    private Vector2 _cellSize = new Vector2(16f, 16f);
 
-    public void OnEnable()
+    [MenuItem("RFG/Animation Clips Window")]
+    public static void ShowWindow()
     {
-      rootElement = new VisualElement();
+      GetWindow<AnimationClipsEditor>("AnimationClipsEditorWindow");
+    }
+    public virtual void CreateGUI()
+    {
+      VisualElement root = rootVisualElement;
+      root.CloneRootTree();
+      root.LoadRootStyles();
 
-      var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/RFG/Animation/Editor/AnimationClipsEditor/AnimationClipsEditor.uss");
-      rootElement.styleSheets.Add(styleSheet);
+      Label title = root.Q<Label>("title");
+      title.text = "Animation Clips";
+
+      VisualElement mainContainer = root.Q<VisualElement>("container");
+
+      mainContainer.Add(CreateManager());
     }
 
-    public override VisualElement CreateInspectorGUI()
+    private VisualElement CreateManager()
     {
-      rootElement.Clear();
+      VisualElement manager = VisualElementUtils.CreateButtonContainer("platformer-manager");
 
-      UnityEngine.Object.DestroyImmediate(editor);
-      editor = Editor.CreateEditor(this);
       IMGUIContainer container = new IMGUIContainer(() =>
       {
-        if (target)
-        {
-          OnInspectorGUI();
-        }
+        _pixelsPerUnit = EditorGUILayout.IntField("Pixels Per Unit:", _pixelsPerUnit);
+        _cellSize = EditorGUILayout.Vector2Field("Cell Size:", _cellSize);
       });
-      rootElement.Add(container);
+      manager.Add(container);
 
-      var visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/RFG/Animation/Editor/AnimationClipsEditor/AnimationClipsEditor.uxml");
-      visualTree.CloneTree(rootElement);
-
-      VisualElement mainContainer = rootElement.Q<VisualElement>("container");
-
-      TextField animatorControllerPath = new TextField()
+      TextField animatorControllerName = new TextField()
       {
-        label = "Animator Controller Path"
+        label = "Animator Controller Name"
       };
 
-      mainContainer.Add(animatorControllerPath);
+      manager.Add(animatorControllerName);
 
       Button generateClipsButton = new Button()
       {
@@ -56,98 +57,136 @@ namespace RFG
       };
       generateClipsButton.clicked += () =>
       {
-        Create(animatorControllerPath.value);
+        Slice();
+        CreateClips(animatorControllerName.value);
       };
-      mainContainer.Add(generateClipsButton);
+      manager.Add(generateClipsButton);
 
-      return rootElement;
+      return manager;
     }
 
-    private void Create(string animatorControllerPath)
+    private void CreateClips(string name)
     {
-      AnimationClips animationClips = (AnimationClips)target;
+      Texture2D texture = Selection.activeObject as Texture2D;
 
-      if (animationClips.clips.Count == 0)
+      if (texture == null)
       {
-        LogExt.Warn<AnimationClipsEditor>("This animation clips contains no clips");
+        LogExt.Warn<AnimationClipsEditor>("Please select a Texture2D asset");
         return;
       }
 
-      Texture2D texture = Selection.activeObject as Texture2D;
-
       string path = AssetDatabase.GetAssetPath(texture);
-      string animationsPath = animatorControllerPath.RemoveLast("/");
+      string animationsPath = path.RemoveLast("/") + "/Animations";
+      string animationName = texture.name.RemoveFirst("-");
 
-      UnityEditor.Animations.AnimatorController animatorController = AssetDatabase.LoadAssetAtPath<UnityEditor.Animations.AnimatorController>(animatorControllerPath);
+      UnityEditor.Animations.AnimatorController animatorController = AssetDatabase.LoadAssetAtPath<UnityEditor.Animations.AnimatorController>($"{animationsPath}/{name}.controller");
       if (animatorController == null)
       {
-        LogExt.Warn<AnimationClipsEditor>("Animation Controller not found");
+        LogExt.Warn<AnimationClipsEditor>($"Animation Controller {name} not found");
         return;
       }
 
       Sprite[] sprites = AssetDatabase.LoadAllAssetsAtPath(path).OfType<Sprite>().ToArray();
 
-      float frameRate = 60f;
-      float timeStep = (frameRate / 60f) / 10f;
+      float timeStep = .1f;
+      bool newClip = false;
+      AnimationClip animClip = AssetDatabase.LoadAssetAtPath<AnimationClip>($"{animationsPath}/{animationName}.anim");
 
-      foreach (AnimationClipItem animationItem in animationClips.clips)
+      if (animClip == null)
       {
-        bool newClip = false;
-        AnimationClip animClip = AssetDatabase.LoadAssetAtPath<AnimationClip>($"{animationsPath}/{animationItem.name}.anim");
+        animClip = new AnimationClip();
+        animClip.name = animationName;
+        newClip = true;
+      }
 
-        if (animClip == null)
-        {
-          animClip = new AnimationClip();
-          animClip.name = animationItem.name;
-          newClip = true;
-        }
+      if (!newClip)
+      {
+        animClip.ClearCurves();
+      }
 
-        animClip.frameRate = frameRate;
+      List<ObjectReferenceKeyframe> spriteKeyFrames = new List<ObjectReferenceKeyframe>();
+      float time = 0;
+      for (int i = 0; i < sprites.Length; i++)
+      {
+        ObjectReferenceKeyframe spriteKeyFrame = new ObjectReferenceKeyframe();
+        spriteKeyFrame.time = time;
+        spriteKeyFrame.value = sprites[i];
+        time += timeStep;
+        spriteKeyFrames.Add(spriteKeyFrame);
+      }
 
-        if (!newClip)
-        {
-          animClip.ClearCurves();
-        }
+      EditorCurveBinding spriteBinding = new EditorCurveBinding();
+      spriteBinding.type = typeof(SpriteRenderer);
+      spriteBinding.path = "";
+      spriteBinding.propertyName = "m_Sprite";
+      AnimationUtility.SetObjectReferenceCurve(animClip, spriteBinding, spriteKeyFrames.ToArray());
 
-        List<ObjectReferenceKeyframe> spriteKeyFrames = new List<ObjectReferenceKeyframe>();
-        float time = 0;
-        for (int i = animationItem.framesStart; i <= animationItem.framesEnd; i++)
-        {
-          ObjectReferenceKeyframe spriteKeyFrame = new ObjectReferenceKeyframe();
-          spriteKeyFrame.time = time;
-          spriteKeyFrame.value = sprites[i];
-          time += timeStep;
-          spriteKeyFrames.Add(spriteKeyFrame);
-        }
+      AnimationClipSettings settings = AnimationUtility.GetAnimationClipSettings(animClip);
+      AnimationUtility.SetAnimationClipSettings(animClip, settings);
 
-        EditorCurveBinding spriteBinding = new EditorCurveBinding();
-        spriteBinding.type = typeof(SpriteRenderer);
-        spriteBinding.path = "";
-        spriteBinding.propertyName = "m_Sprite";
-        AnimationUtility.SetObjectReferenceCurve(animClip, spriteBinding, spriteKeyFrames.ToArray());
-
-        AnimationClipSettings settings = AnimationUtility.GetAnimationClipSettings(animClip);
-        settings.loopTime = animationItem.loop;
-        AnimationUtility.SetAnimationClipSettings(animClip, settings);
-
-        if (!string.IsNullOrEmpty(animationItem.animationEventFunction))
-        {
-          AnimationEvent evt = new AnimationEvent();
-          evt.time = animationItem.animationEventTime;
-          evt.functionName = animationItem.animationEventFunction;
-          AnimationUtility.SetAnimationEvents(animClip, new AnimationEvent[] { evt });
-        }
-
-        if (newClip)
-        {
-          AssetDatabase.CreateAsset(animClip, $"{animationsPath}/{animClip.name}.anim");
-          animatorController.AddMotion(animClip);
-        }
+      if (newClip)
+      {
+        AssetDatabase.CreateAsset(animClip, $"{animationsPath}/{animationName}.anim");
+        animatorController.AddMotion(animClip);
       }
 
       EditorUtility.SetDirty(animatorController);
       AssetDatabase.SaveAssets();
       AssetDatabase.Refresh();
+    }
+
+    public void Slice()
+    {
+      Texture2D texture = Selection.activeObject as Texture2D;
+
+      if (texture == null)
+      {
+        LogExt.Warn<AnimationSliceEditor>("Please select a Texture2D asset");
+        return;
+      }
+
+      string path = AssetDatabase.GetAssetPath(texture);
+      var importer = AssetImporter.GetAtPath(path) as TextureImporter;
+
+      importer.textureType = TextureImporterType.Sprite;
+      importer.spriteImportMode = SpriteImportMode.Multiple;
+      importer.mipmapEnabled = false;
+      importer.filterMode = FilterMode.Point;
+      importer.spritePivot = Vector2.down;
+      importer.textureCompression = TextureImporterCompression.Uncompressed;
+      importer.spritePixelsPerUnit = _pixelsPerUnit;
+
+      var textureSettings = new TextureImporterSettings();
+      importer.ReadTextureSettings(textureSettings);
+      textureSettings.spriteMeshType = SpriteMeshType.Tight;
+      textureSettings.spriteExtrude = 0;
+
+      importer.SetTextureSettings(textureSettings);
+
+      Vector2 offset = Vector2.zero;
+      Vector2 padding = Vector2.zero;
+
+      Rect[] rects = InternalSpriteUtility.GenerateGridSpriteRectangles(texture, offset, _cellSize, padding, false);
+      var rectsList = new List<Rect>(rects);
+
+      string filenameNoExtension = Path.GetFileNameWithoutExtension(path);
+      var metaList = new List<SpriteMetaData>();
+      int rectNum = 0;
+
+      foreach (Rect rect in rectsList)
+      {
+        var meta = new SpriteMetaData();
+        meta.pivot = Vector2.down;
+        meta.alignment = (int)SpriteAlignment.Center;
+        meta.rect = rect;
+        meta.name = filenameNoExtension + "_" + rectNum;
+        rectNum++;
+        metaList.Add(meta);
+      }
+
+      importer.spritesheet = metaList.ToArray();
+
+      AssetDatabase.ImportAsset(path, ImportAssetOptions.ForceUpdate);
     }
 
   }

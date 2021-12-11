@@ -171,6 +171,10 @@ namespace RFG
     #region Input
     public void EnableAllInput(bool enabled)
     {
+      if (_playerInput == null)
+      {
+        return;
+      }
       EnableInputAction(_playerInput.actions["Movement"], enabled);
       EnableInputAction(_playerInput.actions["Run"], enabled);
       EnableInputAction(_playerInput.actions["Crouch"], enabled);
@@ -185,6 +189,10 @@ namespace RFG
 
     public void EnablePauseInput(bool enabled)
     {
+      if (_playerInput == null)
+      {
+        return;
+      }
       EnableInputAction(_playerInput.actions["Pause"], enabled);
     }
 
