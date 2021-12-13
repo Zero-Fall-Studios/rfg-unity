@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c36585e6d24cefa4c8266a9dc0cb4a4e, type: 3}
+  m_Name: SettingsPack
+  m_EditorClassIdentifier: 
+  AttackSpeed: 5
+  DanglingRaycastOrigin: {x: 0.7, y: -0.25, z: 0}
+  DanglingRaycastLength: 2
+  CanDangle: 1
+  DashDistance: 3
+  DashForce: 40
+  TotalDashes: 2
+  MinInputThreshold: 0.1
+  Cooldown: 1
+  DashEffects: []
+  JumpHeight: 12
+  OneWayPlatformFallVelocity: -10
+  JumpThreshold: {x: 0.1, y: 0.4}
+  OneWayPlatformsJumpCollisionOffDuration: 0.3
+  MovingPlatformsJumpCollisionOffDuration: 0.05
+  Restrictions: 0
+  NumberOfJumps: 1
+  CanJumpDownOneWayPlatforms: 1
+  JumpIsProportionalToThePressTime: 1
+  JumpMinAirTime: 0.1
+  JumpReleaseForceFactor: 2
+  CanJumpFlip: 0
+  PauseEvent: {fileID: 0}
+  UnPauseEvent: {fileID: 0}
+  RunningSpeed: 5
+  RunningPower: 5
+  PowerGainPerFrame: 0.01
+  CooldownTimer: 5
+  WalkToRunTime: 1
+  AlwaysRun: 0
+  Threshold: {x: 0.1, y: 0.4}
+  StairsAheadDetectionRaycastOrigin: {x: -2, y: 0, z: 0}
+  StairsAheadDetectionRaycastLength: 4
+  StairsBelowDetectionRaycastOrigin: {x: -0.2, y: 0, z: 0}
+  StairsBelowDetectionRaycastLength: 0.5
+  StairsBelowLockTime: 0.2
+  WalkingSpeed: 5
+  CrouchWalkingSpeed: 1
+  WallClingingSlowFactor: 0.6
+  RaycastVerticalOffset: 0
+  WallClingingTolerance: 0.3
+  WallClingingInputThreshold: 0.1
+  WallJumpInputThreshold: 0.01
+  WallJumpForce: {x: 10, y: 4}
+  MinimumHangingTime: 0.2
+  ClimbingAnimationDuration: 0.5
+  CanAttackInAirPrimary: 0
+  CanAttackInAirSecondary: 0
+  CanSmashDownInAir: 0
+  SmashDownInAirSpeed: 1
+  SlideSpeed: 3
+  SlideTime: 1
+  SlideCooldownTime: 1
+  SwimHeight: 3
+  SwimCanWallCling: 0
+  SwimCanDash: 0
+  PushDetectionRaycastLength: 0.2
+  LadderClimbingSpeed: 2
+  CanFollowVertically: 0

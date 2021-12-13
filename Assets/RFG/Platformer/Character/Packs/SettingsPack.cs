@@ -63,6 +63,7 @@ namespace RFG
     public bool JumpIsProportionalToThePressTime = true;
     public float JumpMinAirTime = 0.1f;
     public float JumpReleaseForceFactor = 2f;
+    public bool CanJumpFlip = false;
 
     [Header("Pause Settings")]
     public GameEvent PauseEvent;

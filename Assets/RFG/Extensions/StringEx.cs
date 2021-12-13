@@ -4,22 +4,12 @@ namespace RFG
   {
     public static string BeforeLast(this string str, string delimiter = ".")
     {
-      int index = str.LastIndexOf(delimiter);
-      if (index == -1)
-      {
-        index = 0;
-      }
-      return str.Substring(0, index);
+      return str.Substring(0, str.LastIndexOf(delimiter));
     }
 
     public static string Last(this string str, string delimiter = ".")
     {
-      int index = str.LastIndexOf(delimiter);
-      if (index == -1)
-      {
-        index = 0;
-      }
-      return str.Substring(index);
+      return str.Substring(str.LastIndexOf(delimiter) + 1);
     }
 
     public static string RemoveFirst(this string str, string delimiter = ".")

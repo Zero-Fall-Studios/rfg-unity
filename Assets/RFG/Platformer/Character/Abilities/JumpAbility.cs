@@ -141,7 +141,7 @@ namespace RFG
 
       float _horizontalInput = _movement.ReadValue<Vector2>().x;
 
-      if (_horizontalInput > -_settings.JumpThreshold.x && _horizontalInput < _settings.JumpThreshold.x)
+      if ((!_settings.CanJumpFlip) || (_horizontalInput > -_settings.JumpThreshold.x && _horizontalInput < _settings.JumpThreshold.x))
       {
         _character.MovementState.ChangeState(typeof(JumpingState));
       }

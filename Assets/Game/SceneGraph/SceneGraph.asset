@@ -33,13 +33,13 @@ MonoBehaviour:
   m_Name: Scene
   m_EditorClassIdentifier: 
   guid: 5577f69c86def0b45a677e745453a3c4
-  position: {x: -19, y: -62}
+  position: {x: -19, y: -63}
   scenePath: Assets/Game/Scenes/Snow.unity
   sceneTransitions:
   - {fileID: 1958760097987257193}
   bounds:
-    m_Center: {x: 75, y: 15, z: 0}
-    m_Extent: {x: 75, y: 15, z: 0}
+    m_Center: {x: 200, y: 15, z: 0}
+    m_Extent: {x: 200, y: 15, z: 0}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,7 +88,7 @@ MonoBehaviour:
   m_Name: SceneTransition
   m_EditorClassIdentifier: 
   guid: c284c987d93bd9f4f916123769a658e7
-  position: {x: 6, y: -3}
+  position: {x: 6, y: -4}
   parent: {fileID: -1674071310352497652}
   from: {fileID: 0}
   to: {fileID: 0}

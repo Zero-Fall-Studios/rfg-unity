@@ -52,7 +52,10 @@ namespace RFG
         return;
       }
       CharacterState.Update();
-      MovementState.Update();
+      if (CharacterState.CurrentStateType != typeof(DeadState))
+      {
+        MovementState.Update();
+      }
     }
 
     private void OnEnable()

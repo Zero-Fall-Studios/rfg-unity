@@ -15,7 +15,7 @@ MonoBehaviour:
   audioList:
   - {fileID: 11400000, guid: ef1703ac5137bc441a630dc6fdea308b, type: 2}
   loop: 1
-  waitForSeconds: 1
-  fadeTime: 1
+  waitForSeconds: 5
+  fadeTime: 0
   currentIndex: 0
   playOnAwake: 1
