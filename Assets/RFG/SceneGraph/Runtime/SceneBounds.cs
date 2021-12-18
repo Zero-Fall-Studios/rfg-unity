@@ -42,6 +42,8 @@ namespace RFG.SceneGraph
     private void OnDrawGizmos()
     {
       Scene _scene = SceneGraphManager.Instance.CurrentScene;
+      if (_scene == null)
+        return;
       var b = _scene.bounds;
       var p1 = new Vector3(b.min.x, b.min.y, b.min.z);
       var p2 = new Vector3(b.max.x, b.min.y, b.min.z);

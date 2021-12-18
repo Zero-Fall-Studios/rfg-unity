@@ -32,7 +32,7 @@ namespace RFG.Actions
       this.actionList = actionList;
 
       graphViewChanged -= OnGraphViewChanged;
-      DeleteElements(graphElements);
+      DeleteElements(graphElements.ToList());
       graphViewChanged += OnGraphViewChanged;
 
       if (actionList == null)

@@ -65,7 +65,7 @@ namespace RFG.BehaviourTree
     {
       this.tree = tree;
       graphViewChanged -= OnGraphViewChanged;
-      DeleteElements(graphElements);
+      DeleteElements(graphElements.ToList());
       graphViewChanged += OnGraphViewChanged;
 
       if (tree.rootNode == null)

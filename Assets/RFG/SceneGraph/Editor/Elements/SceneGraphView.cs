@@ -34,7 +34,7 @@ namespace RFG.SceneGraph
       this.graph = graph;
 
       graphViewChanged -= OnGraphViewChanged;
-      DeleteElements(graphElements);
+      DeleteElements(graphElements.ToList());
       graphViewChanged += OnGraphViewChanged;
 
       // Create Scene Groups
