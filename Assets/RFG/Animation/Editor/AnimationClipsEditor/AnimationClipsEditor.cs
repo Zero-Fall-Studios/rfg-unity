@@ -57,17 +57,83 @@ namespace RFG
       };
       generateClipsButton.clicked += () =>
       {
-        Slice();
-        CreateClips(animatorControllerName.value);
+        UnityEngine.Object[] objects = Selection.objects;
+        foreach (UnityEngine.Object obj in objects)
+        {
+          Slice(obj);
+          CreateClips(obj, animatorControllerName.value);
+        }
       };
       manager.Add(generateClipsButton);
 
       return manager;
     }
 
-    private void CreateClips(string name)
+    private void Slice(UnityEngine.Object obj)
     {
-      Texture2D texture = Selection.activeObject as Texture2D;
+      Texture2D texture = obj as Texture2D;
+
+      if (texture == null)
+      {
+        LogExt.Warn<AnimationSliceEditor>("Please select a Texture2D asset");
+        return;
+      }
+
+      string path = AssetDatabase.GetAssetPath(texture);
+      var importer = AssetImporter.GetAtPath(path) as TextureImporter;
+
+      importer.textureType = TextureImporterType.Sprite;
+      importer.spriteImportMode = SpriteImportMode.Multiple;
+      importer.mipmapEnabled = false;
+      importer.filterMode = FilterMode.Point;
+      importer.spritePivot = Vector2.down;
+      importer.textureCompression = TextureImporterCompression.Uncompressed;
+      importer.spritePixelsPerUnit = _pixelsPerUnit;
+
+      var textureSettings = new TextureImporterSettings();
+      importer.ReadTextureSettings(textureSettings);
+      textureSettings.spriteMeshType = SpriteMeshType.Tight;
+      textureSettings.spriteExtrude = 0;
+
+      importer.SetTextureSettings(textureSettings);
+
+      AssetDatabase.ImportAsset(path, ImportAssetOptions.ForceUpdate);
+      EditorUtility.SetDirty(importer);
+      AssetDatabase.SaveAssets();
+      AssetDatabase.Refresh();
+
+      Vector2 offset = Vector2.zero;
+      Vector2 padding = Vector2.zero;
+
+      Rect[] rects = InternalSpriteUtility.GenerateGridSpriteRectangles(texture, offset, _cellSize, padding, false);
+      var rectsList = new List<Rect>(rects);
+
+      string filenameNoExtension = Path.GetFileNameWithoutExtension(path);
+      var metaList = new List<SpriteMetaData>();
+      int rectNum = 0;
+
+      foreach (Rect rect in rectsList)
+      {
+        var meta = new SpriteMetaData();
+        meta.pivot = Vector2.down;
+        meta.alignment = (int)SpriteAlignment.Center;
+        meta.rect = rect;
+        meta.name = filenameNoExtension + "_" + rectNum;
+        rectNum++;
+        metaList.Add(meta);
+      }
+
+      importer.spritesheet = metaList.ToArray();
+
+      AssetDatabase.ImportAsset(path, ImportAssetOptions.ForceUpdate);
+      EditorUtility.SetDirty(importer);
+      AssetDatabase.SaveAssets();
+      AssetDatabase.Refresh();
+    }
+
+    private void CreateClips(UnityEngine.Object obj, string name)
+    {
+      Texture2D texture = obj as Texture2D;
 
       if (texture == null)
       {
@@ -135,59 +201,6 @@ namespace RFG
       AssetDatabase.Refresh();
     }
 
-    public void Slice()
-    {
-      Texture2D texture = Selection.activeObject as Texture2D;
-
-      if (texture == null)
-      {
-        LogExt.Warn<AnimationSliceEditor>("Please select a Texture2D asset");
-        return;
-      }
-
-      string path = AssetDatabase.GetAssetPath(texture);
-      var importer = AssetImporter.GetAtPath(path) as TextureImporter;
-
-      importer.textureType = TextureImporterType.Sprite;
-      importer.spriteImportMode = SpriteImportMode.Multiple;
-      importer.mipmapEnabled = false;
-      importer.filterMode = FilterMode.Point;
-      importer.spritePivot = Vector2.down;
-      importer.textureCompression = TextureImporterCompression.Uncompressed;
-      importer.spritePixelsPerUnit = _pixelsPerUnit;
-
-      var textureSettings = new TextureImporterSettings();
-      importer.ReadTextureSettings(textureSettings);
-      textureSettings.spriteMeshType = SpriteMeshType.Tight;
-      textureSettings.spriteExtrude = 0;
-
-      importer.SetTextureSettings(textureSettings);
-
-      Vector2 offset = Vector2.zero;
-      Vector2 padding = Vector2.zero;
-
-      Rect[] rects = InternalSpriteUtility.GenerateGridSpriteRectangles(texture, offset, _cellSize, padding, false);
-      var rectsList = new List<Rect>(rects);
-
-      string filenameNoExtension = Path.GetFileNameWithoutExtension(path);
-      var metaList = new List<SpriteMetaData>();
-      int rectNum = 0;
-
-      foreach (Rect rect in rectsList)
-      {
-        var meta = new SpriteMetaData();
-        meta.pivot = Vector2.down;
-        meta.alignment = (int)SpriteAlignment.Center;
-        meta.rect = rect;
-        meta.name = filenameNoExtension + "_" + rectNum;
-        rectNum++;
-        metaList.Add(meta);
-      }
-
-      importer.spritesheet = metaList.ToArray();
-
-      AssetDatabase.ImportAsset(path, ImportAssetOptions.ForceUpdate);
-    }
 
   }
 }

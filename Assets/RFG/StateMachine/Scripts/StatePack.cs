@@ -1,5 +1,6 @@
 
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 #if UNITY_EDITOR
@@ -57,7 +58,7 @@ namespace RFG
 
     public bool HasState(Type type)
     {
-      return Find(type) != null;
+      return States.Find(state => state.GetType().Equals(type)) != null;
     }
 
 #if UNITY_EDITOR
@@ -95,7 +96,14 @@ namespace RFG
 
       if (statesCanUnFreeze != null && statesCanUnFreeze.Length > 0)
       {
-        state.StatesCanUnfreeze = statesCanUnFreeze;
+        if (state.StatesCanUnfreeze == null || state.StatesCanUnfreeze.Length == 0)
+        {
+          state.StatesCanUnfreeze = statesCanUnFreeze;
+        }
+        else
+        {
+          state.StatesCanUnfreeze = state.StatesCanUnfreeze.Concat(statesCanUnFreeze).Distinct().ToArray();
+        }
       }
 
       if (defaultState)
@@ -123,7 +131,7 @@ namespace RFG
     public void GenerateMovementStates()
     {
       IdleState idleState = AddToPack<IdleState>("Idle", false, 0, true);
-      AddToPack<WalkingState>("Walking");
+      AddToPack<WalkingState>("Walk");
       // AddToPack<RunningState>("Running");
 
       // FallingState fallingState = AddToPack<FallingState>("Falling");
@@ -164,14 +172,56 @@ namespace RFG
       // AddToPack<LandedState>("Landed", true, .25f, false, jumpingState, jumpingFlipState, doubleJumpState);
     }
 
-    public void GenerateAttackAbilityStates()
+    public void GenerateJumpState()
+    {
+      FallingState fallingState = AddToPack<FallingState>("Fall");
+      // ledgeGrabState, primaryAttackStartedState, secondaryAttackStartedState, smashDownStartedState, dashingState, ladderClimbingState
+      JumpingState jumpingState = AddToPack<JumpingState>("Jump", true, 0, false, fallingState);
+      AddToPack<LandedState>("Land", true, .25f, false, jumpingState);
+    }
+
+    public void GenerateDoubleJumpState()
+    {
+      DoubleJumpState doubleJumpState = AddToPack<DoubleJumpState>("Jump", true, 0, false);
+      AddToPack<LandedState>("Land", true, .25f, false, doubleJumpState);
+    }
+
+    public void GenerateJumpFlipState()
+    {
+      FallingState fallingState = AddToPack<FallingState>("Fall");
+      // ledgeGrabState, primaryAttackStartedState, secondaryAttackStartedState, fallingState, smashDownStartedState, dashingState, ladderClimbingState
+      JumpingFlipState jumpingFlipState = AddToPack<JumpingFlipState>("Jump Flip", true, 0, false, fallingState);
+      AddToPack<LandedState>("Land", true, .25f, false, jumpingFlipState);
+    }
+
+    public void GenerateFallState()
+    {
+      FallingState fallingState = AddToPack<FallingState>("Fall");
+    }
+
+    public void GenerateRunState()
+    {
+      AddToPack<RunningState>("Running");
+    }
+
+    public void GeneratePrimaryAttackState()
     {
       PrimaryAttackStartedState primaryAttackStartedState = AddToPack<PrimaryAttackStartedState>();
       AddToPack<PrimaryAttackPerformedState>("PrimaryAttackPerformed");
       AddToPack<PrimaryAttackCanceledState>();
+    }
+
+    public void GenerateSecondaryAttackState()
+    {
       SecondaryAttackStartedState secondaryAttackStartedState = AddToPack<SecondaryAttackStartedState>();
       AddToPack<SecondaryAttackPerformedState>("SecondaryAttackPerformed");
       AddToPack<SecondaryAttackCanceledState>();
+    }
+
+    public void GenerateAttackAbilityStates()
+    {
+      GeneratePrimaryAttackState();
+      GenerateSecondaryAttackState();
     }
 #endif
   }

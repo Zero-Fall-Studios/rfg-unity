@@ -252,9 +252,18 @@ namespace RFG
 
     #region Character State Helpers
     public bool IsAlive => CharacterState.CurrentStateType == typeof(AliveState);
+
+    public void GoToNextCharacterState()
+    {
+      CharacterState.GoToNextState();
+    }
     #endregion
 
     #region Movement State Helpers
+    public void GoToNextMovementState()
+    {
+      MovementState.GoToNextState();
+    }
 
     public void SetMovementStatePack(RFG.StatePack statePack)
     {

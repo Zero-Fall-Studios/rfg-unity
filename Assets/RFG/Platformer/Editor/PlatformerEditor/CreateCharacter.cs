@@ -108,7 +108,7 @@ namespace RFG
 
       // gameObject.GetOrAddComponent<DanglingBehaviour>();
       // gameObject.GetOrAddComponent<HealthBehaviour>();
-      // gameObject.GetOrAddComponent<SceneBoundsBehaviour>();
+      gameObject.GetOrAddComponent<SceneBoundsBehaviour>();
 
       CreatePacks(gameObject, newFolderPath + "/Settings");
       CreateParams(gameObject, newFolderPath + "/Settings");

@@ -15,7 +15,6 @@ namespace RFG
     [Header("Game Events")]
     public GameEvent KillEvent;
 
-    [HideInInspector]
     private Character _character;
 
     private void Awake()
@@ -74,6 +73,5 @@ namespace RFG
       }
       ResetHealth();
     }
-
   }
 }

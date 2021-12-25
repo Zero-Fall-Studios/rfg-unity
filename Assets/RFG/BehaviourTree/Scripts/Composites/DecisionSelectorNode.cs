@@ -1,13 +1,22 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace RFG.BehaviourTree
 {
   public class DecisionSelectorNode : CompositeNode
   {
-    public float DecisionTime = 3f;
 
-    [Range(0, 1)]
-    public float DecisionWeight = 0.5f;
+    [Serializable]
+    public class DecisionData
+    {
+      public float DecisionTime = 3f;
+      [Range(0, 1)]
+      public float DecisionWeight = 0.5f;
+    }
+
+    public List<DecisionData> DecisionTimes;
+
     protected int current = 0;
     protected int previous = 0;
     private float _decisionTimeElapsed = 0f;
@@ -26,7 +35,7 @@ namespace RFG.BehaviourTree
 
     protected override State OnUpdate()
     {
-      if (Time.time - _decisionTimeElapsed > DecisionTime)
+      if (Time.time - _decisionTimeElapsed > DecisionTimes[current].DecisionTime)
       {
         MakeDecision();
       }
@@ -48,11 +57,19 @@ namespace RFG.BehaviourTree
     private void MakeDecision()
     {
       _decisionTimeElapsed = Time.time;
-      if (Random.value > DecisionWeight)
+      if (UnityEngine.Random.value > DecisionTimes[current].DecisionWeight)
       {
+        int newCurrent = UnityEngine.Random.Range(0, children.Count);
+
+        if (newCurrent == current)
+        {
+          MakeDecision();
+          return;
+        }
+
         children[current].Abort();
         previous = current;
-        int newCurrent = Random.Range(0, children.Count);
+
         if (previous != newCurrent)
         {
           current = newCurrent;

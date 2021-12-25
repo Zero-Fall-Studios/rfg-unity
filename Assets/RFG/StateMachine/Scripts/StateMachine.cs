@@ -19,6 +19,7 @@ namespace RFG
     private IStateContext _context;
     private StatePack _defaultStatePack;
     private float _frozenTimeElapsed = 0f;
+    private float _nextStateWaitTimeElapsed = 0f;
 
     public void Init()
     {
@@ -49,6 +50,23 @@ namespace RFG
         ResetToDefaultState();
 
       Type newStateType = CurrentState.Execute(_context);
+
+      if (newStateType == null && CurrentState.NextState != null)
+      {
+        if (CurrentState.NextStateAfterTime > 0f)
+        {
+          _nextStateWaitTimeElapsed += Time.deltaTime;
+          if (_nextStateWaitTimeElapsed > CurrentState.NextStateAfterTime)
+          {
+            newStateType = CurrentState.NextState.GetType();
+          }
+        }
+        else if (CurrentState.GoToNextStateAfterCompletion)
+        {
+          newStateType = CurrentState.NextState.GetType();
+        }
+      }
+
       if (newStateType != null)
       {
         ChangeState(newStateType);
@@ -181,6 +199,14 @@ namespace RFG
     public bool IsntInState(params Type[] stateTypes)
     {
       return !IsInState(stateTypes);
+    }
+
+    public void GoToNextState()
+    {
+      if (CurrentState.NextState != null)
+      {
+        ChangeState(CurrentState.NextState.GetType());
+      }
     }
   }
 }

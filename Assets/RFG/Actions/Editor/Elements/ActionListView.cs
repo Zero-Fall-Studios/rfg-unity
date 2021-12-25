@@ -40,6 +40,11 @@ namespace RFG.Actions
         return;
       }
 
+      if (actionList.Actions == null)
+      {
+        actionList.Actions = new List<Action>();
+      }
+
       // Create Scene Groups
       actionList.Actions.ForEach(n => CreateActionNode(n));
 

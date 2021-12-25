@@ -13,6 +13,11 @@ namespace RFG
       Bind(null);
     }
 
+    private void Update()
+    {
+      State.Update();
+    }
+
     public void Bind(IStateContext context)
     {
       if (context == null)
@@ -45,9 +50,5 @@ namespace RFG
       return State.HasState(type);
     }
 
-    private void Update()
-    {
-      State.Update();
-    }
   }
 }

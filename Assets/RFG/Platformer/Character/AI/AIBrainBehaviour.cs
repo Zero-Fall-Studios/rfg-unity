@@ -8,9 +8,6 @@ namespace RFG
   [AddComponentMenu("RFG/Platformer/Character/AI Behaviours/AI Brain")]
   public class AIBrainBehaviour : MonoBehaviour, INodeContext
   {
-    [Header("Settings")]
-    public Aggro aggro;
-
     [Tooltip("The speed / time it takes to rotate and make decisions")]
     public float RotateSpeed;
 
@@ -20,17 +17,17 @@ namespace RFG
     [Header("Weapons To Equip")]
     public WeaponItem PrimaryWeapon;
     public WeaponItem SecondaryWeapon;
+    public bool HasAggro { get; set; }
 
     [HideInInspector]
     public AIAjent Context => _ctx;
-    public bool HasAggro { get; set; }
-
     private Transform _transform;
     private Character _character;
     private CharacterController2D _controller;
     private Animator _animator;
     private Tween _movementPath;
     private EquipmentSet _equipmentSet;
+    private Aggro _aggro;
     private AIAjent _ctx;
 
     private void Awake()
@@ -41,6 +38,7 @@ namespace RFG
       _animator = GetComponent<Animator>();
       _movementPath = GetComponent<Tween>();
       _equipmentSet = GetComponent<EquipmentSet>();
+      _aggro = GetComponent<Aggro>();
 
       // Equip Weapons
       if (PrimaryWeapon != null)
@@ -60,7 +58,7 @@ namespace RFG
       _ctx.character = _character;
       _ctx.characterContext = _character.Context;
       _ctx.controller = _controller;
-      _ctx.aggro = aggro;
+      _ctx.aggro = _aggro;
       _ctx.animator = _animator;
       _ctx.movementPath = _movementPath;
       _ctx.equipmentSet = _equipmentSet;
@@ -76,17 +74,17 @@ namespace RFG
 
     private void OnEnable()
     {
-      if (aggro != null)
+      if (_aggro != null)
       {
-        aggro.OnAggroChange += OnAggroChange;
+        _aggro.OnAggroChange += OnAggroChange;
       }
     }
 
     private void OnDisable()
     {
-      if (aggro != null)
+      if (_aggro != null)
       {
-        aggro.OnAggroChange -= OnAggroChange;
+        _aggro.OnAggroChange -= OnAggroChange;
       }
     }
   }

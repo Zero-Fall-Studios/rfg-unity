@@ -7,8 +7,8 @@ namespace RFG.BehaviourTree
   {
     public BehaviourTree tree;
 
-    [HideInInspector]
     private INodeContext _context;
+    private BehaviourTree _defaultTree;
 
     private void Awake()
     {
@@ -17,16 +17,28 @@ namespace RFG.BehaviourTree
 
     private void Start()
     {
-      tree = tree.Clone();
-      tree.Bind(_context);
+      _defaultTree = tree;
+      ChangeTree(tree);
     }
 
     private void Update()
     {
-      if (tree)
+      if (tree != null)
       {
         tree.Update();
       }
+    }
+
+    public void ChangeTree(BehaviourTree newTree)
+    {
+      tree = newTree;
+      tree = tree.Clone();
+      tree.Bind(_context);
+    }
+
+    public void ChangeToDefaultTree()
+    {
+      ChangeTree(_defaultTree);
     }
 
 #if UNITY_EDITOR

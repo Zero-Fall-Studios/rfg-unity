@@ -28,6 +28,7 @@ namespace RFG
       mainContainer.Add(CreateGameManager());
       mainContainer.Add(CreateEnvironmentSpriteContainer());
       mainContainer.Add(CreateEffectContainer());
+      mainContainer.Add(CreateProjectileContainer());
     }
     #endregion
 
@@ -193,6 +194,67 @@ namespace RFG
       activeGameObject.GetOrAddComponent<SpriteRenderer>();
       Animator animator = activeGameObject.GetOrAddComponent<Animator>();
       UnityEditor.Animations.AnimatorController controller = UnityEditor.Animations.AnimatorController.CreateAnimatorControllerAtPath($"{newFolderPath}/Animation/{name}.controller");
+      animator.runtimeAnimatorController = controller;
+
+      // Create Prefab
+      EditorUtils.SaveAsPrefabAsset(activeGameObject, newFolderPath, name);
+
+      DestroyImmediate(activeGameObject);
+    }
+    #endregion
+
+    #region Create Projectile
+    private VisualElement CreateProjectileContainer()
+    {
+      VisualElement container = CreateControlsContainer("projectile-create", "Projectile");
+
+      VisualElement controls = container.Q<VisualElement>("projectile-create-controls");
+
+      TextField textField = new TextField()
+      {
+        label = "Projectile Name"
+      };
+
+      Button createButton = new Button(() =>
+      {
+        CreateProjectile(textField.value);
+      })
+      {
+        name = "create-projectile-button",
+        text = "Create Projectile"
+      };
+
+      controls.Add(textField);
+      controls.Add(createButton);
+
+      return container;
+    }
+
+    private void CreateProjectile(string name)
+    {
+      // Create Folders
+      string newFolderPath = EditorUtils.CreateFolderStructure(name, "Data", "Prefabs", "Sprites");
+      AssetDatabase.CreateFolder(newFolderPath + "/Sprites", "Animations");
+
+      // Create GameObject
+      GameObject activeGameObject = new GameObject();
+      activeGameObject.name = name;
+
+      activeGameObject.GetOrAddComponent<Projectile>();
+      activeGameObject.GetOrAddComponent<Rigidbody2D>();
+      activeGameObject.GetOrAddComponent<BoxCollider2D>();
+      Knockback knockback = activeGameObject.GetOrAddComponent<Knockback>();
+
+      KnockbackData knockbackData = EditorUtils.CreateScriptableObject<KnockbackData>(newFolderPath + "/Data");
+      knockbackData.name = name + "KnockbackData";
+      EditorUtility.SetDirty(knockbackData);
+
+      knockback.KnockbackData = knockbackData;
+
+      // Create Animator Controller
+      activeGameObject.GetOrAddComponent<SpriteRenderer>();
+      Animator animator = activeGameObject.GetOrAddComponent<Animator>();
+      UnityEditor.Animations.AnimatorController controller = UnityEditor.Animations.AnimatorController.CreateAnimatorControllerAtPath($"{newFolderPath}/Sprites/Animations/{name}.controller");
       animator.runtimeAnimatorController = controller;
 
       // Create Prefab

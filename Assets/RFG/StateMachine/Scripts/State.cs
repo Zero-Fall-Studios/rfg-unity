@@ -29,6 +29,11 @@ namespace RFG
     public float WaitToUnfreezeTime = 0f;
     public State[] StatesCanUnfreeze;
 
+    [Header("State Complete")]
+    public State NextState;
+    public float NextStateAfterTime = 0f;
+    public bool GoToNextStateAfterCompletion = false;
+
     public virtual void Enter(IStateContext context)
     {
       PlayEffects(context, EnterEffects);

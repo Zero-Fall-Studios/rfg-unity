@@ -25,6 +25,14 @@ namespace RFG
     private bool _isFalling = false;
     private float _isFallingElapsedTime = 0;
     private float _isFallingTimeThreshold = .1f;
+    private bool _hasRunning;
+    private bool _hasRunningUpSlope;
+    private bool _hasWalkingUpSlope;
+    private bool _hasRunningDownSlope;
+    private bool _hasWalkingDownSlope;
+    private bool _hasCrouchWalking;
+    private bool _hasCrouchIdle;
+    private bool _hasFalling;
 
     #region Unity Methods
     private void Awake()
@@ -36,6 +44,14 @@ namespace RFG
       _runInput = _playerInput.actions["Run"];
       _crouchInput = _playerInput.actions["Crouch"];
       _settings = _character.SettingsPack;
+      _hasRunning = _character.MovementState.HasState(typeof(RunningState));
+      _hasRunningUpSlope = _character.MovementState.HasState(typeof(RunningUpSlopeState));
+      _hasWalkingUpSlope = _character.MovementState.HasState(typeof(WalkingUpSlopeState));
+      _hasRunningDownSlope = _character.MovementState.HasState(typeof(RunningDownSlopeState));
+      _hasWalkingDownSlope = _character.MovementState.HasState(typeof(WalkingDownSlopeState));
+      _hasCrouchWalking = _character.MovementState.HasState(typeof(CrouchWalkingState));
+      _hasCrouchIdle = _character.MovementState.HasState(typeof(CrouchIdleState));
+      _hasFalling = _character.MovementState.HasState(typeof(FallingState));
 
       if (_settings.AlwaysRun)
       {
@@ -199,28 +215,28 @@ namespace RFG
         {
           if (!_character.IsDangling && !_character.IsSwimming && !_character.IsIdle)
           {
-            _character.MovementState.ChangeState(_isCrouching ? typeof(CrouchIdleState) : typeof(IdleState));
+            _character.MovementState.ChangeState(_isCrouching && _hasCrouchIdle ? typeof(CrouchIdleState) : typeof(IdleState));
           }
           ResetMovement();
         }
         else
         {
           DetectSlopeMovement();
-          if (_isCrouching)
+          if (_isCrouching && _hasCrouchWalking)
           {
             _character.MovementState.ChangeState(typeof(CrouchWalkingState));
           }
-          else if (_state.IsMovingUpSlope)
+          else if (_state.IsMovingUpSlope && (_hasRunningUpSlope || _hasWalkingUpSlope))
           {
-            _character.MovementState.ChangeState(_isRunning ? typeof(RunningUpSlopeState) : typeof(WalkingUpSlopeState));
+            _character.MovementState.ChangeState(_isRunning && _hasRunningUpSlope ? typeof(RunningUpSlopeState) : typeof(WalkingUpSlopeState));
           }
-          else if (_state.IsMovingDownSlope)
+          else if (_state.IsMovingDownSlope && (_hasRunningDownSlope || _hasWalkingDownSlope))
           {
-            _character.MovementState.ChangeState(_isRunning ? typeof(RunningDownSlopeState) : typeof(WalkingDownSlopeState));
+            _character.MovementState.ChangeState(_isRunning && _hasRunningDownSlope ? typeof(RunningDownSlopeState) : typeof(WalkingDownSlopeState));
           }
           else
           {
-            _character.MovementState.ChangeState(_isRunning ? typeof(RunningState) : typeof(WalkingState));
+            _character.MovementState.ChangeState(_isRunning && _hasRunning ? typeof(RunningState) : typeof(WalkingState));
           }
         }
       }
@@ -319,7 +335,7 @@ namespace RFG
     private void DetectFallingMovement()
     {
       if (
-        _isFalling &&
+        _isFalling && _hasFalling &&
         !_character.IsInSlopeMovementState &&
         !_character.IsWallClinging &&
         !_character.IsLedgeGrabbing &&

@@ -91,6 +91,7 @@ namespace RFG
     {
       Scene _scene = SceneGraphManager.Instance.CurrentScene;
       Bounds = _scene.bounds;
+      EditorUtility.SetDirty(Selection.activeGameObject);
     }
 
     [ButtonMethod]

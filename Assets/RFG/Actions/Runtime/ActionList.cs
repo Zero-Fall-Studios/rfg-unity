@@ -26,19 +26,10 @@ namespace RFG.Actions
     #region Play Methods
     public void Play()
     {
-      InitActions();
-      ProcessAction();
+      ProcessNextAction();
     }
 
-    private void InitActions()
-    {
-      foreach (Action action in Actions)
-      {
-        action.Init();
-      }
-    }
-
-    private void ProcessAction()
+    private void ProcessNextAction()
     {
       if (_currentAction == null)
       {
@@ -51,6 +42,7 @@ namespace RFG.Actions
     private IEnumerator RunAction(Action action)
     {
       State currentState = State.Running;
+      action.Init();
       while (currentState == State.Init || currentState == State.Running)
       {
         currentState = action.Run();
@@ -65,7 +57,7 @@ namespace RFG.Actions
       if (nextAction != null)
       {
         _currentAction = nextAction;
-        ProcessAction();
+        ProcessNextAction();
         yield return null;
       }
     }

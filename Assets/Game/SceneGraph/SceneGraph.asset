@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8369724166945346415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25d4d228601c72f4d843f7ab5ae479b1, type: 3}
+  m_Name: Scene
+  m_EditorClassIdentifier: 
+  guid: bb778ac94039d6046886c7281a96b39f
+  position: {x: -399, y: -72}
+  scenePath: Assets/Game/Scenes/Forrest.unity
+  sceneTransitions:
+  - {fileID: 893549059311142828}
+  bounds:
+    m_Center: {x: 75, y: 15, z: 0}
+    m_Extent: {x: 75, y: 15, z: 0}
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efbd867bb9ccf3144ada0eb566d6aa27, type: 3}
+  m_Name: SceneGraph
+  m_EditorClassIdentifier: 
+  scenes:
+  - {fileID: -8369724166945346415}
+--- !u!114 &893549059311142828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad7c390447be9544ca26db168521ec6b, type: 3}
+  m_Name: SceneTransition
+  m_EditorClassIdentifier: 
+  guid: 2ee6f902e39745348a2392cfd9003f65
+  position: {x: -374, y: -13}
+  parent: {fileID: -8369724166945346415}
+  from: {fileID: 0}
+  to: {fileID: 0}
+  autoLoadWaitTime: 0
+  anyInput: 0
+  waitTime: 0

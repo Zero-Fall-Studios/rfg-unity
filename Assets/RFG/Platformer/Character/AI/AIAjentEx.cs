@@ -20,7 +20,7 @@ namespace RFG
 
     public static bool RotateTowards(this AIAjent ctx)
     {
-      if (ctx.aggro.target2 != null)
+      if (ctx.aggro != null && ctx.aggro.target2 != null)
       {
         bool didRotate = ctx.controller.RotateTowards(ctx.aggro.target2);
         if (didRotate && ctx.RotateSpeed > 0)
@@ -123,10 +123,10 @@ namespace RFG
 
     public static void MoveHorizontally(this AIAjent ctx, float speed)
     {
-
       if (speed == 0)
       {
         ctx.controller.SetHorizontalForce(speed);
+        ctx.character.MovementState.ChangeState(typeof(IdleState));
         return;
       }
 
@@ -183,6 +183,16 @@ namespace RFG
       {
         ctx.equipmentSet.SecondaryWeapon?.Perform();
       }
+    }
+
+    public static void PrimaryAttack(this AIAjent ctx)
+    {
+      ctx.character.MovementState.ChangeState(typeof(PrimaryAttackStartedState));
+    }
+
+    public static void SecondaryAttack(this AIAjent ctx)
+    {
+      ctx.character.MovementState.ChangeState(typeof(SecondaryAttackStartedState));
     }
 
     public static float WalkOrRun(this AIAjent ctx)

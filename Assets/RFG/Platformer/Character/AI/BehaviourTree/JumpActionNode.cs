@@ -11,8 +11,6 @@ namespace RFG
 
     protected override void OnStop()
     {
-      AIBrainBehaviour brain = context as AIBrainBehaviour;
-      brain.Context.MoveHorizontally(0);
     }
 
     protected override State OnUpdate()
@@ -30,6 +28,13 @@ namespace RFG
       else if (brain.Context.characterContext.controller.State.IsGrounded)
       {
         JumpStart(brain.Context);
+      }
+
+      if (brain.Context.characterContext.character.IsInAirMovementState && brain.Context.characterContext.controller.Speed.y < 0)
+      {
+        brain.Context.characterContext.controller.State.IsFalling = true;
+        brain.Context.characterContext.controller.State.IsJumping = false;
+        brain.Context.characterContext.character.MovementState.ChangeState(typeof(FallingState));
       }
 
       return State.Running;
@@ -50,37 +55,28 @@ namespace RFG
       ctx.controller.State.IsJumping = true;
       ctx.controller.AddVerticalForce(Mathf.Sqrt(2f * settings.JumpHeight * Mathf.Abs(ctx.controller.Parameters.Gravity)));
 
-      // Move horizontally
-      float normalizedHorizontalSpeed = 0f;
-      if (ctx.controller.State.IsFacingRight)
-      {
-        normalizedHorizontalSpeed = 1f;
-      }
-      else
-      {
-        normalizedHorizontalSpeed = -1f;
-      }
+      // // Move horizontally
+      // float normalizedHorizontalSpeed = 0f;
+      // if (ctx.controller.State.IsFacingRight)
+      // {
+      //   normalizedHorizontalSpeed = 1f;
+      // }
+      // else
+      // {
+      //   normalizedHorizontalSpeed = -1f;
+      // }
 
-      float speed = settings.WalkingSpeed;
-      if (ctx.aggro != null && ctx.aggro.HasAggro)
-      {
-        speed = settings.RunningSpeed;
-      }
+      // float speed = settings.WalkingSpeed;
+      // if (ctx.aggro != null && ctx.aggro.HasAggro)
+      // {
+      //   speed = settings.RunningSpeed;
+      // }
 
-      float movementFactor = ctx.controller.Parameters.AirSpeedFactor;
-      float movementSpeed = normalizedHorizontalSpeed * speed * ctx.controller.Parameters.SpeedFactor;
-      float horizontalMovementForce = Mathf.Lerp(ctx.controller.Speed.x, movementSpeed, Time.deltaTime * movementFactor);
+      // float movementFactor = ctx.controller.Parameters.AirSpeedFactor;
+      // float movementSpeed = normalizedHorizontalSpeed * speed * ctx.controller.Parameters.SpeedFactor;
+      // float horizontalMovementForce = Mathf.Lerp(ctx.controller.Speed.x, movementSpeed, Time.deltaTime * movementFactor);
 
-      ctx.controller.SetHorizontalForce(horizontalMovementForce);
-
-      JumpStop(ctx);
-    }
-
-    private void JumpStop(AIAjent ctx)
-    {
-      ctx.controller.State.IsFalling = true;
-      ctx.controller.State.IsJumping = false;
-      ctx.character.MovementState.ChangeState(typeof(FallingState));
+      // ctx.controller.SetHorizontalForce(horizontalMovementForce);
     }
 
     private bool CanJump(AIAjent ctx)
