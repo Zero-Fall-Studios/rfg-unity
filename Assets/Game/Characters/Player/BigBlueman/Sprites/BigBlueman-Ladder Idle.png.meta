@@ -1,25 +1,13 @@
 fileFormatVersion: 2
-guid: 6138e56ea571b53438b29573cd301982
+guid: 6ea21f7ef756fcd4a86f78beba6a52dd
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5973963010546714599
-    second: BigBlueman-Jump_0
+      213: -4285793977424667970
+    second: BigBlueman-Ladder Idle_0
   - first:
-      213: -3186155578792815109
-    second: BigBlueman-Jump_1
-  - first:
-      213: 6459860140719005063
-    second: BigBlueman-Jump_2
-  - first:
-      213: -2904259641269666432
-    second: BigBlueman-Jump_3
-  - first:
-      213: 3270817391080315186
-    second: BigBlueman-Jump_4
-  - first:
-      213: -7495512545614700439
-    second: BigBlueman-Jump_5
+      213: -4845506289896926285
+    second: BigBlueman-Ladder Idle_1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -97,7 +85,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BigBlueman-Jump_0
+      name: BigBlueman-Ladder Idle_0
       rect:
         serializedVersion: 2
         x: 0
@@ -111,14 +99,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9183a071b48381da0800000000000000
-      internalID: -5973963010546714599
+      spriteID: eba181ba51dc584c0800000000000000
+      internalID: -4285793977424667970
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BigBlueman-Jump_1
+      name: BigBlueman-Ladder Idle_1
       rect:
         serializedVersion: 2
         x: 64
@@ -132,50 +120,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bf5dceec16088c3d0800000000000000
-      internalID: -3186155578792815109
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BigBlueman-Jump_2
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: -1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 78dd24a729806a950800000000000000
-      internalID: 6459860140719005063
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BigBlueman-Jump_3
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: -1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 08d3e926e3ff1b7d0800000000000000
-      internalID: -2904259641269666432
+      spriteID: 3b3d5c1b3bd41ccb0800000000000000
+      internalID: -4845506289896926285
       vertices: []
       indices: 
       edges: []

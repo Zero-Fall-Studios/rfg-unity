@@ -1,25 +1,25 @@
 fileFormatVersion: 2
-guid: 6138e56ea571b53438b29573cd301982
+guid: 9ac5edd5c99460e47896997c5d2d9ea2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5973963010546714599
-    second: BigBlueman-Jump_0
+      213: -8084272930437059690
+    second: BigBlueman-Walk Up Slope_0
   - first:
-      213: -3186155578792815109
-    second: BigBlueman-Jump_1
+      213: -5006620874451109425
+    second: BigBlueman-Walk Up Slope_1
   - first:
-      213: 6459860140719005063
-    second: BigBlueman-Jump_2
+      213: 4449014771324366675
+    second: BigBlueman-Walk Up Slope_2
   - first:
-      213: -2904259641269666432
-    second: BigBlueman-Jump_3
+      213: 2817028375365562781
+    second: BigBlueman-Walk Up Slope_3
   - first:
-      213: 3270817391080315186
-    second: BigBlueman-Jump_4
+      213: -5775966291607575224
+    second: BigBlueman-Walk Up Slope_4
   - first:
-      213: -7495512545614700439
-    second: BigBlueman-Jump_5
+      213: 3805140688077529820
+    second: BigBlueman-Walk Up Slope_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -97,7 +97,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BigBlueman-Jump_0
+      name: BigBlueman-Walk Up Slope_0
       rect:
         serializedVersion: 2
         x: 0
@@ -111,14 +111,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9183a071b48381da0800000000000000
-      internalID: -5973963010546714599
+      spriteID: 69b2ef12a94eecf80800000000000000
+      internalID: -8084272930437059690
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BigBlueman-Jump_1
+      name: BigBlueman-Walk Up Slope_1
       rect:
         serializedVersion: 2
         x: 64
@@ -132,14 +132,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bf5dceec16088c3d0800000000000000
-      internalID: -3186155578792815109
+      spriteID: fc9394547d8e48ab0800000000000000
+      internalID: -5006620874451109425
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BigBlueman-Jump_2
+      name: BigBlueman-Walk Up Slope_2
       rect:
         serializedVersion: 2
         x: 128
@@ -153,14 +153,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 78dd24a729806a950800000000000000
-      internalID: 6459860140719005063
+      spriteID: 35f2145dc531ebd30800000000000000
+      internalID: 4449014771324366675
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BigBlueman-Jump_3
+      name: BigBlueman-Walk Up Slope_3
       rect:
         serializedVersion: 2
         x: 192
@@ -174,8 +174,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 08d3e926e3ff1b7d0800000000000000
-      internalID: -2904259641269666432
+      spriteID: d913cd3d168181720800000000000000
+      internalID: 2817028375365562781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigBlueman-Walk Up Slope_4
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: -1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 845a91a9245a7dfa0800000000000000
+      internalID: -5775966291607575224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigBlueman-Walk Up Slope_5
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: -1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd22f399b439ec430800000000000000
+      internalID: 3805140688077529820
       vertices: []
       indices: 
       edges: []

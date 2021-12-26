@@ -7,8 +7,8 @@ namespace RFG
   [CustomEditor(typeof(Character))]
   public class CharacterEditorWindow : Editor
   {
-    public enum AddAbilityType { Select, JumpAbility, AttackAbility }
-    public enum AddMovementStateType { Select, Jump, DoubleJump, JumpFlip, Fall, Run, PrimaryAttack, SecondaryAttack }
+    public enum AddAbilityType { Select, JumpAbility, AttackAbility, DashAbility, LadderClimbingAbility, SlideAbility }
+    public enum AddMovementStateType { Select, Movement, Jump, DoubleJump, JumpFlip, Fall, PrimaryAttack, SecondaryAttack }
     private VisualElement rootElement;
     private Editor editor;
     private AddAbilityType addAbilityType;
@@ -93,6 +93,9 @@ namespace RFG
       Character character = (Character)target;
       switch (addMovementStateType)
       {
+        case AddMovementStateType.Movement:
+          character.MovementState.StatePack.GenerateMovementStates();
+          break;
         case AddMovementStateType.Jump:
           character.MovementState.StatePack.GenerateJumpState();
           break;
@@ -104,9 +107,6 @@ namespace RFG
           break;
         case AddMovementStateType.Fall:
           character.MovementState.StatePack.GenerateFallState();
-          break;
-        case AddMovementStateType.Run:
-          character.MovementState.StatePack.GenerateRunState();
           break;
         case AddMovementStateType.PrimaryAttack:
           character.MovementState.StatePack.GeneratePrimaryAttackState();
@@ -129,6 +129,18 @@ namespace RFG
         case AddAbilityType.AttackAbility:
           character.gameObject.GetOrAddComponent<AttackAbility>();
           character.MovementState.StatePack.GenerateAttackAbilityStates();
+          break;
+        case AddAbilityType.DashAbility:
+          character.gameObject.GetOrAddComponent<DashAbility>();
+          character.MovementState.StatePack.GenerateDashAbilityStates();
+          break;
+        case AddAbilityType.LadderClimbingAbility:
+          character.gameObject.GetOrAddComponent<LadderClimbingAbility>();
+          character.MovementState.StatePack.GenerateLadderClimbingAbilityStates();
+          break;
+        case AddAbilityType.SlideAbility:
+          character.gameObject.GetOrAddComponent<SlideAbility>();
+          character.MovementState.StatePack.GenerateSlideAbilityStates();
           break;
       }
     }

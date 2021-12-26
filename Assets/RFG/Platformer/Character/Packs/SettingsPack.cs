@@ -65,9 +65,11 @@ namespace RFG
     public float JumpReleaseForceFactor = 2f;
     public bool CanJumpFlip = false;
 
-    [Header("Pause Settings")]
+    [Header("Game Events")]
     public GameEvent PauseEvent;
     public GameEvent UnPauseEvent;
+    public GameEvent AnimationWaitEvent;
+    public GameEvent AnimationDoneEvent;
 
     [Header("Running Settings")]
     public float RunningSpeed = 5f;
@@ -217,6 +219,16 @@ namespace RFG
       LadderClimbingSpeed = from.LadderClimbingSpeed;
       CanFollowVertically = from.CanFollowVertically;
 
+      EditorUtility.SetDirty(this);
+    }
+
+    [ButtonMethod]
+    public void AssignDefaultGameEvents()
+    {
+      PauseEvent = AssetDatabase.LoadAssetAtPath<GameEvent>("Assets/RFG/Game/GameEvents/PauseEvent.asset");
+      UnPauseEvent = AssetDatabase.LoadAssetAtPath<GameEvent>("Assets/RFG/Game/GameEvents/UnPauseEvent.asset");
+      AnimationWaitEvent = AssetDatabase.LoadAssetAtPath<GameEvent>("Assets/RFG/Game/GameEvents/AnimationWaitEvent.asset");
+      AnimationDoneEvent = AssetDatabase.LoadAssetAtPath<GameEvent>("Assets/RFG/Game/GameEvents/AnimationDoneEvent.asset");
       EditorUtility.SetDirty(this);
     }
 #endif

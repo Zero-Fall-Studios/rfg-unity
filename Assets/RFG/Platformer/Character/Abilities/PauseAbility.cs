@@ -16,7 +16,7 @@ namespace RFG
       _character = GetComponent<Character>();
       _playerInput = GetComponent<PlayerInput>();
       _pauseInput = _playerInput.actions["Pause"];
-      _settings = _character.Context.settingsPack;
+      _settings = _character.SettingsPack;
 
       OnEnable();
     }

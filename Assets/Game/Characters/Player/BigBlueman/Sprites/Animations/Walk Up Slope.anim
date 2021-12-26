@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Kick
+  m_Name: Walk Up Slope
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,9 +20,17 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: -6016299368204066247, guid: 0b80b4d90dc7d1c4ea5a074c79dc7662, type: 3}
+      value: {fileID: -8084272930437059690, guid: 9ac5edd5c99460e47896997c5d2d9ea2, type: 3}
     - time: 0.1
-      value: {fileID: 7363278131204963564, guid: 0b80b4d90dc7d1c4ea5a074c79dc7662, type: 3}
+      value: {fileID: -5006620874451109425, guid: 9ac5edd5c99460e47896997c5d2d9ea2, type: 3}
+    - time: 0.2
+      value: {fileID: 4449014771324366675, guid: 9ac5edd5c99460e47896997c5d2d9ea2, type: 3}
+    - time: 0.3
+      value: {fileID: 2817028375365562781, guid: 9ac5edd5c99460e47896997c5d2d9ea2, type: 3}
+    - time: 0.4
+      value: {fileID: -5775966291607575224, guid: 9ac5edd5c99460e47896997c5d2d9ea2, type: 3}
+    - time: 0.5
+      value: {fileID: 3805140688077529820, guid: 9ac5edd5c99460e47896997c5d2d9ea2, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -42,14 +50,18 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: -6016299368204066247, guid: 0b80b4d90dc7d1c4ea5a074c79dc7662, type: 3}
-    - {fileID: 7363278131204963564, guid: 0b80b4d90dc7d1c4ea5a074c79dc7662, type: 3}
+    - {fileID: -8084272930437059690, guid: 9ac5edd5c99460e47896997c5d2d9ea2, type: 3}
+    - {fileID: -5006620874451109425, guid: 9ac5edd5c99460e47896997c5d2d9ea2, type: 3}
+    - {fileID: 4449014771324366675, guid: 9ac5edd5c99460e47896997c5d2d9ea2, type: 3}
+    - {fileID: 2817028375365562781, guid: 9ac5edd5c99460e47896997c5d2d9ea2, type: 3}
+    - {fileID: -5775966291607575224, guid: 9ac5edd5c99460e47896997c5d2d9ea2, type: 3}
+    - {fileID: 3805140688077529820, guid: 9ac5edd5c99460e47896997c5d2d9ea2, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.16666667
+    m_StopTime: 0.51666665
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -68,11 +80,4 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events:
-  - time: 0.16666667
-    functionName: UnFreezeMovementState
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
+  m_Events: []

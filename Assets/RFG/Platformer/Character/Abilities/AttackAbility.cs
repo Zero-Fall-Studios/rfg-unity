@@ -74,11 +74,11 @@ namespace RFG
         bool changedState = _character.MovementState.ChangeState(typeof(PrimaryAttackStartedState));
         if (changedState)
         {
-          WeaponItem leftHand = _playerInventory.Inventory.LeftHand as WeaponItem;
-          if (leftHand != null)
-          {
-            leftHand.Started();
-          }
+          // WeaponItem leftHand = _playerInventory.Inventory.LeftHand as WeaponItem;
+          // if (leftHand != null)
+          // {
+          //   leftHand.Started();
+          // }
         }
       }
     }
@@ -92,11 +92,11 @@ namespace RFG
       bool changedState = _character.MovementState.ChangeState(typeof(PrimaryAttackCanceledState));
       if (changedState)
       {
-        WeaponItem leftHand = _playerInventory.Inventory.LeftHand as WeaponItem;
-        if (leftHand != null)
-        {
-          leftHand.Cancel();
-        }
+        // WeaponItem leftHand = _playerInventory.Inventory.LeftHand as WeaponItem;
+        // if (leftHand != null)
+        // {
+        //   leftHand.Cancel();
+        // }
       }
     }
 
@@ -109,11 +109,11 @@ namespace RFG
       bool changedState = _character.MovementState.ChangeState(typeof(PrimaryAttackPerformedState));
       if (changedState)
       {
-        WeaponItem leftHand = _playerInventory.Inventory.LeftHand as WeaponItem;
-        if (leftHand != null)
-        {
-          leftHand.Perform();
-        }
+        // WeaponItem leftHand = _playerInventory.Inventory.LeftHand as WeaponItem;
+        // if (leftHand != null)
+        // {
+        //   leftHand.Perform();
+        // }
       }
     }
 
@@ -132,11 +132,11 @@ namespace RFG
         bool changedState = _character.MovementState.ChangeState(typeof(SecondaryAttackStartedState));
         if (changedState)
         {
-          WeaponItem rightHand = _playerInventory.Inventory.RightHand as WeaponItem;
-          if (rightHand != null)
-          {
-            rightHand.Started();
-          }
+          // WeaponItem rightHand = _playerInventory.Inventory.RightHand as WeaponItem;
+          // if (rightHand != null)
+          // {
+          //   rightHand.Started();
+          // }
         }
       }
     }
@@ -150,11 +150,11 @@ namespace RFG
       bool changedState = _character.MovementState.ChangeState(typeof(SecondaryAttackCanceledState));
       if (changedState)
       {
-        WeaponItem rightHand = _playerInventory.Inventory.RightHand as WeaponItem;
-        if (rightHand != null)
-        {
-          rightHand.Cancel();
-        }
+        // WeaponItem rightHand = _playerInventory.Inventory.RightHand as WeaponItem;
+        // if (rightHand != null)
+        // {
+        //   rightHand.Cancel();
+        // }
       }
     }
 
@@ -167,11 +167,11 @@ namespace RFG
       bool changedState = _character.MovementState.ChangeState(typeof(SecondaryAttackPerformedState));
       if (changedState)
       {
-        WeaponItem rightHand = _playerInventory.Inventory.RightHand as WeaponItem;
-        if (rightHand != null)
-        {
-          rightHand.Perform();
-        }
+        // WeaponItem rightHand = _playerInventory.Inventory.RightHand as WeaponItem;
+        // if (rightHand != null)
+        // {
+        //   rightHand.Perform();
+        // }
       }
     }
     #endregion

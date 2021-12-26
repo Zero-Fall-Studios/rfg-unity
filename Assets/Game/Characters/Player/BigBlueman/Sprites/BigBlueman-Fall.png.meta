@@ -1,25 +1,13 @@
 fileFormatVersion: 2
-guid: 5654caea7edd7cd49862b1ed923147c7
+guid: b9ace0ed5b556624cb52d157d3092458
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8559522654357006026
-    second: BigBlueman-Running Slope_0
+      213: 4728229517275721071
+    second: BigBlueman-Fall_0
   - first:
-      213: -589448116566556431
-    second: BigBlueman-Running Slope_1
-  - first:
-      213: -1088753767240991455
-    second: BigBlueman-Running Slope_2
-  - first:
-      213: 8198852475680362671
-    second: BigBlueman-Running Slope_3
-  - first:
-      213: -7997711485123727308
-    second: BigBlueman-Running Slope_4
-  - first:
-      213: -6219758361217218211
-    second: BigBlueman-Running Slope_5
+      213: 7876401104707319114
+    second: BigBlueman-Fall_1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -97,7 +85,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BigBlueman-Running Slope_0
+      name: BigBlueman-Fall_0
       rect:
         serializedVersion: 2
         x: 0
@@ -111,14 +99,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 63954240f77763980800000000000000
-      internalID: -8559522654357006026
+      spriteID: f6d6cb9d1bb0e9140800000000000000
+      internalID: 4728229517275721071
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BigBlueman-Running Slope_1
+      name: BigBlueman-Fall_1
       rect:
         serializedVersion: 2
         x: 64
@@ -132,92 +120,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1f0078e9f0cd1d7f0800000000000000
-      internalID: -589448116566556431
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BigBlueman-Running Slope_2
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: -1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 12d7bb79738f3e0f0800000000000000
-      internalID: -1088753767240991455
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BigBlueman-Running Slope_3
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: -1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: fa092c223ec28c170800000000000000
-      internalID: 8198852475680362671
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BigBlueman-Running Slope_4
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: -1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 430732927cb620190800000000000000
-      internalID: -7997711485123727308
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BigBlueman-Running Slope_5
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: -1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d59c1e269bafea9a0800000000000000
-      internalID: -6219758361217218211
+      spriteID: a45f292e2199e4d60800000000000000
+      internalID: 7876401104707319114
       vertices: []
       indices: 
       edges: []

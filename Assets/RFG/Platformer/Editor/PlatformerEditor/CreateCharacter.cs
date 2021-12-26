@@ -2,6 +2,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.InputSystem;
+using System;
 
 namespace RFG
 {
@@ -92,6 +93,7 @@ namespace RFG
       gameObject.GetOrAddComponent<PlayerInput>();
       gameObject.GetOrAddComponent<PauseAbility>();
       gameObject.GetOrAddComponent<MovementAbility>();
+      gameObject.GetOrAddComponent<StairsAbility>();
 
       // gameObject.GetOrAddComponent<AttackAbility>();
       // gameObject.GetOrAddComponent<DashAbility>();
@@ -101,7 +103,7 @@ namespace RFG
       // gameObject.GetOrAddComponent<PushAbility>();
       // gameObject.GetOrAddComponent<SlideAbility>();
       // gameObject.GetOrAddComponent<SmashDownAbility>();
-      // gameObject.GetOrAddComponent<StairsAbility>();
+
       // gameObject.GetOrAddComponent<SwimAbility>();
       // gameObject.GetOrAddComponent<WallClingingAbility>();
       // gameObject.GetOrAddComponent<WallJumpAbility>();
@@ -113,6 +115,7 @@ namespace RFG
       CreatePacks(gameObject, newFolderPath + "/Settings");
       CreateParams(gameObject, newFolderPath + "/Settings");
       // CreateInventory(gameObject, newFolderPath + "/Items");
+      CreateGameEventListeners(gameObject);
 
       // Create Prefab
       EditorUtils.SaveAsPrefabAsset(gameObject, newFolderPath, name);
@@ -171,6 +174,7 @@ namespace RFG
 
       CreatePacks(gameObject, newFolderPath + "/Settings");
       CreateParams(gameObject, newFolderPath + "/Settings");
+      CreateGameEventListeners(gameObject);
 
       // Create Prefab
       EditorUtils.SaveAsPrefabAsset(gameObject, newFolderPath, name);
@@ -181,6 +185,7 @@ namespace RFG
     private static void CreatePacks(GameObject activeGameObject, string path)
     {
       SettingsPack settingsPack = EditorUtils.CreateScriptableObject<SettingsPack>(path);
+      settingsPack.AssignDefaultGameEvents();
       EditorUtility.SetDirty(settingsPack);
 
       StatePack characterStatePack = EditorUtils.CreateScriptableObject<StatePack>(path, "CharacterStatePack");
@@ -209,6 +214,7 @@ namespace RFG
           characterStatePack.GenerateCharacterStates();
           movementStatePack.GenerateMovementStates();
         }
+        EditorUtility.SetDirty(character);
       }
     }
 
@@ -239,6 +245,20 @@ namespace RFG
           playerInventory.Inventory = inventory;
         }
       }
+    }
+
+    private static void CreateGameEventListeners(GameObject gameObject)
+    {
+      Character character = gameObject.GetOrAddComponent<Character>();
+
+      GameEventListener pauseEvent = gameObject.AddComponent<GameEventListener>();
+      pauseEvent.Event = character.SettingsPack.PauseEvent;
+      GameEventListener unPauseEvent = gameObject.AddComponent<GameEventListener>();
+      unPauseEvent.Event = character.SettingsPack.UnPauseEvent;
+      GameEventListener animationWaitEvent = gameObject.AddComponent<GameEventListener>();
+      animationWaitEvent.Event = character.SettingsPack.AnimationWaitEvent;
+      GameEventListener animationDone = gameObject.AddComponent<GameEventListener>();
+      animationDone.Event = character.SettingsPack.AnimationDoneEvent;
     }
 
   }

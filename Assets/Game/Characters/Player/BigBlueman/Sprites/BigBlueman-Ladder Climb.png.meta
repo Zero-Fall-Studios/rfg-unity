@@ -1,25 +1,19 @@
 fileFormatVersion: 2
-guid: 6138e56ea571b53438b29573cd301982
+guid: 196d42cc28af8ab40aa5b2399d708f97
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5973963010546714599
-    second: BigBlueman-Jump_0
+      213: 1555537245327530382
+    second: BigBlueman-Ladder Climb_0
   - first:
-      213: -3186155578792815109
-    second: BigBlueman-Jump_1
+      213: 4881779153213963293
+    second: BigBlueman-Ladder Climb_1
   - first:
-      213: 6459860140719005063
-    second: BigBlueman-Jump_2
+      213: -5290970410663302209
+    second: BigBlueman-Ladder Climb_2
   - first:
-      213: -2904259641269666432
-    second: BigBlueman-Jump_3
-  - first:
-      213: 3270817391080315186
-    second: BigBlueman-Jump_4
-  - first:
-      213: -7495512545614700439
-    second: BigBlueman-Jump_5
+      213: 1215706919386341826
+    second: BigBlueman-Ladder Climb_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -97,7 +91,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BigBlueman-Jump_0
+      name: BigBlueman-Ladder Climb_0
       rect:
         serializedVersion: 2
         x: 0
@@ -111,14 +105,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9183a071b48381da0800000000000000
-      internalID: -5973963010546714599
+      spriteID: e8913ae02e0669510800000000000000
+      internalID: 1555537245327530382
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BigBlueman-Jump_1
+      name: BigBlueman-Ladder Climb_1
       rect:
         serializedVersion: 2
         x: 64
@@ -132,14 +126,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bf5dceec16088c3d0800000000000000
-      internalID: -3186155578792815109
+      spriteID: d1cb93b66409fb340800000000000000
+      internalID: 4881779153213963293
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BigBlueman-Jump_2
+      name: BigBlueman-Ladder Climb_2
       rect:
         serializedVersion: 2
         x: 128
@@ -153,14 +147,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 78dd24a729806a950800000000000000
-      internalID: 6459860140719005063
+      spriteID: fbbaf4bb172b296b0800000000000000
+      internalID: -5290970410663302209
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BigBlueman-Jump_3
+      name: BigBlueman-Ladder Climb_3
       rect:
         serializedVersion: 2
         x: 192
@@ -174,8 +168,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 08d3e926e3ff1b7d0800000000000000
-      internalID: -2904259641269666432
+      spriteID: 2c1e109800f0fd010800000000000000
+      internalID: 1215706919386341826
       vertices: []
       indices: 
       edges: []

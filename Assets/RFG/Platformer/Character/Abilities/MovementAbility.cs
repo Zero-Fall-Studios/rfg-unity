@@ -155,7 +155,7 @@ namespace RFG
       }
     }
 
-    private void HandleMovement()
+    public void HandleMovement()
     {
       if (!CanMove())
       {

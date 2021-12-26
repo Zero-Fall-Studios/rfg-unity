@@ -20,6 +20,14 @@ GameObject:
   - component: {fileID: 5807007657619276416}
   - component: {fileID: 4919237466987912362}
   - component: {fileID: 4654335089390380689}
+  - component: {fileID: 5081162438571118608}
+  - component: {fileID: 3591510350423235818}
+  - component: {fileID: 7687483669696966730}
+  - component: {fileID: 1006566821581474718}
+  - component: {fileID: 3392395216109485330}
+  - component: {fileID: -9020905529837148685}
+  - component: {fileID: -5645874992652588243}
+  - component: {fileID: -3138416676458393740}
   m_Layer: 8
   m_Name: BigBlueman
   m_TagString: Player
@@ -299,5 +307,173 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 662240caaed85154281c647957d75890, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5081162438571118608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6281248858581310334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9d151ab8084e4943ae75138996bd208, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 313c80fc5e6491c4e82451537c51b72d, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5759484101486601262}
+        m_TargetAssemblyTypeName: RFG.Character, Assembly-CSharp
+        m_MethodName: EnableAllInput
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &3591510350423235818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6281248858581310334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9d151ab8084e4943ae75138996bd208, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 4462692363e8bb44f8bb70ab11274fe1, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5759484101486601262}
+        m_TargetAssemblyTypeName: RFG.Character, Assembly-CSharp
+        m_MethodName: EnableAllInput
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+--- !u!114 &7687483669696966730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6281248858581310334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9d151ab8084e4943ae75138996bd208, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: bff89a1192c3e8d4994f1aa1de815bbe, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5759484101486601262}
+        m_TargetAssemblyTypeName: RFG.Character, Assembly-CSharp
+        m_MethodName: EnablePauseInput
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1006566821581474718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6281248858581310334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9d151ab8084e4943ae75138996bd208, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 8dc4f7b81753d824b9d4ad838b491a3b, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5759484101486601262}
+        m_TargetAssemblyTypeName: RFG.Character, Assembly-CSharp
+        m_MethodName: EnablePauseInput
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+--- !u!114 &3392395216109485330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6281248858581310334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c97c0a0880f2e74b85224404664529b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-9020905529837148685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6281248858581310334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c357e47c55ded9547be38e906565a2be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Aim:
+    aimControl: 2
+    rotationMode: 2
+    minAngle: -180
+    maxAngle: 180
+    currentAngle: 0
+--- !u!114 &-5645874992652588243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6281248858581310334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4b4ba17ba9043a418bdb83700647744, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <ForceAnchorToGroundOnExit>k__BackingField: 0
+  <ForceRightFacing>k__BackingField: 0
+--- !u!114 &-3138416676458393740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6281248858581310334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02717bc9fcd1d684eb39d640b83c0298, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

@@ -51,7 +51,7 @@ namespace RFG
 
       Type newStateType = CurrentState.Execute(_context);
 
-      if (newStateType == null && CurrentState.NextState != null)
+      if (CurrentState.NextState != null)
       {
         if (CurrentState.NextStateAfterTime > 0f)
         {
@@ -71,6 +71,7 @@ namespace RFG
       {
         ChangeState(newStateType);
       }
+
       if (CurrentState.WaitToUnfreezeTime > 0f && Frozen)
       {
         _frozenTimeElapsed += Time.deltaTime;
