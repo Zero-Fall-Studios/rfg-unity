@@ -100,6 +100,7 @@ namespace RFG
       {
         DefaultState = state;
       }
+      RemoveNullStates();
       AssetDatabase.SaveAssets();
       EditorUtility.SetDirty(this);
       return state;
@@ -108,6 +109,45 @@ namespace RFG
     public T AddToPack<T>(bool defaultState = false) where T : State
     {
       return AddToPack<T>(null, false, 0, defaultState, null);
+    }
+
+    public void AddStatesCanUnfreeze<T>(params State[] statesCanUnFreeze) where T : State
+    {
+      T state = null;
+      if (States != null && States.Count > 0)
+      {
+        state = States.Find(s => s.GetType().Equals(typeof(T))) as T;
+      }
+      if (state == null)
+      {
+        return;
+      }
+      if (statesCanUnFreeze != null && statesCanUnFreeze.Length > 0)
+      {
+        if (state.StatesCanUnfreeze == null || state.StatesCanUnfreeze.Length == 0)
+        {
+          state.StatesCanUnfreeze = statesCanUnFreeze;
+        }
+        else
+        {
+          state.StatesCanUnfreeze = state.StatesCanUnfreeze.Concat(statesCanUnFreeze).Distinct().ToArray();
+        }
+      }
+      RemoveNullStates();
+    }
+
+    [ButtonMethod]
+    public void RemoveNullStates()
+    {
+      States = States.Where(s => s != null).ToList();
+      foreach (State state in States)
+      {
+        if (state.StatesCanUnfreeze != null)
+        {
+          state.StatesCanUnfreeze = state.StatesCanUnfreeze.Where(s => s != null).ToArray();
+        }
+      }
+      EditorUtility.SetDirty(this);
     }
 
     public void GenerateCharacterStates()
@@ -127,38 +167,11 @@ namespace RFG
       AddToPack<RunningState>("Run");
       AddToPack<RunningUpSlopeState>("Run Up Slope");
       AddToPack<RunningDownSlopeState>("Run");
-
-
-      // AddToPack<CrouchIdleState>("CrouchIdle");
-      // AddToPack<CrouchWalkingState>("CrouchWalking");
-
-      // AddToPack<DanglingState>("Dangling");
-
-      // AddToPack<LedgeClimbingState>("LedgeClimbing");
-      // LedgeGrabState ledgeGrabState = AddToPack<LedgeGrabState>("LedgeGrab");
-
-      // AddToPack<SlidingState>("Sliding", true, 0.5f, false, fallingState);
-      // AddToPack<PushingIdleState>("PushingIdle");
-      // AddToPack<PushingState>("Pushing");
-      // AddToPack<WallClingingState>("WallClinging");
-      // AddToPack<WallJumpingState>("Jumping");
-      // SwimmingState swimmingState = AddToPack<SwimmingState>("Swimming", true, 0, false, fallingState);
-
-      // DamageState damageState = AddToPack<DamageState>("Damage", true, 0.5f, false);
-      // damageState.StatesCanUnfreeze = new State[] { damageState };
-
-      // SmashDownStartedState smashDownStartedState = AddToPack<SmashDownStartedState>("SmashDownStarted", true);
-      // SmashDownCollidedState smashDownCollidedState = AddToPack<SmashDownCollidedState>("SmashDownCollided", true, 1, false, swimmingState, damageState);
-      // SmashDownPerformedState smashDownPerformedState = AddToPack<SmashDownPerformedState>("SmashDownPerformed", true, 0, false, smashDownCollidedState, swimmingState, damageState);
-      // smashDownStartedState.StatesCanUnfreeze = new State[] { smashDownPerformedState, damageState };
-
-
     }
 
     public void GenerateJumpState()
     {
       FallingState fallingState = AddToPack<FallingState>("Fall");
-      // ledgeGrabState, primaryAttackStartedState, secondaryAttackStartedState, smashDownStartedState, ladderClimbingState
       JumpingState jumpingState = AddToPack<JumpingState>("Jump", true, 0, false, fallingState);
       AddToPack<LandedState>("Land", true, .25f, false, jumpingState);
     }
@@ -172,50 +185,44 @@ namespace RFG
     public void GenerateJumpFlipState()
     {
       FallingState fallingState = AddToPack<FallingState>("Fall");
-      // ledgeGrabState, primaryAttackStartedState, secondaryAttackStartedState, smashDownStartedState, ladderClimbingState
       JumpingFlipState jumpingFlipState = AddToPack<JumpingFlipState>("Jump Flip", true, 0, false, fallingState);
       AddToPack<LandedState>("Land", true, .25f, false, jumpingFlipState);
     }
 
     public void GenerateFallState()
     {
-      FallingState fallingState = AddToPack<FallingState>("Fall");
-    }
-
-    public void GenerateRunState()
-    {
-      AddToPack<RunningState>("Running");
+      AddToPack<FallingState>("Fall");
     }
 
     public void GeneratePrimaryAttackState()
     {
       PrimaryAttackStartedState primaryAttackStartedState = AddToPack<PrimaryAttackStartedState>();
-      AddToPack<PrimaryAttackPerformedState>("PrimaryAttackPerformed");
+      AddToPack<PrimaryAttackPerformedState>("Primary Attack Performed");
       AddToPack<PrimaryAttackCanceledState>();
 
       if (HasState(typeof(JumpingState)))
       {
-        AddToPack<JumpingState>("Jump", true, 0, false, primaryAttackStartedState);
+        AddStatesCanUnfreeze<JumpingState>(primaryAttackStartedState);
       }
       if (HasState(typeof(JumpingFlipState)))
       {
-        AddToPack<JumpingFlipState>("Jump Flip", true, 0, false, primaryAttackStartedState);
+        AddStatesCanUnfreeze<JumpingFlipState>(primaryAttackStartedState);
       }
     }
 
     public void GenerateSecondaryAttackState()
     {
       SecondaryAttackStartedState secondaryAttackStartedState = AddToPack<SecondaryAttackStartedState>();
-      AddToPack<SecondaryAttackPerformedState>("SecondaryAttackPerformed");
+      AddToPack<SecondaryAttackPerformedState>("Secondary Attack Performed");
       AddToPack<SecondaryAttackCanceledState>();
 
       if (HasState(typeof(JumpingState)))
       {
-        AddToPack<JumpingState>("Jump", true, 0, false, secondaryAttackStartedState);
+        AddStatesCanUnfreeze<JumpingState>(secondaryAttackStartedState);
       }
       if (HasState(typeof(JumpingFlipState)))
       {
-        AddToPack<JumpingFlipState>("Jump Flip", true, 0, false, secondaryAttackStartedState);
+        AddStatesCanUnfreeze<JumpingFlipState>(secondaryAttackStartedState);
       }
     }
 
@@ -230,11 +237,11 @@ namespace RFG
       DashingState dashingState = AddToPack<DashingState>("Dash", true);
       if (HasState(typeof(JumpingState)))
       {
-        AddToPack<JumpingState>("Jump", true, 0, false, dashingState);
+        AddStatesCanUnfreeze<JumpingState>(dashingState);
       }
       if (HasState(typeof(JumpingFlipState)))
       {
-        AddToPack<JumpingFlipState>("Jump Flip", true, 0, false, dashingState);
+        AddStatesCanUnfreeze<JumpingFlipState>(dashingState);
       }
     }
 
@@ -244,11 +251,11 @@ namespace RFG
       LadderClimbingState ladderClimbingState = AddToPack<LadderClimbingState>("Ladder Climb");
       if (HasState(typeof(JumpingState)))
       {
-        AddToPack<JumpingState>("Jump", true, 0, false, ladderClimbingState);
+        AddStatesCanUnfreeze<JumpingState>(ladderClimbingState);
       }
       if (HasState(typeof(JumpingFlipState)))
       {
-        AddToPack<JumpingFlipState>("Jump Flip", true, 0, false, ladderClimbingState);
+        AddStatesCanUnfreeze<JumpingFlipState>(ladderClimbingState);
       }
     }
 
@@ -256,6 +263,101 @@ namespace RFG
     {
       FallingState fallingState = (FallingState)Find(typeof(FallingState));
       AddToPack<SlidingState>("Slide", true, 0.5f, false, fallingState);
+    }
+
+    public void GeneratePushAbilityStates()
+    {
+      AddToPack<PushingIdleState>("Push Idle");
+      AddToPack<PushingState>("Push");
+    }
+
+    public void GenerateDamageState()
+    {
+      DamageState damageState = AddToPack<DamageState>("Damage", true, 0.5f, false);
+      damageState.StatesCanUnfreeze = new State[] { damageState };
+
+      if (HasState(typeof(SmashDownStartedState)))
+      {
+        AddStatesCanUnfreeze<SmashDownStartedState>(damageState);
+      }
+      if (HasState(typeof(SmashDownCollidedState)))
+      {
+        AddStatesCanUnfreeze<SmashDownCollidedState>(damageState);
+      }
+      if (HasState(typeof(SmashDownPerformedState)))
+      {
+        AddStatesCanUnfreeze<SmashDownPerformedState>(damageState);
+      }
+    }
+
+    public void GenerateSmashDownAbilityStates()
+    {
+      SwimmingState swimmingState = (SwimmingState)Find(typeof(SwimmingState));
+      DamageState damageState = (DamageState)Find(typeof(DamageState));
+      SmashDownStartedState smashDownStartedState = AddToPack<SmashDownStartedState>("Smash Down Started", true);
+      SmashDownCollidedState smashDownCollidedState = AddToPack<SmashDownCollidedState>("Smash Down Collided", true, 1, false, swimmingState, damageState);
+      SmashDownPerformedState smashDownPerformedState = AddToPack<SmashDownPerformedState>("Smash Down Performed", true, 0, false, smashDownCollidedState, swimmingState, damageState);
+      smashDownStartedState.StatesCanUnfreeze = new State[] { smashDownPerformedState, damageState };
+
+      if (HasState(typeof(JumpingState)))
+      {
+        AddStatesCanUnfreeze<JumpingState>(smashDownStartedState);
+      }
+      if (HasState(typeof(JumpingFlipState)))
+      {
+        AddStatesCanUnfreeze<JumpingFlipState>(smashDownStartedState);
+      }
+    }
+
+    public void GenerateSwimAbilityStates()
+    {
+      FallingState fallingState = (FallingState)Find(typeof(FallingState));
+      SwimmingState swimmingState = AddToPack<SwimmingState>("Swim", true, 0, false, fallingState);
+
+      if (HasState(typeof(SmashDownPerformedState)))
+      {
+        AddStatesCanUnfreeze<SmashDownPerformedState>(swimmingState);
+      }
+      if (HasState(typeof(SmashDownCollidedState)))
+      {
+        AddStatesCanUnfreeze<SmashDownCollidedState>(swimmingState);
+      }
+    }
+
+    public void GenerateWallClingingAbilityStates()
+    {
+      AddToPack<WallClingingState>("Wall Cling");
+    }
+
+    public void GenerateWallJumpAbilityStates()
+    {
+      AddToPack<WallJumpingState>("Wall Jump");
+    }
+
+    public void GenerateCrouchStates()
+    {
+      AddToPack<CrouchIdleState>("Crouch Idle");
+      AddToPack<CrouchWalkingState>("Crouch Walk");
+    }
+
+    public void GenerateDanglingBehaviourStates()
+    {
+      AddToPack<DanglingState>("Dangling");
+    }
+
+    public void GenerateLedgeGrabAbilityStates()
+    {
+      AddToPack<LedgeClimbingState>("Ledge Climb");
+      LedgeGrabState ledgeGrabState = AddToPack<LedgeGrabState>("Ledge Grab");
+
+      if (HasState(typeof(JumpingState)))
+      {
+        AddStatesCanUnfreeze<JumpingState>(ledgeGrabState);
+      }
+      if (HasState(typeof(JumpingFlipState)))
+      {
+        AddStatesCanUnfreeze<JumpingFlipState>(ledgeGrabState);
+      }
     }
 #endif
   }

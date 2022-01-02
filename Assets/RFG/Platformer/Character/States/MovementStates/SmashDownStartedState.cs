@@ -9,7 +9,6 @@ namespace RFG
     {
       StateCharacterContext characterContext = context as StateCharacterContext;
       characterContext.controller.SetForce(Vector2.zero);
-      characterContext.controller.GravityActive(false);
       characterContext.character.EnableAllInput(false);
       base.Enter(context);
     }

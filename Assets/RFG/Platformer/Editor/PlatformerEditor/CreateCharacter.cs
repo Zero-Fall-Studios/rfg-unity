@@ -95,13 +95,7 @@ namespace RFG
       gameObject.GetOrAddComponent<MovementAbility>();
       gameObject.GetOrAddComponent<StairsAbility>();
 
-      // gameObject.GetOrAddComponent<AttackAbility>();
-      // gameObject.GetOrAddComponent<DashAbility>();
-      // gameObject.GetOrAddComponent<JumpAbility>();
-      // gameObject.GetOrAddComponent<LadderClimbingAbility>();
       // gameObject.GetOrAddComponent<LedgeGrabAbility>();
-      // gameObject.GetOrAddComponent<PushAbility>();
-      // gameObject.GetOrAddComponent<SlideAbility>();
       // gameObject.GetOrAddComponent<SmashDownAbility>();
 
       // gameObject.GetOrAddComponent<SwimAbility>();

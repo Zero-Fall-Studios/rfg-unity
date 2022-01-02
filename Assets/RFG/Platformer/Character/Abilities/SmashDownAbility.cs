@@ -13,7 +13,6 @@ namespace RFG
     private CharacterController2D _controller;
     private PlayerInput _playerInput;
     private InputAction _smashDownInput;
-    private bool _pointerOverUi = false;
     private bool _smashingInAir = false;
 
     #region Unity Methods
@@ -31,8 +30,11 @@ namespace RFG
       {
         return;
       }
-      if (_smashingInAir && _character.IsGrounded)
+      Debug.Log("State: " + (_character.MovementState.CurrentStateType == typeof(SmashDownPerformedState)));
+      Debug.Log("Grounded" + _character.IsGrounded);
+      if (_character.MovementState.CurrentStateType == typeof(SmashDownPerformedState) && _character.IsGrounded)
       {
+        Debug.Log("Got here 123");
         HandleSmashDownCollision();
       }
     }
@@ -73,16 +75,12 @@ namespace RFG
 
     private void OnSmashDownStarted(InputAction.CallbackContext ctx)
     {
-      _pointerOverUi = MouseOverUILayerObject.IsPointerOverUIObject();
-      if (!_pointerOverUi)
+      if (_character.IsInAirMovementState && !_character.SettingsPack.CanSmashDownInAir)
       {
-        if (_character.IsInAirMovementState && !_character.SettingsPack.CanSmashDownInAir)
-        {
-          return;
-        }
-        _smashingInAir = _character.IsInAirMovementState && _character.SettingsPack.CanSmashDownInAir;
-        _character.MovementState.ChangeState(typeof(SmashDownStartedState));
+        return;
       }
+      _smashingInAir = _character.IsInAirMovementState && _character.SettingsPack.CanSmashDownInAir;
+      _character.MovementState.ChangeState(typeof(SmashDownStartedState));
     }
 
     private void OnStateTypeChange(Type prevType, Type currentType)
