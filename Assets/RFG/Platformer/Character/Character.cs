@@ -328,6 +328,8 @@ namespace RFG
     public bool IsSwimming => MovementState.CurrentStateType == typeof(SwimmingState);
     public bool IsPushing => MovementState.IsInState(typeof(PushingState), typeof(PushingIdleState));
     public bool IsFalling => MovementState.CurrentStateType == typeof(FallingState);
+    public bool IsUpThrusting => MovementState.CurrentStateType == typeof(UpThrustState);
+    public bool IsDownThrusting => MovementState.CurrentStateType == typeof(DownThrustState);
     public bool IsLadderCliming => MovementState.IsInState(typeof(LadderClimbingState), typeof(LadderIdleState));
     public bool IsAnyPrimaryAttack => MovementState.IsInState(typeof(PrimaryAttackStartedState), typeof(PrimaryAttackCanceledState), typeof(PrimaryAttackPerformedState));
     public bool IsAnySecondaryAttack => MovementState.IsInState(typeof(SecondaryAttackStartedState), typeof(SecondaryAttackCanceledState), typeof(SecondaryAttackPerformedState));

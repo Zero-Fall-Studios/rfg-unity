@@ -7,9 +7,9 @@ namespace RFG
   [CustomEditor(typeof(Character))]
   public class CharacterEditorWindow : Editor
   {
-    public enum AddAbilityType { Select, AttackAbility, DashAbility, JumpAbility, LadderClimbingAbility, LedgeGrabAbility, PushAbility, SlideAbility, SmashDownAbility, SwimAbility, WallClingingAbility, WallJumpAbility }
+    public enum AddAbilityType { Select, AttackAbility, DashAbility, DownThrustAbility, JumpAbility, LadderClimbingAbility, LedgeGrabAbility, PushAbility, SlideAbility, SmashDownAbility, SwimAbility, UpThrustAbility, WallClingingAbility, WallJumpAbility }
     public enum AddBehaviourType { Select, DanglingBehaviour, HealthBehaviour, SceneBoundsBehaviour }
-    public enum AddMovementStateType { Select, Crouch, Damage, Dangling, Dash, DoubleJump, Fall, Jump, JumpFlip, Ladder, LedgeGrab, Movement, PrimaryAttack, Push, SecondaryAttack, Slide, SmashDown, Swim, WallClinging, WallJump }
+    public enum AddMovementStateType { Select, Crouch, Damage, Dangling, Dash, DoubleJump, DownThrust, Fall, Jump, JumpFlip, Ladder, LedgeGrab, Movement, PrimaryAttack, Push, SecondaryAttack, Slide, SmashDown, Swim, UpThrust, WallClinging, WallJump }
     private VisualElement rootElement;
     private Editor editor;
     private AddAbilityType addAbilityType;
@@ -121,6 +121,9 @@ namespace RFG
         case AddMovementStateType.DoubleJump:
           character.MovementState.StatePack.GenerateDoubleJumpState();
           break;
+        case AddMovementStateType.DownThrust:
+          character.MovementState.StatePack.GenerateDownThrustAbilityStates();
+          break;
         case AddMovementStateType.Fall:
           character.MovementState.StatePack.GenerateFallState();
           break;
@@ -157,6 +160,9 @@ namespace RFG
         case AddMovementStateType.Swim:
           character.MovementState.StatePack.GenerateSwimAbilityStates();
           break;
+        case AddMovementStateType.UpThrust:
+          character.MovementState.StatePack.GenerateUpThrustAbilityStates();
+          break;
         case AddMovementStateType.WallClinging:
           character.MovementState.StatePack.GenerateWallClingingAbilityStates();
           break;
@@ -178,6 +184,10 @@ namespace RFG
         case AddAbilityType.DashAbility:
           character.gameObject.GetOrAddComponent<DashAbility>();
           character.MovementState.StatePack.GenerateDashAbilityStates();
+          break;
+        case AddAbilityType.DownThrustAbility:
+          character.gameObject.GetOrAddComponent<DownThrustAbility>();
+          character.MovementState.StatePack.GenerateDownThrustAbilityStates();
           break;
         case AddAbilityType.JumpAbility:
           character.gameObject.GetOrAddComponent<JumpAbility>();
@@ -206,6 +216,10 @@ namespace RFG
         case AddAbilityType.SwimAbility:
           character.gameObject.GetOrAddComponent<SwimAbility>();
           character.MovementState.StatePack.GenerateSwimAbilityStates();
+          break;
+        case AddAbilityType.UpThrustAbility:
+          character.gameObject.GetOrAddComponent<UpThrustAbility>();
+          character.MovementState.StatePack.GenerateUpThrustAbilityStates();
           break;
         case AddAbilityType.WallClingingAbility:
           character.gameObject.GetOrAddComponent<WallClingingAbility>();

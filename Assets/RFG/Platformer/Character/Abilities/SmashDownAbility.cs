@@ -30,11 +30,8 @@ namespace RFG
       {
         return;
       }
-      Debug.Log("State: " + (_character.MovementState.CurrentStateType == typeof(SmashDownPerformedState)));
-      Debug.Log("Grounded" + _character.IsGrounded);
       if (_character.MovementState.CurrentStateType == typeof(SmashDownPerformedState) && _character.IsGrounded)
       {
-        Debug.Log("Got here 123");
         HandleSmashDownCollision();
       }
     }

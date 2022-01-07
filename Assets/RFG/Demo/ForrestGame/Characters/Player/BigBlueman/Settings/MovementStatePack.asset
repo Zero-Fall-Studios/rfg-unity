@@ -219,6 +219,8 @@ MonoBehaviour:
   - {fileID: 8607331980679142854}
   - {fileID: 1472499319186481471}
   - {fileID: -2675053409449921053}
+  - {fileID: -4604637722067493371}
+  - {fileID: -3159130656979161619}
   NextState: {fileID: 0}
   NextStateAfterTime: 0
   GoToNextStateAfterCompletion: 0
@@ -371,6 +373,30 @@ MonoBehaviour:
   NextState: {fileID: 0}
   NextStateAfterTime: 0
   GoToNextStateAfterCompletion: 0
+--- !u!114 &-4604637722067493371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8eb4dd39ed90764098848282ebb56c8, type: 3}
+  m_Name: DownThrustState
+  m_EditorClassIdentifier: 
+  Layer: Base Layer
+  EnterClip: Down Thrust
+  ExitClip: 
+  EnterEffects: []
+  ExitEffects: []
+  StopEnterEffectsOnExit: 0
+  FreezeState: 0
+  WaitToUnfreezeTime: 0
+  StatesCanUnfreeze: []
+  NextState: {fileID: 0}
+  NextStateAfterTime: 0
+  GoToNextStateAfterCompletion: 0
 --- !u!114 &-4572875568911513511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -409,6 +435,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Layer: Base Layer
   EnterClip: Crouch Walk
+  ExitClip: 
+  EnterEffects: []
+  ExitEffects: []
+  StopEnterEffectsOnExit: 0
+  FreezeState: 0
+  WaitToUnfreezeTime: 0
+  StatesCanUnfreeze: []
+  NextState: {fileID: 0}
+  NextStateAfterTime: 0
+  GoToNextStateAfterCompletion: 0
+--- !u!114 &-3159130656979161619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00b19afcb0a0b10459e83aea9e2c8475, type: 3}
+  m_Name: UpThrustState
+  m_EditorClassIdentifier: 
+  Layer: Base Layer
+  EnterClip: Up Thrust
   ExitClip: 
   EnterEffects: []
   ExitEffects: []
@@ -565,6 +615,8 @@ MonoBehaviour:
   - {fileID: -5825852557544554462}
   - {fileID: -3388414834699256994}
   - {fileID: 6550664238629543357}
+  - {fileID: -4604637722067493371}
+  - {fileID: -3159130656979161619}
   DefaultState: {fileID: -4572875568911513511}
 --- !u!114 &249338225685336520
 MonoBehaviour:
@@ -715,6 +767,8 @@ MonoBehaviour:
   - {fileID: 8607331980679142854}
   - {fileID: 1472499319186481471}
   - {fileID: -2675053409449921053}
+  - {fileID: -4604637722067493371}
+  - {fileID: -3159130656979161619}
   NextState: {fileID: 0}
   NextStateAfterTime: 0
   GoToNextStateAfterCompletion: 0

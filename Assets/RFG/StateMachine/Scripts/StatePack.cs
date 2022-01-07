@@ -245,6 +245,32 @@ namespace RFG
       }
     }
 
+    public void GenerateDownThrustAbilityStates()
+    {
+      DownThrustState downThrustState = AddToPack<DownThrustState>("Down Thrust");
+      if (HasState(typeof(JumpingState)))
+      {
+        AddStatesCanUnfreeze<JumpingState>(downThrustState);
+      }
+      if (HasState(typeof(JumpingFlipState)))
+      {
+        AddStatesCanUnfreeze<JumpingFlipState>(downThrustState);
+      }
+    }
+
+    public void GenerateUpThrustAbilityStates()
+    {
+      UpThrustState upThrustState = AddToPack<UpThrustState>("Up Thrust");
+      if (HasState(typeof(JumpingState)))
+      {
+        AddStatesCanUnfreeze<JumpingState>(upThrustState);
+      }
+      if (HasState(typeof(JumpingFlipState)))
+      {
+        AddStatesCanUnfreeze<JumpingFlipState>(upThrustState);
+      }
+    }
+
     public void GenerateLadderClimbingAbilityStates()
     {
       AddToPack<LadderIdleState>("Ladder Idle");

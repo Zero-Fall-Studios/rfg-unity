@@ -341,7 +341,9 @@ namespace RFG
         !_character.IsLedgeGrabbing &&
         !_character.IsLadderCliming &&
         !_character.IsSwimming &&
-        !_character.IsFalling
+        !_character.IsFalling &&
+        !_character.IsUpThrusting &&
+        !_character.IsDownThrusting
       )
       {
         _character.MovementState.ChangeState(typeof(FallingState));
