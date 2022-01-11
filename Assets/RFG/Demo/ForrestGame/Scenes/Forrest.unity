@@ -911,7 +911,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LedgeGrabDirection: 0
-  HangOffset: {x: 0, y: -0.45, z: 0}
+  HangOffset: {x: 0, y: -0.85, z: 0}
   ClimbOffset: {x: -0.45, y: 0.96, z: 0}
   <Tags>k__BackingField:
   - Player
@@ -29893,7 +29893,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1784415157}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 72.65, y: 9.04, z: 0}
+  m_LocalPosition: {x: 16.11, y: 4.92, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

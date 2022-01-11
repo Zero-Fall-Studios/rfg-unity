@@ -676,21 +676,21 @@ namespace RFG
               CurrentWallCollider = _sideHitsStorage[i].collider.gameObject;
               State.SlopeAngleOK = false;
 
-              float distance = Math.DistanceBetweenPointAndLine(_sideHitsStorage[i].point, _horizontalRayCastFromBottom, _horizontalRayCastToTop);
-              if (raysDirection <= 0)
-              {
-                _newPosition.x = -distance + _boundsWidth / 2 + Parameters.RayOffset * 2;
-              }
-              else
-              {
-                _newPosition.x = distance - _boundsWidth / 2 - Parameters.RayOffset * 2;
-              }
+              // float distance = Math.DistanceBetweenPointAndLine(_sideHitsStorage[i].point, _horizontalRayCastFromBottom, _horizontalRayCastToTop);
+              // if (raysDirection <= 0)
+              // {
+              //   _newPosition.x = -distance + _boundsWidth / 2 + Parameters.RayOffset * 2;
+              // }
+              // else
+              // {
+              //   _newPosition.x = distance - _boundsWidth / 2 - Parameters.RayOffset * 2;
+              // }
 
               // if we're in the air, we prevent the character from being pushed back.
-              if (!State.IsGrounded && (Speed.y != 0) && (!Mathf.Approximately(hitAngle, 90f)))
-              {
-                _newPosition.x = 0;
-              }
+              // if (!State.IsGrounded && (Speed.y != 0) && (!Mathf.Approximately(hitAngle, 90f)))
+              // {
+              _newPosition.x = 0;
+              // }
 
               _contactList.Add(_sideHitsStorage[i]);
               _speed.x = 0;
