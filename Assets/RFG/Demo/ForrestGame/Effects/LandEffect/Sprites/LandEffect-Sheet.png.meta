@@ -3,7 +3,7 @@ guid: ff24fc5b0b6f48a44bea9f9245a6525e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -24,6 +24,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -62,6 +63,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -111,6 +113,30 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -130,7 +156,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: f633be47de5e4b64ba4698dd30a4c636
-      internalID: -422460998
+      internalID: 1847435666817263009
       vertices: []
       indices: 
       edges: []
@@ -151,7 +177,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 48f753c29f13f5d4cb55d8f54d8ef289
-      internalID: -740160891
+      internalID: -8654723971217521503
       vertices: []
       indices: 
       edges: []
@@ -172,7 +198,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 87a9ed19e67d25043855fd263e8491ce
-      internalID: 1525352762
+      internalID: -6680162951721271077
       vertices: []
       indices: 
       edges: []
@@ -193,7 +219,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: daab213998e89784b8a83d49cf6f0d47
-      internalID: -980197965
+      internalID: -1429677768857493305
       vertices: []
       indices: 
       edges: []
@@ -208,6 +234,11 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      LandEffect-Sheet_0: 1847435666817263009
+      LandEffect-Sheet_1: -8654723971217521503
+      LandEffect-Sheet_2: -6680162951721271077
+      LandEffect-Sheet_3: -1429677768857493305
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
